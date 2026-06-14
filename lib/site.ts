@@ -9,7 +9,7 @@ export const LEAD_ACCESS_KEY = process.env.NEXT_PUBLIC_LEAD_ACCESS_KEY || "";
 
 // Your Cal.com booking link, e.g. "nodevant/strategy-call".
 // Set NEXT_PUBLIC_CAL_LINK to your real one when your Cal.com is ready.
-export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK || "nodevant-strategy-call";
+export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK || "nodevant-strategy-call/30min";
 
 // Google Search Console verification token (paste after verifying the domain).
 export const GSC_TOKEN = process.env.NEXT_PUBLIC_GSC_TOKEN || "";
