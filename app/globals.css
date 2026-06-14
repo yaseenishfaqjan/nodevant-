@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #08080f;
+  --foreground: #f0f0ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #08080f;
+  color: #f0f0ff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #08080f;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.25);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.45);
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-10;
+  }
+
+  .gradient-text {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .glow-card {
+    @apply relative rounded-2xl border border-line bg-[rgba(255,255,255,0.02)] p-7 transition-all duration-300;
+  }
+  .glow-card:hover {
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-7 py-3.5 text-base font-semibold text-bg transition-all duration-300 hover:shadow-glow-cyan hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-white/[0.02] px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-cyan/50 hover:bg-white/[0.04];
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-sm font-medium text-muted;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-cyan;
+  }
+
+  .section-pad {
+    @apply py-24 md:py-32;
+  }
+}
+
+.radial-glow {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 40%,
+    rgba(0, 212, 255, 0.12),
+    transparent 70%
+  );
+}
+
+/* Hero wordmark gradient — cyan to violet, matches existing brand */
+.wordmark {
+  background: linear-gradient(180deg, #00d4ff 0%, #2bb8ff 45%, #6a8dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.45));
+}
+
+/* Long-form article (blog post) prose styling */
+.article h2 {
+  @apply mt-12 mb-4 font-display text-2xl font-bold text-ink md:text-3xl;
+  scroll-margin-top: 6rem;
+}
+.article h3 {
+  @apply mt-8 mb-3 font-display text-xl font-semibold text-ink;
+}
+.article p {
+  @apply my-4 text-[17px] leading-relaxed text-muted;
+}
+.article ul {
+  @apply my-4 list-disc space-y-2 pl-6 text-[17px] text-muted;
+}
+.article ol {
+  @apply my-4 list-decimal space-y-2 pl-6 text-[17px] text-muted;
+}
+.article li {
+  @apply leading-relaxed;
+}
+.article strong {
+  @apply font-semibold text-ink;
+}
+.article a {
+  @apply font-medium text-cyan underline decoration-cyan/40 underline-offset-2 hover:decoration-cyan;
+}
+.article .table-wrap {
+  @apply my-6 overflow-x-auto rounded-xl border border-line;
+}
+.article table {
+  @apply w-full border-collapse text-sm;
+}
+.article th {
+  @apply border-b border-line bg-bg-soft p-3 text-left font-semibold text-ink;
+}
+.article td {
+  @apply border-b border-line p-3 align-top text-muted;
+}
+.article tr:last-child td {
+  @apply border-b-0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+npm-debug.log
+.git
+.gitignore
+Dockerfile
+.dockerignore
+docker-compose.yml
+README.md
+NODEVANT_MASTER_SPEC_V2.md
+.env*
+.vscode
+*.md
+article images
+scripts

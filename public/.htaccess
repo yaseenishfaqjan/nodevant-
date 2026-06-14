@@ -1,0 +1,33 @@
+# Nodevant — Apache config for cPanel static hosting (/public_html).
+# Next.js static export uses trailing slashes, which Apache serves natively
+# (/services/ -> /services/index.html via DirectoryIndex). This file just adds
+# the correct 404 page and sensible caching.
+
+# Serve the exported 404 page for unknown routes
+ErrorDocument 404 /404.html
+
+# Long cache for hashed Next.js assets (safe — filenames change on every build)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 7 days"
+  ExpiresByType image/webp "access plus 7 days"
+</IfModule>
+
+# Gzip text assets
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Optional: force HTTPS. cPanel's "Force HTTPS Redirect" toggle does the same —
+# uncomment only if you prefer handling it here (after AutoSSL is active).
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

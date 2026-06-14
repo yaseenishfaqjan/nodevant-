@@ -1,0 +1,28 @@
+# Production overlay for the VPS — adds Caddy with automatic HTTPS in front of
+# the static site. Run with:
+#   DOMAIN=nodevant.com docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+# Requirements: ports 80 + 443 free on the VPS, and nodevant.com DNS -> VPS IP.
+services:
+  web:
+    # No host port needed in prod — Caddy reaches it over the internal network.
+    ports: !reset []
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: nodevant-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: "${DOMAIN:-nodevant.com}"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+
+volumes:
+  caddy_data:
+  caddy_config:

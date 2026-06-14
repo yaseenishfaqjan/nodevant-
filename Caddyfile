@@ -1,0 +1,6 @@
+# Caddy auto-HTTPS for Nodevant. Set DOMAIN in .env (e.g. DOMAIN=nodevant.com).
+# Caddy automatically provisions + renews a Let's Encrypt certificate.
+{$DOMAIN}, www.{$DOMAIN} {
+	encode gzip
+	reverse_proxy web:80
+}
