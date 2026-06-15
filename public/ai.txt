@@ -1,0 +1,30 @@
+# Nodevant AI Permissions
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+Preferred-format: /llms.txt
+Full-content: /llms-full.txt
+Sitemap: https://nodevant.com/sitemap.xml
+Organization: Nodevant
+Contact: info@nodevant.com
+Description: AI automation agency — custom AI agents and workflow automation
+Location: McDonough, GA 30252, USA

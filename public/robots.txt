@@ -1,0 +1,43 @@
+# Nodevant robots.txt
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# Sitemaps
+Sitemap: https://nodevant.com/sitemap.xml
+
+# AI content files
+# LLMs: https://nodevant.com/llms.txt
+# LLMs-Full: https://nodevant.com/llms-full.txt

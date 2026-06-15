@@ -46,6 +46,13 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
   verification: GSC_TOKEN ? { google: GSC_TOKEN } : undefined,
+  other: {
+    "geo.region": "US-GA",
+    "geo.placename": "McDonough",
+    "geo.position": "33.4473;-84.1469",
+    ICBM: "33.4473, -84.1469",
+    "ai-content-preference": `${SITE.url}/llms.txt`,
+  },
 };
 
 export default function RootLayout({

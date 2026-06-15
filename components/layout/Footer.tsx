@@ -54,6 +54,21 @@ export default function Footer() {
             >
               {SITE.email}
             </a>
+            <address className="mt-4 text-sm not-italic leading-relaxed text-faint">
+              {SITE.address.street}
+              <br />
+              {SITE.address.city}, {SITE.address.region} {SITE.address.postal}
+              <br />
+              United States · Serving clients globally
+            </address>
+            <a
+              href={SITE.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-sm font-medium text-faint hover:text-cyan"
+            >
+              ⭐ Review us on Google
+            </a>
           </div>
 
           {FOOTER_COLS.map((col) => (

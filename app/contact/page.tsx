@@ -89,6 +89,64 @@ export default function ContactPage() {
             <CalEmbed />
           </div>
         </div>
+
+        {/* Find Us — local SEO / NAP */}
+        <div className="container-x mt-12">
+          <div className="grid gap-8 rounded-3xl border border-line bg-bg-soft p-8 lg:grid-cols-2 lg:p-10">
+            <div>
+              <h2 className="font-display text-2xl font-bold text-ink">Find us</h2>
+              <p className="mt-3 text-muted">
+                Remote-first — we serve clients across the US, UK, Canada,
+                Australia, and worldwide.
+              </p>
+              <address className="mt-6 space-y-1 text-sm not-italic leading-relaxed text-muted">
+                <div className="font-semibold text-ink">{SITE.name}</div>
+                <div>{SITE.address.street}</div>
+                <div>
+                  {SITE.address.city}, {SITE.address.region} {SITE.address.postal}
+                </div>
+                <div>United States</div>
+              </address>
+              <dl className="mt-6 space-y-2 text-sm">
+                <div className="flex gap-2">
+                  <dt className="text-faint">Hours:</dt>
+                  <dd className="text-ink">{SITE.hours}</dd>
+                </div>
+                <div className="flex gap-2">
+                  <dt className="text-faint">Email:</dt>
+                  <dd>
+                    <a
+                      href={`mailto:${SITE.email}`}
+                      className="font-semibold text-cyan hover:underline"
+                    >
+                      {SITE.email}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+              <a
+                href={SITE.googleReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block text-sm font-semibold text-cyan hover:underline"
+              >
+                ⭐ Review us on Google →
+              </a>
+            </div>
+            <div>
+              <iframe
+                src="https://www.google.com/maps?q=157+Everett+Sq,+McDonough,+GA+30252&output=embed"
+                width="100%"
+                height="300"
+                style={{ border: 0, borderRadius: "12px" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Nodevant office location — McDonough, GA"
+              />
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

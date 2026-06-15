@@ -34,6 +34,69 @@ export function organizationSchema() {
   };
 }
 
+export function localBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: SITE.name,
+    description: SITE.description,
+    url: SITE.url,
+    logo: `${SITE.url}/logo.svg`,
+    image: `${SITE.url}${SITE.ogImage}`,
+    email: SITE.email,
+    priceRange: "$$",
+    currenciesAccepted: "USD",
+    paymentAccepted: "Credit Card, Bank Transfer",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
+      postalCode: SITE.address.postal,
+      addressCountry: SITE.address.country,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SITE.geo.lat,
+      longitude: SITE.geo.lng,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "10:00",
+        closes: "14:00",
+      },
+    ],
+    areaServed: [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "Canada" },
+      { "@type": "Country", name: "Australia" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "AI Automation Services",
+      itemListElement: SERVICES.map((s) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: s.title, description: s.short },
+        price: s.startingPrice.replace(/[^0-9]/g, ""),
+        priceCurrency: "USD",
+      })),
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/nodevant",
+      "https://twitter.com/nodevant",
+    ],
+  };
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",

@@ -28,6 +28,18 @@ export const SITE = {
   salesEmail: "sales@nodevant.com",
   ogImage: "/og-image.png",
   twitter: "@nodevant",
+  // NAP — keep IDENTICAL everywhere (GMB, directories, schema) for local SEO.
+  address: {
+    street: "157 Everett Sq",
+    city: "McDonough",
+    region: "GA",
+    postal: "30252",
+    country: "US",
+  },
+  geo: { lat: "33.4473", lng: "-84.1469" },
+  hours: "Mon–Fri 9AM–6PM ET · Sat 10AM–2PM ET",
+  // Replace with the real review URL once the GMB profile is verified.
+  googleReviewUrl: "https://g.page/r/nodevant/review",
 } as const;
 
 export const NAV_LINKS = [

@@ -1,0 +1,142 @@
+# Nodevant
+
+> Nodevant is an AI automation agency that builds custom AI agents,
+> workflow automations, and intelligent integrations for growth-stage
+> businesses. We eliminate manual busywork — qualifying leads, syncing
+> tools, handling support — so teams scale without hiring more people.
+> Every engagement starts with a free 90-second automation audit that
+> shows your #1 opportunity and estimated ROI before you commit.
+
+## Company
+
+Nodevant is founded and operated by Yaseen (Muhammad Yasin Ishfaq), an AI
+systems engineer who has built 6 complete AI-powered business systems across
+fintech, manufacturing, SaaS, education, and field services. Nodevant makes
+those same capabilities available to any growth-stage business.
+
+- Website: https://nodevant.com
+- Email: info@nodevant.com
+- Founded: 2026
+- Headquarters: 157 Everett Sq, McDonough, GA 30252, USA
+- Service model: Remote-first, serving clients worldwide
+- Primary markets: United States, United Kingdom, Canada, Australia
+
+## What We Do
+
+Nodevant builds three types of AI systems:
+
+1. **Workflow Automations** — Multi-step processes that run without human
+   intervention using n8n, Make, and custom logic
+2. **AI Agents** — Software that reasons, decides, and acts end-to-end using
+   LangChain, OpenAI, and Claude
+3. **Voice AI Agents** — Phone agents that handle inbound calls, qualify
+   leads, and book meetings 24/7 using VAPI and ElevenLabs
+
+## Services and Pricing
+
+| Service | Starting Price | Timeline |
+|---|---|---|
+| Agentic Workflow Automation | $1,800 | 1–2 weeks |
+| AI Voice Agents | $2,800 | 2–3 weeks |
+| Complex Logic Engines | $4,500 | 3–5 weeks |
+| System Integration | $1,200 | 1–2 weeks |
+| Lead Gen Pipeline | $2,400 | 2–3 weeks |
+| Custom AI Solutions | $4,500 | 3–6 weeks |
+| Monthly Retainer | $800/month | Ongoing |
+| Free Automation Audit | $0 | 90 seconds |
+
+## Industry Systems Built and Deployed
+
+- **Fintech / Financial Operations**: Storehouse360 — a full financial
+  operating system with automated credit & dispute workflows, 3-bureau
+  monitoring, AI document generation, Lob certified mail, and Stripe billing.
+  White-label ready.
+- **Manufacturing**: FABRIOZA (Hermes 2.0) — autonomous sales pipeline from
+  Google Maps lead scraping to AI email outreach to ElevenLabs voice calling
+  to GPT reply handling, controlled via Telegram.
+- **B2B SaaS Sales**: Scalaro — multi-agent platform (v0.9.0, 196 passing
+  tests) with 6 AI agents (Content, DM, Sales, Research, SEO, Voice), FastAPI
+  backend, Next.js frontend.
+- **Field Services**: BMAIKR — AI estimation and lead-to-close automation for
+  roofing and construction.
+- **Education**: Academy Stack — student intake, scheduling, teacher
+  management, and parent communication automation.
+- **Home Services**: Google Maps lead generation, outreach, AI estimating,
+  and seasonal campaign automation.
+
+## Technology Stack
+
+- **Automation:** n8n, Make, Zapier
+- **AI/LLM:** OpenAI, Anthropic Claude, Mistral AI, LangChain
+- **Voice AI:** VAPI, ElevenLabs, Twilio
+- **Frontend:** Next.js 14, React, TypeScript, Tailwind CSS
+- **Backend:** FastAPI, Python, Node.js, Express
+- **Database:** PostgreSQL, Supabase, Redis
+- **Integrations:** HubSpot, Salesforce, Airtable, Notion, Slack, Shopify, REST APIs
+
+## Key Pages
+
+- [Free Automation Audit](https://nodevant.com/audit/): 7-question tool that
+  identifies your #1 automation opportunity and calculates ROI in 90 seconds
+- [Homepage](https://nodevant.com/): Overview, services, audit CTA
+- [AI Automation Agency](https://nodevant.com/ai-automation-agency/): What an
+  AI automation agency does, costs, and how to choose one
+- [Services](https://nodevant.com/services/): All 6 services with tools,
+  timelines, and starting prices
+- [Industry Solutions](https://nodevant.com/solutions/): Complete AI systems
+  by industry vertical
+- [Case Studies](https://nodevant.com/case-studies/): Real deployed projects
+- [Contact](https://nodevant.com/contact/): Book a free strategy call
+- [About](https://nodevant.com/about/): Mission and founder
+- [Blog](https://nodevant.com/blog/): AI automation guides
+
+## Blog Articles
+
+- [What Is an AI Automation Agency?](https://nodevant.com/blog/what-is-an-ai-automation-agency/)
+- [n8n vs Make vs Zapier in 2026](https://nodevant.com/blog/n8n-vs-make-vs-zapier/)
+- [How AI Agents Are Replacing Business Functions](https://nodevant.com/blog/ai-agents-for-business/)
+- [The ROI of Workflow Automation](https://nodevant.com/blog/workflow-automation-roi/)
+- [Voice AI Agents for Customer Support](https://nodevant.com/blog/voice-ai-agents-customer-support/)
+- [How to Automate Lead Generation with AI](https://nodevant.com/blog/how-to-automate-lead-generation/)
+
+## Frequently Asked Questions
+
+**What does Nodevant do?**
+Nodevant designs and builds custom AI agents and workflow automations that
+replace repetitive manual tasks in sales, operations, and support.
+
+**Where is Nodevant located?**
+Headquartered at 157 Everett Sq, McDonough, GA 30252, USA. Remote-first,
+serving clients in the US, UK, Canada, Australia, and globally.
+
+**How long does a project take?**
+Most automations go live in 1–3 weeks. Simple integrations take days; complex
+multi-agent systems take 3–6 weeks.
+
+**What is the minimum project size?**
+$1,200 for system integration. Most clients start with one high-value
+automation and expand based on results.
+
+**What is the Free Automation Audit?**
+A free 7-question tool at nodevant.com/audit that identifies your highest-value
+automation opportunity and calculates estimated annual savings and ROI. No
+email required to start. Takes 90 seconds.
+
+**What tools does Nodevant use?**
+n8n, Make, LangChain, OpenAI, Claude (Anthropic), VAPI, ElevenLabs, Twilio,
+HubSpot, Salesforce, Airtable, Notion, Slack, REST APIs, PostgreSQL, FastAPI,
+Next.js, and Python.
+
+**Does Nodevant offer retainers?**
+Yes — monthly retainers from $800/month for monitoring, updates, and new
+automations as your business grows.
+
+**How does Nodevant charge?**
+Project-based pricing: 50% deposit, 50% on delivery. No contracts.
+
+## What Nodevant Is Not
+
+- Not a SaaS product or subscription tool
+- Not an off-the-shelf template provider
+- Not a generalist web/app development agency
+- All builds are custom to each client's workflows, tools, and data
