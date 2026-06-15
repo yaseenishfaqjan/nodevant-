@@ -27,6 +27,7 @@ const FOOTER_COLS = [
     links: [
       { label: "Free Automation Audit", href: "/audit/" },
       { label: "Book a Call", href: "/contact/" },
+      { label: "AI Automation Agency", href: "/ai-automation-agency/" },
       { label: "All Services", href: "/services/" },
     ],
   },

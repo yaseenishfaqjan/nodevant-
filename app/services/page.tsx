@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
+import TrustLine from "@/components/ui/TrustLine";
 import CTABand from "@/components/ui/CTABand";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import JsonLd from "@/components/ui/JsonLd";
@@ -43,6 +44,10 @@ export default function ServicesPage() {
         }
         subtitle="Six focused services that eliminate busywork, connect your tools, and put revenue-generating tasks on autopilot. Every engagement starts with a free audit."
       />
+
+      <div className="pb-12">
+        <TrustLine />
+      </div>
 
       <section className="pb-8">
         <div className="container-x space-y-6">

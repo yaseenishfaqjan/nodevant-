@@ -1,5 +1,6 @@
 import Hero from "@/components/home/Hero";
 import TrustedBy from "@/components/home/TrustedBy";
+import TrustLine from "@/components/ui/TrustLine";
 import AuditCTA from "@/components/home/AuditCTA";
 import Services from "@/components/home/Services";
 import Solutions from "@/components/home/Solutions";
@@ -16,6 +17,9 @@ export default function Home() {
       <JsonLd data={[organizationSchema(), websiteSchema(), faqSchema()]} />
       <Hero />
       <TrustedBy />
+      <div className="pt-12">
+        <TrustLine />
+      </div>
       <AuditCTA />
       <Services />
       <Solutions />

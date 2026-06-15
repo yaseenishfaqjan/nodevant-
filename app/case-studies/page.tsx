@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
+import TrustLine from "@/components/ui/TrustLine";
 import CTABand from "@/components/ui/CTABand";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import JsonLd from "@/components/ui/JsonLd";
@@ -37,6 +38,10 @@ export default function CaseStudiesPage() {
         }
         subtitle="Skepticism is healthy. Here's exactly what we built, what it replaced, and the measurable results it produced."
       />
+
+      <div className="pb-12">
+        <TrustLine />
+      </div>
 
       <section className="pb-8">
         <div className="container-x space-y-8">

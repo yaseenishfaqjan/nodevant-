@@ -42,7 +42,13 @@ function articleSchema(slug: string) {
     articleSection: a.category,
     url: `${SITE.url}/blog/${a.slug}/`,
     image: `${SITE.url}${a.heroImage}`,
-    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    author: {
+      "@type": "Person",
+      name: "Yaseen",
+      jobTitle: "Founder & AI Systems Engineer",
+      worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
+      url: `${SITE.url}/about/`,
+    },
     publisher: {
       "@type": "Organization",
       name: SITE.name,
@@ -117,6 +123,23 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink md:text-5xl">
               {article.h1}
             </h1>
+
+            {/* Author byline — E-E-A-T signal */}
+            <div className="mt-5 flex items-center gap-3 border-y border-line py-4">
+              <span
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-gradient font-display text-sm font-bold text-bg"
+                aria-hidden="true"
+              >
+                YI
+              </span>
+              <span className="text-sm">
+                <span className="text-muted">By </span>
+                <Link href="/about/" className="font-semibold text-ink hover:text-cyan">
+                  Yaseen
+                </Link>
+                <span className="text-faint"> · Founder & AI Systems Engineer at Nodevant</span>
+              </span>
+            </div>
 
             {/* Hero image */}
             <div className="relative mt-8 aspect-[1200/630] overflow-hidden rounded-2xl border border-line">
