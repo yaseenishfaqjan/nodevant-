@@ -58,7 +58,7 @@ const OWNED_BUSINESSES: {
 }[] = [
   {
     name: "Storehouse360",
-    industry: "Fintech / Credit Repair",
+    industry: "Fintech · Financial Operating System",
     icon: "💳",
     href: "https://storehouse360.com",
     external: true,

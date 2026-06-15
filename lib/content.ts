@@ -219,17 +219,17 @@ export interface CaseStudy {
 // Real portfolio — systems we designed, built, and deployed.
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: "storehouse360-credit-repair-saas",
+    slug: "storehouse360-financial-operating-system",
     client: "Storehouse360",
-    industry: "Fintech / Credit Repair",
-    title: "A full credit-repair SaaS with end-to-end dispute automation",
+    industry: "Fintech",
+    title: "A full financial operating system with end-to-end client automation",
     challenge:
-      "Credit-repair businesses needed a complete, automated system for dispute management, 3-bureau credit monitoring, and client communication — work that doesn't scale by hand.",
+      "A financial services business needed a single operating system to run client onboarding, automated credit and dispute workflows, monitoring, communications, and billing — work that doesn't scale by hand.",
     solution:
-      "We built a full Next.js + FastAPI SaaS on Supabase: 3-bureau credit monitoring, AI-generated dispute letters, Lob API for certified mail, a client portal, and Stripe subscription billing. White-label ready.",
+      "We built a complete financial operating system on Next.js + FastAPI + Supabase: a branded client portal, automated 3-bureau monitoring and dispute workflows, AI document generation, Lob API for certified mail, and Stripe subscription billing. White-label ready.",
     metrics: [
+      { value: "All-in-one", label: "Financial OS platform" },
       { value: "3-bureau", label: "Automated monitoring" },
-      { value: "AI", label: "Dispute letters" },
       { value: "White-label", label: "Ready to resell" },
     ],
     service: "Custom AI Solutions",
@@ -355,36 +355,36 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "fintech",
     icon: "💳",
-    industry: "Fintech / Credit Repair",
-    title: "Credit Repair SaaS System",
+    industry: "Fintech / Financial Operations",
+    title: "Financial Operating System",
     tag: "Storehouse360",
     intro:
-      "A credit-repair operation lives or dies on turnaround and accuracy. This system runs the entire dispute lifecycle — from intake to bureau response — automatically, so your team handles exceptions instead of paperwork and clients watch progress in real time.",
+      "Financial services businesses run on accuracy and turnaround. This is a complete financial operating system — onboarding, client portal, automated credit and dispute workflows, monitoring, communications, and billing — in one white-label platform, so your team handles exceptions instead of paperwork and clients watch progress in real time.",
     workflow: [
-      "Client signs up and uploads their credit reports through a branded portal",
-      "The system pulls 3-bureau data and flags every disputable item automatically",
-      "AI drafts a tailored dispute letter for each item, ready for review",
+      "Client signs up and is onboarded through a branded portal",
+      "The system pulls 3-bureau data and flags every actionable item automatically",
+      "AI drafts tailored dispute and document workflows, ready for review",
       "Letters are mailed via the Lob API and tracked through to delivery",
-      "Bureau responses update each client's dashboard, and billing runs on Stripe",
+      "Client dashboards update in real time, and billing runs on Stripe",
     ],
     short:
-      "Full dispute workflow automation, 3-bureau credit monitoring, AI letter generation, client portal, and payment processing. White-label ready.",
+      "A complete white-label financial operating system — client portal, automated credit & dispute workflows, 3-bureau monitoring, AI document generation, and subscription billing in one platform.",
     problem:
-      "Credit repair operations drown in manual dispute letters, bureau tracking, and client updates — work that scales linearly with headcount and is riddled with errors that cost clients results.",
+      "Financial operations drown in manual workflows, bureau tracking, document generation, and client updates — work that scales linearly with headcount and is riddled with errors that cost clients results.",
     included: [
-      "Automated 3-bureau dispute workflow with status tracking",
-      "AI-generated dispute letters tailored to each item",
-      "Client portal with real-time progress and document upload",
-      "Payment processing and subscription billing automation",
+      "Branded client portal with onboarding and real-time progress",
+      "Automated 3-bureau monitoring and dispute workflows with status tracking",
+      "AI-generated documents and letters tailored to each case",
+      "Subscription billing and payment processing (Stripe)",
       "Lob / mail API integration for physical letter delivery",
-      "Automated client onboarding and milestone notifications",
+      "Automated client communications and milestone notifications",
     ],
     results: [
-      { value: "90%", label: "Less manual letter work" },
-      { value: "3-bureau", label: "Automated tracking" },
+      { value: "All-in-one", label: "Financial OS platform" },
+      { value: "3-bureau", label: "Automated monitoring" },
       { value: "White-label", label: "Ready to resell" },
     ],
-    techStack: ["n8n", "OpenAI", "Lob API", "Stripe", "Next.js", "PostgreSQL"],
+    techStack: ["Next.js", "FastAPI", "Supabase", "OpenAI", "Lob API", "Stripe"],
     timeline: "3–6 weeks",
     investment: "From $4,500",
   },
