@@ -39,6 +39,31 @@ export default function ContactPage() {
           {/* Form */}
           <div>
             <ContactForm />
+
+            <div className="mt-6 rounded-2xl border border-line bg-bg-soft p-6">
+              <h2 className="font-display text-lg font-semibold text-ink">
+                What happens on the call
+              </h2>
+              <ul className="mt-3 space-y-2 text-sm text-muted">
+                <li className="flex gap-2">
+                  <span className="text-cyan">✓</span> We map your biggest
+                  automation opportunity and the system to fix it
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-cyan">✓</span> You get a clear ROI
+                  estimate and timeline — no pitch
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-cyan">✓</span> If it&apos;s a fit, we
+                  scope exactly what to build first
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-faint">
+                We reply within 4 hours on business days. Minimum project size
+                starts around <span className="text-ink">$1,200</span>.
+              </p>
+            </div>
+
             <div className="mt-6 rounded-2xl border border-line bg-bg-soft p-6">
               <p className="text-sm text-faint">
                 Prefer the fast path?{" "}

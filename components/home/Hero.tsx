@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import ParticleCanvas from "@/components/ui/ParticleCanvas";
 
 const FEATURES = [
-  { icon: "🧠", label: "Neural Networks" },
-  { icon: "⚡", label: "Real-time Processing" },
-  { icon: "🤖", label: "Machine Learning" },
+  { icon: "⚡", label: "Leads followed up in seconds" },
+  { icon: "🔗", label: "Tools synced automatically" },
+  { icon: "📞", label: "Support handled 24/7" },
 ];
 
 export default function Hero() {
@@ -34,27 +34,38 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* NODE VANT wordmark — kept exactly: cyan→violet gradient, massive glow */}
-        <motion.h1
+        {/* NODE VANT wordmark — visual element (not the H1, for SEO) */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          aria-hidden="true"
           className="wordmark font-display font-bold leading-none tracking-tight"
           style={{ fontSize: "clamp(3.5rem, 15vw, 11rem)" }}
         >
           NODE&nbsp;VANT
+        </motion.div>
+
+        {/* Real, keyword-rich H1 (one per page) */}
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="mx-auto mt-6 max-w-3xl text-sm font-semibold uppercase tracking-[0.2em] text-cyan md:text-base"
+        >
+          AI Automation Agency — Custom AI Agents &amp; Workflow Automation
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Value-prop subtitle (pain-first) */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
+          transition={{ duration: 0.7, delay: 0.18 }}
+          className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
         >
-          The future of autonomous intelligence is arriving. Building
-          enterprise-grade AI agents and automation solutions that redefine
-          what&apos;s possible.
+          We replace your team&apos;s most time-consuming manual work with
+          intelligent AI systems — so leads get followed up instantly, data
+          syncs automatically, and support runs 24/7 without adding headcount.
         </motion.p>
 
         {/* CTAs */}

@@ -31,13 +31,18 @@ export default function Services() {
                 >
                   {service.icon}
                 </div>
-                <h3
-                  className={`font-display text-2xl font-bold ${
-                    service.accent === "cyan" ? "text-cyan" : "text-violet"
-                  }`}
-                >
-                  {service.title}
-                </h3>
+                <div className="flex items-baseline justify-between gap-2">
+                  <h3
+                    className={`font-display text-2xl font-bold ${
+                      service.accent === "cyan" ? "text-cyan" : "text-violet"
+                    }`}
+                  >
+                    {service.title}
+                  </h3>
+                  <span className="whitespace-nowrap text-sm font-semibold text-faint">
+                    from {service.startingPrice}
+                  </span>
+                </div>
                 <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">
                   {service.short}
                 </p>

@@ -39,11 +39,13 @@ const DIFFERENTIATORS = [
   },
 ];
 
-const TEAM = [
-  { initials: "AR", name: "Alex Rivera", role: "Founder & Automation Architect" },
-  { initials: "JT", name: "Jordan Tan", role: "Lead AI Engineer" },
-  { initials: "AR", name: "Adam Reid", role: "Integrations & Delivery" },
-];
+const FOUNDER = {
+  initials: "YI",
+  name: "Yaseen (Muhammad Yasin)",
+  role: "Founder & AI Systems Engineer",
+  bio: "I've spent the last two years building complete AI-powered business systems — from a credit-repair SaaS to autonomous sales pipelines to voice AI agents. Every system on this site is one I designed, built, and deployed myself. Nodevant is how I make those same capabilities available to other businesses.",
+  linkedin: "https://www.linkedin.com/company/nodevant",
+};
 
 // Real businesses we own and operate — proof we build systems that run companies,
 // not just demos. Linked to the matching industry solution where relevant.
@@ -161,25 +163,34 @@ export default function AboutPage() {
       <section className="section-pad bg-bg-soft">
         <div className="container-x">
           <SectionHeading
-            eyebrow="The Team"
-            title="The people behind the automations"
-            subtitle="A small, senior team of automation architects and AI engineers."
+            eyebrow="Who Builds Your System"
+            title="One builder, accountable end to end"
+            subtitle="No account managers, no hand-offs. The person who scopes your system is the person who builds it."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-3">
-            {TEAM.map((member, i) => (
-              <ScrollReveal key={member.name} delay={i * 0.1}>
-                <div className="glow-card text-center">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-gradient font-display text-2xl font-bold text-bg">
-                    {member.initials}
-                  </div>
-                  <h3 className="mt-5 font-display text-lg font-semibold text-ink">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-faint">{member.role}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal>
+            <div className="glow-card mx-auto mt-14 max-w-2xl text-center sm:flex sm:items-center sm:gap-8 sm:text-left">
+              <div className="mx-auto mb-6 flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-full bg-brand-gradient font-display text-3xl font-bold text-bg sm:mb-0">
+                {FOUNDER.initials}
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-bold text-ink">
+                  {FOUNDER.name}
+                </h3>
+                <p className="mt-1 text-sm font-medium text-cyan">
+                  {FOUNDER.role}
+                </p>
+                <p className="mt-4 leading-relaxed text-muted">{FOUNDER.bio}</p>
+                <a
+                  href={FOUNDER.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block text-sm font-semibold text-cyan hover:underline"
+                >
+                  Connect on LinkedIn →
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

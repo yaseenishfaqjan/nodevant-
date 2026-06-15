@@ -14,6 +14,9 @@ export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK || "nodevant-strategy-c
 // Google Search Console verification token (paste after verifying the domain).
 export const GSC_TOKEN = process.env.NEXT_PUBLIC_GSC_TOKEN || "";
 
+// Google Analytics 4 measurement ID, e.g. "G-XXXXXXXXXX" (optional).
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
+
 export const SITE = {
   name: "Nodevant",
   url: "https://nodevant.com",

@@ -134,11 +134,12 @@ export interface Stat {
   label: string;
 }
 
+// Honest, verifiable stats — defensible from the real portfolio.
 export const STATS: Stat[] = [
-  { value: 120, suffix: "+", label: "Automations shipped" },
-  { value: 47, suffix: "", label: "Clients served" },
-  { value: 380, suffix: "k", label: "Hours saved" },
-  { value: 94, suffix: "%", label: "Client retention" },
+  { value: 6, suffix: "", label: "Complete systems built" },
+  { value: 6, suffix: "", label: "Industries covered" },
+  { value: 90, suffix: "s", label: "Free audit, that's it" },
+  { value: 100, suffix: "%", label: "ROI-first approach" },
 ];
 
 export interface Testimonial {
@@ -215,54 +216,55 @@ export interface CaseStudy {
   service: string;
 }
 
+// Real portfolio — systems we designed, built, and deployed.
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: "growthlane-lead-pipeline",
-    client: "GrowthLane Agency",
-    industry: "Marketing Agency",
-    title: "From 200 manual leads/day to a fully automated booking pipeline",
+    slug: "storehouse360-credit-repair-saas",
+    client: "Storehouse360",
+    industry: "Fintech / Credit Repair",
+    title: "A full credit-repair SaaS with end-to-end dispute automation",
     challenge:
-      "GrowthLane's team spent 4+ hours a day manually screening inbound leads, leaving qualified prospects waiting hours for a response.",
+      "Credit-repair businesses needed a complete, automated system for dispute management, 3-bureau credit monitoring, and client communication — work that doesn't scale by hand.",
     solution:
-      "We built an AI lead qualification pipeline that scores every lead the moment it arrives, enriches it with company data, and books qualified prospects directly into the team's calendar.",
+      "We built a full Next.js + FastAPI SaaS on Supabase: 3-bureau credit monitoring, AI-generated dispute letters, Lob API for certified mail, a client portal, and Stripe subscription billing. White-label ready.",
     metrics: [
-      { value: "30+", label: "Calls booked / month" },
-      { value: "4 hrs", label: "Saved per day" },
-      { value: "11×", label: "ROI in year one" },
+      { value: "3-bureau", label: "Automated monitoring" },
+      { value: "AI", label: "Dispute letters" },
+      { value: "White-label", label: "Ready to resell" },
+    ],
+    service: "Custom AI Solutions",
+  },
+  {
+    slug: "fabrioza-sales-automation",
+    client: "FABRIOZA (Hermes 2.0)",
+    industry: "Manufacturing",
+    title: "An autonomous sales pipeline for a custom manufacturer — no sales team",
+    challenge:
+      "A custom clothing manufacturer needed to generate leads, run outreach, and handle inbound sales without hiring a sales team.",
+    solution:
+      "We built Hermes 2.0 — an autonomous go-to-market system: Google Maps lead scraping, AI-personalized email outreach, an ElevenLabs voice agent for inbound calls, a GPT reply handler, and a Telegram control interface, running 24/7 on a VPS.",
+    metrics: [
+      { value: "24/7", label: "Autonomous outreach" },
+      { value: "Voice AI", label: "Inbound calls" },
+      { value: "0", label: "Sales hires needed" },
     ],
     service: "Lead Gen Pipeline",
   },
   {
-    slug: "northbeam-voice-support",
-    client: "Northbeam Retail",
-    industry: "E-commerce",
-    title: "Deflecting 78% of support calls with a voice AI agent",
+    slug: "scalaro-ai-sales-platform",
+    client: "Scalaro",
+    industry: "B2B SaaS",
+    title: "A multi-agent AI sales platform built from scratch",
     challenge:
-      "A growing e-commerce brand was drowning in repetitive support calls — order status, returns, sizing — burning $8k/month in staffing.",
+      "Build a scalable, production-grade AI sales-automation platform with orchestrated agents covering the full sales motion.",
     solution:
-      "We deployed a context-aware voice AI agent that resolves the most common questions 24/7 and escalates only the complex cases to human reps.",
+      "We built Scalaro — a multi-agent system with 6 specialized AI agents (Content, DM, Sales, Research, SEO, Voice), a FastAPI backend, and a Next.js frontend, with full agent orchestration and a comprehensive test suite.",
     metrics: [
-      { value: "78%", label: "Calls deflected" },
-      { value: "$8k", label: "Saved / month" },
-      { value: "24/7", label: "Coverage" },
+      { value: "6", label: "Specialized AI agents" },
+      { value: "196", label: "Tests passing" },
+      { value: "v0.9", label: "Production-ready" },
     ],
-    service: "AI Voice Agents",
-  },
-  {
-    slug: "loop-logistics-data-sync",
-    client: "Loop Logistics",
-    industry: "Logistics",
-    title: "Syncing ERP, Slack, and spreadsheets into one automated flow",
-    challenge:
-      "Loop's ops team manually copied shipment data between an ERP, email, Slack, and spreadsheets — 40 hours a week lost to data entry and constant errors.",
-    solution:
-      "We connected every system into a single real-time data fabric, so information flows automatically with zero manual copying and a full audit trail.",
-    metrics: [
-      { value: "40 hrs", label: "Saved per week" },
-      { value: "0", label: "Manual errors" },
-      { value: "3 wks", label: "Payback period" },
-    ],
-    service: "System Integration",
+    service: "Custom AI Solutions",
   },
 ];
 
@@ -339,8 +341,10 @@ export interface Solution {
   title: string;
   tag: string;
   short: string; // 2-line homepage/hub description
+  intro: string; // longer opening paragraph for the detail page
   problem: string;
   included: string[];
+  workflow: string[]; // step-by-step of how the system runs
   results: { value: string; label: string }[];
   techStack: string[];
   timeline: string;
@@ -354,6 +358,15 @@ export const SOLUTIONS: Solution[] = [
     industry: "Fintech / Credit Repair",
     title: "Credit Repair SaaS System",
     tag: "Storehouse360",
+    intro:
+      "A credit-repair operation lives or dies on turnaround and accuracy. This system runs the entire dispute lifecycle — from intake to bureau response — automatically, so your team handles exceptions instead of paperwork and clients watch progress in real time.",
+    workflow: [
+      "Client signs up and uploads their credit reports through a branded portal",
+      "The system pulls 3-bureau data and flags every disputable item automatically",
+      "AI drafts a tailored dispute letter for each item, ready for review",
+      "Letters are mailed via the Lob API and tracked through to delivery",
+      "Bureau responses update each client's dashboard, and billing runs on Stripe",
+    ],
     short:
       "Full dispute workflow automation, 3-bureau credit monitoring, AI letter generation, client portal, and payment processing. White-label ready.",
     problem:
@@ -381,6 +394,15 @@ export const SOLUTIONS: Solution[] = [
     industry: "Manufacturing / Custom Products",
     title: "Custom Manufacturing Operations",
     tag: "FABRIOZA Stack",
+    intro:
+      "Custom manufacturers lose deals to whoever quotes first and follows up hardest. This system runs the entire top of funnel — find, reach, qualify, and quote — without a sales hire, so every inbound and outbound opportunity gets a fast, consistent response.",
+    workflow: [
+      "Scrapes and enriches target businesses by location and industry",
+      "Sends AI-personalized cold outreach across email at scale",
+      "An ElevenLabs voice agent answers inbound calls and qualifies intent",
+      "A GPT reply handler answers questions and books interested buyers",
+      "You monitor and steer everything from a single Telegram control interface",
+    ],
     short:
       "Lead scraping → email outreach → AI quote generation → CRM automation → voice agent for inbound. A full go-to-market system for custom manufacturers.",
     problem:
@@ -408,6 +430,15 @@ export const SOLUTIONS: Solution[] = [
     industry: "B2B SaaS Sales",
     title: "AI Sales Agency Platform",
     tag: "Scalaro Framework",
+    intro:
+      "Pipeline can't depend on hiring more SDRs. This multi-agent platform runs research, content, and outreach in parallel — each agent specialized for one job — so your sales motion scales with compute instead of headcount.",
+    workflow: [
+      "Research agents build and enrich a target list against your ICP",
+      "Content and SEO agents produce assets that warm the market",
+      "DM and email agents run personalized, multi-step outreach",
+      "A voice agent qualifies and books the prospects that engage",
+      "Orchestration ties the agents together with a full, test-backed pipeline",
+    ],
     short:
       "A multi-agent sales system with content automation, DM outreach, email sequences, VAPI voice agents, lead research, and a Telegram command center.",
     problem:
@@ -435,6 +466,15 @@ export const SOLUTIONS: Solution[] = [
     industry: "Construction / Field Services",
     title: "Roofing & Field Service Automation",
     tag: "BMAIKR Engine",
+    intro:
+      "In field services, the first accurate quote usually wins the job. This system captures every lead, produces an instant estimate, and chases it until it closes — turning a days-long quoting process into hours.",
+    workflow: [
+      "Captures leads from ads, forms, and Google Maps into one inbox",
+      "AI generates an instant, itemized estimate from the request",
+      "The quote is delivered and e-signed without back-and-forth",
+      "Automated follow-up sequences chase every unsigned quote",
+      "Won jobs are scheduled and a review request fires after completion",
+    ],
     short:
       "Lead capture → AI estimating → automated quote delivery → follow-up → job scheduling. Cuts estimate-to-close from days to hours.",
     problem:
@@ -462,6 +502,15 @@ export const SOLUTIONS: Solution[] = [
     industry: "Education / Online Services",
     title: "Online Education Business System",
     tag: "Academy Stack",
+    intro:
+      "Online education businesses lose students to slow enrollment and patchy communication. This system automates intake-to-onboarding and keeps parents informed, so admins stop chasing forms and payments and focus on teaching quality.",
+    workflow: [
+      "Prospective students enroll through an automated intake flow",
+      "Classes are scheduled and matched to the right teacher",
+      "Parents receive automated reminders and progress updates",
+      "Payments and renewals are collected and reconciled automatically",
+      "An SEO-optimized site keeps new enrollments flowing in",
+    ],
     short:
       "Student intake automation, class scheduling, teacher management, parent communication, and a full SEO-optimized website — deployed and ranking.",
     problem:
@@ -489,6 +538,15 @@ export const SOLUTIONS: Solution[] = [
     industry: "Home Services",
     title: "Lawn Care & Home Services System",
     tag: "Home Services Stack",
+    intro:
+      "Local home-service demand is steady, but most businesses only capture it by word of mouth. This system generates leads from local search, re-engages past clients each season, and books jobs automatically — turning a feast-or-famine pipeline into a predictable one.",
+    workflow: [
+      "Finds prospects from Google Maps within your service area",
+      "Runs automated outreach to new prospects and past customers",
+      "AI estimates common jobs and sends quotes instantly",
+      "Seasonal campaigns re-engage clients at the right time of year",
+      "Booking, reminders, and review requests all run automatically",
+    ],
     short:
       "Google Maps lead generation, automated outreach, AI estimating, seasonal follow-up campaigns, and review management for local businesses.",
     problem:

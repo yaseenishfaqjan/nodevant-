@@ -93,6 +93,11 @@ export default function SolutionPage({
       <section className="pb-8">
         <div className="container-x">
           <div className="mx-auto max-w-4xl space-y-6">
+            {/* Intro */}
+            <ScrollReveal>
+              <p className="text-lg leading-relaxed text-muted">{s.intro}</p>
+            </ScrollReveal>
+
             {/* Problem */}
             <ScrollReveal>
               <div className="glow-card">
@@ -117,6 +122,27 @@ export default function SolutionPage({
                     </li>
                   ))}
                 </ul>
+              </div>
+            </ScrollReveal>
+
+            {/* How it works */}
+            <ScrollReveal>
+              <div className="glow-card">
+                <h2 className="font-display text-2xl font-bold text-ink">
+                  How it works
+                </h2>
+                <ol className="mt-5 space-y-4">
+                  {s.workflow.map((step, i) => (
+                    <li key={i} className="flex gap-4">
+                      <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-cyan/40 bg-cyan/5 font-display text-sm font-bold text-cyan">
+                        {i + 1}
+                      </span>
+                      <span className="pt-1 text-[15px] leading-relaxed text-muted">
+                        {step}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </ScrollReveal>
 

@@ -31,7 +31,7 @@ export default function AuditCTA() {
               </Link>
             </div>
             <p className="mt-5 text-sm text-faint">
-              No email required to start · 47 audits completed this week
+              No email required to start · Your ROI in 90 seconds
             </p>
           </div>
         </ScrollReveal>

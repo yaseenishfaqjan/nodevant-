@@ -10,6 +10,16 @@ export function organizationSchema() {
     logo: `${SITE.url}/logo.svg`,
     description: SITE.description,
     email: SITE.email,
+    foundingDate: "2026",
+    areaServed: "Worldwide",
+    serviceType: [
+      "AI Automation",
+      "Workflow Automation",
+      "AI Agents",
+      "Voice AI",
+      "System Integration",
+      "Lead Generation",
+    ],
     sameAs: [
       "https://www.linkedin.com/company/nodevant",
       "https://twitter.com/nodevant",
