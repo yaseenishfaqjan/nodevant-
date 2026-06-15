@@ -1,0 +1,17 @@
+{
+  "name": "nodevant-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nodevant lead-capture API + CRM backend (audit, contact, leads)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.13",
+    "pg": "^8.12.0"
+  }
+}

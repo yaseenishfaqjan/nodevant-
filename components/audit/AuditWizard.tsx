@@ -64,23 +64,20 @@ export default function AuditWizard() {
       /* sessionStorage unavailable — results page handles missing data */
     }
 
-    // Deliver the lead (fire-and-forget — never blocks the results).
+    // Deliver to the backend (stores the lead + emails the report). Fire-and-
+    // forget — the results page renders from the client-side report regardless.
     void submitLead({
       type: "audit",
-      name: firstName,
-      email,
       source: "audit",
+      firstName,
+      email,
       industry: fullAnswers.industry,
       team_size: fullAnswers.team_size,
       biggest_pain: fullAnswers.biggest_pain,
       hours_wasted: fullAnswers.hours_wasted,
       avg_hourly_rate: fullAnswers.avg_hourly_rate,
-      current_tools: fullAnswers.current_tools.join(", "),
+      current_tools: fullAnswers.current_tools,
       automation_goal: fullAnswers.automation_goal,
-      automation_score: report.score,
-      recommended_service: report.recommendation.serviceTitle,
-      annual_savings: report.roi.annualSavings,
-      roi_multiple: report.roi.roiMultiple,
     });
 
     // Brief delay for the "crunching numbers" affordance.

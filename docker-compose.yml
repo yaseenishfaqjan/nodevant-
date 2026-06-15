@@ -4,16 +4,59 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        # Paste your values here (or set in a .env file next to this compose file).
+        # Frontend now calls the backend at the same origin (/api), so the
+        # legacy LEAD_ENDPOINT is optional. Cal link + GSC are still build-time.
         NEXT_PUBLIC_LEAD_ENDPOINT: "${NEXT_PUBLIC_LEAD_ENDPOINT:-}"
         NEXT_PUBLIC_LEAD_ACCESS_KEY: "${NEXT_PUBLIC_LEAD_ACCESS_KEY:-}"
-        NEXT_PUBLIC_CAL_LINK: "${NEXT_PUBLIC_CAL_LINK:-nodevant/strategy-call}"
+        NEXT_PUBLIC_CAL_LINK: "${NEXT_PUBLIC_CAL_LINK:-nodevant-strategy-call/30min}"
         NEXT_PUBLIC_GSC_TOKEN: "${NEXT_PUBLIC_GSC_TOKEN:-}"
     image: nodevant-web:latest
     container_name: nodevant-web
     restart: unless-stopped
+    depends_on:
+      - api
+    networks:
+      - nodevant-net
     ports:
-      # host:container — Nodevant is served at http://localhost:3001 locally.
-      # On the VPS, put a reverse proxy (Nginx/Caddy/Traefik) in front for
-      # TLS + nodevant.com routing to this container's port 80.
+      # Local preview at http://localhost:3001. On the VPS the external nginx
+      # proxies nodevant.com -> this container (see docker-compose.vps.yml).
       - "3001:80"
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: nodevant-api:latest
+    container_name: nodevant-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "postgres://nodevant:${POSTGRES_PASSWORD:-nodevant}@nodevant-db:5432/nodevant"
+      PORT: "4000"
+    depends_on:
+      - db
+    networks:
+      - nodevant-net
+    ports:
+      # Local debug only; not published on the VPS (see overlay).
+      - "4000:4000"
+
+  db:
+    image: postgres:16-alpine
+    container_name: nodevant-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nodevant
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-nodevant}"
+      POSTGRES_DB: nodevant
+    volumes:
+      - nodevant_db:/var/lib/postgresql/data
+    networks:
+      - nodevant-net
+
+networks:
+  nodevant-net:
+
+volumes:
+  nodevant_db:

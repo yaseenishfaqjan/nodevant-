@@ -1,6 +1,7 @@
 # VPS overlay — run Nodevant BEHIND an existing nginx reverse proxy that already
-# owns ports 80/443 (e.g. scalaro-nginx). nodevant-web joins the proxy's network;
-# the proxy forwards nodevant.com -> nodevant-web:80. No Caddy, no host ports.
+# owns ports 80/443 (e.g. scalaro-nginx). The external proxy forwards
+# nodevant.com -> nodevant-web; nodevant-web's own nginx forwards /api ->
+# nodevant-api. db + api are never published to the host.
 #
 #   docker compose -f docker-compose.yml -f docker-compose.vps.yml up -d --build
 #
@@ -9,7 +10,11 @@ services:
   web:
     ports: !reset []
     networks:
+      - nodevant-net
       - proxy
+
+  api:
+    ports: !reset []
 
 networks:
   proxy:
