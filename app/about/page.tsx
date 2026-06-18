@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import CTABand from "@/components/ui/CTABand";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -109,6 +110,19 @@ export default function AboutPage() {
         }
         subtitle="Nodevant is an AI automation agency built on a simple belief: your team's hours are too valuable to spend on work a machine can do better."
       />
+
+      <div className="container-x">
+        <div className="mb-16 overflow-hidden rounded-2xl border border-line">
+          <Image
+            src="/images/hero-dashboard.png"
+            alt="Nodevant AI automation operations showing real-time workflow performance"
+            width={1200}
+            height={500}
+            priority
+            className="h-64 w-full object-cover object-center md:h-80"
+          />
+        </div>
+      </div>
 
       {/* Mission */}
       <section className="pb-8">

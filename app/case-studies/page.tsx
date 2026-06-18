@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import TrustLine from "@/components/ui/TrustLine";
 import CTABand from "@/components/ui/CTABand";
@@ -41,6 +42,19 @@ export default function CaseStudiesPage() {
 
       <div className="pb-12">
         <TrustLine />
+      </div>
+
+      <div className="container-x">
+        <div className="mb-16 overflow-hidden rounded-2xl border border-line">
+          <Image
+            src="/images/hero-workflow.png"
+            alt="Real AI automation results showing workflow performance metrics"
+            width={1200}
+            height={500}
+            priority
+            className="h-56 w-full object-cover object-center md:h-72"
+          />
+        </div>
       </div>
 
       <section className="pb-8">

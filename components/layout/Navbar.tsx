@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "@/lib/site";
 
@@ -24,10 +25,14 @@ export default function Navbar() {
     >
       <nav className="container-x flex h-16 items-center justify-between md:h-20">
         <Link href="/" className="flex items-center gap-2" aria-label="Nodevant home">
-          <span className="font-display text-xl font-bold tracking-tight">
-            <span className="gradient-text">NODE</span>
-            <span className="text-ink">VANT</span>
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt="Nodevant AI automation agency"
+            width={160}
+            height={50}
+            priority
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

@@ -4,6 +4,7 @@ export interface Service {
   slug: string;
   title: string;
   icon: string;
+  image: string;
   short: string;
   long: string;
   tags: string[];
@@ -18,6 +19,7 @@ export const SERVICES: Service[] = [
     slug: "agentic-workflows",
     title: "Agentic Workflows",
     icon: "🤖",
+    image: "/images/hero-workflow.png",
     short:
       "n8n/Make orchestration with intelligent automation that adapts to your business processes in real-time, learning and evolving with your needs.",
     long: "We design autonomous, multi-step workflows that connect every tool in your stack. Triggers fire, data routes, AI decides — and the work gets done without a human in the loop until it actually matters.",
@@ -31,6 +33,7 @@ export const SERVICES: Service[] = [
     slug: "ai-voice-agents",
     title: "AI Voice Agents",
     icon: "🎙️",
+    image: "/images/hero-voice-agents.png",
     short:
       "Vapi/Retell integration for real-time voice intelligence that understands context, responds naturally, and handles complex conversations.",
     long: "Deploy voice agents that answer calls, qualify leads, book appointments, and resolve support tickets 24/7 — escalating to a human only when it's truly needed.",
@@ -44,6 +47,7 @@ export const SERVICES: Service[] = [
     slug: "complex-logic-engines",
     title: "Complex Logic Engines",
     icon: "⚙️",
+    image: "/images/hero-ai-brain.png",
     short:
       "Custom development for algorithmic data processing that handles massive computations with precision and unmatched performance.",
     long: "When off-the-shelf tools hit their ceiling, we build custom engines — pricing algorithms, routing logic, scoring systems — that process data at scale with deterministic precision.",
@@ -57,6 +61,7 @@ export const SERVICES: Service[] = [
     slug: "system-integration",
     title: "System Integration",
     icon: "🔗",
+    image: "/images/hero-integrations.png",
     short:
       "Connect your CRM, marketing, finance, and ops tools into one seamless data fabric so information flows automatically with zero manual copying.",
     long: "We unify disconnected systems into a single source of truth. Real-time sync between your CRM, spreadsheets, billing, and comms — no more copy-paste, no more stale data.",
@@ -70,6 +75,7 @@ export const SERVICES: Service[] = [
     slug: "lead-gen-pipeline",
     title: "Lead Gen Pipeline",
     icon: "🎯",
+    image: "/images/hero-leadgen.png",
     short:
       "Automated lead capture, enrichment, scoring, and follow-up that turns cold traffic into booked calls while your team sleeps.",
     long: "An end-to-end engine that scrapes, enriches, scores, and nurtures leads — then books qualified prospects straight into your calendar with personalized AI outreach.",
@@ -83,6 +89,7 @@ export const SERVICES: Service[] = [
     slug: "custom-ai-solutions",
     title: "Custom AI Solutions",
     icon: "✨",
+    image: "/images/hero-dashboard.png",
     short:
       "Bespoke AI products built around your exact problem — RAG assistants, document processing, internal copilots, and decision engines.",
     long: "Have a problem no template solves? We build it. Retrieval-augmented assistants, document pipelines, internal copilots — production-grade AI tailored to your workflow.",

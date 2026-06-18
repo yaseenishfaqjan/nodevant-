@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import TrustLine from "@/components/ui/TrustLine";
 import CTABand from "@/components/ui/CTABand";
@@ -53,21 +54,28 @@ export default function ServicesPage() {
         <div className="container-x space-y-6">
           {SERVICES.map((service, i) => (
             <ScrollReveal key={service.slug} delay={(i % 2) * 0.08}>
-              <article
-                id={service.slug}
-                className="glow-card scroll-mt-28 md:flex md:items-start md:gap-8"
-              >
-                <div
-                  className={`mb-6 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl text-3xl md:mb-0 ${
-                    service.accent === "cyan"
-                      ? "bg-cyan/10 shadow-glow-cyan"
-                      : "bg-violet/10 shadow-glow-violet"
-                  }`}
-                  aria-hidden="true"
-                >
-                  {service.icon}
+              <article id={service.slug} className="glow-card scroll-mt-28">
+                <div className="mb-6 overflow-hidden rounded-xl border border-line">
+                  <Image
+                    src={service.image}
+                    alt={`${service.title} — ${service.short.slice(0, 80)}`}
+                    width={1200}
+                    height={500}
+                    className="h-48 w-full object-cover object-center"
+                  />
                 </div>
-                <div className="flex-1">
+                <div className="md:flex md:items-start md:gap-8">
+                  <div
+                    className={`mb-6 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl text-3xl md:mb-0 ${
+                      service.accent === "cyan"
+                        ? "bg-cyan/10 shadow-glow-cyan"
+                        : "bg-violet/10 shadow-glow-violet"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    {service.icon}
+                  </div>
+                  <div className="flex-1">
                   <h2
                     className={`font-display text-2xl font-bold md:text-3xl ${
                       service.accent === "cyan" ? "text-cyan" : "text-violet"
@@ -119,6 +127,7 @@ export default function ServicesPage() {
                   >
                     See if this is your #1 opportunity →
                   </Link>
+                  </div>
                 </div>
               </article>
             </ScrollReveal>

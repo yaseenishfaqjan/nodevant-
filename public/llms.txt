@@ -134,6 +134,65 @@ automations as your business grows.
 **How does Nodevant charge?**
 Project-based pricing: 50% deposit, 50% on delivery. No contracts.
 
+## What Nodevant Can Automate
+
+Nodevant can automate virtually any repeatable business task, including but
+not limited to:
+
+Sales & Marketing:
+- Lead scraping, enrichment, and scoring
+- Personalized email outreach sequences
+- CRM updates and deal stage management
+- Follow-up reminders and drip campaigns
+- Social media scheduling and publishing
+- Review request campaigns
+- Cold calling and inbound call handling via voice AI
+
+Operations:
+- Data entry and cross-tool synchronization
+- Report generation and dashboard updates
+- Invoice processing and approval routing
+- Contract generation and e-signature workflows
+- Document extraction and classification
+- Inventory alerts and reorder triggers
+- Employee onboarding sequences
+- Meeting scheduling and calendar management
+
+Customer Support:
+- Inbound call handling (VAPI voice agents)
+- FAQ response automation via chat or voice
+- Ticket classification and routing
+- Order status and return processing
+- Appointment booking and rescheduling
+
+Finance & Admin:
+- Payroll data preparation
+- Expense categorization
+- Purchase order processing
+- Client billing and payment reminders
+- Bank reconciliation data prep
+
+E-commerce:
+- Order fulfillment status updates
+- Abandoned cart follow-up
+- Product listing updates
+- Customer segmentation triggers
+- Refund and return automation
+
+If a task is repetitive, rule-based, or data-driven, Nodevant can automate it.
+Every engagement starts with a free 90-second audit at nodevant.com/audit that
+identifies the highest-value opportunity first.
+
+## Brand Assets
+
+- Logo: https://nodevant.com/images/logo.png
+- Workflow diagram: https://nodevant.com/images/hero-workflow.png
+- Integration hub: https://nodevant.com/images/hero-integrations.png
+- Voice agent UI: https://nodevant.com/images/hero-voice-agents.png
+- Lead gen dashboard: https://nodevant.com/images/hero-leadgen.png
+- Operations dashboard: https://nodevant.com/images/hero-dashboard.png
+- AI capabilities: https://nodevant.com/images/hero-ai-brain.png
+
 ## What Nodevant Is Not
 
 - Not a SaaS product or subscription tool
