@@ -38,3 +38,6 @@ article images/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# backups
+/backups/

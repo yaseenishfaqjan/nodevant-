@@ -100,6 +100,15 @@ export default function AdminDashboard() {
     setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
   };
 
+  const deleteLead = async (id: number) => {
+    if (!confirm("Delete this lead permanently?")) return;
+    const res = await fetch(`/api/leads/${id}`, {
+      method: "DELETE",
+      headers: headers(token),
+    });
+    if (res.ok) setLeads((prev) => prev.filter((l) => l.id !== id));
+  };
+
   const exportCsv = () => {
     window.open(`/api/leads/export.csv?token=${encodeURIComponent(token)}`, "_blank");
   };
@@ -223,6 +232,7 @@ export default function AdminDashboard() {
                 <th>Savings/yr</th>
                 <th>ROI</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -266,11 +276,20 @@ export default function AdminDashboard() {
                       ))}
                     </select>
                   </td>
+                  <td>
+                    <button
+                      onClick={() => deleteLead(l.id)}
+                      title="Delete lead"
+                      className="rounded border border-line px-2 py-1 text-xs text-faint transition-colors hover:border-violet hover:text-violet"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
               {!leads.length && (
                 <tr>
-                  <td colSpan={9} className="text-center text-faint">
+                  <td colSpan={10} className="text-center text-faint">
                     No leads yet.
                   </td>
                 </tr>

@@ -99,6 +99,11 @@ async function updateLead(id, fields) {
   return rows[0] || null;
 }
 
+async function deleteLead(id) {
+  const { rowCount } = await pool.query("DELETE FROM leads WHERE id = $1", [id]);
+  return rowCount > 0;
+}
+
 async function stats() {
   const { rows } = await pool.query(`
     SELECT
@@ -112,4 +117,4 @@ async function stats() {
   return rows[0];
 }
 
-module.exports = { pool, init, insertLead, listLeads, updateLead, stats };
+module.exports = { pool, init, insertLead, listLeads, updateLead, deleteLead, stats };

@@ -150,6 +150,12 @@ router.patch("/leads/:id", adminOnly, async (req, res) => {
   res.json({ lead: updated });
 });
 
+router.delete("/leads/:id", adminOnly, async (req, res) => {
+  const ok = await db.deleteLead(req.params.id);
+  if (!ok) return res.status(404).json({ error: "Not found" });
+  res.json({ success: true });
+});
+
 router.get("/leads/export.csv", adminOnly, async (req, res) => {
   const leads = await db.listLeads({ limit: 5000 });
   const cols = [
