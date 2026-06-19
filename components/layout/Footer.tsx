@@ -47,13 +47,13 @@ export default function Footer() {
               className="flex items-center gap-2.5"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/logo-mark.png"
                 alt="Nodevant AI automation agency logo"
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain"
+                width={160}
+                height={94}
+                className="h-10 w-auto"
               />
-              <span className="font-display text-xl font-bold tracking-tight">
+              <span className="font-display text-2xl font-bold tracking-tight">
                 <span className="gradient-text">NODE</span>
                 <span className="text-ink">VANT</span>
               </span>

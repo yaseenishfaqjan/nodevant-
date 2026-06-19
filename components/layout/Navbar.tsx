@@ -23,17 +23,17 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="container-x flex h-16 items-center justify-between md:h-20">
+      <nav className="container-x flex h-20 items-center justify-between md:h-24">
         <Link href="/" className="flex items-center gap-3" aria-label="Nodevant home">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-mark.png"
             alt="Nodevant AI automation agency logo"
-            width={48}
-            height={48}
+            width={160}
+            height={94}
             priority
-            className="h-11 w-11 object-contain"
+            className="h-12 w-auto md:h-14"
           />
-          <span className="font-display text-2xl font-bold tracking-tight">
+          <span className="font-display text-3xl font-bold tracking-tight md:text-4xl">
             <span className="gradient-text">NODE</span>
             <span className="text-ink">VANT</span>
           </span>
