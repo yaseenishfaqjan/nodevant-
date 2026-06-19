@@ -41,14 +41,22 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand col */}
           <div className="md:col-span-1">
-            <Link href="/" aria-label="Nodevant home" className="inline-block">
+            <Link
+              href="/"
+              aria-label="Nodevant home"
+              className="flex items-center gap-2.5"
+            >
               <Image
                 src="/images/logo.png"
-                alt="Nodevant AI automation agency"
-                width={140}
-                height={44}
-                className="h-9 w-auto"
+                alt="Nodevant AI automation agency logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
               />
+              <span className="font-display text-xl font-bold tracking-tight">
+                <span className="gradient-text">NODE</span>
+                <span className="text-ink">VANT</span>
+              </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-faint">
               The AI automation agency that shows you the ROI before you ever

@@ -24,15 +24,19 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between md:h-20">
-        <Link href="/" className="flex items-center gap-2" aria-label="Nodevant home">
+        <Link href="/" className="flex items-center gap-3" aria-label="Nodevant home">
           <Image
             src="/images/logo.png"
-            alt="Nodevant AI automation agency"
-            width={160}
-            height={50}
+            alt="Nodevant AI automation agency logo"
+            width={48}
+            height={48}
             priority
-            className="h-10 w-auto"
+            className="h-11 w-11 object-contain"
           />
+          <span className="font-display text-2xl font-bold tracking-tight">
+            <span className="gradient-text">NODE</span>
+            <span className="text-ink">VANT</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
