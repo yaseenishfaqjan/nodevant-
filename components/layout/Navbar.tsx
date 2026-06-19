@@ -26,16 +26,21 @@ export default function Navbar() {
       <nav className="container-x flex h-20 items-center justify-between md:h-24">
         <Link href="/" className="flex items-center gap-3" aria-label="Nodevant home">
           <Image
-            src="/images/logo-mark.png"
+            src="/images/logo-emblem.png"
             alt="Nodevant AI automation agency logo"
-            width={160}
-            height={94}
+            width={157}
+            height={155}
             priority
-            className="h-12 w-auto md:h-14"
+            className="h-11 w-auto md:h-12"
           />
-          <span className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-            <span className="gradient-text">NODE</span>
-            <span className="text-ink">VANT</span>
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+              <span className="gradient-text">NODE</span>
+              <span className="text-ink">VANT</span>
+            </span>
+            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-faint md:text-[11px]">
+              AI Automation Agency
+            </span>
           </span>
         </Link>
 
