@@ -54,11 +54,10 @@ export default function Footer() {
                 className="h-10 w-auto"
               />
               <span className="flex flex-col leading-none">
-                <span className="font-display text-xl font-bold tracking-tight">
-                  <span className="gradient-text">NODE</span>
-                  <span className="text-ink">VANT</span>
+                <span className="gradient-text font-display text-xl font-bold tracking-[-0.02em]">
+                  NODEVANT
                 </span>
-                <span className="mt-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-faint">
+                <span className="mt-1.5 text-[9px] font-medium uppercase tracking-[0.3em] text-faint">
                   AI Automation Agency
                 </span>
               </span>

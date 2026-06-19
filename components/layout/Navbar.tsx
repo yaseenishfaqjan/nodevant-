@@ -34,11 +34,10 @@ export default function Navbar() {
             className="h-11 w-auto md:h-12"
           />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-2xl font-bold tracking-tight md:text-3xl">
-              <span className="gradient-text">NODE</span>
-              <span className="text-ink">VANT</span>
+            <span className="gradient-text font-display text-2xl font-bold tracking-[-0.02em] md:text-3xl">
+              NODEVANT
             </span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-faint md:text-[11px]">
+            <span className="mt-1.5 text-[10px] font-medium uppercase tracking-[0.3em] text-faint md:text-[11px]">
               AI Automation Agency
             </span>
           </span>

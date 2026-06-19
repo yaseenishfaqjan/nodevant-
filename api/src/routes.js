@@ -83,6 +83,50 @@ router.post("/contact", async (req, res) => {
   }
 });
 
+// POST /api/cal-webhook — capture Cal.com bookings as leads.
+// In Cal.com: Settings → Developer → Webhooks → add
+//   https://nodevant.com/api/cal-webhook?key=YOUR_CAL_WEBHOOK_SECRET
+// subscribing to BOOKING_CREATED (and optionally RESCHEDULED).
+const CAL_WEBHOOK_SECRET = process.env.CAL_WEBHOOK_SECRET || "";
+router.post("/cal-webhook", async (req, res) => {
+  try {
+    if (CAL_WEBHOOK_SECRET && req.query.key !== CAL_WEBHOOK_SECRET) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const evt = req.body || {};
+    const trigger = evt.triggerEvent || "";
+    if (!["BOOKING_CREATED", "BOOKING_RESCHEDULED"].includes(trigger)) {
+      return res.json({ ok: true, ignored: trigger });
+    }
+    const p = evt.payload || {};
+    const attendee = Array.isArray(p.attendees) && p.attendees[0] ? p.attendees[0] : {};
+    const location =
+      p.location ||
+      p.videoCallData?.url ||
+      p.metadata?.videoCallUrl ||
+      "";
+
+    const lead = {
+      type: "booking",
+      name: clean(attendee.name, 200),
+      email: clean(attendee.email, 320),
+      source: clean(`cal.com${trigger === "BOOKING_RESCHEDULED" ? " (rescheduled)" : ""}`, 100),
+      message: clean(
+        [p.title, location, attendee.timeZone].filter(Boolean).join(" · "),
+        2000
+      ),
+      meeting_at: p.startTime ? new Date(p.startTime) : null,
+      meeting_type: clean(p.type || p.eventTitle || p.title, 200),
+    };
+    const saved = await db.insertLead(lead);
+    sendNotification(lead, null).catch((e) => console.error("[mail] notify", e.message));
+    res.json({ success: true, id: saved.id });
+  } catch (err) {
+    console.error("[cal-webhook]", err);
+    res.status(500).json({ error: "Webhook processing failed" });
+  }
+});
+
 // ---- CRM (admin) ----
 router.get("/leads", adminOnly, async (req, res) => {
   const leads = await db.listLeads({
@@ -111,7 +155,8 @@ router.get("/leads/export.csv", adminOnly, async (req, res) => {
   const cols = [
     "id", "created_at", "type", "status", "name", "email", "company", "industry",
     "team_size", "biggest_pain", "hours_wasted", "hourly_rate", "automation_goal",
-    "score", "recommended_service", "annual_savings", "roi_multiple", "message", "notes",
+    "score", "recommended_service", "annual_savings", "roi_multiple",
+    "meeting_at", "meeting_type", "message", "notes",
   ];
   const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const csv = [cols.join(",")]

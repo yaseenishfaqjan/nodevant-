@@ -29,10 +29,14 @@ async function init(retries = 10) {
           recommended_service TEXT,
           annual_savings INTEGER,
           roi_multiple  NUMERIC,
+          meeting_at    TIMESTAMPTZ,
+          meeting_type  TEXT,
           status        TEXT NOT NULL DEFAULT 'new',
           notes         TEXT,
           created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
         );
+        ALTER TABLE leads ADD COLUMN IF NOT EXISTS meeting_at TIMESTAMPTZ;
+        ALTER TABLE leads ADD COLUMN IF NOT EXISTS meeting_type TEXT;
         CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads (created_at DESC);
         CREATE INDEX IF NOT EXISTS idx_leads_status ON leads (status);
       `);
@@ -51,6 +55,7 @@ async function insertLead(lead) {
     "type", "name", "email", "company", "message", "source", "industry",
     "team_size", "biggest_pain", "hours_wasted", "hourly_rate", "current_tools",
     "automation_goal", "score", "recommended_service", "annual_savings", "roi_multiple",
+    "meeting_at", "meeting_type",
   ];
   const values = cols.map((c) => lead[c] ?? null);
   const placeholders = cols.map((_, i) => `$${i + 1}`).join(", ");
@@ -100,6 +105,7 @@ async function stats() {
       COUNT(*)::int AS total,
       COUNT(*) FILTER (WHERE type = 'audit')::int AS audits,
       COUNT(*) FILTER (WHERE type = 'contact')::int AS contacts,
+      COUNT(*) FILTER (WHERE type = 'booking')::int AS bookings,
       COUNT(*) FILTER (WHERE created_at > now() - interval '7 days')::int AS last7
     FROM leads;
   `);

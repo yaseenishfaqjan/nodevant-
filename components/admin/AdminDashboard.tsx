@@ -16,6 +16,8 @@ interface Lead {
   recommended_service: string | null;
   annual_savings: number | null;
   roi_multiple: number | null;
+  meeting_at: string | null;
+  meeting_type: string | null;
   status: string;
   notes: string | null;
 }
@@ -24,6 +26,7 @@ interface Stats {
   total: number;
   audits: number;
   contacts: number;
+  bookings: number;
   last7: number;
 }
 
@@ -162,11 +165,12 @@ export default function AdminDashboard() {
       </div>
 
       {stats && (
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {[
             { label: "Total leads", value: stats.total },
             { label: "Audits", value: stats.audits },
             { label: "Contacts", value: stats.contacts },
+            { label: "Meetings booked", value: stats.bookings },
             { label: "Last 7 days", value: stats.last7 },
           ].map((s) => (
             <div key={s.label} className="rounded-xl border border-line bg-bg-soft p-5 text-center">
@@ -186,6 +190,7 @@ export default function AdminDashboard() {
           <option value="">All types</option>
           <option value="audit">Audit</option>
           <option value="contact">Contact</option>
+          <option value="booking">Meeting</option>
         </select>
         <select
           value={filter.status}
@@ -213,7 +218,7 @@ export default function AdminDashboard() {
                 <th>Type</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Pain</th>
+                <th>Pain / Meeting</th>
                 <th>Score</th>
                 <th>Savings/yr</th>
                 <th>ROI</th>
@@ -235,7 +240,16 @@ export default function AdminDashboard() {
                       "—"
                     )}
                   </td>
-                  <td>{l.biggest_pain || (l.message ? "📝 msg" : "—")}</td>
+                  <td>
+                    {l.type === "booking" ? (
+                      <span className="text-cyan">
+                        📅 {l.meeting_at ? date(l.meeting_at) : "booked"}
+                        {l.meeting_type ? ` · ${l.meeting_type}` : ""}
+                      </span>
+                    ) : (
+                      l.biggest_pain || (l.message ? "📝 msg" : "—")
+                    )}
+                  </td>
                   <td>{l.score ?? "—"}</td>
                   <td>{money(l.annual_savings)}</td>
                   <td>{l.roi_multiple ? `${l.roi_multiple}×` : "—"}</td>
