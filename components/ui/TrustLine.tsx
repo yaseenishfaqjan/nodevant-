@@ -12,12 +12,12 @@ export default function TrustLine() {
           className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-brand-gradient font-display text-sm font-bold text-bg"
           aria-hidden="true"
         >
-          YI
+          ✦
         </span>
         <p className="text-sm leading-relaxed text-muted">
-          Built by <span className="font-semibold text-ink">Yaseen</span> — a
-          founder who has shipped <span className="text-ink">6 production AI
-          systems</span> across fintech, manufacturing, SaaS, and more.{" "}
+          Built by the team behind{" "}
+          <span className="text-ink">6 production AI systems</span> across
+          fintech, manufacturing, SaaS, and more.{" "}
           <Link href="/case-studies/" className="font-semibold text-cyan hover:underline">
             See the work →
           </Link>

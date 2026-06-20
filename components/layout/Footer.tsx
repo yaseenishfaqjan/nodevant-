@@ -125,12 +125,8 @@ export default function Footer() {
             <Link href="/contact/" className="hover:text-cyan">
               Contact
             </Link>
-            <a
-              href="https://twitter.com/nodevant"
-              className="hover:text-cyan"
-              rel="noopener noreferrer"
-            >
-              Twitter
+            <a href={`tel:${SITE.phoneRaw}`} className="hover:text-cyan">
+              {SITE.phone}
             </a>
           </div>
         </div>

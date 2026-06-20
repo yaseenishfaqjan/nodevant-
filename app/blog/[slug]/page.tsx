@@ -42,13 +42,7 @@ function articleSchema(slug: string) {
     articleSection: a.category,
     url: `${SITE.url}/blog/${a.slug}/`,
     image: `${SITE.url}${a.heroImage}`,
-    author: {
-      "@type": "Person",
-      name: "Yaseen",
-      jobTitle: "Founder & AI Systems Engineer",
-      worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
-      url: `${SITE.url}/about/`,
-    },
+    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
     publisher: {
       "@type": "Organization",
       name: SITE.name,
@@ -124,20 +118,20 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               {article.h1}
             </h1>
 
-            {/* Author byline — E-E-A-T signal */}
+            {/* Author byline */}
             <div className="mt-5 flex items-center gap-3 border-y border-line py-4">
               <span
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-gradient font-display text-sm font-bold text-bg"
                 aria-hidden="true"
               >
-                YI
+                N
               </span>
               <span className="text-sm">
-                <span className="text-muted">By </span>
+                <span className="text-muted">By the </span>
                 <Link href="/about/" className="font-semibold text-ink hover:text-cyan">
-                  Yaseen
+                  Nodevant Team
                 </Link>
-                <span className="text-faint"> · Founder & AI Systems Engineer at Nodevant</span>
+                <span className="text-faint"> · AI Automation Agency</span>
               </span>
             </div>
 

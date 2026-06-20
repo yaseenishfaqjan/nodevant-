@@ -20,10 +20,6 @@ export function organizationSchema() {
       "System Integration",
       "Lead Generation",
     ],
-    sameAs: [
-      "https://www.linkedin.com/company/nodevant",
-      "https://twitter.com/nodevant",
-    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
@@ -92,10 +88,6 @@ export function localBusinessSchema() {
         priceCurrency: "USD",
       })),
     },
-    sameAs: [
-      "https://www.linkedin.com/company/nodevant",
-      "https://twitter.com/nodevant",
-    ],
   };
 }
 

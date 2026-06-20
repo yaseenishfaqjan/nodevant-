@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     url: SITE.url,
     images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: `${SITE.name} — ${SITE.tagline}` }],
   },
-  twitter: { card: "summary_large_image", site: SITE.twitter },
+  twitter: { card: "summary_large_image" },
   robots: {
     index: true,
     follow: true,

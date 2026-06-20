@@ -40,14 +40,6 @@ const DIFFERENTIATORS = [
   },
 ];
 
-const FOUNDER = {
-  initials: "YI",
-  name: "Yaseen (Muhammad Yasin)",
-  role: "Founder & AI Systems Engineer",
-  bio: "I've spent the last two years building complete AI-powered business systems — from a credit-repair SaaS to autonomous sales pipelines to voice AI agents. Every system on this site is one I designed, built, and deployed myself. Nodevant is how I make those same capabilities available to other businesses.",
-  linkedin: "https://www.linkedin.com/company/nodevant",
-};
-
 // Real businesses we own and operate — proof we build systems that run companies,
 // not just demos. Linked to the matching industry solution where relevant.
 const OWNED_BUSINESSES: {
@@ -170,41 +162,6 @@ export default function AboutPage() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="section-pad bg-bg-soft">
-        <div className="container-x">
-          <SectionHeading
-            eyebrow="Who Builds Your System"
-            title="One builder, accountable end to end"
-            subtitle="No account managers, no hand-offs. The person who scopes your system is the person who builds it."
-          />
-          <ScrollReveal>
-            <div className="glow-card mx-auto mt-14 max-w-2xl text-center sm:flex sm:items-center sm:gap-8 sm:text-left">
-              <div className="mx-auto mb-6 flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-full bg-brand-gradient font-display text-3xl font-bold text-bg sm:mb-0">
-                {FOUNDER.initials}
-              </div>
-              <div>
-                <h3 className="font-display text-xl font-bold text-ink">
-                  {FOUNDER.name}
-                </h3>
-                <p className="mt-1 text-sm font-medium text-cyan">
-                  {FOUNDER.role}
-                </p>
-                <p className="mt-4 leading-relaxed text-muted">{FOUNDER.bio}</p>
-                <a
-                  href={FOUNDER.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block text-sm font-semibold text-cyan hover:underline"
-                >
-                  Connect on LinkedIn →
-                </a>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 

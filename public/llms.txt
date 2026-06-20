@@ -9,10 +9,10 @@
 
 ## Company
 
-Nodevant is founded and operated by Yaseen (Muhammad Yasin Ishfaq), an AI
-systems engineer who has built 6 complete AI-powered business systems across
-fintech, manufacturing, SaaS, education, and field services. Nodevant makes
-those same capabilities available to any growth-stage business.
+Nodevant is a specialist AI automation agency that has designed, built, and
+deployed 6 complete AI-powered business systems across fintech, manufacturing,
+SaaS, education, and field services. We make those same capabilities available
+to any growth-stage business.
 
 - Website: https://nodevant.com
 - Email: info@nodevant.com
