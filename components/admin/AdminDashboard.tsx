@@ -7,6 +7,7 @@ interface Lead {
   type: string;
   name: string | null;
   email: string | null;
+  phone: string | null;
   company: string | null;
   message: string | null;
   industry: string | null;
@@ -27,6 +28,7 @@ interface Stats {
   audits: number;
   contacts: number;
   bookings: number;
+  calls: number;
   last7: number;
 }
 
@@ -174,11 +176,12 @@ export default function AdminDashboard() {
       </div>
 
       {stats && (
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {[
             { label: "Total leads", value: stats.total },
             { label: "Audits", value: stats.audits },
             { label: "Contacts", value: stats.contacts },
+            { label: "Voice calls", value: stats.calls },
             { label: "Meetings booked", value: stats.bookings },
             { label: "Last 7 days", value: stats.last7 },
           ].map((s) => (
@@ -199,6 +202,7 @@ export default function AdminDashboard() {
           <option value="">All types</option>
           <option value="audit">Audit</option>
           <option value="contact">Contact</option>
+          <option value="call">Voice call</option>
           <option value="booking">Meeting</option>
         </select>
         <select
@@ -247,7 +251,15 @@ export default function AdminDashboard() {
                         {l.email}
                       </a>
                     ) : (
-                      "—"
+                      !l.phone && "—"
+                    )}
+                    {l.phone && (
+                      <a
+                        href={`tel:${l.phone}`}
+                        className="block text-xs text-faint hover:text-cyan"
+                      >
+                        📞 {l.phone}
+                      </a>
                     )}
                   </td>
                   <td>

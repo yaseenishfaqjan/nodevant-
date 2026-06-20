@@ -123,6 +123,17 @@ export default function ContactPage() {
                     </a>
                   </dd>
                 </div>
+                <div className="flex gap-2">
+                  <dt className="text-faint">Phone:</dt>
+                  <dd>
+                    <a
+                      href={`tel:${SITE.phoneRaw}`}
+                      className="font-semibold text-cyan hover:underline"
+                    >
+                      {SITE.phone}
+                    </a>
+                  </dd>
+                </div>
               </dl>
               <a
                 href={SITE.googleReviewUrl}

@@ -26,5 +26,6 @@ Full-content: /llms-full.txt
 Sitemap: https://nodevant.com/sitemap.xml
 Organization: Nodevant
 Contact: info@nodevant.com
+Phone: +1 (678) 439-9321
 Description: AI automation agency — custom AI agents and workflow automation
 Location: McDonough, GA 30252, USA

@@ -80,6 +80,12 @@ export default function Footer() {
               United States · Serving clients globally
             </address>
             <a
+              href={`tel:${SITE.phoneRaw}`}
+              className="mt-2 inline-block text-sm font-medium text-cyan hover:underline"
+            >
+              {SITE.phone}
+            </a>
+            <a
               href={SITE.googleReviewUrl}
               target="_blank"
               rel="noopener noreferrer"

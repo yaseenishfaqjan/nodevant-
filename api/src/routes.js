@@ -127,6 +127,75 @@ router.post("/cal-webhook", async (req, res) => {
   }
 });
 
+// POST /api/voice-lead — capture leads from the Alex voice agent (VAPI).
+// Works with EITHER:
+//  (a) a VAPI "end-of-call-report" server message, OR
+//  (b) a simple tool/function call with flat fields { name, email, phone, summary, outcome }.
+// Secure with VOICE_WEBHOOK_SECRET via ?key=... (optional).
+const VOICE_WEBHOOK_SECRET = process.env.VOICE_WEBHOOK_SECRET || "";
+router.post("/voice-lead", async (req, res) => {
+  try {
+    if (VOICE_WEBHOOK_SECRET && req.query.key !== VOICE_WEBHOOK_SECRET) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const body = req.body || {};
+    let name, email, phone, company, summary, outcome;
+    const msg = body.message;
+
+    if (msg && typeof msg === "object" && (msg.type || msg.analysis || msg.customer)) {
+      // VAPI server message — only act on the end-of-call report
+      if (msg.type && msg.type !== "end-of-call-report") {
+        return res.json({ ok: true, ignored: msg.type });
+      }
+      const a = msg.analysis || {};
+      const sd = a.structuredData || {};
+      phone = msg.customer?.number || sd.phone || sd.phoneNumber;
+      name = sd.name || sd.firstName;
+      email = sd.email;
+      company = sd.business || sd.company;
+      outcome = sd.outcome || sd.booked || a.successEvaluation;
+      summary =
+        a.summary ||
+        (typeof msg.transcript === "string" ? msg.transcript.slice(0, 1500) : "");
+    } else {
+      // Flat tool/function call
+      name = body.name || body.firstName;
+      email = body.email;
+      phone = body.phone || body.phoneNumber;
+      company = body.business || body.company;
+      summary = body.summary || body.notes || body.message;
+      outcome = body.outcome || body.booked;
+    }
+
+    if (!phone && !isEmail(email)) {
+      return res.status(400).json({ error: "phone or email required" });
+    }
+
+    const detail = [
+      clean(summary, 4000),
+      outcome ? `Outcome: ${outcome}` : null,
+    ]
+      .filter(Boolean)
+      .join(" | ");
+
+    const lead = {
+      type: "call",
+      name: clean(name, 200),
+      email: isEmail(email) ? clean(email, 320) : null,
+      phone: clean(phone, 40),
+      company: clean(company, 200),
+      source: "voice-call (Alex)",
+      message: detail || null,
+    };
+    const saved = await db.insertLead(lead);
+    sendNotification(lead, null).catch((e) => console.error("[mail] notify", e.message));
+    res.json({ success: true, id: saved.id });
+  } catch (err) {
+    console.error("[voice-lead]", err);
+    res.status(500).json({ error: "Voice lead processing failed" });
+  }
+});
+
 // ---- CRM (admin) ----
 router.get("/leads", adminOnly, async (req, res) => {
   const leads = await db.listLeads({
@@ -159,10 +228,10 @@ router.delete("/leads/:id", adminOnly, async (req, res) => {
 router.get("/leads/export.csv", adminOnly, async (req, res) => {
   const leads = await db.listLeads({ limit: 5000 });
   const cols = [
-    "id", "created_at", "type", "status", "name", "email", "company", "industry",
-    "team_size", "biggest_pain", "hours_wasted", "hourly_rate", "automation_goal",
-    "score", "recommended_service", "annual_savings", "roi_multiple",
-    "meeting_at", "meeting_type", "message", "notes",
+    "id", "created_at", "type", "status", "name", "email", "phone", "company",
+    "industry", "team_size", "biggest_pain", "hours_wasted", "hourly_rate",
+    "automation_goal", "score", "recommended_service", "annual_savings",
+    "roi_multiple", "meeting_at", "meeting_type", "message", "notes",
   ];
   const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const csv = [cols.join(",")]
