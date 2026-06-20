@@ -127,72 +127,95 @@ router.post("/cal-webhook", async (req, res) => {
   }
 });
 
-// POST /api/voice-lead — capture leads from the Alex voice agent (VAPI).
-// Works with EITHER:
-//  (a) a VAPI "end-of-call-report" server message, OR
-//  (b) a simple tool/function call with flat fields { name, email, phone, summary, outcome }.
+// POST /api/voice-lead — capture leads from the voice agent (VAPI).
+// Handles ALL three shapes:
+//  (a) a "tool-calls" message (the capture_lead tool) — real-time mid-call,
+//  (b) an "end-of-call-report" server message — automatic at call end,
+//  (c) a plain flat POST { name, email, phone, summary, outcome }.
 // Secure with VOICE_WEBHOOK_SECRET via ?key=... (optional).
 const VOICE_WEBHOOK_SECRET = process.env.VOICE_WEBHOOK_SECRET || "";
 router.post("/voice-lead", async (req, res) => {
+  let toolCallId = null;
   try {
     if (VOICE_WEBHOOK_SECRET && req.query.key !== VOICE_WEBHOOK_SECRET) {
       return res.status(401).json({ error: "Unauthorized" });
     }
     const body = req.body || {};
-    let name, email, phone, company, summary, outcome;
     const msg = body.message;
+    let f = {}; // collected fields
 
-    if (msg && typeof msg === "object" && (msg.type || msg.analysis || msg.customer)) {
-      // VAPI server message — only act on the end-of-call report
-      if (msg.type && msg.type !== "end-of-call-report") {
-        return res.json({ ok: true, ignored: msg.type });
+    if (msg && msg.type === "tool-calls") {
+      // VAPI tool/function call (capture_lead)
+      const calls =
+        msg.toolCallList ||
+        msg.toolCalls ||
+        (msg.toolWithToolCallList || []).map((t) => t.toolCall).filter(Boolean) ||
+        [];
+      const call =
+        calls.find((c) => (c.function?.name || c.name) === "capture_lead") || calls[0];
+      if (!call) return res.json({ results: [] });
+      toolCallId = call.id;
+      let args = call.function?.arguments ?? call.arguments ?? {};
+      if (typeof args === "string") {
+        try { args = JSON.parse(args); } catch { args = {}; }
       }
+      f = args;
+    } else if (msg && msg.type && msg.type !== "end-of-call-report") {
+      return res.json({ ok: true, ignored: msg.type });
+    } else if (msg && (msg.type === "end-of-call-report" || msg.analysis || msg.customer)) {
       const a = msg.analysis || {};
       const sd = a.structuredData || {};
-      phone = msg.customer?.number || sd.phone || sd.phoneNumber;
-      name = sd.name || sd.firstName;
-      email = sd.email;
-      company = sd.business || sd.company;
-      outcome = sd.outcome || sd.booked || a.successEvaluation;
-      summary =
-        a.summary ||
-        (typeof msg.transcript === "string" ? msg.transcript.slice(0, 1500) : "");
+      f = {
+        name: sd.name || sd.firstName,
+        email: sd.email,
+        phone: msg.customer?.number || sd.phone || sd.phoneNumber,
+        business: sd.business || sd.company,
+        summary:
+          a.summary ||
+          (typeof msg.transcript === "string" ? msg.transcript.slice(0, 1500) : ""),
+        outcome: sd.outcome || sd.booked || a.successEvaluation,
+      };
     } else {
-      // Flat tool/function call
-      name = body.name || body.firstName;
-      email = body.email;
-      phone = body.phone || body.phoneNumber;
-      company = body.business || body.company;
-      summary = body.summary || body.notes || body.message;
-      outcome = body.outcome || body.booked;
+      f = body; // flat
     }
 
+    const email = f.email;
+    const phone = f.phone || f.phoneNumber;
+    const ok = (id, text) =>
+      toolCallId
+        ? res.json({ results: [{ toolCallId, result: text }] })
+        : res.json({ success: true, id });
+
     if (!phone && !isEmail(email)) {
+      if (toolCallId)
+        return res.json({ results: [{ toolCallId, result: "No contact info captured yet." }] });
       return res.status(400).json({ error: "phone or email required" });
     }
 
     const detail = [
-      clean(summary, 4000),
-      outcome ? `Outcome: ${outcome}` : null,
+      clean(f.summary || f.notes || f.message, 4000),
+      f.outcome ? `Outcome: ${f.outcome}` : null,
     ]
       .filter(Boolean)
       .join(" | ");
 
     const lead = {
       type: "call",
-      name: clean(name, 200),
+      name: clean(f.name || f.firstName, 200),
       email: isEmail(email) ? clean(email, 320) : null,
       phone: clean(phone, 40),
-      company: clean(company, 200),
+      company: clean(f.business || f.company, 200),
       source: "voice-call (Alex)",
       message: detail || null,
     };
     const saved = await db.insertLead(lead);
     sendNotification(lead, null).catch((e) => console.error("[mail] notify", e.message));
-    res.json({ success: true, id: saved.id });
+    return ok(saved.id, "Lead saved to the Nodevant CRM.");
   } catch (err) {
     console.error("[voice-lead]", err);
-    res.status(500).json({ error: "Voice lead processing failed" });
+    if (toolCallId)
+      return res.json({ results: [{ toolCallId, result: "Could not save lead." }] });
+    return res.status(500).json({ error: "Voice lead processing failed" });
   }
 });
 
