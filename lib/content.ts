@@ -5,6 +5,7 @@ export interface Service {
   title: string;
   icon: string;
   image: string;
+  tagline: string;
   short: string;
   long: string;
   tags: string[];
@@ -19,7 +20,8 @@ export const SERVICES: Service[] = [
     slug: "agentic-workflows",
     title: "Agentic Workflows",
     icon: "🤖",
-    image: "/images/hero-workflow.png",
+    image: "/images/service-workflows.webp",
+    tagline: "Automate · Orchestrate · Scale",
     short:
       "n8n/Make orchestration with intelligent automation that adapts to your business processes in real-time, learning and evolving with your needs.",
     long: "We design autonomous, multi-step workflows that connect every tool in your stack. Triggers fire, data routes, AI decides — and the work gets done without a human in the loop until it actually matters.",
@@ -33,7 +35,8 @@ export const SERVICES: Service[] = [
     slug: "ai-voice-agents",
     title: "AI Voice Agents",
     icon: "🎙️",
-    image: "/images/hero-voice-agents.png",
+    image: "/images/service-voice.webp",
+    tagline: "Always On · Always Professional",
     short:
       "Vapi/Retell integration for real-time voice intelligence that understands context, responds naturally, and handles complex conversations.",
     long: "Deploy voice agents that answer calls, qualify leads, book appointments, and resolve support tickets 24/7 — escalating to a human only when it's truly needed.",
@@ -47,7 +50,8 @@ export const SERVICES: Service[] = [
     slug: "complex-logic-engines",
     title: "Complex Logic Engines",
     icon: "⚙️",
-    image: "/images/hero-ai-brain.png",
+    image: "/images/service-logic.webp",
+    tagline: "Precision · Power · Performance",
     short:
       "Custom development for algorithmic data processing that handles massive computations with precision and unmatched performance.",
     long: "When off-the-shelf tools hit their ceiling, we build custom engines — pricing algorithms, routing logic, scoring systems — that process data at scale with deterministic precision.",
@@ -61,7 +65,8 @@ export const SERVICES: Service[] = [
     slug: "system-integration",
     title: "System Integration",
     icon: "🔗",
-    image: "/images/hero-integrations.png",
+    image: "/images/service-integration.webp",
+    tagline: "One System · Every Connection",
     short:
       "Connect your CRM, marketing, finance, and ops tools into one seamless data fabric so information flows automatically with zero manual copying.",
     long: "We unify disconnected systems into a single source of truth. Real-time sync between your CRM, spreadsheets, billing, and comms — no more copy-paste, no more stale data.",
@@ -75,7 +80,8 @@ export const SERVICES: Service[] = [
     slug: "lead-gen-pipeline",
     title: "Lead Gen Pipeline",
     icon: "🎯",
-    image: "/images/hero-leadgen.png",
+    image: "/images/service-leadgen.webp",
+    tagline: "More Leads · Less Effort · 24/7",
     short:
       "Automated lead capture, enrichment, scoring, and follow-up that turns cold traffic into booked calls while your team sleeps.",
     long: "An end-to-end engine that scrapes, enriches, scores, and nurtures leads — then books qualified prospects straight into your calendar with personalized AI outreach.",
@@ -89,7 +95,8 @@ export const SERVICES: Service[] = [
     slug: "custom-ai-solutions",
     title: "Custom AI Solutions",
     icon: "✨",
-    image: "/images/hero-dashboard.png",
+    image: "/images/service-custom-ai.webp",
+    tagline: "Built For Your Exact Problem",
     short:
       "Bespoke AI products built around your exact problem — RAG assistants, document processing, internal copilots, and decision engines.",
     long: "Have a problem no template solves? We build it. Retrieval-augmented assistants, document pipelines, internal copilots — production-grade AI tailored to your workflow.",
@@ -216,6 +223,7 @@ export interface CaseStudy {
   slug: string;
   client: string;
   industry: string;
+  image: string;
   title: string;
   challenge: string;
   solution: string;
@@ -229,6 +237,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "storehouse360-financial-operating-system",
     client: "Storehouse360",
     industry: "Fintech",
+    image: "/images/financial-platform.webp",
     title: "A full financial operating system with end-to-end client automation",
     challenge:
       "A financial services business needed a single operating system to run client onboarding, automated credit and dispute workflows, monitoring, communications, and billing — work that doesn't scale by hand.",
@@ -245,6 +254,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "fabrioza-sales-automation",
     client: "FABRIOZA (Hermes 2.0)",
     industry: "Manufacturing",
+    image: "/images/lead-image.webp",
     title: "An autonomous sales pipeline for a custom manufacturer — no sales team",
     challenge:
       "A custom clothing manufacturer needed to generate leads, run outreach, and handle inbound sales without hiring a sales team.",
@@ -261,6 +271,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     slug: "scalaro-ai-sales-platform",
     client: "Scalaro",
     industry: "B2B SaaS",
+    image: "/images/calling-agent.webp",
     title: "A multi-agent AI sales platform built from scratch",
     challenge:
       "Build a scalable, production-grade AI sales-automation platform with orchestrated agents covering the full sales motion.",

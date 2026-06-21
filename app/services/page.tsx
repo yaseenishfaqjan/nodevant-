@@ -54,36 +54,41 @@ export default function ServicesPage() {
         <div className="container-x space-y-6">
           {SERVICES.map((service, i) => (
             <ScrollReveal key={service.slug} delay={(i % 2) * 0.08}>
-              <article id={service.slug} className="glow-card scroll-mt-28">
-                <div className="mb-6 overflow-hidden rounded-xl border border-line">
+              <article
+                id={service.slug}
+                className="glow-card scroll-mt-28 overflow-hidden !p-0"
+              >
+                {/* Image header with overlay */}
+                <div className="relative h-[260px] w-full overflow-hidden">
                   <Image
                     src={service.image}
-                    alt={`${service.title} — ${service.short.slice(0, 80)}`}
-                    width={1200}
-                    height={500}
-                    className="h-48 w-full object-cover object-center"
+                    alt={`${service.title} — ${service.short.slice(0, 70)}`}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                </div>
-                <div className="md:flex md:items-start md:gap-8">
-                  <div
-                    className={`mb-6 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl text-3xl md:mb-0 ${
-                      service.accent === "cyan"
-                        ? "bg-cyan/10 shadow-glow-cyan"
-                        : "bg-violet/10 shadow-glow-violet"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    {service.icon}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent" />
+                  <div className="absolute bottom-5 left-6 right-6">
+                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.25em] text-cyan">
+                      Nodevant · AI Automation
+                    </p>
+                    <h2 className="font-display text-2xl font-bold tracking-tight text-white">
+                      {service.title}
+                    </h2>
+                    <p className="mt-0.5 text-sm text-cyan/80">
+                      {service.tagline}
+                    </p>
                   </div>
-                  <div className="flex-1">
-                  <h2
-                    className={`font-display text-2xl font-bold md:text-3xl ${
-                      service.accent === "cyan" ? "text-cyan" : "text-violet"
-                    }`}
-                  >
-                    {service.title}
-                  </h2>
-                  <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+                  <div className="absolute right-4 top-4 rounded-lg bg-black/40 px-3 py-1 backdrop-blur-sm">
+                    <span className="font-mono text-xs text-white/70">
+                      from {service.startingPrice}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Detail body */}
+                <div className="p-7">
+                  <p className="max-w-2xl leading-relaxed text-muted">
                     {service.long}
                   </p>
 
@@ -127,7 +132,6 @@ export default function ServicesPage() {
                   >
                     See if this is your #1 opportunity →
                   </Link>
-                  </div>
                 </div>
               </article>
             </ScrollReveal>

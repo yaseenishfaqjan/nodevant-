@@ -47,10 +47,10 @@ export default function CaseStudiesPage() {
       <div className="container-x">
         <div className="mb-16 overflow-hidden rounded-2xl border border-line">
           <Image
-            src="/images/hero-workflow.png"
-            alt="Real AI automation results showing workflow performance metrics"
-            width={1200}
-            height={500}
+            src="/images/pipeline-hero.webp"
+            alt="Custom AI agents built, tested, and deployed for your business"
+            width={1400}
+            height={900}
             priority
             className="h-56 w-full object-cover object-center md:h-72"
           />
@@ -61,7 +61,21 @@ export default function CaseStudiesPage() {
         <div className="container-x space-y-8">
           {CASE_STUDIES.map((cs, i) => (
             <ScrollReveal key={cs.slug} delay={(i % 2) * 0.08}>
-              <article className="glow-card">
+              <article className="glow-card overflow-hidden !p-0">
+                <div className="relative h-52 w-full overflow-hidden md:h-64">
+                  <Image
+                    src={cs.image}
+                    alt={`${cs.client} — ${cs.title}`}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/30 to-transparent" />
+                  <span className="absolute left-5 top-5 rounded-full border border-cyan/30 bg-bg/70 px-3 py-1 text-xs font-semibold text-cyan backdrop-blur">
+                    {cs.client}
+                  </span>
+                </div>
+                <div className="p-7">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="rounded-full border border-cyan/30 bg-cyan/5 px-3 py-1 text-xs font-semibold text-cyan">
                     {cs.industry}
@@ -103,6 +117,7 @@ export default function CaseStudiesPage() {
                       <div className="mt-1 text-xs text-faint">{m.label}</div>
                     </div>
                   ))}
+                </div>
                 </div>
               </article>
             </ScrollReveal>

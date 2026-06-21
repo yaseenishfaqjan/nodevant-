@@ -106,10 +106,10 @@ export default function AboutPage() {
       <div className="container-x">
         <div className="mb-16 overflow-hidden rounded-2xl border border-line">
           <Image
-            src="/images/hero-dashboard.png"
-            alt="Nodevant AI automation operations showing real-time workflow performance"
-            width={1200}
-            height={500}
+            src="/images/pipeline-hero.webp"
+            alt="Every Nodevant project is built, tested, and deployed to production"
+            width={1400}
+            height={900}
             priority
             className="h-64 w-full object-cover object-center md:h-80"
           />

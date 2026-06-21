@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { PROCESS } from "@/lib/content";
@@ -13,7 +14,22 @@ export default function Process() {
           subtitle="A transparent, milestone-driven process so you always know exactly what's happening and what's next."
         />
 
-        <div className="relative mt-16 grid gap-8 md:grid-cols-4">
+        {/* Process visual */}
+        <ScrollReveal>
+          <div className="relative mt-14 w-full overflow-hidden rounded-2xl border border-line">
+            <Image
+              src="/images/process-flow.webp"
+              alt="Nodevant AI automation process: Map, Build, Test, Deliver"
+              width={1400}
+              height={900}
+              priority
+              className="w-full object-cover"
+            />
+          </div>
+        </ScrollReveal>
+
+        {/* Supporting step summary */}
+        <div className="relative mt-12 grid gap-8 md:grid-cols-4">
           {/* Connecting line */}
           <div
             className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-cyan/30 to-transparent md:block"
