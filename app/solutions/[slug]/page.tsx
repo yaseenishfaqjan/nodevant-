@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/ui/PageHero";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -96,6 +97,20 @@ export default function SolutionPage({
             {/* Intro */}
             <ScrollReveal>
               <p className="text-lg leading-relaxed text-muted">{s.intro}</p>
+            </ScrollReveal>
+
+            {/* Full image */}
+            <ScrollReveal>
+              <div className="overflow-hidden rounded-2xl border border-line">
+                <Image
+                  src={s.image}
+                  alt={`${s.title} — ${s.industry} automation by Nodevant`}
+                  width={1400}
+                  height={1045}
+                  priority
+                  className="h-auto w-full"
+                />
+              </div>
             </ScrollReveal>
 
             {/* Problem */}

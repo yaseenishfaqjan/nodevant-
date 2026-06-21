@@ -355,6 +355,7 @@ export const BLOG_POSTS: BlogPost[] = [
 export interface Solution {
   slug: string;
   icon: string;
+  image: string;
   industry: string;
   title: string;
   metaTitle: string;
@@ -374,6 +375,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "fintech",
     icon: "💳",
+    image: "/images/financial-platform.webp",
     industry: "Fintech / Financial Operations",
     title: "Financial Operating System",
     metaTitle: "Fintech AI Automation System | Nodevant",
@@ -411,6 +413,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "manufacturing",
     icon: "🏭",
+    image: "/images/lead-image.webp",
     industry: "Manufacturing / Custom Products",
     title: "Custom Manufacturing Operations",
     metaTitle: "Manufacturing Automation System | Nodevant",
@@ -448,6 +451,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "saas-sales",
     icon: "🤖",
+    image: "/images/calling-agent.webp",
     industry: "B2B SaaS Sales",
     title: "AI Sales Agency Platform",
     metaTitle: "SaaS Sales AI Automation | Nodevant",
@@ -485,6 +489,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "field-services",
     icon: "🏗️",
+    image: "/images/pipeline-hero.webp",
     industry: "Construction / Field Services",
     title: "Roofing & Field Service Automation",
     metaTitle: "Field Services Automation System | Nodevant",
@@ -522,6 +527,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "education",
     icon: "📚",
+    image: "/images/process-flow.webp",
     industry: "Education / Online Services",
     title: "Online Education Business System",
     metaTitle: "Education AI Automation System | Nodevant",
@@ -559,6 +565,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "home-services",
     icon: "🌿",
+    image: "/images/pipeline-hero.webp",
     industry: "Home Services",
     title: "Lawn Care & Home Services System",
     metaTitle: "Home Services Automation System | Nodevant",
