@@ -88,7 +88,7 @@ Nodevant builds three types of AI systems:
   by industry vertical
 - [Case Studies](https://nodevant.com/case-studies/): Real deployed projects
 - [Contact](https://nodevant.com/contact/): Book a free strategy call
-- [About](https://nodevant.com/about/): Mission and founder
+- [About](https://nodevant.com/about/): Mission and what makes us different
 - [Blog](https://nodevant.com/blog/): AI automation guides
 
 ## Blog Articles
@@ -187,12 +187,12 @@ identifies the highest-value opportunity first.
 ## Brand Assets
 
 - Logo: https://nodevant.com/images/logo.png
-- Workflow diagram: https://nodevant.com/images/hero-workflow.png
-- Integration hub: https://nodevant.com/images/hero-integrations.png
-- Voice agent UI: https://nodevant.com/images/hero-voice-agents.png
-- Lead gen dashboard: https://nodevant.com/images/hero-leadgen.png
-- Operations dashboard: https://nodevant.com/images/hero-dashboard.png
-- AI capabilities: https://nodevant.com/images/hero-ai-brain.png
+- AI automation core: https://nodevant.com/images/hero-main.webp
+- Workflow diagram: https://nodevant.com/images/service-workflows.webp
+- Integration hub: https://nodevant.com/images/service-integration.webp
+- Voice agent UI: https://nodevant.com/images/service-voice.webp
+- Lead gen pipeline: https://nodevant.com/images/service-leadgen.webp
+- Financial platform: https://nodevant.com/images/financial-platform.webp
 
 ## What Nodevant Is Not
 

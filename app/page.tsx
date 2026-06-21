@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Hero from "@/components/home/Hero";
 import TrustedBy from "@/components/home/TrustedBy";
 import TrustLine from "@/components/ui/TrustLine";
@@ -45,6 +46,28 @@ export default function Home() {
         ]}
       />
       <Hero />
+
+      {/* Hero showcase visual — cinematic AI core, blends into the page */}
+      <section className="relative -mt-8 overflow-hidden pb-6 md:-mt-16">
+        <div className="container-x">
+          <div className="relative mx-auto max-w-6xl">
+            <Image
+              src="/images/hero-main.webp"
+              alt="Nodevant AI automation core connecting your business tools — email, calendar, CRM, phone, chat, and data"
+              width={1280}
+              height={543}
+              priority
+              className="h-auto w-full"
+            />
+            {/* Edge fades so the dark image melts into the page background */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-bg to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-bg to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-bg to-transparent" />
+          </div>
+        </div>
+      </section>
+
       <TrustedBy />
       <div className="pt-12">
         <TrustLine />
