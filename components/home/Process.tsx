@@ -21,9 +21,9 @@ export default function Process() {
               src="/images/process-flow.webp"
               alt="Nodevant AI automation process: Map, Build, Test, Deliver"
               width={1400}
-              height={900}
+              height={1050}
               priority
-              className="w-full object-cover"
+              className="h-auto w-full"
             />
           </div>
         </ScrollReveal>

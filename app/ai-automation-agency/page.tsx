@@ -130,7 +130,7 @@ export default function AiAutomationAgencyPage() {
                     system to build — before you pay anything.
                   </li>
                   <li>
-                    <strong>We run our own systems.</strong> We&apos;ve shipped 6
+                    <strong>We run our own systems.</strong> We&apos;ve shipped
                     production AI systems across fintech, manufacturing, and SaaS.
                     See the <Link href="/case-studies/">case studies</Link>.
                   </li>

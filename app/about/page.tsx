@@ -109,9 +109,9 @@ export default function AboutPage() {
             src="/images/pipeline-hero.webp"
             alt="Every Nodevant project is built, tested, and deployed to production"
             width={1400}
-            height={900}
+            height={1050}
             priority
-            className="h-64 w-full object-cover object-center md:h-80"
+            className="h-auto w-full"
           />
         </div>
       </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Proof We Eat Our Own Cooking"
             title="Businesses we own and run on these systems"
-            subtitle="We don't just build automations for clients — we run our own companies across five industries on the exact same stack. That's where these systems are battle-tested."
+            subtitle="We don't just build automations for clients — we run our own companies across multiple industries on the exact same stack. That's where these systems are battle-tested."
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {OWNED_BUSINESSES.map((biz, i) => {

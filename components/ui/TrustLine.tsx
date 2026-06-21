@@ -16,7 +16,7 @@ export default function TrustLine() {
         </span>
         <p className="text-sm leading-relaxed text-muted">
           Built by the team behind{" "}
-          <span className="text-ink">6 production AI systems</span> across
+          <span className="text-ink">real, deployed AI systems</span> across
           fintech, manufacturing, SaaS, and more.{" "}
           <Link href="/case-studies/" className="font-semibold text-cyan hover:underline">
             See the work →

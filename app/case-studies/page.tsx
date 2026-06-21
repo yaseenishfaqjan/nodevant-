@@ -50,9 +50,9 @@ export default function CaseStudiesPage() {
             src="/images/pipeline-hero.webp"
             alt="Custom AI agents built, tested, and deployed for your business"
             width={1400}
-            height={900}
+            height={1050}
             priority
-            className="h-56 w-full object-cover object-center md:h-72"
+            className="h-auto w-full"
           />
         </div>
       </div>

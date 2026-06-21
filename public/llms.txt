@@ -10,7 +10,7 @@
 ## Company
 
 Nodevant is a specialist AI automation agency that has designed, built, and
-deployed 6 complete AI-powered business systems across fintech, manufacturing,
+deployed complete AI-powered business systems across fintech, manufacturing,
 SaaS, education, and field services. We make those same capabilities available
 to any growth-stage business.
 
