@@ -54,45 +54,41 @@ export default function ServicesPage() {
         <div className="container-x space-y-6">
           {SERVICES.map((service, i) => (
             <ScrollReveal key={service.slug} delay={(i % 2) * 0.08}>
-              <article
-                id={service.slug}
-                className="glow-card scroll-mt-28 overflow-hidden !p-0"
-              >
-                {/* Image header with overlay */}
-                <div className="relative h-[260px] w-full overflow-hidden">
+              <article id={service.slug} className="glow-card scroll-mt-28">
+                {/* 1. Description first */}
+                <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-cyan">
+                  Nodevant · AI Automation
+                </p>
+                <div className="mt-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
+                    {service.title}
+                  </h2>
+                  <span className="font-mono text-sm text-faint">
+                    from {service.startingPrice}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm font-medium text-cyan/90">
+                  {service.tagline}
+                </p>
+                <p className="mt-4 max-w-3xl leading-relaxed text-muted">
+                  {service.long}
+                </p>
+
+                {/* 2. Full, clear image */}
+                <div className="mt-6 overflow-hidden rounded-xl border border-line">
                   <Image
                     src={service.image}
                     alt={`${service.title} — ${service.short.slice(0, 70)}`}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    width={1200}
+                    height={675}
+                    className="h-auto w-full"
+                    sizes="(max-width: 1024px) 100vw, 1024px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent" />
-                  <div className="absolute bottom-5 left-6 right-6">
-                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.25em] text-cyan">
-                      Nodevant · AI Automation
-                    </p>
-                    <h2 className="font-display text-2xl font-bold tracking-tight text-white">
-                      {service.title}
-                    </h2>
-                    <p className="mt-0.5 text-sm text-cyan/80">
-                      {service.tagline}
-                    </p>
-                  </div>
-                  <div className="absolute right-4 top-4 rounded-lg bg-black/40 px-3 py-1 backdrop-blur-sm">
-                    <span className="font-mono text-xs text-white/70">
-                      from {service.startingPrice}
-                    </span>
-                  </div>
                 </div>
 
-                {/* Detail body */}
-                <div className="p-7">
-                  <p className="max-w-2xl leading-relaxed text-muted">
-                    {service.long}
-                  </p>
-
-                  <div className="mt-6 grid gap-5 sm:grid-cols-3">
+                {/* 3. Details */}
+                <div className="mt-6">
+                  <div className="grid gap-5 sm:grid-cols-3">
                     <div>
                       <h3 className="text-xs font-semibold uppercase tracking-wider text-faint">
                         Tools
