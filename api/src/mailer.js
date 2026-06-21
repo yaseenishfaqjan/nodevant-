@@ -64,6 +64,10 @@ function reportHtml(firstName, report) {
         <tr><td style="color:#7B7BA8">12-month ROI</td><td style="text-align:right;color:#00D4FF;font-weight:700;font-size:18px">${roi.roiMultiple}×</td></tr>
       </table></div>
     <div class="section"><div class="label">📋 Proof It Works</div><p style="font-style:italic">"${recommendation.caseStudyHook}"</p></div>
+    <div class="section" style="background:rgba(0,212,255,0.06);border-color:rgba(0,212,255,0.2)">
+      <div class="label">⏱️ What Happens Next</div>
+      <p>One of our automation experts will personally review your answers and <b style="color:#F0F0FF">reach out within the next few hours</b> to help you map exactly what to build. Prefer to lock in a time now? Grab a free 30-minute strategy call below.</p>
+    </div>
     <div style="text-align:center"><a href="${SITE}/contact/?from=audit" class="cta">Book Your Free 30-Min Strategy Call →</a></div>
     <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:32px 0">
     <p style="font-size:12px;color:#7B7BA8;text-align:center">Nodevant · ${FROM_ADDR} · <a href="${SITE}" style="color:#00D4FF">nodevant.com</a></p>
@@ -96,13 +100,67 @@ async function sendReportEmail(lead, report) {
 async function sendNotification(lead, report) {
   const t = getTransport();
   if (!t) return;
+  const labels = {
+    audit: "audit",
+    contact: "contact / service request",
+    booking: "meeting booking",
+    call: "voice call",
+  };
   await t.sendMail({
     from: `"${FROM_NAME} Leads" <${FROM_ADDR}>`,
     to: NOTIFY_TO,
     replyTo: lead.email || undefined,
-    subject: `🔔 New ${lead.type} lead${lead.name ? ` — ${lead.name}` : ""}`,
+    subject: `🔔 New ${labels[lead.type] || lead.type} — ${lead.name || lead.email || "lead"}`,
     html: notifyHtml(lead, report),
   });
 }
 
-module.exports = { sendReportEmail, sendNotification };
+// Branded "we've got your info" welcome to the prospect.
+function welcomeHtml(firstName, kind) {
+  const hi = firstName ? `Hi ${firstName},` : "Hi there,";
+  const intro =
+    kind === "booking"
+      ? "Your strategy call is confirmed — we're looking forward to it."
+      : "Thanks for reaching out — we've received your details.";
+  const body =
+    kind === "booking"
+      ? "One of our automation experts will review your business beforehand so the call is focused and useful from the very first minute. If anything changes, just reply to this email."
+      : "One of our automation experts will personally reach out within the next few hours to learn more and map your highest-ROI automation. In the meantime, you can see your numbers instantly with our free 90-second audit.";
+  const cta =
+    kind === "booking"
+      ? `<a href="${SITE}/" class="cta">Explore Nodevant →</a>`
+      : `<a href="${SITE}/audit/" class="cta">Take the Free 90-Second Audit →</a>`;
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+    body{font-family:Inter,Arial,sans-serif;background:#08080F;color:#F0F0FF;margin:0}
+    .c{max-width:600px;margin:0 auto;padding:40px 24px}
+    .logo{font-size:24px;font-weight:700;color:#00D4FF}
+    p{color:#B0B0CC;line-height:1.6;font-size:15px}
+    .cta{display:inline-block;background:linear-gradient(135deg,#00D4FF,#9B5CFF);color:#08080F;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:700;margin:24px 0}
+  </style></head><body><div class="c">
+    <div style="text-align:center;margin-bottom:28px"><div class="logo">⬡ Nodevant</div></div>
+    <p style="margin-bottom:20px">${hi}</p>
+    <p style="margin-bottom:16px;color:#F0F0FF;font-size:17px"><b>${intro}</b></p>
+    <p style="margin-bottom:24px">${body}</p>
+    <div style="text-align:center">${cta}</div>
+    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:32px 0">
+    <p style="font-size:12px;color:#7B7BA8;text-align:center">Nodevant · ${FROM_ADDR} · <a href="${SITE}" style="color:#00D4FF">nodevant.com</a></p>
+  </div></body></html>`;
+}
+
+async function sendWelcomeEmail(lead, kind) {
+  const t = getTransport();
+  if (!t || !lead.email) return;
+  const subject =
+    kind === "booking"
+      ? "Your Nodevant strategy call is confirmed ✅"
+      : "We've got your details — an expert will reach out shortly";
+  await t.sendMail({
+    from: `"${FROM_NAME}" <${FROM_ADDR}>`,
+    to: lead.email,
+    replyTo: NOTIFY_TO,
+    subject,
+    html: welcomeHtml(lead.name, kind),
+  });
+}
+
+module.exports = { sendReportEmail, sendWelcomeEmail, sendNotification };

@@ -1,7 +1,7 @@
 const express = require("express");
 const { buildReport } = require("./engine");
 const db = require("./db");
-const { sendReportEmail, sendNotification } = require("./mailer");
+const { sendReportEmail, sendWelcomeEmail, sendNotification } = require("./mailer");
 
 const router = express.Router();
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || "";
@@ -76,6 +76,7 @@ router.post("/contact", async (req, res) => {
     };
     const saved = await db.insertLead(lead);
     sendNotification(lead, null).catch((e) => console.error("[mail] notify", e.message));
+    sendWelcomeEmail(lead, "contact").catch((e) => console.error("[mail] welcome", e.message));
     res.json({ success: true, id: saved.id });
   } catch (err) {
     console.error("[contact]", err);
@@ -120,6 +121,7 @@ router.post("/cal-webhook", async (req, res) => {
     };
     const saved = await db.insertLead(lead);
     sendNotification(lead, null).catch((e) => console.error("[mail] notify", e.message));
+    sendWelcomeEmail(lead, "booking").catch((e) => console.error("[mail] welcome", e.message));
     res.json({ success: true, id: saved.id });
   } catch (err) {
     console.error("[cal-webhook]", err);
@@ -210,6 +212,8 @@ router.post("/voice-lead", async (req, res) => {
     };
     const saved = await db.insertLead(lead);
     sendNotification(lead, null).catch((e) => console.error("[mail] notify", e.message));
+    if (lead.email)
+      sendWelcomeEmail(lead, "contact").catch((e) => console.error("[mail] welcome", e.message));
     return ok(saved.id, "Lead saved to the Nodevant CRM.");
   } catch (err) {
     console.error("[voice-lead]", err);
