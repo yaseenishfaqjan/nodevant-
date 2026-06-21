@@ -346,6 +346,7 @@ export interface Solution {
   icon: string;
   industry: string;
   title: string;
+  metaTitle: string;
   tag: string;
   short: string; // 2-line homepage/hub description
   intro: string; // longer opening paragraph for the detail page
@@ -364,6 +365,7 @@ export const SOLUTIONS: Solution[] = [
     icon: "💳",
     industry: "Fintech / Financial Operations",
     title: "Financial Operating System",
+    metaTitle: "Fintech AI Automation System | Nodevant",
     tag: "Storehouse360",
     intro:
       "Financial services businesses run on accuracy and turnaround. This is a complete financial operating system — onboarding, client portal, automated credit and dispute workflows, monitoring, communications, and billing — in one white-label platform, so your team handles exceptions instead of paperwork and clients watch progress in real time.",
@@ -400,6 +402,7 @@ export const SOLUTIONS: Solution[] = [
     icon: "🏭",
     industry: "Manufacturing / Custom Products",
     title: "Custom Manufacturing Operations",
+    metaTitle: "Manufacturing Automation System | Nodevant",
     tag: "FABRIOZA Stack",
     intro:
       "Custom manufacturers lose deals to whoever quotes first and follows up hardest. This system runs the entire top of funnel — find, reach, qualify, and quote — without a sales hire, so every inbound and outbound opportunity gets a fast, consistent response.",
@@ -436,6 +439,7 @@ export const SOLUTIONS: Solution[] = [
     icon: "🤖",
     industry: "B2B SaaS Sales",
     title: "AI Sales Agency Platform",
+    metaTitle: "SaaS Sales AI Automation | Nodevant",
     tag: "Scalaro Framework",
     intro:
       "Pipeline can't depend on hiring more SDRs. This multi-agent platform runs research, content, and outreach in parallel — each agent specialized for one job — so your sales motion scales with compute instead of headcount.",
@@ -472,6 +476,7 @@ export const SOLUTIONS: Solution[] = [
     icon: "🏗️",
     industry: "Construction / Field Services",
     title: "Roofing & Field Service Automation",
+    metaTitle: "Field Services Automation System | Nodevant",
     tag: "BMAIKR Engine",
     intro:
       "In field services, the first accurate quote usually wins the job. This system captures every lead, produces an instant estimate, and chases it until it closes — turning a days-long quoting process into hours.",
@@ -508,6 +513,7 @@ export const SOLUTIONS: Solution[] = [
     icon: "📚",
     industry: "Education / Online Services",
     title: "Online Education Business System",
+    metaTitle: "Education AI Automation System | Nodevant",
     tag: "Academy Stack",
     intro:
       "Online education businesses lose students to slow enrollment and patchy communication. This system automates intake-to-onboarding and keeps parents informed, so admins stop chasing forms and payments and focus on teaching quality.",
@@ -544,6 +550,7 @@ export const SOLUTIONS: Solution[] = [
     icon: "🌿",
     industry: "Home Services",
     title: "Lawn Care & Home Services System",
+    metaTitle: "Home Services Automation System | Nodevant",
     tag: "Home Services Stack",
     intro:
       "Local home-service demand is steady, but most businesses only capture it by word of mouth. This system generates leads from local search, re-engages past clients each season, and books jobs automatically — turning a feast-or-famine pipeline into a predictable one.",

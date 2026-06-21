@@ -18,8 +18,7 @@ import {
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
-  title:
-    "Nodevant — AI Automation Agency | Custom AI Agents & Workflow Automation",
+  title: "Nodevant | AI Automation Agency & AI Agents",
   description:
     "Nodevant builds enterprise-grade AI agents, workflow automations, and intelligent integrations that eliminate busywork and scale revenue. Get your free automation audit.",
   path: "/",

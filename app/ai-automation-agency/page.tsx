@@ -11,8 +11,7 @@ import { SITE } from "@/lib/site";
 import { SERVICES } from "@/lib/content";
 
 export const metadata: Metadata = pageMetadata({
-  title:
-    "AI Automation Agency | Custom AI Agents & Workflow Automation — Nodevant",
+  title: "AI Automation Agency Services | Nodevant",
   description:
     "Nodevant is an AI automation agency that builds custom AI agents, workflow automations, and integrations. See what an AI automation agency does, what it costs, and how to choose one.",
   path: "/ai-automation-agency/",

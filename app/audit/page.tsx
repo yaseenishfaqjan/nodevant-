@@ -5,8 +5,7 @@ import { webApplicationSchema, breadcrumbSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
-  title:
-    "Free Automation Audit | Find Your #1 AI Automation Opportunity — Nodevant",
+  title: "Free AI Automation Audit | Nodevant",
   description:
     "Take our free 90-second automation audit. Answer 7 questions about your business and get a personalized report showing your biggest automation opportunity and estimated ROI.",
   path: "/audit/",

@@ -26,7 +26,7 @@ export function generateMetadata({
   if (!s)
     return pageMetadata({ title: "Solution", description: "", path: "/solutions/" });
   return pageMetadata({
-    title: `${s.title} | ${s.industry} Automation — Nodevant`,
+    title: s.metaTitle,
     description: `${s.short} A complete, deployed AI automation system for ${s.industry.toLowerCase()}.`,
     path: `/solutions/${s.slug}/`,
     keywords: [

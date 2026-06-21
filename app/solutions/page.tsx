@@ -9,8 +9,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { SOLUTIONS } from "@/lib/content";
 
 export const metadata: Metadata = pageMetadata({
-  title:
-    "Industry AI Automation Systems | Nodevant — Turnkey Business Solutions",
+  title: "Industry AI Automation Systems | Nodevant",
   description:
     "Complete AI automation systems built for specific industries — credit repair, manufacturing, SaaS sales, field services, education, and home services. Deployed and proven.",
   path: "/solutions/",

@@ -43,9 +43,9 @@ export default function AuditStep({
 
   return (
     <div>
-      <h1 className="text-center font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
+      <h2 className="text-center font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
         {question.question}
-      </h1>
+      </h2>
       {question.helper && (
         <p className="mt-3 text-center text-base text-muted">{question.helper}</p>
       )}

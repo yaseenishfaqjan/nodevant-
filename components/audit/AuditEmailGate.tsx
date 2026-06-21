@@ -37,9 +37,9 @@ export default function AuditEmailGate({
         <div className="mb-2 text-center text-4xl" aria-hidden="true">
           ✨
         </div>
-        <h1 className="text-center font-display text-3xl font-bold text-ink md:text-4xl">
+        <h2 className="text-center font-display text-3xl font-bold text-ink md:text-4xl">
           Your automation report is ready.
-        </h1>
+        </h2>
         <p className="mt-3 text-center text-base text-muted">
           Enter your details and we&apos;ll send you the full breakdown —
           including a step-by-step build plan.

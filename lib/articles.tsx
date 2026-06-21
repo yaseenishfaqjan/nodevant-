@@ -319,8 +319,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "n8n-vs-make-vs-zapier",
     h1: "n8n vs Make vs Zapier in 2026",
-    metaTitle:
-      "n8n vs Make vs Zapier in 2026: Which Automation Tool Is Right for You? | Nodevant",
+    metaTitle: "n8n vs Make vs Zapier 2026 | Nodevant",
     description:
       "A head-to-head comparison of n8n, Make, and Zapier in 2026 — pricing, learning curve, AI support, and a clear verdict for each type of business.",
     category: "Comparisons",
@@ -576,8 +575,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "ai-agents-for-business",
     h1: "How AI Agents Are Replacing Entire Business Functions in 2026",
-    metaTitle:
-      "How AI Agents Are Replacing Entire Business Functions in 2026 | Nodevant",
+    metaTitle: "How AI Agents Replace Business Functions | Nodevant",
     description:
       "AI agents now reason, decide, and act — replacing whole workflows in sales, support, and ops. Here's what's actually possible in 2026, what isn't, and how to deploy your first agent.",
     category: "Trends",
