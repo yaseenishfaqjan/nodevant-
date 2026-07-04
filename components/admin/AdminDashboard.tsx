@@ -163,13 +163,13 @@ export default function AdminDashboard() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-display text-3xl font-bold text-ink">Leads</h1>
         <div className="flex gap-3">
-          <button onClick={exportCsv} className="btn-ghost px-4 py-2 text-sm">
+          <button onClick={exportCsv} className="btn-secondary px-4 py-2 text-sm">
             Export CSV
           </button>
-          <button onClick={() => load(token)} className="btn-ghost px-4 py-2 text-sm">
+          <button onClick={() => load(token)} className="btn-secondary px-4 py-2 text-sm">
             Refresh
           </button>
-          <button onClick={logout} className="btn-ghost px-4 py-2 text-sm">
+          <button onClick={logout} className="btn-secondary px-4 py-2 text-sm">
             Log out
           </button>
         </div>
@@ -217,7 +217,7 @@ export default function AdminDashboard() {
             </option>
           ))}
         </select>
-        <button onClick={() => load(token)} className="btn-ghost px-4 py-2 text-sm">
+        <button onClick={() => load(token)} className="btn-secondary px-4 py-2 text-sm">
           Apply
         </button>
       </div>

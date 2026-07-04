@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function AuditCTA() {
   return (
-    <section className="section-pad">
+    <section className="section-gap">
       <div className="container-x">
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-3xl border border-cyan/25 bg-brand-gradient-soft p-10 text-center md:p-16">

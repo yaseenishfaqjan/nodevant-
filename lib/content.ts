@@ -143,14 +143,15 @@ export const PROCESS: ProcessStep[] = [
 ];
 
 export interface Stat {
-  value: number;
+  // Numeric values animate with a count-up; string values render as-is.
+  value: number | string;
   suffix: string;
   label: string;
 }
 
 // Honest, verifiable stats — defensible from the real portfolio.
 export const STATS: Stat[] = [
-  { value: 6, suffix: "", label: "Complete systems built" },
+  { value: "Proven", suffix: "", label: "Deployed systems" },
   { value: 6, suffix: "", label: "Industries covered" },
   { value: 90, suffix: "s", label: "Free audit, that's it" },
   { value: 100, suffix: "%", label: "ROI-first approach" },

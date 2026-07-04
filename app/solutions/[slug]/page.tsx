@@ -229,7 +229,7 @@ export default function SolutionPage({
                   <Link href="/contact/?from=solutions" className="btn-primary text-lg">
                     Book a Call →
                   </Link>
-                  <Link href="/audit/" className="btn-ghost text-lg">
+                  <Link href="/audit/" className="btn-secondary text-lg">
                     Take the Free Audit
                   </Link>
                 </div>

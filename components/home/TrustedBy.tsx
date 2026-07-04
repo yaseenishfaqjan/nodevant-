@@ -17,7 +17,7 @@ const TOOLS = [
 
 export default function TrustedBy() {
   return (
-    <section className="border-y border-line py-12" aria-label="Tools we work with">
+    <section className="section-strip border-y border-line" aria-label="Tools we work with">
       <p className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.18em] text-faint">
         Building on the tools your team already trusts
       </p>

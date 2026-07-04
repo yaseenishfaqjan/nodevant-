@@ -5,7 +5,7 @@ import { TESTIMONIALS } from "@/lib/content";
 
 export default function Testimonials() {
   return (
-    <section className="section-pad bg-bg-soft">
+    <section className="section-gap bg-bg-soft">
       <div className="container-x">
         <SectionHeading
           eyebrow="Proof, Not Promises"

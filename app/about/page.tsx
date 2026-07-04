@@ -139,7 +139,7 @@ export default function AboutPage() {
       </section>
 
       {/* Differentiators */}
-      <section className="section-pad">
+      <section className="section-gap">
         <div className="container-x">
           <SectionHeading
             eyebrow="Why Nodevant"
@@ -166,7 +166,7 @@ export default function AboutPage() {
       </section>
 
       {/* Businesses we own and operate */}
-      <section className="section-pad">
+      <section className="section-gap">
         <div className="container-x">
           <SectionHeading
             eyebrow="Proof We Eat Our Own Cooking"

@@ -12,7 +12,7 @@ export default function CTABand({
   subtitle = "Answer 7 quick questions and get a personalized ROI report — free, no email required to start.",
 }: CTABandProps) {
   return (
-    <section className="section-pad">
+    <section className="section-gap">
       <div className="container-x">
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-3xl border border-cyan/25 bg-brand-gradient-soft p-10 text-center md:p-14">
@@ -24,7 +24,7 @@ export default function CTABand({
               <Link href="/audit/" className="btn-primary text-lg">
                 Get My Free Audit →
               </Link>
-              <Link href="/contact/" className="btn-ghost text-lg">
+              <Link href="/contact/" className="btn-secondary text-lg">
                 Book a Call
               </Link>
             </div>

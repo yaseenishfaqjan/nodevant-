@@ -101,7 +101,7 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-7 py-3.5 text-base font-semibold text-bg transition-all duration-300 hover:shadow-glow-cyan hover:brightness-110;
   }
 
-  .btn-ghost {
+  .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-white/[0.02] px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-cyan/50 hover:bg-white/[0.04];
   }
 
@@ -113,8 +113,15 @@ body {
     @apply text-xs font-semibold uppercase tracking-[0.18em] text-cyan;
   }
 
-  .section-pad {
-    @apply py-24 md:py-32;
+  /* Section spacing system — single source of truth */
+  .section-gap {
+    @apply py-20 md:py-28;
+  }
+  .section-gap-lg {
+    @apply py-28 md:py-36;
+  }
+  .section-strip {
+    @apply py-10 md:py-14;
   }
 }
 

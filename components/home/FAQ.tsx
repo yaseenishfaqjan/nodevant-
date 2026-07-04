@@ -9,7 +9,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section-pad">
+    <section id="faq" className="section-gap">
       <div className="container-x">
         <SectionHeading
           eyebrow="Questions"

@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function FinalCTA() {
   return (
-    <section className="section-pad">
+    <section className="section-gap">
       <div className="container-x">
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-3xl border border-line bg-bg-soft p-12 text-center md:p-20">
@@ -22,7 +22,7 @@ export default function FinalCTA() {
                 <Link href="/contact/" className="btn-primary text-lg">
                   Book a Call →
                 </Link>
-                <Link href="/audit/" className="btn-ghost text-lg">
+                <Link href="/audit/" className="btn-secondary text-lg">
                   Take the Free Audit
                 </Link>
               </div>

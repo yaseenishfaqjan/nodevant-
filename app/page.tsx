@@ -69,7 +69,7 @@ export default function Home() {
       </section>
 
       <TrustedBy />
-      <div className="pt-12">
+      <div className="section-strip">
         <TrustLine />
       </div>
       <AuditCTA />

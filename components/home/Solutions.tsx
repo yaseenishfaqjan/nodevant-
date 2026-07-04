@@ -6,7 +6,7 @@ import { SOLUTIONS } from "@/lib/content";
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="section-pad bg-bg-soft">
+    <section id="solutions" className="section-gap bg-bg-soft">
       <div className="container-x">
         <SectionHeading
           eyebrow="Turnkey Industry Solutions"
@@ -50,7 +50,7 @@ export default function Solutions() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/solutions/" className="btn-ghost">
+          <Link href="/solutions/" className="btn-secondary">
             Explore all industry systems →
           </Link>
         </div>

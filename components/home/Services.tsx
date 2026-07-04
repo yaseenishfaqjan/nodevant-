@@ -6,7 +6,7 @@ import { SERVICES } from "@/lib/content";
 
 export default function Services() {
   return (
-    <section id="services" className="section-pad">
+    <section id="services" className="section-gap">
       <div className="container-x">
         <SectionHeading
           eyebrow="What We Build"

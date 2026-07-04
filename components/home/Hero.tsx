@@ -66,7 +66,7 @@ export default function Hero() {
           <Link href="/audit/" className="btn-primary w-full sm:w-auto">
             Get My Free Audit →
           </Link>
-          <Link href="/case-studies/" className="btn-ghost w-full sm:w-auto">
+          <Link href="/case-studies/" className="btn-secondary w-full sm:w-auto">
             See Our Work
           </Link>
         </motion.div>
