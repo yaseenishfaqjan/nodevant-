@@ -97,7 +97,7 @@ export default function ServicesPage() {
                         {service.tools.map((t) => (
                           <span
                             key={t}
-                            className="rounded-full border border-line bg-white/[0.03] px-3 py-1 text-xs text-muted"
+                            className="rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-xs text-muted"
                           >
                             {t}
                           </span>
@@ -116,7 +116,7 @@ export default function ServicesPage() {
                       <h3 className="text-xs font-semibold uppercase tracking-wider text-faint">
                         Starting price
                       </h3>
-                      <p className="mt-2 font-display text-lg font-semibold text-ink">
+                      <p className="mt-2 font-mono text-lg font-medium text-ink">
                         {service.startingPrice}
                       </p>
                     </div>

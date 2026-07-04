@@ -21,20 +21,8 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
-        {/* Status pill — replaces COMING SOON */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 flex justify-center"
-        >
-          <span className="pill">
-            <span className="h-2 w-2 animate-pulse-dot rounded-full bg-cyan shadow-glow-cyan" />
-            AI Automation Agency
-          </span>
-        </motion.div>
-
-        {/* NODE VANT wordmark — visual element (not the H1, for SEO) */}
+        {/* NODE VANT wordmark — the hero's visual focal point (decorative;
+            the keyword H1 below is the semantic heading for SEO) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,9 +51,9 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.18 }}
           className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted md:text-xl"
         >
-          We replace your team&apos;s most time-consuming manual work with
-          intelligent AI systems — so leads get followed up instantly, data
-          syncs automatically, and support runs 24/7 without adding headcount.
+          Your team wastes hours on work AI can do in seconds. We build the
+          systems that fix that — fully deployed, fully automated, in weeks not
+          months.
         </motion.p>
 
         {/* CTAs */}

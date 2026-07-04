@@ -33,6 +33,8 @@ export default function FAQ() {
                     onClick={() => setOpen(isOpen ? null : i)}
                     className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                     aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${i}`}
+                    id={`faq-trigger-${i}`}
                   >
                     <span className="font-display text-lg font-semibold text-ink">
                       {faq.q}
@@ -51,6 +53,9 @@ export default function FAQ() {
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
+                        id={`faq-panel-${i}`}
+                        role="region"
+                        aria-labelledby={`faq-trigger-${i}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}

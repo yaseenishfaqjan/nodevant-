@@ -41,7 +41,7 @@ export default function Process() {
                 <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan/30 bg-bg text-xl shadow-glow-cyan md:mx-0">
                   <span aria-hidden="true">{step.icon}</span>
                 </div>
-                <div className="mb-2 font-display text-sm font-bold text-cyan">
+                <div className="mb-2 font-mono text-sm font-medium tracking-wider text-cyan">
                   STEP {step.step}
                 </div>
                 <h3 className="font-display text-xl font-semibold text-ink">

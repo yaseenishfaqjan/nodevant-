@@ -42,6 +42,43 @@ body {
   background: rgba(0, 212, 255, 0.45);
 }
 
+/* Accessibility — visible keyboard focus in brand cyan */
+*:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link (appears on first Tab) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: #00d4ff;
+  color: #08080f;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #08080f;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer components {
   .container-x {
     @apply mx-auto w-full max-w-7xl px-6 md:px-10;
