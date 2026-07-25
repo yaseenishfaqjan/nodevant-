@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE, GSC_TOKEN, GA_ID } from "@/lib/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
+// Inter — the precise, technical face used by Linear, Vercel & Supabase.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+// Heavy Inter for display headings (the V2 / Linear-precision look).
+const interDisplay = Inter({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["700", "800", "900"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -68,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${interDisplay.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="bg-bg text-ink antialiased">
         <a href="#main-content" className="skip-link">

@@ -22,8 +22,12 @@ export default function SectionHeading({
             : "max-w-2xl text-left"
         }
       >
-        {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-        <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink md:text-5xl">
+        {eyebrow && (
+          <div className={`mb-5 flex ${align === "center" ? "justify-center" : ""}`}>
+            <span className="badge badge-accent">{eyebrow}</span>
+          </div>
+        )}
+        <h2 className="font-display text-4xl font-black leading-tight tracking-tight text-ink md:text-5xl">
           {title}
         </h2>
         {subtitle && (

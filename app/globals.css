@@ -3,8 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: #08080f;
-  --foreground: #f0f0ff;
+  --background: #0c0c0f;
+  --foreground: #f1f1fa;
+  /* V2 design tokens — charcoal base, cyan/violet accent */
+  --bg: #0c0c0f;
+  --bg-card: #13131a;
+  --bg-elevated: #18181f;
+  --border: #1e1e2e;
+  --border-muted: #16161f;
+  --accent: #00d4ff;
+  --accent-2: #9b5cff;
+  --accent-glow: rgba(0, 212, 255, 0.15);
+  --gradient: linear-gradient(135deg, #00d4ff, #9b5cff);
+  --text: #f1f1fa;
+  --text-muted: #8a90a0;
+  --text-subtle: #5f6472;
 }
 
 * {
@@ -16,11 +29,21 @@ html {
 }
 
 body {
-  background: #08080f;
-  color: #f0f0ff;
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background: #0c0c0f;
+  color: #f1f1fa;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Headings use the Inter display face (V2 / Linear precision) */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display), "Inter", system-ui, sans-serif;
+  letter-spacing: -0.025em;
 }
 
 ::selection {
@@ -29,10 +52,10 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #08080f;
+  background: #0c0c0f;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 212, 255, 0.25);
@@ -88,13 +111,27 @@ body {
     @apply bg-brand-gradient bg-clip-text text-transparent;
   }
 
-  .glow-card {
-    @apply relative rounded-2xl border border-line bg-[rgba(255,255,255,0.02)] p-7 transition-all duration-300;
+  .glow-card,
+  .card {
+    @apply relative rounded-2xl border border-line bg-card p-6 transition-all duration-300 md:p-7;
   }
-  .glow-card:hover {
-    border-color: rgba(0, 212, 255, 0.4);
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.12);
-    transform: translateY(-4px);
+  .glow-card:hover,
+  .card:hover {
+    border-color: rgba(0, 212, 255, 0.55);
+    box-shadow:
+      0 0 0 1px rgba(0, 212, 255, 0.4),
+      0 16px 48px rgba(0, 212, 255, 0.12);
+    transform: translateY(-2px);
+  }
+
+  /* Badges — mono pill labels (V2) */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1 font-mono text-xs font-semibold text-muted;
+  }
+  .badge-accent {
+    border-color: rgba(0, 212, 255, 0.5);
+    color: #00d4ff;
+    background: var(--accent-glow);
   }
 
   .btn-primary {
@@ -131,6 +168,22 @@ body {
     rgba(0, 212, 255, 0.12),
     transparent 70%
   );
+}
+
+/* Decorative grid overlay (V2) */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Frosted nav (V2) */
+.nav-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(12, 12, 15, 0.85);
+  border-bottom: 1px solid var(--border);
 }
 
 /* Hero wordmark gradient — cyan to violet, matches existing brand */

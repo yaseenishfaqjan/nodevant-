@@ -11,9 +11,18 @@ const FEATURES = [
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
+    <section className="grid-overlay relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
       {/* Background layers */}
       <div className="absolute inset-0 radial-glow" aria-hidden="true" />
+      {/* Glow orbs (V2) */}
+      <div
+        className="pointer-events-none absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-cyan opacity-[0.08] blur-[120px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-1/4 right-1/4 h-[320px] w-[320px] rounded-full bg-violet opacity-[0.07] blur-[110px]"
+        aria-hidden="true"
+      />
       <ParticleCanvas />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent"
@@ -21,6 +30,19 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
+        {/* Status badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 flex justify-center"
+        >
+          <span className="badge badge-accent">
+            <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-cyan" />
+            AI Automation Agency · McDonough, GA
+          </span>
+        </motion.div>
+
         {/* NODE VANT wordmark — the hero's visual focal point (decorative;
             the keyword H1 below is the semantic heading for SEO) */}
         <motion.div
