@@ -166,7 +166,7 @@ export default function AiAutomationAgencyPage() {
                   full custom builds scale from there. Because we quantify the ROI
                   up front, most clients see the project pay for itself within the
                   first 1–2 months. Read more in{" "}
-                  <Link href="/blog/workflow-automation-roi/">
+                  <Link href="/blog/roi-of-workflow-automation-year-one/">
                     the ROI of workflow automation
                   </Link>{" "}
                   or learn{" "}

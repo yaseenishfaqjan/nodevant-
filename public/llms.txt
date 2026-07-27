@@ -93,12 +93,9 @@ Nodevant builds three types of AI systems:
 
 ## Blog Articles
 
-- [What Is an AI Automation Agency?](https://nodevant.com/blog/what-is-an-ai-automation-agency/)
 - [n8n vs Make vs Zapier in 2026](https://nodevant.com/blog/n8n-vs-make-vs-zapier/)
-- [How AI Agents Are Replacing Business Functions](https://nodevant.com/blog/ai-agents-for-business/)
-- [The ROI of Workflow Automation](https://nodevant.com/blog/workflow-automation-roi/)
-- [Voice AI Agents for Customer Support](https://nodevant.com/blog/voice-ai-agents-customer-support/)
-- [How to Automate Lead Generation with AI](https://nodevant.com/blog/how-to-automate-lead-generation/)
+- [The Real ROI of Workflow Automation in Year One](https://nodevant.com/blog/roi-of-workflow-automation-year-one/)
+- [Voice AI Agents: A Practical Build-vs-Buy Guide](https://nodevant.com/blog/voice-ai-agents-buyers-guide/)
 
 ## Frequently Asked Questions
 

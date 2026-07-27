@@ -28,6 +28,14 @@ export function organizationSchema() {
       areaServed: "Worldwide",
       availableLanguage: "English",
     },
+    sameAs: [
+      "https://storehouse360.com",
+      "https://scalaro.io",
+      "https://fabrioza.com",
+      "https://fairway360.io",
+      "https://globalshield360.io",
+      "https://peachpicks.app",
+    ],
   };
 }
 
@@ -152,6 +160,246 @@ export function webApplicationSchema() {
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  };
+}
+
+export function productListSchema() {
+  const products = [
+    { name: "Storehouse360", url: "https://storehouse360.com", cat: "FinanceApplication", description: "Financial intelligence platform with 3-bureau credit monitoring, automated FCRA disputes and AI-matched funding." },
+    { name: "Scalaro", url: "https://scalaro.io", cat: "BusinessApplication", description: "Agentic AI sales platform with 20+ autonomous agents for lead sourcing, outreach, voice calls and meeting booking." },
+    { name: "Fairway360", url: "https://fairway360.io", cat: "BusinessApplication", description: "AI operating system for golf courses and country clubs." },
+    { name: "GlobalShield360", url: "https://globalshield360.io", cat: "BusinessApplication", description: "AI roofing command center covering storm leads, roof scans, estimates, dispatch, claims and invoicing." },
+    { name: "PeachPicks", url: "https://peachpicks.app", cat: "GameApplication", description: "Free-to-play sports prediction platform with leaderboards and a local sponsor marketplace." },
+    { name: "Fabrioza", url: "https://fabrioza.com", cat: "BusinessApplication", description: "B2B custom apparel manufacturing platform with a quote-to-production pipeline." },
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Nodevant deployed platforms",
+    itemListElement: products.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: p.name,
+        url: p.url,
+        applicationCategory: p.cat,
+        description: p.description,
+      },
+    })),
+  };
+}
+
+export function socialServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Social Media Marketing Automation",
+    serviceType: "AI social media content creation and multi-platform publishing",
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: "Worldwide",
+    description:
+      "An AI content engine that creates avatar videos, UGC-style ads and platform-tuned posts, then publishes them automatically across up to 10 social platforms.",
+  };
+}
+
+export function serviceDetailSchema(d: {
+  name: string;
+  slug: string;
+  description: string;
+  priceNum: number;
+  rangeLine: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: d.name,
+    description: d.description,
+    url: `${SITE.url}/services/${d.slug}/`,
+    serviceType: "AI automation",
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: "Worldwide",
+    offers: {
+      "@type": "Offer",
+      price: d.priceNum,
+      priceCurrency: "USD",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: d.priceNum,
+        priceCurrency: "USD",
+      },
+    },
+  };
+}
+
+export function faqPageSchema(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export function solutionListSchema(
+  solutions: { slug: string; name: string; description: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Nodevant industry operating systems",
+    itemListElement: solutions.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        name: s.name,
+        description: s.description,
+        url: `${SITE.url}/solutions/${s.slug}/`,
+        provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+        areaServed: "Worldwide",
+      },
+    })),
+  };
+}
+
+export function solutionDetailSchema(d: {
+  name: string;
+  slug: string;
+  description: string;
+  poweredBy: string[]; // service slugs
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: d.name,
+    description: d.description,
+    url: `${SITE.url}/solutions/${d.slug}/`,
+    serviceType: "AI operating system",
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: "Worldwide",
+    isRelatedTo: d.poweredBy.map((slug) => ({
+      "@type": "Service",
+      url: `${SITE.url}/services/${slug}/`,
+    })),
+  };
+}
+
+export function caseStudyListSchema(
+  cases: { slug: string; headline: string; stackName: string; stackSlug: string | null }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Nodevant deployed case studies",
+    itemListElement: cases.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Article",
+        headline: c.headline,
+        url: `${SITE.url}/case-studies/${c.slug}/`,
+        author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+        ...(c.stackSlug
+          ? {
+              about: {
+                "@type": "Service",
+                name: c.stackName,
+                url: `${SITE.url}/solutions/${c.stackSlug}/`,
+              },
+            }
+          : {}),
+      },
+    })),
+  };
+}
+
+export function caseStudyArticleSchema(d: {
+  slug: string;
+  headline: string;
+  description: string;
+  stackName: string;
+  stackSlug: string | null;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: d.headline,
+    description: d.description,
+    url: `${SITE.url}/case-studies/${d.slug}/`,
+    image: `${SITE.url}${SITE.ogImage}`,
+    datePublished: "2026-01-01",
+    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      logo: { "@type": "ImageObject", url: `${SITE.url}/logo.svg` },
+    },
+    ...(d.stackSlug
+      ? {
+          about: {
+            "@type": "Service",
+            name: d.stackName,
+            url: `${SITE.url}/solutions/${d.stackSlug}/`,
+          },
+        }
+      : {}),
+  };
+}
+
+export function blogSchema(
+  posts: { slug: string; title: string; date: string; category: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "The Nodevant Blog",
+    url: `${SITE.url}/blog/`,
+    description:
+      "Guides, comparisons and real numbers on AI automation — written by operators.",
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `${SITE.url}/blog/${p.slug}/`,
+      datePublished: p.date,
+      articleSection: p.category,
+      author: { "@type": "Organization", name: SITE.name },
+    })),
+  };
+}
+
+export function blogPostingSchema(post: {
+  slug: string;
+  title: string;
+  metaDescription: string;
+  date: string;
+  category: string;
+  keywords: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.metaDescription,
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    keywords: post.keywords.join(", "),
+    url: `${SITE.url}/blog/${post.slug}/`,
+    image: `${SITE.url}${SITE.ogImage}`,
+    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      logo: { "@type": "ImageObject", url: `${SITE.url}/logo.svg` },
+    },
+    mainEntityOfPage: `${SITE.url}/blog/${post.slug}/`,
   };
 }
 

@@ -287,71 +287,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  readTime: string;
-  date: string;
-}
-
-export const BLOG_POSTS: BlogPost[] = [
-  {
-    slug: "what-is-an-ai-automation-agency",
-    title: "What Is an AI Automation Agency? (And Do You Actually Need One?)",
-    excerpt:
-      "A plain-English breakdown of what AI automation agencies do, how they compare to hiring in-house, and how to know if your business is ready.",
-    category: "Guides",
-    readTime: "8 min read",
-    date: "2026-06-02",
-  },
-  {
-    slug: "n8n-vs-make-vs-zapier",
-    title: "n8n vs Make vs Zapier in 2026: Which Automation Tool Is Right for You?",
-    excerpt:
-      "A head-to-head comparison of the three biggest automation platforms — pricing, learning curve, triggers, and when to reach for a custom build instead.",
-    category: "Comparisons",
-    readTime: "11 min read",
-    date: "2026-05-21",
-  },
-  {
-    slug: "ai-agents-for-business",
-    title: "How AI Agents Are Replacing Entire Business Functions in 2026",
-    excerpt:
-      "From SDRs to support teams, autonomous AI agents are taking over whole workflows. Here's what's actually possible today — and what isn't.",
-    category: "Trends",
-    readTime: "9 min read",
-    date: "2026-05-09",
-  },
-  {
-    slug: "workflow-automation-roi",
-    title: "The ROI of Workflow Automation: What to Expect in Year One",
-    excerpt:
-      "Real numbers on payback periods, annual savings, and ROI multiples — plus the formula we use to estimate value before writing a line of code.",
-    category: "ROI",
-    readTime: "7 min read",
-    date: "2026-04-28",
-  },
-  {
-    slug: "voice-ai-agents-customer-support",
-    title: "Voice AI Agents for Customer Support: The Complete Guide",
-    excerpt:
-      "How modern voice agents handle real conversations, what they cost to build, and how to deploy one without frustrating your customers.",
-    category: "Voice AI",
-    readTime: "10 min read",
-    date: "2026-04-14",
-  },
-  {
-    slug: "how-to-automate-lead-generation",
-    title: "How to Automate Lead Generation End-to-End with AI",
-    excerpt:
-      "A step-by-step blueprint for building an AI lead engine that captures, enriches, scores, and follows up with prospects automatically.",
-    category: "Lead Gen",
-    readTime: "12 min read",
-    date: "2026-03-30",
-  },
-];
+// Blog content moved to lib/blog-posts.ts (unified V2 blog architecture).
 
 export interface Solution {
   slug: string;

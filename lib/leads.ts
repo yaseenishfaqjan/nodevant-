@@ -1,6 +1,6 @@
 import { LEAD_ENDPOINT, LEAD_ACCESS_KEY } from "./site";
 
-export type LeadType = "audit" | "contact";
+export type LeadType = "audit" | "contact" | "newsletter";
 
 export interface LeadPayload {
   type: LeadType;

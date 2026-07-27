@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
-import { BLOG_POSTS, SOLUTIONS } from "@/lib/content";
+import { PUBLISHED_POSTS } from "@/lib/blog-posts";
+import { SERVICE_DETAILS } from "@/lib/services";
+import { SOLUTION_DETAILS } from "@/lib/solutions";
+import { CASE_STUDY_DETAILS } from "@/lib/case-studies";
 
 export const dynamic = "force-static";
 
@@ -24,14 +27,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/blog/", priority: 0.7, changeFrequency: "weekly" },
   ];
 
-  const solutionPages: MetadataRoute.Sitemap = SOLUTIONS.map((s) => ({
+  const servicePages: MetadataRoute.Sitemap = SERVICE_DETAILS.map((s) => ({
+    url: `${SITE.url}/services/${s.slug}/`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const solutionPages: MetadataRoute.Sitemap = SOLUTION_DETAILS.map((s) => ({
     url: `${SITE.url}/solutions/${s.slug}/`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.8,
   }));
 
-  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDY_DETAILS.map((c) => ({
+    url: `${SITE.url}/case-studies/${c.slug}/`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  // Published posts only — coming-soon placeholders are noindexed.
+  const blogPages: MetadataRoute.Sitemap = PUBLISHED_POSTS.map((post) => ({
     url: `${SITE.url}/blog/${post.slug}/`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly",
@@ -45,7 +63,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: p.changeFrequency,
       priority: p.priority,
     })),
+    ...servicePages,
     ...solutionPages,
+    ...caseStudyPages,
     ...blogPages,
   ];
 }

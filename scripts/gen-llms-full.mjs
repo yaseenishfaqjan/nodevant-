@@ -3,13 +3,11 @@
 // Runs automatically after `next build` (see package.json).
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
+// Published posts only (coming-soon placeholders carry no article content).
 const SLUGS = [
-  "what-is-an-ai-automation-agency",
   "n8n-vs-make-vs-zapier",
-  "ai-agents-for-business",
-  "workflow-automation-roi",
-  "voice-ai-agents-customer-support",
-  "how-to-automate-lead-generation",
+  "roi-of-workflow-automation-year-one",
+  "voice-ai-agents-buyers-guide",
 ];
 
 function decode(s) {

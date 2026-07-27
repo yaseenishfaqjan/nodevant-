@@ -29,8 +29,9 @@ export default function ScoreGauge({ score, label }: ScoreGaugeProps) {
   const circumference = Math.PI * radius; // half circle
   const offset = circumference * (1 - animated / 100);
 
-  // Color: low score => cyan (high opportunity), high score => violet
-  const color = animated < 40 ? "#00D4FF" : animated < 70 ? "#5BA8FF" : "#9B5CFF";
+  // Color: low score => blue (high opportunity), high score => violet.
+  // Hex literals (not CSS vars) because the value is alpha-suffixed below.
+  const color = animated < 40 ? "#3B82F6" : animated < 70 ? "#6366F1" : "#8B5CF6";
 
   return (
     <div className="flex flex-col items-center">
