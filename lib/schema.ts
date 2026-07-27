@@ -403,6 +403,32 @@ export function blogPostingSchema(post: {
   };
 }
 
+export function contactPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Nodevant",
+    url: `${SITE.url}/contact/`,
+    description:
+      "Book a free 30-minute strategy call, take the 90-second automation audit, or send Nodevant a message about your project.",
+    mainEntity: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      email: SITE.email,
+      telephone: SITE.phoneRaw,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SITE.address.street,
+        addressLocality: SITE.address.city,
+        addressRegion: SITE.address.region,
+        postalCode: SITE.address.postal,
+        addressCountry: SITE.address.country,
+      },
+    },
+  };
+}
+
 export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
