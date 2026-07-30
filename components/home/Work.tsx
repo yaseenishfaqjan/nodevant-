@@ -35,8 +35,8 @@ function ProductCard({ p }: { p: Product }) {
   return (
     <div className="card card-hover p-[26px]">
       <span className="flex items-center gap-3.5">
-        <span className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl p-2 text-xl font-extrabold" style={{ background: "var(--surface-2)", border: "1px solid var(--chip-border)" }}>
-          <BrandLogo slug={p.logoSlug} name={p.name} fallback={p.initial} className="max-h-full max-w-full object-contain" />
+        <span className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl text-xl font-extrabold" style={{ background: "var(--surface-2)", border: "1px solid var(--chip-border)" }}>
+          <BrandLogo slug={p.logoSlug} name={p.name} fallback={p.initial} className="h-full w-full object-cover" />
         </span>
         <span className="flex min-w-0 flex-col gap-1.5">
           <a href={p.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-[7px] font-display text-[19px] font-extrabold tracking-[-0.02em] text-ink transition-colors hover:text-cyan">

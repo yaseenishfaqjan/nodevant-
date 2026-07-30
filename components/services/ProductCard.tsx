@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
+import BrandLogo from "@/components/ui/BrandLogo";
 import type { ProductRef } from "@/lib/services";
 
 export default function ProductCard({ product }: { product: ProductRef }) {
@@ -13,13 +14,13 @@ export default function ProductCard({ product }: { product: ProductRef }) {
       >
         <div className="flex items-center gap-3.5">
           <span
-            className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl font-display text-lg font-extrabold"
+            className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl font-display text-lg font-extrabold"
             style={{
               background: "var(--surface-2)",
               border: "1px solid var(--chip-border)",
             }}
           >
-            <span className="gradient-text">{product.initial}</span>
+            <BrandLogo slug={product.key} name={product.name} fallback={product.initial} className="h-full w-full object-cover" />
           </span>
           <span className="flex flex-col gap-1">
             <span className="inline-flex items-center gap-1.5 font-display text-[16px] font-extrabold tracking-[-0.02em] text-ink">

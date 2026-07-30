@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import SectionHead from "@/components/ui/SectionHead";
+import BrandLogo from "@/components/ui/BrandLogo";
 import JsonLd from "@/components/ui/JsonLd";
 import SolutionCard from "@/components/solutions/SolutionCard";
 import IndustryRouter from "@/components/solutions/IndustryRouter";
@@ -146,10 +147,10 @@ export default function SolutionsPage() {
                 className="card card-hover flex flex-col items-center gap-2.5 p-4 text-center text-body"
               >
                 <span
-                  className="flex h-12 w-12 items-center justify-center rounded-xl font-display text-lg font-extrabold"
+                  className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl font-display text-lg font-extrabold"
                   style={{ background: "var(--surface-2)", border: "1px solid var(--chip-border)" }}
                 >
-                  <span className="gradient-text">{p.initial}</span>
+                  <BrandLogo slug={p.key} name={p.name} fallback={p.initial} className="h-full w-full object-cover" />
                 </span>
                 <span className="text-[13.5px] font-semibold text-ink">{p.name}</span>
               </a>

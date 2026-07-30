@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import SectionHead from "@/components/ui/SectionHead";
+import BrandLogo from "@/components/ui/BrandLogo";
 import JsonLd from "@/components/ui/JsonLd";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, organizationSchema } from "@/lib/schema";
@@ -20,13 +21,13 @@ export const metadata: Metadata = pageMetadata({
 
 // The six live platforms we own and operate — the proof asset, surfaced first.
 // URLs mirror the Organization sameAs list in lib/schema.ts.
-const PRODUCTS: { initial: string; name: string; industry: string; url: string }[] = [
-  { initial: "S", name: "Storehouse360", industry: "Fintech · Financial Operating System", url: "https://storehouse360.com" },
-  { initial: "S", name: "Scalaro", industry: "B2B SaaS Sales", url: "https://scalaro.io" },
-  { initial: "F", name: "Fabrioza", industry: "Custom Manufacturing", url: "https://fabrioza.com" },
-  { initial: "F", name: "Fairway360", industry: "Hospitality · Golf Ops", url: "https://fairway360.io" },
-  { initial: "G", name: "GlobalShield360", industry: "Field Services · Roofing", url: "https://globalshield360.io" },
-  { initial: "P", name: "PeachPicks", industry: "Consumer · Sports & Rewards", url: "https://peachpicks.app" },
+const PRODUCTS: { initial: string; logoSlug: string; name: string; industry: string; url: string }[] = [
+  { initial: "S", logoSlug: "storehouse360", name: "Storehouse360", industry: "Fintech · Financial Hub", url: "https://storehouse360.com" },
+  { initial: "S", logoSlug: "scalaro", name: "Scalaro", industry: "B2B SaaS Sales", url: "https://scalaro.io" },
+  { initial: "F", logoSlug: "fabrioza", name: "Fabrioza", industry: "Custom Manufacturing", url: "https://fabrioza.com" },
+  { initial: "F", logoSlug: "fairway360", name: "Fairway360", industry: "Hospitality · Golf Ops", url: "https://fairway360.io" },
+  { initial: "G", logoSlug: "globalshield360", name: "GlobalShield360", industry: "Field Services · Roofing", url: "https://globalshield360.io" },
+  { initial: "P", logoSlug: "peachpicks", name: "PeachPicks", industry: "Consumer · Sports & Rewards", url: "https://peachpicks.app" },
 ];
 
 const TRUST: { icon: IconName; label: string }[] = [
@@ -184,8 +185,8 @@ export default function AboutPage() {
             {PRODUCTS.map((p) => (
               <div key={p.name} className="card card-hover flex flex-wrap items-center justify-between gap-4 p-[22px]">
                 <span className="flex items-center gap-3.5">
-                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[13px] text-xl font-extrabold" style={{ background: "var(--surface-2)", border: "1px solid var(--chip-border)" }}>
-                    <span className="gradient-text">{p.initial}</span>
+                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-[13px] text-xl font-extrabold" style={{ background: "var(--surface-2)", border: "1px solid var(--chip-border)" }}>
+                    <BrandLogo slug={p.logoSlug} name={p.name} fallback={p.initial} className="h-full w-full object-cover" />
                   </span>
                   <span className="flex min-w-0 flex-col gap-1.5">
                     <span className="font-display text-lg font-extrabold tracking-[-0.02em] text-ink">{p.name}</span>
