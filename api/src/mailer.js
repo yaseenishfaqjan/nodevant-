@@ -163,4 +163,13 @@ async function sendWelcomeEmail(lead, kind) {
   });
 }
 
-module.exports = { sendReportEmail, sendWelcomeEmail, sendNotification };
+module.exports = {
+  sendReportEmail,
+  sendWelcomeEmail,
+  sendNotification,
+  // Exposed so the unified notification layer (notify.js) reuses one transport.
+  getTransport,
+  FROM_NAME,
+  FROM_ADDR,
+  NOTIFY_TO,
+};

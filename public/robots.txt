@@ -3,6 +3,8 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /audit/results/
 
 # AI crawlers — explicitly allowed
 User-agent: GPTBot

@@ -10,7 +10,7 @@ app.set("trust proxy", true);
 const origins = (process.env.CORS_ORIGINS || "https://nodevant.com,https://www.nodevant.com,http://localhost:3000,http://localhost:3001")
   .split(",")
   .map((s) => s.trim());
-app.use(cors({ origin: origins, methods: ["GET", "POST", "PATCH"] }));
+app.use(cors({ origin: origins, methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"] }));
 app.use(express.json({ limit: "100kb" }));
 
 app.get("/api/health", (_req, res) => res.json({ ok: true }));

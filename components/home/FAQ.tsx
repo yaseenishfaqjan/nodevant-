@@ -1,77 +1,34 @@
-"use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import SectionHeading from "@/components/ui/SectionHeading";
-import { FAQS } from "@/lib/content";
+import Icon from "@/components/ui/Icon";
+import SectionHead from "@/components/ui/SectionHead";
+
+const FAQS = [
+  { q: "How fast until my first automation is live?", a: "Most systems go live 1–3 weeks after the audit. Simple workflows ship in days." },
+  { q: "Do you work with clients outside the US?", a: "Yes — worldwide, across every timezone. Deployed systems run 24/7 regardless of geography." },
+  { q: "What tools do you build on?", a: "n8n, Make, OpenAI and VAPI, wired into the CRM and stack you already run." },
+  { q: "What does it cost?", a: "Fixed project pricing quoted after the free audit. No hourly billing." },
+  { q: "What if it breaks?", a: "Monitoring and support are included. We catch and fix drift before you notice it." },
+  { q: "Do I need technical staff?", a: "No. We handle build, deployment and maintenance end to end." },
+  { q: "Which social platforms can you automate?", a: "All the majors — Instagram, Facebook, X, LinkedIn, TikTok, YouTube, Pinterest, Threads, Bluesky and Google Business. Connect 3 accounts or 10; every post is human-approved before it ships." },
+];
 
 export default function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
-
   return (
-    <section id="faq" className="section-gap">
-      <div className="container-x">
-        <SectionHeading
-          eyebrow="Questions"
-          title="Frequently asked questions"
-          subtitle="Everything you need to know before you start. Still curious? Book a call."
+    <section id="faq" className="section-gap border-t border-line px-5">
+      <div className="mx-auto max-w-[880px]">
+        <SectionHead
+          eyebrow="FAQ"
+          title={<>Answered <span className="gradient-text">before you ask.</span></>}
         />
-
-        <div className="mx-auto mt-14 max-w-3xl space-y-4">
-          {FAQS.map((faq, i) => {
-            const isOpen = open === i;
-            return (
-              <ScrollReveal key={i} delay={i * 0.05}>
-                <div
-                  className={`rounded-2xl border transition-colors ${
-                    isOpen
-                      ? "border-cyan/40 bg-white/[0.03]"
-                      : "border-line bg-white/[0.02]"
-                  }`}
-                >
-                  <button
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${i}`}
-                    id={`faq-trigger-${i}`}
-                  >
-                    <span className="font-display text-lg font-semibold text-ink">
-                      {faq.q}
-                    </span>
-                    <span
-                      className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border text-lg transition-all ${
-                        isOpen
-                          ? "rotate-45 border-cyan text-cyan"
-                          : "border-line text-faint"
-                      }`}
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        id={`faq-panel-${i}`}
-                        role="region"
-                        aria-labelledby={`faq-trigger-${i}`}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-6 pb-6 text-[15px] leading-relaxed text-muted">
-                          {faq.a}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </ScrollReveal>
-            );
-          })}
+        <div className="mt-10 flex flex-col gap-2.5">
+          {FAQS.map((f) => (
+            <details key={f.q} className="card">
+              <summary className="flex min-h-[56px] items-center justify-between gap-4 px-[22px] py-[19px] text-base font-semibold text-ink">
+                {f.q}
+                <Icon name="chevron" data-chev className="h-[18px] w-[18px] flex-shrink-0 text-cyan transition-transform" strokeWidth={1.8} />
+              </summary>
+              <p className="px-[22px] pb-5 text-[14.5px] leading-relaxed text-faint">{f.a}</p>
+            </details>
+          ))}
         </div>
       </div>
     </section>

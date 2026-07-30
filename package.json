@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/gen-llms-full.mjs",
+    "build": "next build && node scripts/gen-llms-full.mjs && node scripts/gen-build-feeds.mjs",
     "start": "next start",
     "lint": "next lint"
   },

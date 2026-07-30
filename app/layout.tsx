@@ -5,6 +5,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE, GSC_TOKEN, GA_ID } from "@/lib/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { ThemeProvider, themeInitScript } from "@/components/theme/ThemeProvider";
 
 // Inter — the precise, technical face used by Linear, Vercel & Supabase.
 const inter = Inter({
@@ -70,27 +71,31 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${interDisplay.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-bg text-ink antialiased">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <Navbar />
-        <main id="main-content" className="min-h-screen pb-24 md:pb-0">
-          {children}
-        </main>
-        <Footer />
-
-        {/* Sticky mobile conversion bar */}
-        <div className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-bg/95 p-3 backdrop-blur-sm md:hidden">
-          <a
-            href="/audit/"
-            className="btn-primary w-full justify-center"
-          >
-            Get My Free Audit →
+      <head>
+        <meta name="theme-color" content="#0C0C0F" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="bg-bg text-body antialiased">
+        <ThemeProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
           </a>
-        </div>
+          <Navbar />
+          <main id="main-content" className="min-h-screen pb-24 md:pb-0">
+            {children}
+          </main>
+          <Footer />
+
+          {/* Sticky mobile conversion bar */}
+          <div className="nav-blur fixed inset-x-0 bottom-0 z-40 p-3 md:hidden">
+            <a href="/audit/" className="btn-primary w-full justify-center">
+              Get My Free Audit →
+            </a>
+          </div>
+        </ThemeProvider>
       </body>
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
     </html>

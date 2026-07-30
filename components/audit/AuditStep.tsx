@@ -190,8 +190,8 @@ export default function AuditStep({
           border-radius: 999px;
           background: linear-gradient(
             90deg,
-            #00d4ff 0%,
-            #9b5cff
+            var(--accent-1) 0%,
+            var(--accent-2)
               ${((sliderValue - (question.min ?? 1)) /
                 ((question.max ?? 40) - (question.min ?? 1))) *
               100}%,
@@ -209,8 +209,8 @@ export default function AuditStep({
           height: 26px;
           border-radius: 50%;
           background: #ffffff;
-          border: 3px solid #00d4ff;
-          box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+          border: 3px solid var(--accent-1);
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
           cursor: pointer;
         }
         .audit-slider::-moz-range-thumb {
@@ -218,8 +218,8 @@ export default function AuditStep({
           height: 26px;
           border-radius: 50%;
           background: #ffffff;
-          border: 3px solid #00d4ff;
-          box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+          border: 3px solid var(--accent-1);
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
           cursor: pointer;
         }
       `}</style>

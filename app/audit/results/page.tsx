@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AuditResults from "@/components/audit/AuditResults";
+import AuditResultsView from "@/components/audit/AuditResultsView";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
@@ -10,5 +10,5 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function AuditResultsPage() {
-  return <AuditResults />;
+  return <AuditResultsView />;
 }

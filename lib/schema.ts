@@ -165,7 +165,7 @@ export function webApplicationSchema() {
 
 export function productListSchema() {
   const products = [
-    { name: "Storehouse360", url: "https://storehouse360.com", cat: "FinanceApplication", description: "Financial intelligence platform with 3-bureau credit monitoring, automated FCRA disputes and AI-matched funding." },
+    { name: "Storehouse360", url: "https://storehouse360.com", cat: "FinanceApplication", description: "All-in-one financial hub with 3-bureau credit intelligence, credit- and debit-card insights, AI-matched funding and real-estate opportunity discovery." },
     { name: "Scalaro", url: "https://scalaro.io", cat: "BusinessApplication", description: "Agentic AI sales platform with 20+ autonomous agents for lead sourcing, outreach, voice calls and meeting booking." },
     { name: "Fairway360", url: "https://fairway360.io", cat: "BusinessApplication", description: "AI operating system for golf courses and country clubs." },
     { name: "GlobalShield360", url: "https://globalshield360.io", cat: "BusinessApplication", description: "AI roofing command center covering storm leads, roof scans, estimates, dispatch, claims and invoicing." },

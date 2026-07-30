@@ -10,25 +10,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Charcoal base (V2 Linear/Vercel aesthetic) — cyan/violet accent kept.
-        bg: "#0C0C0F",
-        "bg-soft": "#13131A",
-        card: "#13131A",
-        elevated: "#18181F",
-        surface: "rgba(255,255,255,0.03)",
+        // All semantic colors read from CSS variables so the light/dark
+        // toggle re-skins the entire site. Names kept for backward-compat.
+        bg: "var(--bg)",
+        "bg-soft": "var(--surface)",
+        card: "var(--surface)",
+        surface: "var(--surface)",
+        elevated: "var(--surface-2)",
+        line: "var(--border)",
+        "line-strong": "var(--border-strong)",
+        "line-muted": "var(--border)",
+        ink: "var(--text-strong)",
+        "text-strong": "var(--text-strong)",
+        body: "var(--text)",
+        muted: "var(--text)",
+        faint: "var(--muted)",
+        tint: "var(--tint)",
+        "chip-border": "var(--chip-border)",
+        ok: "var(--ok)",
+        accent: "var(--accent-1)",
         cyan: {
-          DEFAULT: "#00D4FF",
-          dim: "#0BA5C9",
+          DEFAULT: "var(--accent-1)",
+          dim: "var(--accent-1)",
         },
         violet: {
-          DEFAULT: "#9B5CFF",
-          dim: "#7B3FE4",
+          DEFAULT: "var(--accent-2)",
+          dim: "var(--accent-2)",
         },
-        ink: "#F1F1FA",
-        muted: "#8A90A0",
-        faint: "#5F6472",
-        line: "#1E1E2E",
-        "line-muted": "#16161F",
       },
       fontFamily: {
         display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"],
@@ -36,38 +44,45 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(135deg, #00D4FF 0%, #9B5CFF 100%)",
+        "brand-gradient": "var(--gradient)",
         "brand-gradient-soft":
-          "linear-gradient(135deg, rgba(0,212,255,0.12) 0%, rgba(155,92,255,0.12) 100%)",
+          "linear-gradient(135deg, var(--tint), var(--tint))",
       },
       boxShadow: {
-        "glow-cyan": "0 0 40px rgba(0,212,255,0.25)",
-        "glow-cyan-lg": "0 0 80px rgba(0,212,255,0.35)",
-        "glow-violet": "0 0 40px rgba(155,92,255,0.25)",
+        card: "var(--shadow-card)",
+        glow: "var(--shadow-glow)",
+        "glow-cyan": "0 0 40px var(--glow)",
+        "glow-cyan-lg": "0 0 80px var(--glow)",
+        "glow-violet": "0 0 40px var(--glow)",
       },
       keyframes: {
-        ticker: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+        "nv-pulse": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.45", transform: "scale(0.82)" },
+        },
+        "nv-float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "nv-marquee": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        "nv-fade": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
         },
         "pulse-dot": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.3" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
-        },
       },
       animation: {
-        ticker: "ticker 30s linear infinite",
+        "nv-pulse": "nv-pulse 1.8s ease-in-out infinite",
+        "nv-float": "nv-float 6s ease-in-out infinite",
+        "nv-marquee": "nv-marquee 32s linear infinite",
+        "nv-fade": "nv-fade 0.25s ease both",
         "pulse-dot": "pulse-dot 2s ease-in-out infinite",
-        float: "float 6s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
     },
   },

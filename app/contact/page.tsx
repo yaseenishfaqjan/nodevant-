@@ -52,6 +52,13 @@ const WAYS: {
     href: "#message",
     cta: "Write to us",
   },
+  {
+    icon: "eye",
+    title: "Try the Reverse Audit",
+    text: "Paste your URL and we'll scan your public site in ~20 seconds — three automation opportunities we can see from the outside, before you say a word.",
+    href: "/reverse-audit/",
+    cta: "Scan my site",
+  },
 ];
 
 const CALL_ITEMS: { icon: IconName; title: string; text: string }[] = [
@@ -141,9 +148,9 @@ export default function ContactPage() {
       {/* 2 · Three ways to reach us */}
       <section className="border-t border-line px-5 py-14 md:py-16">
         <div className="mx-auto max-w-[1080px]">
-          <p className="eyebrow">Three ways to reach us</p>
+          <p className="eyebrow">Four ways to reach us</p>
           <span className="rule mt-2.5 mb-7 block" />
-          <div className="grid gap-3.5 sm:grid-cols-3">
+          <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
             {WAYS.map((w) => (
               <a
                 key={w.title}

@@ -1,0 +1,16 @@
+[
+  { "timestamp": "2026-07-22T14:23:00Z", "type": "product-ship", "platform": "fairway360", "headline": "Added multilingual voice support (EN/ES/FR) to inbound receptionist", "context": "Rolled out to 3 clubs. Latency held under 800ms.", "stats": "+2,400 LOC · 3 DEPLOYS · 0 ROLLBACKS" },
+  { "timestamp": "2026-07-21T09:11:00Z", "type": "infra", "platform": "storehouse360", "headline": "Migrated document-queue from Redis to Postgres LISTEN/NOTIFY", "context": "Removed 1 SPOF. Throughput up 3x under peak load." },
+  { "timestamp": "2026-07-18T17:48:00Z", "type": "client-deploy", "platform": "client-work", "headline": "Shipped roofing lead-capture system for a GlobalShield360 partner", "context": "End-to-end deploy in 11 days. First lead captured 4 hours after launch." },
+  { "timestamp": "2026-07-17T11:32:00Z", "type": "fix", "platform": "scalaro", "headline": "Patched webhook retry storm on HubSpot sync", "context": "Idempotency keys added. Zero duplicate contacts since." },
+  { "timestamp": "2026-07-16T15:07:00Z", "type": "experiment", "platform": "peachpicks", "headline": "Testing sponsor-matching agent on live player pool", "context": "40-player cohort. Ships only if match acceptance clears 30%." },
+  { "timestamp": "2026-07-15T08:54:00Z", "type": "product-ship", "platform": "scalaro", "headline": "Shipped agent handoff — AI-to-human transfer with full context", "context": "Transcript + intent summary lands in the rep inbox before the caller does.", "stats": "+1,150 LOC · 2 DEPLOYS · 0 ROLLBACKS" },
+  { "timestamp": "2026-07-14T19:26:00Z", "type": "infra", "platform": "fabrioza", "headline": "Moved quote-render pipeline to queue workers", "context": "Peak quote generation cut from 96s to 14s." },
+  { "timestamp": "2026-07-11T13:40:00Z", "type": "client-deploy", "platform": "client-work", "headline": "Deployed inbound voice agent for a 3-location HVAC operator", "context": "Answered 61 calls in week one. Zero missed." },
+  { "timestamp": "2026-07-10T10:15:00Z", "type": "fix", "platform": "globalshield360", "headline": "Fixed invoice PDF timezone drift for EST field crews", "context": "All timestamps now job-site local." },
+  { "timestamp": "2026-07-09T16:02:00Z", "type": "product-ship", "platform": "storehouse360", "headline": "Launched card & funding insights engine — scored weekly", "context": "Early lift: +9% engagement vs control.", "stats": "+3,080 LOC · 4 DEPLOYS · 1 ROLLBACK" },
+  { "timestamp": "2026-07-08T09:47:00Z", "type": "experiment", "platform": "client-work", "headline": "Prototyping careers-page scraper for reverse-audit signals", "context": "Feeds the /reverse-audit scanner. May ship in Q3." },
+  { "timestamp": "2026-07-07T14:55:00Z", "type": "infra", "platform": "fairway360", "headline": "Consolidated 3 telephony providers to 1 — cost down 38%", "context": "Failover tested live mid-round. No dropped calls." },
+  { "timestamp": "2026-07-04T08:20:00Z", "type": "fix", "platform": "peachpicks", "headline": "Corrected pick-scoring edge case on postponed games", "context": "Backfilled 212 affected picks. Users notified in-app." },
+  { "timestamp": "2026-07-02T12:31:00Z", "type": "client-deploy", "platform": "scalaro", "headline": "Rolled out a Scalaro instance for a freight logistics broker", "context": "20 agents live across email + SMS. First booked meeting on day 2." }
+]

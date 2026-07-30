@@ -2,22 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #0c0c0f;
-  --foreground: #f1f1fa;
-  /* V2 design tokens — charcoal base, cyan/violet accent */
+/* ============================================================
+   NODEVANT design tokens — dual theme (charcoal + electric blue/violet)
+   Prototype-faithful. Every surface reads from these variables so the
+   light/dark toggle re-skins the whole site from one place.
+   ============================================================ */
+:root,
+:root[data-theme="dark"] {
   --bg: #0c0c0f;
-  --bg-card: #13131a;
-  --bg-elevated: #18181f;
-  --border: #1e1e2e;
-  --border-muted: #16161f;
-  --accent: #00d4ff;
-  --accent-2: #9b5cff;
-  --accent-glow: rgba(0, 212, 255, 0.15);
-  --gradient: linear-gradient(135deg, #00d4ff, #9b5cff);
-  --text: #f1f1fa;
-  --text-muted: #8a90a0;
-  --text-subtle: #5f6472;
+  --surface: #13131a;
+  --surface-2: #17171f;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --accent-1: #3b82f6;
+  --accent-2: #8b5cf6;
+  --gradient: linear-gradient(100deg, #3b82f6, #8b5cf6);
+  --text: rgba(255, 255, 255, 0.85);
+  --text-strong: #ffffff;
+  --muted: rgba(255, 255, 255, 0.4);
+  --glow: rgba(59, 130, 246, 0.1);
+  --grid-line: rgba(59, 130, 246, 0.018);
+  --nav-glass: rgba(12, 12, 15, 0.72);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 8px 30px rgba(59, 130, 246, 0.28);
+  --tint: rgba(59, 130, 246, 0.09);
+  --chip-border: rgba(59, 130, 246, 0.25);
+  --ok: #34d399;
+  --beam: 0.1;
+  --veil: 0.34;
+}
+
+:root[data-theme="light"] {
+  --bg: #fafafc;
+  --surface: #ffffff;
+  --surface-2: #f4f4f8;
+  --border: rgba(12, 12, 25, 0.08);
+  --border-strong: rgba(12, 12, 25, 0.14);
+  --accent-1: #2563eb;
+  --accent-2: #7c3aed;
+  --gradient: linear-gradient(100deg, #2563eb, #7c3aed);
+  --text: rgba(12, 12, 25, 0.82);
+  --text-strong: #0c0c0f;
+  --muted: rgba(12, 12, 25, 0.45);
+  --glow: rgba(37, 99, 235, 0.08);
+  --grid-line: rgba(37, 99, 235, 0.035);
+  --nav-glass: rgba(250, 250, 252, 0.72);
+  --shadow-card: 0 10px 30px rgba(12, 12, 25, 0.08);
+  --shadow-glow: 0 8px 24px rgba(37, 99, 235, 0.22);
+  --tint: rgba(37, 99, 235, 0.08);
+  --chip-border: rgba(37, 99, 235, 0.25);
+  --ok: #059669;
+  --beam: 0.07;
+  --veil: 0.2;
 }
 
 * {
@@ -29,14 +65,17 @@ html {
 }
 
 body {
-  background: #0c0c0f;
-  color: #f1f1fa;
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-inter), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
-/* Headings use the Inter display face (V2 / Linear precision) */
+/* Display headings use the heavy Inter face (Linear-precision look) */
 h1,
 h2,
 h3,
@@ -44,54 +83,168 @@ h4,
 h5 {
   font-family: var(--font-display), "Inter", system-ui, sans-serif;
   letter-spacing: -0.025em;
+  color: var(--text-strong);
+}
+
+a {
+  color: var(--accent-1);
+  text-decoration: none;
 }
 
 ::selection {
-  background: rgba(0, 212, 255, 0.3);
-  color: #ffffff;
+  background: rgba(59, 130, 246, 0.35);
+  color: #fff;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0c0c0f;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 212, 255, 0.25);
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 212, 255, 0.45);
+  background: var(--gradient);
+  border-radius: 99px;
 }
 
-/* Accessibility — visible keyboard focus in brand cyan */
+/* Accessibility — visible keyboard focus */
 *:focus-visible {
-  outline: 2px solid #00d4ff;
+  outline: 2px solid var(--accent-1);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
+}
+
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] > summary [data-chev] {
+  transform: rotate(90deg);
 }
 
 /* Skip-to-content link (appears on first Tab) */
 .skip-link {
-  position: absolute;
-  top: -100%;
-  left: 1rem;
-  z-index: 9999;
-  padding: 0.5rem 1rem;
-  border-radius: 0 0 0.5rem 0.5rem;
-  background: #00d4ff;
-  color: #08080f;
+  position: fixed;
+  top: 8px;
+  left: -9999px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-strong);
   font-weight: 600;
-  transition: top 0.15s ease;
+  font-size: 13px;
 }
 .skip-link:focus {
-  top: 0;
-  outline: 2px solid #08080f;
+  left: 8px;
+}
+
+/* ============================================================
+   Keyframes (prototype-faithful)
+   ============================================================ */
+@keyframes nv-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+@keyframes nv-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+@keyframes nv-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(59, 130, 246, 0.32),
+      0 10px 40px rgba(139, 92, 246, 0.26);
+  }
+  50% {
+    box-shadow:
+      0 0 0 13px rgba(59, 130, 246, 0),
+      0 10px 58px rgba(139, 92, 246, 0.42);
+  }
+}
+@keyframes nv-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes nv-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+@keyframes nv-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes nv-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes nv-dd {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes nv-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes nv-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1160;
+  }
+}
+@keyframes nv-line {
+  to {
+    background-position: 40px 0;
+  }
 }
 
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
+  [data-pulse] {
+    display: none;
+  }
   *,
   *::before,
   *::after {
@@ -102,143 +255,229 @@ h5 {
   }
 }
 
+/* ============================================================
+   Reusable component classes
+   ============================================================ */
 @layer components {
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-10;
+    @apply mx-auto w-full max-w-7xl px-5 md:px-8;
   }
 
   .gradient-text {
-    @apply bg-brand-gradient bg-clip-text text-transparent;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
+  /* Cards */
   .glow-card,
   .card {
-    @apply relative rounded-2xl border border-line bg-card p-6 transition-all duration-300 md:p-7;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.35s ease;
   }
-  .glow-card:hover,
-  .card:hover {
-    border-color: rgba(0, 212, 255, 0.55);
-    box-shadow:
-      0 0 0 1px rgba(0, 212, 255, 0.4),
-      0 16px 48px rgba(0, 212, 255, 0.12);
-    transform: translateY(-2px);
+  .card-hover:hover,
+  .glow-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--chip-border);
+    box-shadow: 0 18px 44px var(--glow);
   }
 
-  /* Badges — mono pill labels (V2) */
+  /* Mono pill badges */
   .badge {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1 font-mono text-xs font-semibold text-muted;
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] font-medium;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
   }
   .badge-accent {
-    border-color: rgba(0, 212, 255, 0.5);
-    color: #00d4ff;
-    background: var(--accent-glow);
+    border-color: var(--accent-1);
+    color: var(--text-strong);
+    background: var(--tint);
+    letter-spacing: 0.05em;
   }
 
+  /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-7 py-3.5 text-base font-semibold text-bg transition-all duration-300 hover:shadow-glow-cyan hover:brightness-110;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 text-base font-semibold text-white;
+    min-height: 52px;
+    background: var(--gradient);
+    box-shadow: var(--shadow-glow);
+    transition: box-shadow 0.2s ease;
   }
-
+  .btn-primary:hover {
+    box-shadow:
+      0 14px 40px var(--glow),
+      var(--shadow-glow);
+  }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-white/[0.02] px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:border-cyan/50 hover:bg-white/[0.04];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 text-base font-semibold;
+    min-height: 52px;
+    border: 1px solid var(--border-strong);
+    color: var(--text-strong);
+    transition: background-color 0.2s ease;
   }
-
-  .pill {
-    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-1.5 text-sm font-medium text-muted;
+  .btn-secondary:hover {
+    background: var(--surface-2);
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-cyan;
+    @apply font-mono text-[11px] uppercase tracking-[0.2em];
+    color: var(--muted);
   }
 
-  /* Section spacing system — single source of truth */
-  .section-gap {
-    @apply py-20 md:py-28;
+  /* Icon chip (repeated feature-row square) */
+  .chip {
+    @apply flex flex-shrink-0 items-center justify-center rounded-xl;
+    background: var(--tint);
+    border: 1px solid var(--chip-border);
+    color: var(--accent-1);
   }
-  .section-gap-lg {
-    @apply py-28 md:py-36;
+
+  /* Section spacing */
+  .section-gap {
+    @apply py-16 md:py-[104px];
   }
   .section-strip {
     @apply py-10 md:py-14;
   }
 }
 
+/* Frosted nav */
+.nav-blur {
+  background: var(--nav-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Decorative grid overlay */
+.grid-overlay {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
 .radial-glow {
   background: radial-gradient(
-    ellipse 60% 50% at 50% 40%,
-    rgba(0, 212, 255, 0.12),
+    ellipse 60% 50% at 50% 30%,
+    var(--glow),
     transparent 70%
   );
 }
 
-/* Decorative grid overlay (V2) */
-.grid-overlay {
-  background-image:
-    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+/* Section-heading accent rule */
+.rule {
+  display: block;
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gradient);
 }
 
-/* Frosted nav (V2) */
-.nav-blur {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(12, 12, 15, 0.85);
-  border-bottom: 1px solid var(--border);
-}
-
-/* Hero wordmark gradient — cyan to violet, matches existing brand */
-.wordmark {
-  background: linear-gradient(180deg, #00d4ff 0%, #2bb8ff 45%, #6a8dff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.45));
-}
-
-/* Long-form article (blog post) prose styling */
+/* ============================================================
+   Long-form article (blog post) prose styling
+   ============================================================ */
 .article h2 {
-  @apply mt-12 mb-4 font-display text-2xl font-bold text-ink md:text-3xl;
+  @apply mb-4 mt-12 font-display text-2xl font-bold md:text-3xl;
+  color: var(--text-strong);
   scroll-margin-top: 6rem;
 }
 .article h3 {
-  @apply mt-8 mb-3 font-display text-xl font-semibold text-ink;
+  @apply mb-3 mt-8 font-display text-xl font-semibold;
+  color: var(--text-strong);
 }
 .article p {
-  @apply my-4 text-[17px] leading-relaxed text-muted;
+  @apply my-4 text-[17px] leading-relaxed;
+  color: var(--text);
 }
 .article ul {
-  @apply my-4 list-disc space-y-2 pl-6 text-[17px] text-muted;
+  @apply my-4 list-disc space-y-2 pl-6 text-[17px];
+  color: var(--text);
 }
 .article ol {
-  @apply my-4 list-decimal space-y-2 pl-6 text-[17px] text-muted;
+  @apply my-4 list-decimal space-y-2 pl-6 text-[17px];
+  color: var(--text);
 }
 .article li {
   @apply leading-relaxed;
 }
 .article strong {
-  @apply font-semibold text-ink;
+  @apply font-semibold;
+  color: var(--text-strong);
 }
 .article a {
-  @apply font-medium text-cyan underline decoration-cyan/40 underline-offset-2 hover:decoration-cyan;
+  color: var(--accent-1);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .article .table-wrap {
-  @apply my-6 overflow-x-auto rounded-xl border border-line;
+  @apply my-6 overflow-x-auto rounded-xl;
+  border: 1px solid var(--border);
 }
 .article table {
   @apply w-full border-collapse text-sm;
 }
 .article th {
-  @apply border-b border-line bg-bg-soft p-3 text-left font-semibold text-ink;
+  @apply p-3 text-left font-semibold;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-strong);
 }
 .article td {
-  @apply border-b border-line p-3 align-top text-muted;
+  @apply p-3 align-top;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
 }
 .article tr:last-child td {
-  @apply border-b-0;
+  border-bottom: 0;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* CoreDiagram (recommendation / scanning variants) — collapse the absolute-positioned
+   layout into a 2-column grid of static chips on mobile, so nodes never clip. */
+@media (max-width: 767px) {
+  [data-nv-stage] {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 22px 14px;
+  }
+  [data-nv-stage] > svg {
+    display: none !important;
+  }
+  [data-nv-stage] [data-nv-core] {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    grid-column: 1 / -1;
+    margin: 0 auto 6px;
+  }
+  [data-nv-stage] [data-nv-node] {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: auto !important;
   }
 }
