@@ -77,9 +77,9 @@ export default function CalEmbed() {
           p(cal, ar);
         };
     })(window, "https://app.cal.com/embed/embed.js", "init");
-    /* eslint-enable */
 
     const Cal = (window as any).Cal;
+    /* eslint-enable */
     Cal("init", { origin: "https://cal.com" });
 
     // Bind global lifecycle events once.
