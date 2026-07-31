@@ -50,5 +50,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export const useTheme = () => useContext(ThemeContext);
 
-/** Inline string run before paint to prevent a flash of the wrong theme. */
-export const themeInitScript = `(function(){try{var s=localStorage.getItem('nodevant-theme');var t=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#FAFAFC':'#0C0C0F');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+/** Inline string run before paint to prevent a flash of the wrong theme.
+ *  Default is ALWAYS dark on first visit (system preference is ignored); a
+ *  visitor's explicit toggle is remembered in localStorage and wins thereafter. */
+export const themeInitScript = `(function(){try{var t=localStorage.getItem('nodevant-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#FAFAFC':'#0C0C0F');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
