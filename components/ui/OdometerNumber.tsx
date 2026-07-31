@@ -1,13 +1,18 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 /**
  * Rolling-digit odometer used by the Live ROI Ticker, the /pricing meter and the
- * /audit results ROI tiles. Each digit is a 0–9 column translated to its value, so
- * the TRUE number renders in static/SSR markup (crawlers + no-JS see real digits)
- * and the roll animates purely as enhancement when the `value` prop changes.
- * Reduced-motion users get a plain gradient number with no transform.
+ * /audit results ROI tiles.
+ *
+ * Machine-readability first: the server render AND the first client paint output
+ * the PLAIN number as a single text node, so crawlers and LLMs (which read raw
+ * DOM text, not CSS transforms) extract the true figure — not the 0–9 digit
+ * strips. Only after mount do we swap in the rolling-digit animation (decorative;
+ * the accessible value rides on aria-label). Reduced-motion users keep the plain
+ * number permanently.
  */
 
 const gradText: React.CSSProperties = {
@@ -26,8 +31,11 @@ export default function OdometerNumber({
 }) {
   const str = String(value);
   const reduce = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  if (reduce) {
+  // SSR + first paint + reduced motion → plain, fully crawlable number.
+  if (reduce || !mounted) {
     return (
       <span className={className} style={gradText}>
         {str}
