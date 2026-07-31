@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/ai-automation-agency/", priority: 0.95, changeFrequency: "monthly" },
     { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
     { path: "/solutions/", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/solutions/ai-receptionist/", priority: 0.85, changeFrequency: "monthly" },
     { path: "/case-studies/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
     { path: "/contact/", priority: 0.7, changeFrequency: "monthly" },

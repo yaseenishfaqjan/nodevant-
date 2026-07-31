@@ -32,6 +32,7 @@ const NAV: Item[] = [
       { label: "BMAIKR · Field Services", href: "/solutions/bmaikr/", desc: "Leads, scans, dispatch, claims and invoicing." },
       { label: "Academy · Education", href: "/solutions/academy/", desc: "Enquiries, applications and enrolment automated." },
       { label: "Home Services", href: "/solutions/home-services/", desc: "Missed calls returned before the lead cools." },
+      { label: "AI Receptionist", href: "/solutions/ai-receptionist/", desc: "Answer every call, book and log leads 24/7." },
       { label: "All Solutions", href: "/solutions/", desc: "Every operating system we've built and deployed." },
     ],
   },
