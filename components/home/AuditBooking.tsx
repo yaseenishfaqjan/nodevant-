@@ -28,10 +28,12 @@ export default function AuditBooking() {
   const [day, setDay] = useState<number | null>(null);
   const [booked, setBooked] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
+    setError(false);
     const fd = new FormData(e.currentTarget);
     const get = (k: string) => String(fd.get(k) || "").trim();
     const preferred = day ? `${MONTHS[mm]} ${day}, ${yy}` : "No preference";
@@ -45,7 +47,7 @@ export default function AuditBooking() {
       .join("\n");
 
     // Route through the same backend as every other form (/api/contact).
-    await submitLead({
+    const res = await submitLead({
       type: "contact",
       name: get("name"),
       email: get("email"),
@@ -57,8 +59,14 @@ export default function AuditBooking() {
       // Honeypot — bots fill it, humans can't see it.
       company_website: get("company_website"),
     });
-    setBooked(true);
     setSubmitting(false);
+    // submitLead returns null on any failure (rate limit, network, 4xx/5xx).
+    // Only claim success when the lead actually reached the backend.
+    if (!res) {
+      setError(true);
+      return;
+    }
+    setBooked(true);
   };
 
   return (
@@ -190,6 +198,16 @@ export default function AuditBooking() {
               <p className="mt-3.5 flex items-center gap-2 text-[13.5px] text-ink animate-nv-fade">
                 <Icon name="check" className="h-4 w-4 text-cyan" strokeWidth={2.2} />
                 Audit request received — we reply within 24 hours.
+              </p>
+            )}
+            {error && (
+              <p className="mt-3.5 text-[13.5px] leading-relaxed text-ink animate-nv-fade" role="alert">
+                We couldn&apos;t send that just now. Please try again in a moment, or
+                email us directly at{" "}
+                <a href={`mailto:${SITE.email}`} className="font-semibold text-cyan hover:underline">
+                  {SITE.email}
+                </a>
+                .
               </p>
             )}
           </div>

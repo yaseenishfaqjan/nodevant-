@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/Icon";
 import { submitLead } from "@/lib/leads";
+import { SITE } from "@/lib/site";
 
 const inputClass =
   "w-full rounded-xl border border-line bg-bg px-4 py-3 text-ink transition-[border-color,box-shadow,background-color] duration-200 placeholder:text-faint/60 focus:border-cyan focus:outline-none focus:shadow-[0_0_0_3px_var(--tint)]";
@@ -14,6 +15,7 @@ const inputClass =
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
   const [hp, setHp] = useState(""); // honeypot
   const [form, setForm] = useState({
     name: "",
@@ -31,8 +33,8 @@ export default function ContactForm() {
     e.preventDefault();
     if (!valid || sending) return;
     setSending(true);
-    // Deliver the lead; confirm regardless so the visitor is never blocked.
-    await submitLead({
+    setError(false);
+    const res = await submitLead({
       type: "contact",
       name: form.name.trim(),
       email: form.email.trim(),
@@ -43,6 +45,11 @@ export default function ContactForm() {
       company_website: hp, // honeypot
     });
     setSending(false);
+    // submitLead returns null on any failure — only confirm on a real success.
+    if (!res) {
+      setError(true);
+      return;
+    }
     setSubmitted(true);
   };
 
@@ -163,6 +170,16 @@ export default function ContactForm() {
         {sending ? "Sending…" : "Send Message"}
         <Icon name="chevron" className="h-4 w-4" strokeWidth={2.2} />
       </button>
+      {error && (
+        <p className="text-sm leading-relaxed text-ink" role="alert">
+          We couldn&apos;t send that just now. Please try again in a moment, or
+          email us directly at{" "}
+          <a href={`mailto:${SITE.email}`} className="font-semibold text-cyan hover:underline">
+            {SITE.email}
+          </a>
+          .
+        </p>
+      )}
     </form>
   );
 }

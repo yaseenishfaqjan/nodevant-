@@ -38,7 +38,7 @@ function isSpam(body) {
 // ── Simple in-memory rate limit (per IP) for human-facing forms ────────
 const HITS = new Map(); // ip -> number[] (timestamps)
 const WINDOW_MS = 60 * 60 * 1000;
-const MAX_PER_WINDOW = 5;
+const MAX_PER_WINDOW = 15;
 function rateLimit(req, res, next) {
   const ip = req.ip || "unknown";
   const now = Date.now();
