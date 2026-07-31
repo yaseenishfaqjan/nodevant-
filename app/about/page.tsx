@@ -307,16 +307,21 @@ export default function AboutPage() {
           />
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-[0.62fr_1fr] lg:gap-12">
             <div className="min-w-0">
-              {/* FOUNDER PHOTO SLOT — replace this placeholder with an <Image> of the founder headshot (square, 640px min) */}
               <div
-                className="relative flex aspect-square w-full max-w-[340px] flex-col items-center justify-center gap-3.5 overflow-hidden rounded-[18px]"
+                className="relative aspect-square w-full max-w-[340px] overflow-hidden rounded-[18px]"
                 style={{ background: "var(--surface)", border: "1px solid var(--border-strong)" }}
               >
-                <IconChip name="user" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-faint">Founder headshot</span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/founder.webp"
+                  alt="Nicholas Power, founder of Nodevant"
+                  width={340}
+                  height={340}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top"
+                />
               </div>
-              {/* FOUNDER NAME SLOT — replace "Founder name" with the real name once confirmed */}
-              <p className="mt-[18px] font-display text-[17px] font-extrabold tracking-[-0.02em] text-ink">Founder name</p>
+              <p className="mt-[18px] font-display text-[17px] font-extrabold tracking-[-0.02em] text-ink">Nicholas Power</p>
               <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-faint">Founder and lead engineer</p>
             </div>
             <div className="min-w-0">

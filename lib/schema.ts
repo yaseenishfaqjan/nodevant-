@@ -11,6 +11,13 @@ export function organizationSchema() {
     description: SITE.description,
     email: SITE.email,
     foundingDate: "2026",
+    founder: {
+      "@type": "Person",
+      name: "Nicholas Power",
+      jobTitle: "Founder and Lead Engineer",
+      worksFor: { "@type": "Organization", name: SITE.name },
+      image: `${SITE.url}/images/founder.webp`,
+    },
     areaServed: "Worldwide",
     serviceType: [
       "AI Automation",
