@@ -18,6 +18,8 @@ services:
       - api
     networks:
       - nodevant-net
+      # Shared reverse-proxy network so scalaro-nginx can reach nodevant-web by name.
+      - scalaro-net
     ports:
       # Local preview at http://localhost:3001. On the VPS the external nginx
       # proxies nodevant.com -> this container (see docker-compose.vps.yml).
@@ -58,6 +60,9 @@ services:
 
 networks:
   nodevant-net:
+  # Pre-existing shared network owned by the scalaro stack (holds scalaro-nginx).
+  scalaro-net:
+    external: true
 
 volumes:
   nodevant_db:

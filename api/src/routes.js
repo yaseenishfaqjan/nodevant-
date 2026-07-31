@@ -93,6 +93,12 @@ router.get("/live-metrics", (_req, res) => {
 const SCAN_HITS = new Map(); // ip -> number[]
 const SCAN_WINDOW_MS = 60 * 60 * 1000;
 const SCAN_MAX = 3;
+// Only a real OpenAI key (starts with "sk-") enables the AI scan; anything else
+// (blank, whitespace, or an accidental inline comment in .env) → manual mode.
+function openaiKey() {
+  const k = (process.env.OPENAI_API_KEY || "").trim();
+  return /^sk-/.test(k) ? k : "";
+}
 const VALID_SERVICES = new Set(["agentic-workflows", "ai-voice-agents", "complex-logic-engines", "system-integration", "lead-gen-pipeline", "custom-ai-solutions"]);
 const VALID_CASES = new Set(["storehouse360", "scalaro", "fabrioza", "fairway360", "bmaikr", "peachpicks"]);
 
@@ -142,7 +148,7 @@ const SCAN_SYS =
   "similarToCaseStudy must be one of: storehouse360, scalaro, fabrioza, fairway360, bmaikr, peachpicks. Return at most 3, ranked by impact.";
 
 async function openaiAnalyze(host, pages) {
-  const key = process.env.OPENAI_API_KEY;
+  const key = openaiKey();
   if (!key) return null;
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
   const userMsg =
@@ -198,7 +204,7 @@ router.post("/reverse-audit/scan", scanRateLimit, async (req, res) => {
 
   // Hybrid: with no LLM key configured, we don't run an AI scan — the request is
   // handed to the team for a manual audit (the frontend then captures an email).
-  if (!process.env.OPENAI_API_KEY) {
+  if (!openaiKey()) {
     try {
       console.log("[reverse-audit]", JSON.stringify({ status: "manual-queued" }));
     } catch {
