@@ -263,6 +263,16 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Deep-dive link */}
+      <section className="px-5 pb-2">
+        <p className="mx-auto max-w-[1180px] text-center text-[13.5px] text-faint">
+          Pricing a phone agent specifically?{" "}
+          <Link href="/pricing/ai-voice-agent-cost/" className="font-semibold text-cyan hover:underline">
+            See exactly what an AI voice agent costs →
+          </Link>
+        </p>
+      </section>
+
       {/* Plans */}
       <section id="packages" className="scroll-mt-24 px-5 py-12">
         <div className="mx-auto grid max-w-[1280px] gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
