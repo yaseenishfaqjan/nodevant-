@@ -55,6 +55,108 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   // ── Published ─────────────────────────────────────────────────────────
   {
+    slug: "how-much-does-an-ai-automation-agency-cost",
+    title: "How much does an AI automation agency cost?",
+    gradientWords: 1,
+    category: "Guides",
+    excerpt:
+      "A plain-English breakdown of what AI automation actually costs in 2026 — the one-time build, the monthly plan and the usage — plus the price ranges by project type and how to tell a fair quote from a bad one.",
+    date: "2026-08-01",
+    readMinutes: 7,
+    published: true,
+    mesh: 2,
+    metaTitle: "How Much Does an AI Automation Agency Cost in 2026? | Nodevant",
+    metaDescription:
+      "What an AI automation agency costs in 2026: one-time build, monthly plan and usage, with real price ranges by project type and how to spot a fair quote.",
+    keywords: [
+      "how much does an ai automation agency cost",
+      "ai automation agency cost",
+      "ai automation pricing",
+      "ai automation cost",
+      "ai agency pricing 2026",
+    ],
+    relatedServices: ["agentic-workflows", "ai-voice-agents"],
+    relatedPosts: [
+      "roi-of-workflow-automation-year-one",
+      "n8n-vs-make-vs-zapier",
+    ],
+    body: [
+      {
+        type: "p",
+        text: "It's the first question every buyer asks and the one most agencies dodge until a sales call. So here it is straight: what AI automation actually costs in 2026, what you're paying for, and how to tell a fair quote from an inflated one.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "A single, well-scoped automation starts around **$1,800**. A custom AI agent or [voice receptionist](/solutions/ai-receptionist/) typically runs **$2,800–$15,000+** to build, depending on complexity. Larger multi-workflow systems for mid-market teams run **$25,000 and up**. On top of the build, expect a **monthly plan** for running, monitoring and tuning — and small **usage** costs (API calls, voice minutes).",
+      },
+      { type: "h2", text: "The three things you're actually paying for" },
+      {
+        type: "ul",
+        items: [
+          "**One-time build** — scoping, building, integrating and testing the automation. Paid once, up front. This is the number most quotes lead with.",
+          "**Monthly plan** — the running system plus monitoring, maintenance and tuning. Priced to your volume; a low-volume local business pays far less than a high-volume operation.",
+          "**Usage** — the underlying infrastructure: API calls, model tokens, and voice at roughly $0.08–$0.20 per connected minute. It's metered, so you only pay for what actually runs.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Anyone quoting a single all-in number is bundling these three. That's fine — but ask which is which, so you can compare quotes and know what scales with your growth.",
+      },
+      { type: "h2", text: "Typical 2026 price ranges by project" },
+      {
+        type: "table",
+        head: ["Project type", "One-time build", "Runs monthly"],
+        rows: [
+          ["Single workflow automation", "$1,800 – $4,500", "Tooling only, ~$20–$200"],
+          ["AI voice agent / receptionist", "$2,800 – $15,000+", "Plan + per-minute usage"],
+          ["Custom AI agent (single process)", "$8,000 – $25,000", "Plan + API usage"],
+          ["Multi-workflow / mid-market system", "$25,000+", "Plan scaled to volume"],
+          ["DIY point tool (no agency)", "—", "$49 – $95 + usage"],
+        ],
+      },
+      { type: "h2", text: "What moves your price up or down" },
+      {
+        type: "ul",
+        items: [
+          "**Complexity** — how many decisions and edge cases the automation has to handle. A linear flow is cheap; branching logic and judgment calls cost more.",
+          "**Integrations** — every tool it has to connect to (CRM, calendar, billing, telephony) adds build time. Standard tools are quick; a legacy system with no API is not.",
+          "**Volume** — higher call and transaction volume raises the monthly plan and usage, not the build.",
+          "**Compliance** — regulated work (finance, healthcare, legal) needs extra safeguards, audit trails and review, which is time.",
+        ],
+      },
+      { type: "h2", text: "DIY tool, agency, or in-house hire?" },
+      {
+        type: "p",
+        text: "A DIY point tool is cheapest if a generic template happens to fit you. An agency build costs more up front but is shaped to your exact process, integrations and edge cases — and someone owns it when a tool updates and it breaks. Hiring in-house only pays off once you have enough automation work to keep an engineer busy full time. For most small and growth-stage businesses, the agency build wins the moment missed or mishandled work is costing real revenue — which is exactly what the [ROI calculator](/resources/automation-roi-calculator/) is for.",
+      },
+      { type: "h2", text: "How to tell a fair quote from a bad one" },
+      {
+        type: "ul",
+        items: [
+          "It **separates build, monthly and usage** instead of hiding one big number.",
+          "It **budgets for maintenance** — roughly 10–15% of build per year. A quote that promises zero upkeep is selling something.",
+          "It **ties price to an outcome**, not just hours — what the automation recovers or saves should dwarf what it costs.",
+          "It says **no** to bad-fit work. An honest partner will tell you when an off-the-shelf tool is the smarter buy.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Nodevant builds from $2,800 with monitoring and tuning folded into the monthly plan, and every engagement starts with a free 90-second audit that shows your highest-ROI automation and its payback before you commit a dollar.",
+      },
+      {
+        type: "chips",
+        label: "Keep reading",
+        links: [
+          { label: "What an AI voice agent costs", href: "/pricing/ai-voice-agent-cost/" },
+          { label: "ROI calculator", href: "/resources/automation-roi-calculator/" },
+          { label: "Full pricing", href: "/pricing/" },
+        ],
+      },
+      { type: "cta" },
+    ],
+  },
+  {
     slug: "n8n-vs-make-vs-zapier",
     title: "n8n vs Make vs Zapier in 2026: which automation tool is right for you?",
     gradientWords: 4,
