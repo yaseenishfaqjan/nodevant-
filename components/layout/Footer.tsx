@@ -43,6 +43,7 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Get Started",
     links: [
       { label: "Free Automation Audit", href: "/audit/" },
+      { label: "ROI Calculator", href: "/resources/automation-roi-calculator/" },
       { label: "Pricing", href: "/pricing/" },
       { label: "Book a Call", href: "/contact/" },
       { label: "All Services", href: "/services/" },
