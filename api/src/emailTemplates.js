@@ -132,8 +132,8 @@ function confirmationHtml(lead, report) {
       cta: [`${SITE}/`, "Explore Nodevant →"],
     },
     call: {
-      intro: "Thanks for calling Nodevant.",
-      body: "We've logged your call and an automation expert will follow up within 24 hours. In the meantime, see your automation ROI instantly with our free 90-second audit.",
+      intro: "Thanks for calling Nodevant — here are the details.",
+      body: "As promised on the call, here's a summary of what we covered below — keep this email for your records. Just reply here with anything else you'd like to know, and an automation expert will follow up personally within 24 hours.",
       cta: [`${SITE}/audit/`, "Take the Free 90-Second Audit →"],
     },
     newsletter: {
