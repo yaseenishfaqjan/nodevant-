@@ -27,7 +27,11 @@ export function pageMetadata({
     title: { absolute: title },
     description,
     keywords,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      // Self-referencing hreflang (English site serving US/UK/CA/AU).
+      languages: { "en-US": url, "x-default": url },
+    },
     openGraph: {
       type: "website",
       siteName: SITE.name,

@@ -41,7 +41,11 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
   publisher: SITE.name,
-  alternates: { canonical: SITE.url },
+  alternates: {
+    canonical: SITE.url,
+    // Self-referencing hreflang: one English site serving US/UK/CA/AU.
+    languages: { "en-US": SITE.url, "x-default": SITE.url },
+  },
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
