@@ -43,7 +43,8 @@ export interface BlogPost {
   readMinutes: number;
   published: boolean;
   featured?: boolean;
-  mesh: number; // gradient-mesh thumbnail variant (0–5)
+  mesh: number; // gradient-mesh thumbnail variant (0–5) — fallback when no cover
+  cover?: string; // real cover art, e.g. "/images/blog/<slug>.webp"; mesh used if omitted
   metaTitle: string;
   metaDescription: string;
   keywords: string[];
@@ -168,6 +169,7 @@ export const BLOG_POSTS: BlogPost[] = [
     published: true,
     featured: true,
     mesh: 0,
+    cover: "/images/blog/n8n-vs-make-vs-zapier.webp",
     metaTitle: "n8n vs Make vs Zapier in 2026: Which Tool Is Right for You? | Nodevant",
     metaDescription:
       "An operator's comparison of n8n, Make and Zapier in 2026 — pricing models, learning curve, self-hosting, error handling, and when to reach for a custom build instead.",
@@ -285,6 +287,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readMinutes: 8,
     published: true,
     mesh: 1,
+    cover: "/images/blog/roi-of-workflow-automation-year-one.webp",
     metaTitle: "The Real ROI of Workflow Automation in Year One | Nodevant",
     metaDescription:
       "The exact formula for calculating workflow automation ROI in year one: hours recovered, error cost, speed-to-lead — and the maintenance costs vendors leave out.",
@@ -408,6 +411,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readMinutes: 8,
     published: true,
     mesh: 2,
+    cover: "/images/blog/voice-ai-agents-buyers-guide.webp",
     metaTitle: "Voice AI Agents: A Practical Build-vs-Buy Guide | Nodevant",
     metaDescription:
       "A practical buyer's guide to voice AI agents in 2026: what they can do, packaged product vs custom build, per-minute cost anatomy, and the questions to ask before going live.",
@@ -518,6 +522,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readMinutes: 8,
     published: false,
     mesh: 3,
+    cover: "/images/blog/what-is-an-ai-automation-agency.webp",
     metaTitle: "What Is an AI Automation Agency? | Nodevant",
     metaDescription:
       "What AI automation agencies do, how they compare to hiring in-house, and how to know if your business is ready. Coming soon on the Nodevant blog.",
@@ -536,6 +541,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readMinutes: 9,
     published: false,
     mesh: 4,
+    cover: "/images/blog/ai-agents-for-business.webp",
     metaTitle: "How AI Agents Are Replacing Entire Business Functions | Nodevant",
     metaDescription:
       "Autonomous AI agents are taking over whole workflows, from sales development to support. What's real and what's marketing. Coming soon on the Nodevant blog.",
@@ -554,6 +560,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readMinutes: 11,
     published: false,
     mesh: 5,
+    cover: "/images/blog/how-to-automate-lead-generation.webp",
     metaTitle: "Automating Lead Generation End to End | Nodevant",
     metaDescription:
       "The full blueprint for an AI lead engine: capture, enrichment, scoring and automated follow-up. Coming soon on the Nodevant blog.",

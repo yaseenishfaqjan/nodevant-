@@ -46,6 +46,11 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: post.metaDescription,
     path: `/blog/${post.slug}/`,
     keywords: post.keywords,
+    // Per-article social card (1200x630) when the post has cover art, so a
+    // shared link previews the article instead of the generic site image.
+    ogImage: post.cover
+      ? `/images/blog/${post.slug}-og.jpg`
+      : undefined,
   });
 }
 

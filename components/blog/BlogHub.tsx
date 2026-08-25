@@ -20,7 +20,7 @@ function PostCard({ post }: { post: BlogPost }) {
       href={post.published ? `/blog/${post.slug}/` : `/blog/${post.slug}/?coming-soon=true`}
       className={`card card-hover flex flex-col overflow-hidden text-body ${post.published ? "" : "opacity-[0.82]"}`}
     >
-      <MeshThumb variant={post.mesh} className="h-[150px]" />
+      <MeshThumb variant={post.mesh} src={post.cover} className="h-[150px]" />
       <span className="flex flex-1 flex-col p-[22px]">
         <span className="flex flex-wrap items-center gap-2">
           <span
@@ -93,7 +93,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           <Icon name="chevron" className="h-[15px] w-[15px]" strokeWidth={2.2} />
         </span>
       </span>
-      <MeshThumb variant={post.mesh} className="min-h-[180px] border-line lg:min-h-full lg:border-l" />
+      <MeshThumb variant={post.mesh} src={post.cover} priority className="min-h-[180px] border-line lg:min-h-full lg:border-l" />
     </Link>
   );
 }

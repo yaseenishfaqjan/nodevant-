@@ -179,6 +179,8 @@ export default function BlogPost({ post }: { post: BlogPostData }) {
           </div>
           <MeshThumb
             variant={post.mesh}
+            src={post.cover}
+            priority
             className="mt-8 h-[180px] rounded-2xl border border-line md:h-[240px]"
           />
         </div>
@@ -207,7 +209,7 @@ export default function BlogPost({ post }: { post: BlogPostData }) {
                     href={`/blog/${r.slug}/`}
                     className="card card-hover flex flex-col overflow-hidden text-body"
                   >
-                    <MeshThumb variant={r.mesh} className="h-[110px]" />
+                    <MeshThumb variant={r.mesh} src={r.cover} className="h-[110px]" />
                     <span className="flex flex-1 flex-col p-5">
                       <span className="font-mono text-[9.5px] uppercase tracking-[0.12em] text-faint">
                         {r.category} · {r.readMinutes} min read
