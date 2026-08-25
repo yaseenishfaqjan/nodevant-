@@ -123,10 +123,10 @@ export default function AuditBooking() {
                 <span className="chip h-[38px] w-[38px]"><Icon name="mail" className="h-[18px] w-[18px]" /></span>
                 {SITE.email}
               </a>
-              <a href={`tel:${SITE.phoneRaw}`} className="flex items-center gap-[11px] text-sm text-body transition-colors hover:text-ink">
-                <span className="chip h-[38px] w-[38px]"><Icon name="phone" className="h-[18px] w-[18px]" /></span>
-                {SITE.phone}
-              </a>
+              <span className="flex items-center gap-[11px] text-sm text-body">
+                <span className="chip h-[38px] w-[38px]"><Icon name="clock" className="h-[18px] w-[18px]" /></span>
+                We reply within 24 hours
+              </span>
               <span className="flex items-start gap-[11px] text-sm text-body">
                 <span className="chip h-[38px] w-[38px]"><Icon name="pin" className="h-[18px] w-[18px]" /></span>
                 <span className="leading-relaxed">

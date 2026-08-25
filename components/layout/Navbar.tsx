@@ -271,12 +271,13 @@ export default function Navbar() {
             >
               Get My Free Audit →
             </Link>
-            <a
-              href="tel:+16784399321"
+            <Link
+              href="/contact/"
+              onClick={() => setOpen(false)}
               className="btn-secondary w-full"
             >
-              +1 (678) 439-9321
-            </a>
+              Send Us a Message
+            </Link>
           </div>
         </div>
       )}

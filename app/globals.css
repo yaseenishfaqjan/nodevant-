@@ -450,6 +450,34 @@ details[open] > summary [data-chev] {
   }
 }
 
+/* ── Touch targets ───────────────────────────────────────────────────────────
+   Phones need ~44px of tappable area, but the design deliberately uses small
+   pills (the 52×28 theme switch) and compact text CTAs. Rather than resize the
+   visuals, expand the HIT AREA with a pseudo-element — identical appearance,
+   zero layout shift. Only for coarse pointers, so mouse users are unaffected. */
+@media (pointer: coarse) {
+  .tap-44 {
+    position: relative;
+  }
+  .tap-44::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 44px;
+    transform: translateY(-50%);
+  }
+  /* Stacked link lists (footer columns, mobile menu) can't use an overlapping
+     hit area — neighbours would steal each other's taps — so give them real,
+     non-overlapping height instead. */
+  .tap-list a {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}
+
 /* CoreDiagram (recommendation / scanning variants) — collapse the absolute-positioned
    layout into a 2-column grid of static chips on mobile, so nodes never clip. */
 @media (max-width: 767px) {

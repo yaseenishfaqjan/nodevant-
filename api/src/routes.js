@@ -552,4 +552,9 @@ router.get("/leads/export.csv", adminOnly, async (req, res) => {
   res.send(csv);
 });
 
+// ── Brand federation (Nodevant super-admin console) ───────────────────
+// Mounted last so it can never shadow an existing route above.
+const brands = require("./brands");
+router.use(brands.build(adminOnly));
+
 module.exports = router;

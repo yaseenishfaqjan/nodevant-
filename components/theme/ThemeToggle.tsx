@@ -13,7 +13,7 @@ export default function ThemeToggle() {
       aria-checked={light}
       aria-label={light ? "Switch to dark theme" : "Switch to light theme"}
       onClick={toggle}
-      className="relative h-7 w-[52px] flex-shrink-0 rounded-full border p-0 transition-colors duration-300"
+      className="tap-44 relative h-7 w-[52px] flex-shrink-0 rounded-full border p-0 transition-colors duration-300"
       style={{
         background: "var(--surface-2)",
         borderColor: "var(--border-strong)",

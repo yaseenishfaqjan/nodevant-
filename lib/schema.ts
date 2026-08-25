@@ -31,7 +31,6 @@ export function organizationSchema() {
       "@type": "ContactPoint",
       contactType: "sales",
       email: SITE.email,
-      telephone: SITE.phoneRaw,
       areaServed: "Worldwide",
       availableLanguage: "English",
     },
@@ -56,7 +55,6 @@ export function localBusinessSchema() {
     logo: `${SITE.url}/logo.svg`,
     image: `${SITE.url}${SITE.ogImage}`,
     email: SITE.email,
-    telephone: SITE.phoneRaw,
     priceRange: "$$",
     currenciesAccepted: "USD",
     paymentAccepted: "Credit Card, Bank Transfer",
@@ -423,7 +421,6 @@ export function contactPageSchema() {
       name: SITE.name,
       url: SITE.url,
       email: SITE.email,
-      telephone: SITE.phoneRaw,
       address: {
         "@type": "PostalAddress",
         streetAddress: SITE.address.street,

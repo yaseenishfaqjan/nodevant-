@@ -1,142 +1,93 @@
 "use client";
+
+// Nodevant super-admin console.
+//
+// One dashboard over every product we run. The sidebar switches brands;
+// each brand's CRM and call scripts are served live from that product's own
+// API through Nodevant's /api/brands/* proxy, so there is a single set of
+// data and each product's own super-admin keeps working unchanged.
+
 import { useCallback, useEffect, useState } from "react";
+import NodevantLeads from "./NodevantLeads";
+import BrandCrm from "./BrandCrm";
+import BrandScripts from "./BrandScripts";
 
-interface Lead {
-  id: number;
-  created_at: string;
-  type: string;
-  name: string | null;
-  email: string | null;
-  phone: string | null;
-  company: string | null;
-  message: string | null;
-  industry: string | null;
-  biggest_pain: string | null;
-  hours_wasted: number | null;
-  score: number | null;
-  recommended_service: string | null;
-  annual_savings: number | null;
-  roi_multiple: number | null;
-  meeting_at: string | null;
-  meeting_type: string | null;
-  status: string;
-  notes: string | null;
-}
-
-interface Stats {
-  total: number;
-  audits: number;
-  contacts: number;
-  bookings: number;
-  calls: number;
-  last7: number;
-}
-
-const STATUSES = ["new", "contacted", "qualified", "won", "lost"];
 const TOKEN_KEY = "nodevant_admin_token";
+
+interface Brand {
+  id: string;
+  name: string;
+  industry: string;
+  accent: string;
+  enabled: boolean;
+}
+
+type View = { kind: "leads" } | { kind: "brand"; id: string; tab: "crm" | "scripts" };
 
 export default function AdminDashboard() {
   const [token, setToken] = useState("");
   const [authed, setAuthed] = useState(false);
-  const [leads, setLeads] = useState<Lead[]>([]);
-  const [stats, setStats] = useState<Stats | null>(null);
+  const [brands, setBrands] = useState<Brand[]>([]);
+  const [view, setView] = useState<View>({ kind: "leads" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState<{ status: string; type: string }>({
-    status: "",
-    type: "",
-  });
+  const [navOpen, setNavOpen] = useState(false);
 
-  const headers = useCallback(
-    (t: string) => ({ Authorization: `Bearer ${t}`, "Content-Type": "application/json" }),
-    []
-  );
-
-  const load = useCallback(
-    async (t: string) => {
-      setLoading(true);
-      setError("");
-      try {
-        const params = new URLSearchParams();
-        if (filter.status) params.set("status", filter.status);
-        if (filter.type) params.set("type", filter.type);
-        const [lr, sr] = await Promise.all([
-          fetch(`/api/leads?${params}`, { headers: headers(t) }),
-          fetch(`/api/stats`, { headers: headers(t) }),
-        ]);
-        if (lr.status === 401) {
-          setError("Invalid token.");
-          setAuthed(false);
-          localStorage.removeItem(TOKEN_KEY);
-          return;
-        }
-        const ld = await lr.json();
-        const sd = await sr.json();
-        setLeads(ld.leads || []);
-        setStats(sd);
-        setAuthed(true);
-        localStorage.setItem(TOKEN_KEY, t);
-      } catch {
-        setError("Could not reach the API. Is the backend running?");
-      } finally {
-        setLoading(false);
+  const signIn = useCallback(async (t: string) => {
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/brands", { headers: { Authorization: `Bearer ${t}` } });
+      if (res.status === 401) {
+        setError("Invalid token.");
+        localStorage.removeItem(TOKEN_KEY);
+        setAuthed(false);
+        return;
       }
-    },
-    [filter, headers]
-  );
+      const data = await res.json();
+      setBrands(data.brands || []);
+      setAuthed(true);
+      localStorage.setItem(TOKEN_KEY, t);
+    } catch {
+      setError("Could not reach the API. Is the backend running?");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     const saved = localStorage.getItem(TOKEN_KEY);
     if (saved) {
       setToken(saved);
-      load(saved);
+      void signIn(saved);
     }
-  }, [load]);
+  }, [signIn]);
 
-  const updateLead = async (id: number, patch: Partial<Lead>) => {
-    await fetch(`/api/leads/${id}`, {
-      method: "PATCH",
-      headers: headers(token),
-      body: JSON.stringify(patch),
-    });
-    setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
-  };
-
-  const deleteLead = async (id: number) => {
-    if (!confirm("Delete this lead permanently?")) return;
-    const res = await fetch(`/api/leads/${id}`, {
-      method: "DELETE",
-      headers: headers(token),
-    });
-    if (res.ok) setLeads((prev) => prev.filter((l) => l.id !== id));
-  };
-
-  const exportCsv = () => {
-    window.open(`/api/leads/export.csv?token=${encodeURIComponent(token)}`, "_blank");
-  };
+  const onUnauthorized = useCallback(() => {
+    localStorage.removeItem(TOKEN_KEY);
+    setAuthed(false);
+    setError("Session expired — sign in again.");
+  }, []);
 
   const logout = () => {
     localStorage.removeItem(TOKEN_KEY);
     setAuthed(false);
     setToken("");
-    setLeads([]);
+    setBrands([]);
+    setView({ kind: "leads" });
   };
-
-  const money = (n: number | null) => (n ? `$${n.toLocaleString()}` : "—");
-  const date = (s: string) =>
-    new Date(s).toLocaleString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
 
   // ---- Login gate ----
   if (!authed) {
     return (
       <div className="flex min-h-screen items-center justify-center px-6">
         <div className="w-full max-w-sm rounded-2xl border border-line bg-white/[0.02] p-8">
-          <h1 className="font-display text-2xl font-bold text-ink">Nodevant CRM</h1>
+          <h1 className="font-display text-2xl font-bold text-ink">Nodevant Console</h1>
           <p className="mt-2 text-sm text-muted">Enter your admin token to continue.</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              load(token);
+              void signIn(token);
             }}
             className="mt-6 space-y-3"
           >
@@ -157,159 +108,119 @@ export default function AdminDashboard() {
     );
   }
 
-  // ---- Dashboard ----
-  return (
-    <div className="container-x py-28">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-display text-3xl font-bold text-ink">Leads</h1>
-        <div className="flex gap-3">
-          <button onClick={exportCsv} className="btn-secondary px-4 py-2 text-sm">
-            Export CSV
-          </button>
-          <button onClick={() => load(token)} className="btn-secondary px-4 py-2 text-sm">
-            Refresh
-          </button>
-          <button onClick={logout} className="btn-secondary px-4 py-2 text-sm">
-            Log out
-          </button>
-        </div>
+  const activeBrand = view.kind === "brand" ? brands.find((b) => b.id === view.id) : undefined;
+
+  const NavContents = (
+    <nav className="flex h-full flex-col gap-6 p-5">
+      <div>
+        <div className="font-display text-lg font-bold text-ink">Nodevant</div>
+        <div className="text-[10px] uppercase tracking-[1.5px] text-faint">Super-admin console</div>
       </div>
 
-      {stats && (
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {[
-            { label: "Total leads", value: stats.total },
-            { label: "Audits", value: stats.audits },
-            { label: "Contacts", value: stats.contacts },
-            { label: "Voice calls", value: stats.calls },
-            { label: "Meetings booked", value: stats.bookings },
-            { label: "Last 7 days", value: stats.last7 },
-          ].map((s) => (
-            <div key={s.label} className="rounded-xl border border-line bg-bg-soft p-5 text-center">
-              <div className="gradient-text font-display text-3xl font-bold">{s.value}</div>
-              <div className="mt-1 text-xs text-faint">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div className="mt-6 flex flex-wrap gap-3">
-        <select
-          value={filter.type}
-          onChange={(e) => setFilter((f) => ({ ...f, type: e.target.value }))}
-          className="rounded-lg border border-line bg-bg px-3 py-2 text-sm text-ink"
+      <div>
+        <div className="mb-2 text-[10px] font-semibold uppercase tracking-[1.5px] text-faint">Nodevant</div>
+        <button
+          onClick={() => {
+            setView({ kind: "leads" });
+            setNavOpen(false);
+          }}
+          className={`w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+            view.kind === "leads" ? "bg-tint text-ink" : "text-muted hover:bg-white/5 hover:text-ink"
+          }`}
         >
-          <option value="">All types</option>
-          <option value="audit">Audit</option>
-          <option value="contact">Contact</option>
-          <option value="call">Voice call</option>
-          <option value="booking">Meeting</option>
-        </select>
-        <select
-          value={filter.status}
-          onChange={(e) => setFilter((f) => ({ ...f, status: e.target.value }))}
-          className="rounded-lg border border-line bg-bg px-3 py-2 text-sm text-ink"
-        >
-          <option value="">All statuses</option>
-          {STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-        <button onClick={() => load(token)} className="btn-secondary px-4 py-2 text-sm">
-          Apply
+          Inbound leads
         </button>
       </div>
 
-      <div className="article mt-6">
-        <div className="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>When</th>
-                <th>Type</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Pain / Meeting</th>
-                <th>Score</th>
-                <th>Savings/yr</th>
-                <th>ROI</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {leads.map((l) => (
-                <tr key={l.id}>
-                  <td className="whitespace-nowrap">{date(l.created_at)}</td>
-                  <td>{l.type}</td>
-                  <td>{l.name || "—"}</td>
-                  <td>
-                    {l.email ? (
-                      <a href={`mailto:${l.email}`} className="text-cyan">
-                        {l.email}
-                      </a>
-                    ) : (
-                      !l.phone && "—"
-                    )}
-                    {l.phone && (
-                      <a
-                        href={`tel:${l.phone}`}
-                        className="block text-xs text-faint hover:text-cyan"
+      <div className="min-h-0 flex-1">
+        <div className="mb-2 text-[10px] font-semibold uppercase tracking-[1.5px] text-faint">Products</div>
+        <div className="space-y-1">
+          {brands.map((b) => {
+            const isActive = view.kind === "brand" && view.id === b.id;
+            return (
+              <div key={b.id}>
+                <button
+                  disabled={!b.enabled}
+                  onClick={() => {
+                    setView({ kind: "brand", id: b.id, tab: "crm" });
+                    setNavOpen(false);
+                  }}
+                  title={b.enabled ? b.industry : `${b.name} is not connected yet`}
+                  className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                    isActive ? "bg-tint text-ink" : "text-muted hover:bg-white/5 hover:text-ink"
+                  } ${b.enabled ? "" : "cursor-not-allowed opacity-40"}`}
+                >
+                  <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: b.accent }} />
+                  <span className="flex-1 truncate">{b.name}</span>
+                  {!b.enabled && <span className="text-[9px] uppercase text-faint">soon</span>}
+                </button>
+
+                {isActive && (
+                  <div className="ml-4 mt-1 space-y-0.5 border-l border-line pl-3">
+                    {(["crm", "scripts"] as const).map((t) => (
+                      <button
+                        key={t}
+                        onClick={() => setView({ kind: "brand", id: b.id, tab: t })}
+                        className={`block w-full rounded px-2 py-1 text-left text-xs transition-colors ${
+                          view.tab === t ? "text-cyan" : "text-faint hover:text-ink"
+                        }`}
                       >
-                        📞 {l.phone}
-                      </a>
-                    )}
-                  </td>
-                  <td>
-                    {l.type === "booking" ? (
-                      <span className="text-cyan">
-                        📅 {l.meeting_at ? date(l.meeting_at) : "booked"}
-                        {l.meeting_type ? ` · ${l.meeting_type}` : ""}
-                      </span>
-                    ) : (
-                      l.biggest_pain || (l.message ? "📝 msg" : "—")
-                    )}
-                  </td>
-                  <td>{l.score ?? "—"}</td>
-                  <td>{money(l.annual_savings)}</td>
-                  <td>{l.roi_multiple ? `${l.roi_multiple}×` : "—"}</td>
-                  <td>
-                    <select
-                      value={l.status}
-                      onChange={(e) => updateLead(l.id, { status: e.target.value })}
-                      className="rounded border border-line bg-bg px-2 py-1 text-xs text-ink"
-                    >
-                      {STATUSES.map((s) => (
-                        <option key={s} value={s}>
-                          {s}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => deleteLead(l.id)}
-                      title="Delete lead"
-                      className="rounded border border-line px-2 py-1 text-xs text-faint transition-colors hover:border-violet hover:text-violet"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {!leads.length && (
-                <tr>
-                  <td colSpan={10} className="text-center text-faint">
-                    No leads yet.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                        {t === "crm" ? "Sales CRM" : "Call scripts"}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          {!brands.length && <p className="px-3 text-xs text-faint">No products configured.</p>}
         </div>
       </div>
+
+      <button onClick={logout} className="btn-secondary w-full px-3 py-2 text-sm">
+        Log out
+      </button>
+    </nav>
+  );
+
+  return (
+    <div className="flex min-h-screen">
+      {/* desktop sidebar */}
+      <aside className="hidden w-60 shrink-0 border-r border-line bg-bg-soft md:block">
+        <div className="sticky top-0 h-screen">{NavContents}</div>
+      </aside>
+
+      {/* mobile drawer */}
+      {navOpen && (
+        <div className="fixed inset-0 z-50 flex md:hidden" onClick={() => setNavOpen(false)}>
+          <div className="h-full w-64 border-r border-line bg-bg" onClick={(e) => e.stopPropagation()}>
+            {NavContents}
+          </div>
+          <div className="flex-1 bg-black/60" />
+        </div>
+      )}
+
+      <main className="min-w-0 flex-1 px-5 py-8 md:px-8">
+        <button onClick={() => setNavOpen(true)} className="btn-secondary mb-5 px-3 py-1.5 text-sm md:hidden">
+          ☰ Menu
+        </button>
+
+        {view.kind === "leads" && <NodevantLeads token={token} onUnauthorized={onUnauthorized} />}
+
+        {view.kind === "brand" && activeBrand && view.tab === "crm" && (
+          <BrandCrm
+            key={activeBrand.id}
+            brandId={activeBrand.id}
+            brandName={activeBrand.name}
+            token={token}
+            onUnauthorized={onUnauthorized}
+          />
+        )}
+
+        {view.kind === "brand" && activeBrand && view.tab === "scripts" && (
+          <BrandScripts brandId={activeBrand.id} brandName={activeBrand.name} />
+        )}
+      </main>
     </div>
   );
 }

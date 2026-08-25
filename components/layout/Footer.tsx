@@ -61,8 +61,9 @@ function Chip({ name }: { name: IconName }) {
 }
 
 export default function Footer() {
+  // pb-28 on mobile clears the fixed sticky CTA bar (see SiteChrome).
   return (
-    <footer className="border-t border-line pb-6 pt-12 md:pt-[72px]">
+    <footer className="border-t border-line pb-28 pt-12 md:pb-6 md:pt-[72px]">
       <div className="mx-auto grid max-w-[1280px] gap-9 px-5 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1.2fr_1fr_1fr]">
         {/* Brand col */}
         <div className="min-w-0">
@@ -101,10 +102,10 @@ export default function Footer() {
               <Chip name="mail" />
               {SITE.email}
             </a>
-            <a href={`tel:${SITE.phoneRaw}`} className="flex items-center gap-[11px] text-sm text-body transition-colors hover:text-ink">
-              <Chip name="phone" />
-              {SITE.phone}
-            </a>
+            <Link href="/contact/" className="flex items-center gap-[11px] text-sm text-body transition-colors hover:text-ink">
+              <Chip name="chat" />
+              Send us a message
+            </Link>
             <div className="flex items-start gap-[11px] text-sm text-body">
               <Chip name="pin" />
               <span className="leading-relaxed">
@@ -132,7 +133,7 @@ export default function Footer() {
             <p className="mb-4 font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">
               {col.title}
             </p>
-            <div className="flex flex-col gap-3">
+            <div className="tap-list flex flex-col gap-3">
               {col.links.map((link) => (
                 <Link
                   key={link.label}

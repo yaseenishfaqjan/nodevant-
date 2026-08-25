@@ -52,7 +52,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Where is Nodevant based and how do I reach you?",
-    a: `Nodevant is at ${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}. Call ${SITE.phone} or email ${SITE.email}. The fastest start is the free 90-second audit on our site, which maps your highest-ROI automation before any call.`,
+    a: `Nodevant is at ${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}. Email ${SITE.email} or send us a message through the contact form. The fastest start is the free 90-second audit on our site, which maps your highest-ROI automation before any call.`,
   },
 ];
 
@@ -98,9 +98,9 @@ export default function AtlantaLocationPage() {
               Get my free 90-second audit
               <Icon name="chevron" className="h-4 w-4" strokeWidth={2.2} />
             </Link>
-            <a href={`tel:${SITE.phoneRaw}`} className="btn-secondary" style={{ minHeight: 54 }}>
-              Call {SITE.phone}
-            </a>
+            <Link href="/contact/" className="btn-secondary" style={{ minHeight: 54 }}>
+              Send us a message
+            </Link>
           </div>
         </div>
       </section>

@@ -26,8 +26,9 @@ export const SITE = {
     "Nodevant builds enterprise-grade AI agents, workflow automations, and intelligent integrations that eliminate busywork and scale revenue. Get your free automation audit.",
   email: "info@nodevant.com",
   salesEmail: "sales@nodevant.com",
-  phone: "+1 (678) 439-9321",
-  phoneRaw: "+16784399321",
+  // NOTE: no public phone number by design — every inbound goes through the
+  // audit/contact form so we capture an email and the context of the request.
+  // Do not re-add a `phone` field or `tel:` link to any public surface.
   ogImage: "/og-image.png",
   twitter: "@nodevant",
   // NAP — keep IDENTICAL everywhere (GMB, directories, schema) for local SEO.

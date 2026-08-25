@@ -186,15 +186,15 @@ export default function ContactPage() {
             </span>
             {SITE.email}
           </a>
-          <a
-            href={`tel:${SITE.phoneRaw}`}
+          <Link
+            href="/audit/"
             className="inline-flex items-center gap-2.5 text-[14px] font-medium text-body hover:text-ink"
           >
             <span className="chip h-9 w-9">
-              <Icon name="phone" className="h-4 w-4" />
+              <Icon name="chart" className="h-4 w-4" />
             </span>
-            {SITE.phone}
-          </a>
+            Free 90-second audit
+          </Link>
           <a
             href={mapsUrl}
             target="_blank"
