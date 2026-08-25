@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import BuildLogEntry from "@/components/build/BuildLogEntry";
@@ -33,6 +33,7 @@ const DIMS = [
 
 type DimKey = "type" | "platform";
 type State = Record<DimKey, string>;
+const ALL_OFF: State = { type: "all", platform: "all" };
 
 const chip = (on: boolean): React.CSSProperties =>
   on
@@ -42,18 +43,29 @@ const chip = (on: boolean): React.CSSProperties =>
 export default function BuildLogClient() {
   const router = useRouter();
   const pathname = usePathname();
-  const params = useSearchParams();
+  /**
+   * Starts unfiltered so every log entry lands in the STATIC HTML.
+   *
+   * Seeding from `useSearchParams()` opts this subtree out of static
+   * rendering, so the exported page shipped only the "Loading log…" Suspense
+   * fallback — Googlebot never saw an entry, and the page was too thin to
+   * index. Deep-linked filters are applied after mount instead.
+   */
+  const [state, setState] = useState<State>(ALL_OFF);
 
-  const initial = useMemo<State>(() => {
-    const s: State = { type: "all", platform: "all" };
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const next: State = { ...ALL_OFF };
+    let found = false;
     for (const d of DIMS) {
-      const v = params.get(d.key);
-      if (v && d.options.some((o) => o[0] === v)) s[d.key] = v;
+      const v = q.get(d.key);
+      if (v && d.options.some((o) => o[0] === v)) {
+        next[d.key] = v;
+        found = true;
+      }
     }
-    return s;
-  }, [params]);
-
-  const [state, setState] = useState<State>(initial);
+    if (found) setState(next);
+  }, []);
 
   // Sync the URL AFTER render (never during) so router updates can't fire mid-render.
   const firstRender = useRef(true);
@@ -70,7 +82,7 @@ export default function BuildLogClient() {
 
   const setFilter = (key: DimKey, val: string) =>
     setState((s) => ({ ...s, [key]: s[key] === val ? "all" : val }));
-  const reset = () => setState({ type: "all", platform: "all" });
+  const reset = () => setState({ ...ALL_OFF });
 
   const shown = BUILD_ENTRIES.filter(
     (e) =>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import CaseCard from "@/components/case-studies/CaseCard";
@@ -51,21 +51,42 @@ const DIMS: { key: DimKey; label: string; aria: string; options: [string, string
 
 type State = Record<DimKey, string>;
 
+const ALL_OFF: State = {
+  industry: "all",
+  outcome: "all",
+  service: "all",
+  stack: "all",
+};
+
 export default function CaseFilter({ cases }: { cases: CaseStudyDetail[] }) {
   const router = useRouter();
   const pathname = usePathname();
-  const params = useSearchParams();
 
-  const initial = useMemo<State>(() => {
-    const s: State = { industry: "all", outcome: "all", service: "all", stack: "all" };
+  /**
+   * Starts unfiltered so every case is rendered into the STATIC HTML.
+   *
+   * This used to seed state from `useSearchParams()`, which opts the subtree
+   * out of static rendering — so the exported HTML contained only the empty
+   * Suspense fallback and Googlebot never saw a single case. Search Console
+   * duly filed the page under "Duplicate without user-selected canonical"
+   * (i.e. too thin to index). Deep-linked filters are applied after mount
+   * instead, which costs one client-side pass and keeps the cases crawlable.
+   */
+  const [state, setState] = useState<State>(ALL_OFF);
+
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const next: State = { ...ALL_OFF };
+    let found = false;
     for (const d of DIMS) {
-      const v = params.get(d.key);
-      if (v && d.options.some((o) => o[0] === v)) s[d.key] = v;
+      const v = q.get(d.key);
+      if (v && d.options.some((o) => o[0] === v)) {
+        next[d.key] = v;
+        found = true;
+      }
     }
-    return s;
-  }, [params]);
-
-  const [state, setState] = useState<State>(initial);
+    if (found) setState(next);
+  }, []);
 
   const syncUrl = useCallback(
     (next: State) => {
@@ -89,7 +110,7 @@ export default function CaseFilter({ cases }: { cases: CaseStudyDetail[] }) {
   );
 
   const reset = useCallback(() => {
-    const next: State = { industry: "all", outcome: "all", service: "all", stack: "all" };
+    const next: State = { ...ALL_OFF };
     setState(next);
     syncUrl(next);
   }, [syncUrl]);
