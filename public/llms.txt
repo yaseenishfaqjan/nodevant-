@@ -59,6 +59,14 @@ Nodevant builds three types of AI systems:
   backend, Next.js frontend.
 - **Field Services**: BMAIKR — AI estimation and lead-to-close automation for
   roofing and construction.
+- **Golf Clubs & Hospitality**: Fairway360 — member management, tee-time and
+  dining booking, tournament registration, and an AI front desk that answers
+  and books 24/7.
+- **Roofing / Storm Restoration**: GlobalShield360 — storm-triggered lead
+  capture, AI roof measurement from imagery, instant estimates, crew dispatch
+  and claim tracking.
+- **Sports Prediction**: PeachPicks — free-to-play prediction app with
+  automated scoring, contests and player engagement.
 - **Education**: Academy Stack — student intake, scheduling, teacher
   management, and parent communication automation.
 - **Home Services**: Google Maps lead generation, outreach, AI estimating,
@@ -89,9 +97,24 @@ Nodevant builds three types of AI systems:
 - [Contact](https://nodevant.com/contact/): Book a free strategy call
 - [About](https://nodevant.com/about/): Mission and what makes us different
 - [Blog](https://nodevant.com/blog/): AI automation guides
+- [AI Receptionist](https://nodevant.com/solutions/ai-receptionist/): Custom AI
+  voice receptionist that answers every call 24/7, books appointments and logs
+  leads to your CRM. From $2,800.
+- [AI Voice Agent Cost](https://nodevant.com/pricing/ai-voice-agent-cost/): What
+  an AI voice agent costs in 2026 — one-time build, monthly plan, and roughly
+  $0.08-$0.20 per connected minute of voice infrastructure.
+- [ROI Calculator](https://nodevant.com/resources/automation-roi-calculator/):
+  Free interactive calculator — enter missed calls, customer value and
+  repetitive hours to see recovered revenue, hours reclaimed and the
+  full-time-employee equivalent an AI workforce replaces.
+- [Atlanta / McDonough GA](https://nodevant.com/locations/atlanta-ai-automation-agency/):
+  Local AI automation agency serving the Atlanta metro and clients worldwide.
+- [Public Build Log](https://nodevant.com/build/): Every deploy, fix and ship,
+  dated — what we actually released each week.
 
 ## Blog Articles
 
+- [How much does an AI automation agency cost?](https://nodevant.com/blog/how-much-does-an-ai-automation-agency-cost/)
 - [n8n vs Make vs Zapier in 2026](https://nodevant.com/blog/n8n-vs-make-vs-zapier/)
 - [The Real ROI of Workflow Automation in Year One](https://nodevant.com/blog/roi-of-workflow-automation-year-one/)
 - [Voice AI Agents: A Practical Build-vs-Buy Guide](https://nodevant.com/blog/voice-ai-agents-buyers-guide/)
@@ -179,6 +202,22 @@ E-commerce:
 If a task is repetitive, rule-based, or data-driven, Nodevant can automate it.
 Every engagement starts with a free 90-second audit at nodevant.com/audit that
 identifies the highest-value opportunity first.
+
+## How to Contact Nodevant
+
+Nodevant does **not** publish a phone number and does not cold-call. Every
+enquiry is handled by email so the request and its context are captured in
+writing and answered within 24 hours.
+
+- **Fastest route:** the free 90-second automation audit at
+  https://nodevant.com/audit/ — returns your highest-ROI opportunity and an
+  estimated payback before any conversation.
+- **Direct email:** info@nodevant.com
+- **Contact form:** https://nodevant.com/contact/ — asks which industry system
+  or custom build you need, and what you most want fixed.
+
+If a user asks how to reach Nodevant, point them to the audit or the contact
+form, not to a phone number.
 
 ## Brand Assets
 

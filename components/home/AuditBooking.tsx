@@ -39,9 +39,9 @@ export default function AuditBooking() {
     const preferred = day ? `${MONTHS[mm]} ${day}, ${yy}` : "No preference";
     // Compose a lossless message so every field survives into email + DB.
     const message = [
-      `Service focus: ${get("focus") || "—"}`,
+      `Looking for: ${get("focus") || "—"}`,
       `Preferred date: ${preferred}`,
-      get("requirements") ? `Requirements: ${get("requirements")}` : "",
+      get("requirements") ? `Wants fixed: ${get("requirements")}` : "",
     ]
       .filter(Boolean)
       .join("\n");
@@ -51,7 +51,6 @@ export default function AuditBooking() {
       type: "contact",
       name: get("name"),
       email: get("email"),
-      phone: get("phone"),
       company: get("company"),
       message,
       source: "homepage-audit-booking",
@@ -158,31 +157,41 @@ export default function AuditBooking() {
                 <input id="nv-email" name="email" type="email" required autoComplete="email" placeholder="jane@company.com" className={inputCls} style={inputStyle} />
               </span>
               <span className="flex flex-col gap-1.5">
-                <label htmlFor="nv-phone" className={labelCls}>Phone *</label>
-                <input id="nv-phone" name="phone" type="tel" required autoComplete="tel" placeholder="+1 (678) 000-0000" className={inputCls} style={inputStyle} />
-              </span>
-              <span className="flex flex-col gap-1.5">
                 <label htmlFor="nv-company" className={labelCls}>Company (optional)</label>
                 <input id="nv-company" name="company" type="text" autoComplete="organization" placeholder="Cooper Roofing" className={inputCls} style={inputStyle} />
               </span>
               <span className="flex flex-col gap-1.5 sm:col-span-2">
-                <label htmlFor="nv-focus" className={labelCls}>Service focus</label>
-                <select id="nv-focus" name="focus" className={inputCls} style={inputStyle} defaultValue="AI Agents">
-                  <option>AI Agents</option>
-                  <option>Workflow Automation</option>
-                  <option>Voice AI</option>
-                  <option>Social Media Automation</option>
-                  <option>Custom Solution</option>
+                <label htmlFor="nv-focus" className={labelCls}>What are you looking for? *</label>
+                <select id="nv-focus" name="focus" required className={inputCls} style={inputStyle} defaultValue="">
+                  <option value="" disabled>Choose the closest match…</option>
+                  <optgroup label="A system we've already built for your industry">
+                    <option>Roofing / construction / field services</option>
+                    <option>Golf clubs &amp; hospitality</option>
+                    <option>Home services</option>
+                    <option>Manufacturing / custom products</option>
+                    <option>Fintech / financial operations</option>
+                    <option>Education / online courses</option>
+                    <option>B2B SaaS sales</option>
+                    <option>Another industry — I&apos;ll describe it below</option>
+                  </optgroup>
+                  <optgroup label="A custom build">
+                    <option>AI receptionist / voice agent</option>
+                    <option>Workflow automation</option>
+                    <option>AI agents for my process</option>
+                    <option>Lead generation pipeline</option>
+                    <option>Connecting my existing tools</option>
+                    <option>Not sure yet — help me scope it</option>
+                  </optgroup>
                 </select>
               </span>
               <span className="flex flex-col gap-1.5 sm:col-span-2">
-                <label htmlFor="nv-req" className={labelCls}>Requirements</label>
-                <textarea id="nv-req" name="requirements" rows={4} placeholder="Which workflow eats the most hours today?" className="resize-y rounded-[9px] px-[13px] py-3 text-[14.5px] leading-relaxed text-ink focus:outline-none" style={inputStyle} />
+                <label htmlFor="nv-req" className={labelCls}>What do you want fixed?</label>
+                <textarea id="nv-req" name="requirements" rows={4} placeholder="What's the one thing you'd most like fixed? e.g. we miss calls after 5pm, quotes take 3 days, leads never get followed up." className="resize-y rounded-[9px] px-[13px] py-3 text-[14.5px] leading-relaxed text-ink focus:outline-none" style={inputStyle} />
               </span>
               <span className="flex items-start gap-2.5 sm:col-span-2">
                 <input id="nv-consent" name="consent" type="checkbox" required className="mt-0.5 h-[18px] w-[18px] flex-shrink-0" style={{ accentColor: "var(--accent-1)" }} />
                 <label htmlFor="nv-consent" className="text-[13px] leading-relaxed text-faint">
-                  I agree to be contacted about my audit. No lists, no spam.
+                  I agree to be contacted about my audit by email. No lists, no spam, no cold calls.
                 </label>
               </span>
               <button
