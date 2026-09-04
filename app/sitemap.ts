@@ -4,6 +4,7 @@ import { PUBLISHED_POSTS } from "@/lib/blog-posts";
 import { SERVICE_DETAILS } from "@/lib/services";
 import { SOLUTION_DETAILS } from "@/lib/solutions";
 import { CASE_STUDY_DETAILS } from "@/lib/case-studies";
+import { AI_EMPLOYEE_PAGES } from "@/lib/ai-employees";
 
 export const dynamic = "force-static";
 
@@ -22,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/services/", priority: 0.9, changeFrequency: "monthly" },
     { path: "/solutions/", priority: 0.9, changeFrequency: "monthly" },
     { path: "/solutions/ai-receptionist/", priority: 0.85, changeFrequency: "monthly" },
+    { path: "/ai-employees/", priority: 0.9, changeFrequency: "monthly" },
     { path: "/pricing/ai-voice-agent-cost/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/resources/automation-roi-calculator/", priority: 0.85, changeFrequency: "monthly" },
     { path: "/locations/atlanta-ai-automation-agency/", priority: 0.7, changeFrequency: "monthly" },
@@ -43,6 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.8,
+  }));
+
+  const aiEmployeePages: MetadataRoute.Sitemap = AI_EMPLOYEE_PAGES.map((e) => ({
+    url: `${SITE.url}/ai-employees/${e.slug}/`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.85,
   }));
 
   const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDY_DETAILS.map((c) => ({
@@ -69,6 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...servicePages,
     ...solutionPages,
+    ...aiEmployeePages,
     ...caseStudyPages,
     ...blogPages,
   ];

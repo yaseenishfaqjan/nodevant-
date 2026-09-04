@@ -33,6 +33,7 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "About", href: "/about/" },
       { label: "Case Studies", href: "/case-studies/" },
       { label: "Industry Solutions", href: "/solutions/" },
+      { label: "AI Employees", href: "/ai-employees/" },
       { label: "AI Receptionist", href: "/solutions/ai-receptionist/" },
       { label: "Atlanta / McDonough, GA", href: "/locations/atlanta-ai-automation-agency/" },
       { label: "Blog", href: "/blog/" },

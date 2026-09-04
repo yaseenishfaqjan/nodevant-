@@ -36,6 +36,7 @@ const NAV: Item[] = [
       { label: "All Solutions", href: "/solutions/", desc: "Every operating system we've built and deployed." },
     ],
   },
+  { label: "AI Employees", href: "/ai-employees/" },
   { label: "Case Studies", href: "/case-studies/" },
   { label: "Pricing", href: "/pricing/" },
   { label: "About", href: "/about/" },
