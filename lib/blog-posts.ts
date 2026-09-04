@@ -519,16 +519,103 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "A plain-English breakdown of what AI automation agencies do, how they compare to hiring in-house, and how to know if your business is ready.",
     date: "2026-08-05",
-    readMinutes: 8,
-    published: false,
+    readMinutes: 6,
+    published: true,
     mesh: 3,
     cover: "/images/blog/what-is-an-ai-automation-agency.webp",
     metaTitle: "What Is an AI Automation Agency? | Nodevant",
     metaDescription:
-      "What AI automation agencies do, how they compare to hiring in-house, and how to know if your business is ready. Coming soon on the Nodevant blog.",
+      "What an AI automation agency actually does, how it compares to hiring in-house or buying a tool, and the honest signals that tell you whether you are ready.",
     keywords: ["ai automation agency", "hire automation agency", "automation consulting"],
-    relatedServices: [],
+    relatedServices: ["agentic-workflows", "system-integration"],
     relatedPosts: ["n8n-vs-make-vs-zapier", "roi-of-workflow-automation-year-one"],
+    body: [
+      {
+        type: "p",
+        text: "\"AI automation agency\" is a young enough label that two companies using it can do completely different work. One is a strategy shop that hands you a slide deck. Another is three people wiring up templates. The category has no licensing body and no standard deliverable, which makes it genuinely hard to tell what you are buying. Here is what the work actually involves, when it beats the alternatives, and the cases where you should not hire one at all.",
+      },
+      { type: "h2", text: "What the work actually is" },
+      {
+        type: "p",
+        text: "Strip away the language and an AI automation agency does one thing: it finds the repetitive decisions and hand-offs inside your business and replaces them with software that runs without a person. The AI part matters where the work needs judgment — reading an email and deciding what it is about, qualifying a caller, pulling the right number out of a messy document. Everything else is ordinary integration work, and any agency that pretends otherwise is selling the buzzword rather than the outcome.",
+      },
+      { type: "p", text: "A real engagement usually covers four things:" },
+      {
+        type: "ul",
+        items: [
+          "**Discovery that follows one real job end to end.** Not a workshop about your goals — tracing a single enquiry from the moment it arrives to the moment it is paid, and writing down every place a human touches it.",
+          "**Building the thing**, including the unglamorous parts: authentication, error handling, retries, and what happens when an API returns something unexpected at 2am.",
+          "**Connecting it to the tools you already run.** Most of the value is in the seams — the CRM, the calendar, the billing system — not in the model.",
+          "**Owning it after launch.** Tools change their APIs, edge cases surface, and a workflow nobody maintains quietly rots. Whoever builds it should still be there in month six.",
+        ],
+      },
+      { type: "h2", text: "What it is not" },
+      {
+        type: "p",
+        text: "It is not a chatbot on your website. It is not a strategy deck about your AI readiness. And it is not a replacement for a product team — automating your operations is a very different job from building the software you sell. If a proposal is mostly workshops, frameworks and maturity models, you are buying consulting with an AI label on it. Ask what will be running in production at the end, and who fixes it when it breaks.",
+      },
+      { type: "h2", text: "Agency, in-house, or a tool off the shelf" },
+      {
+        type: "p",
+        text: "All three are legitimate. They fit different situations, and the honest answer is that plenty of businesses should buy the tool and skip the agency entirely.",
+      },
+      {
+        type: "table",
+        head: ["Option", "Best when", "The real cost"],
+        rows: [
+          ["Off-the-shelf tool", "A generic template genuinely fits how you already work", "$49–$95/mo — but you bend your process to the tool"],
+          ["Agency build", "Your process has real edge cases, or missed work is costing revenue now", "From ~$1,800 for one workflow; more for agents and voice"],
+          ["In-house hire", "You have enough automation work to keep someone busy every week", "A salary, plus the months before they ship anything"],
+        ],
+      },
+      {
+        type: "p",
+        text: "The tipping point is usually specificity. The moment your answer to \"how does that work here?\" takes more than a sentence, template tools start costing you in workarounds — and workarounds are where automations quietly break. We wrote the full price breakdown in [what an AI automation agency costs](/blog/how-much-does-an-ai-automation-agency-cost/), including the three line items every quote should separate.",
+      },
+      { type: "h2", text: "Signs you are ready" },
+      {
+        type: "ul",
+        items: [
+          "**A specific job eats hours every week** and you can name it — chasing quotes, re-typing orders, returning missed calls.",
+          "**The work is rule-shaped.** A competent new hire could learn it from a page of instructions, even if some judgment is involved.",
+          "**You know roughly what a customer is worth.** Without that number you cannot tell whether an automation pays for itself, and neither can we.",
+          "**Someone owns the process today.** Automating a workflow nobody is accountable for just makes the confusion faster.",
+        ],
+      },
+      { type: "h2", text: "Signs you are not, yet" },
+      {
+        type: "p",
+        text: "We turn work down for these reasons more often than people expect, because building on top of them produces something that demos well and gets abandoned in a month:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**The process changes every week.** Automate it after it settles, not before — you will pay twice otherwise.",
+          "**The volume is tiny.** Two enquiries a week does not justify a build. Do it manually and spend the money on getting more enquiries.",
+          "**The rules live in people's heads.** If nothing is written down, discovery becomes a documentation project first.",
+          "**Nobody internally wants it.** The most common failure mode is not technical. A team that routes around the system returns nothing, which is why we treat \"they stopped using it\" as a defect on our side.",
+        ],
+      },
+      { type: "h2", text: "How to judge one before you sign" },
+      {
+        type: "p",
+        text: "Ask what they would decline to build, and why. An agency that says yes to everything has no opinion, and an opinion is most of what you are paying for. Ask who maintains it — if maintenance is not in the quote, it is not in the plan. Ask for the arithmetic behind the value, not a percentage from a case study about someone else's business. And ask to see something running, not a diagram of something that could run.",
+      },
+      {
+        type: "p",
+        text: "That is why our own engagements start with a free [90-second audit](/audit/) rather than a sales call. It returns your highest-ROI opportunity and an estimated payback before either of us has spent anything — and sometimes the honest answer it produces is that a $79/month tool would serve you better.",
+      },
+      {
+        type: "chips",
+        label: "Keep reading",
+        links: [
+          { label: "What an agency costs", href: "/blog/how-much-does-an-ai-automation-agency-cost/" },
+          { label: "n8n vs Make vs Zapier", href: "/blog/n8n-vs-make-vs-zapier/" },
+          { label: "Year-one ROI", href: "/blog/roi-of-workflow-automation-year-one/" },
+        ],
+      },
+      { type: "cta" },
+    ],
   },
   {
     slug: "ai-agents-for-business",
@@ -538,16 +625,97 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt:
       "From SDRs to support teams, autonomous agents are taking over whole workflows. What's actually possible today — and what's still marketing.",
     date: "2026-08-19",
-    readMinutes: 9,
-    published: false,
+    readMinutes: 5,
+    published: true,
     mesh: 4,
     cover: "/images/blog/ai-agents-for-business.webp",
     metaTitle: "How AI Agents Are Replacing Entire Business Functions | Nodevant",
     metaDescription:
-      "Autonomous AI agents are taking over whole workflows, from sales development to support. What's real and what's marketing. Coming soon on the Nodevant blog.",
+      "Autonomous AI agents are taking over whole workflows, from sales development to front-desk calls. What genuinely works in production today, and what is still marketing.",
     keywords: ["ai agents for business", "autonomous agents", "agentic workflows"],
-    relatedServices: [],
+    relatedServices: ["agentic-workflows", "ai-voice-agents"],
     relatedPosts: ["voice-ai-agents-buyers-guide", "n8n-vs-make-vs-zapier"],
+    body: [
+      {
+        type: "p",
+        text: "The claim doing the rounds is that AI agents will replace whole departments. The reality we see in production is narrower and more useful: agents are absorbing **functions**, not job titles. A function is a bounded loop of work with a clear trigger and a clear finish — answer the call, qualify the lead, chase the unpaid invoice. Where the loop is that tight, agents genuinely run it end to end today. Where it is not, they still need a human at the edges.",
+      },
+      { type: "h2", text: "What \"agent\" actually means" },
+      {
+        type: "p",
+        text: "The word is doing a lot of work in marketing copy, so it is worth being precise. The difference is not intelligence, it is who decides the next step.",
+      },
+      {
+        type: "table",
+        head: ["", "Who decides the next step", "Breaks when"],
+        rows: [
+          ["Chatbot", "You do — it answers, you act", "The answer needs an action taken"],
+          ["Workflow automation", "The developer did, in advance", "Reality goes off the mapped path"],
+          ["AI agent", "The agent does, at runtime, using tools", "The goal is ambiguous or the tools are missing"],
+        ],
+      },
+      {
+        type: "p",
+        text: "That middle row is why so much \"agentic\" work is really just automation with a model in the loop — which is fine, and often the right build. A [workflow automation](/services/agentic-workflows/) that never surprises you is worth more than an agent that occasionally invents a step. The honest question is not which is more advanced, it is which one the job needs.",
+      },
+      { type: "h2", text: "Functions agents genuinely run today" },
+      {
+        type: "ul",
+        items: [
+          "**Front desk.** Answering every call, qualifying the caller, booking into a real calendar and writing the record to the CRM. This is the most reliably solved function we deploy — see the [AI receptionist](/solutions/ai-receptionist/) for the shape of it.",
+          "**Sales development.** Sourcing accounts that match a profile, enriching them, sequencing outreach across channels and handling the first replies. Our own [Scalaro](/solutions/scalaro/) stack runs this as a set of cooperating agents rather than one.",
+          "**Quote and estimate production.** Reading a messy inbound enquiry, extracting a structured spec, pricing it against rules and issuing the quote — the core of the [FABRIOZA](/solutions/fabrioza/) build, which took quoting from days to inside the hour.",
+          "**Follow-up that never forgets.** The unglamorous one, and often the highest-value: chasing the quote, the no-show, the unpaid invoice, on schedule, forever.",
+          "**Intake and triage.** Reading what arrived, deciding what it is, routing it to the right place with the context attached.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Notice what these share. Each has an unambiguous success condition — the meeting is booked, the quote is sent, the record exists. That is the property that makes a function automatable, far more than how clever the model is.",
+      },
+      { type: "h2", text: "What is still marketing" },
+      {
+        type: "p",
+        text: "We would rather lose a deal than oversell this, so plainly:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**\"Replace your whole sales team.\"** Agents book meetings well. Closing a complex deal involves reading a room, negotiating and being trusted, and they do not do that.",
+          "**Fully autonomous multi-agent \"companies.\"** Impressive in demos, fragile in production. Every extra agent multiplies the ways a run can drift, and nobody wants to debug a conversation between two bots at 2am.",
+          "**\"It learns your business on its own.\"** It learns what you write down and give it access to. The work of encoding your rules does not disappear; it moves to the start of the project.",
+          "**Anything irreversible without a checkpoint.** Sending money, signing, deleting, promising a price outside the rules. Not a capability limit — a judgment one.",
+        ],
+      },
+      { type: "h2", text: "The pattern that actually works" },
+      {
+        type: "p",
+        text: "The builds that survive contact with real customers all look the same: the agent owns the loop, and a human owns the exceptions. Concretely — the agent handles the routine call and warm-transfers the unusual one; it drafts the quote and a person approves anything outside the pricing rules; it chases the invoice and escalates the dispute. You are not choosing between a human and an agent. You are deciding which slice of a function is routine enough to hand over.",
+      },
+      {
+        type: "p",
+        text: "That framing also makes the ROI legible. You are not paying to \"add AI\" — you are moving a measurable share of a function off payroll, and the [ROI calculator](/resources/automation-roi-calculator/) will tell you what that share is worth in hours and full-time-employee equivalents before you commit.",
+      },
+      { type: "h2", text: "How to pick the first function" },
+      {
+        type: "p",
+        text: "Pick the loop where the cost of missing it is obvious and the success condition is unarguable. Missed calls are the classic first build because the loss is countable — you can put a number on the enquiries that went to voicemail last month, which means you can also tell whether the agent worked.",
+      },
+      {
+        type: "p",
+        text: "Avoid starting with the most complex function to prove the technology. Start with the one where you will know within a fortnight whether it earned its keep, then use that result to fund the next one.",
+      },
+      {
+        type: "chips",
+        label: "Keep reading",
+        links: [
+          { label: "Voice AI buyer's guide", href: "/blog/voice-ai-agents-buyers-guide/" },
+          { label: "AI receptionist", href: "/solutions/ai-receptionist/" },
+          { label: "ROI calculator", href: "/resources/automation-roi-calculator/" },
+        ],
+      },
+      { type: "cta" },
+    ],
   },
   {
     slug: "how-to-automate-lead-generation",
@@ -556,17 +724,129 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Lead Gen",
     excerpt:
       "A step-by-step blueprint for an AI lead engine that captures, enriches, scores, and follows up with prospects while your team sleeps.",
-    date: "2026-09-02",
-    readMinutes: 11,
-    published: false,
+    date: "2026-08-26",
+    readMinutes: 6,
+    published: true,
     mesh: 5,
     cover: "/images/blog/how-to-automate-lead-generation.webp",
     metaTitle: "Automating Lead Generation End to End | Nodevant",
     metaDescription:
-      "The full blueprint for an AI lead engine: capture, enrichment, scoring and automated follow-up. Coming soon on the Nodevant blog.",
+      "The full blueprint for an automated lead engine: capture, enrichment, scoring, instant response and follow-up — with the speed-to-lead maths that decides whether it pays.",
     keywords: ["automate lead generation", "ai lead generation", "lead gen pipeline"],
-    relatedServices: [],
+    relatedServices: ["lead-gen-pipeline", "ai-voice-agents"],
     relatedPosts: ["roi-of-workflow-automation-year-one", "n8n-vs-make-vs-zapier"],
+    body: [
+      {
+        type: "p",
+        text: "Most businesses do not have a lead generation problem. They have a lead **handling** problem — enquiries arrive and then sit. This is the blueprint we actually build: five stages, what each one does, and the arithmetic that decides whether automating it is worth the money.",
+      },
+      { type: "h2", text: "The five stages" },
+      {
+        type: "table",
+        head: ["Stage", "What it does", "What happens without it"],
+        rows: [
+          ["1. Capture", "Every enquiry lands in one place, whatever channel it came from", "Leads live in an inbox, a phone and someone's notebook"],
+          ["2. Enrich", "Adds the context you would otherwise google", "Reps research instead of selling"],
+          ["3. Score", "Ranks by fit and intent against your rules", "Everything is treated as equally urgent, so nothing is"],
+          ["4. Respond", "Replies and books within minutes, automatically", "The fastest competitor wins the deal"],
+          ["5. Follow up", "Chases on a schedule until there is an answer", "80% of the pipeline quietly evaporates"],
+        ],
+      },
+      { type: "h2", text: "Stage 1 — Capture everything in one place" },
+      {
+        type: "p",
+        text: "The first job is unglamorous: one destination for every enquiry, regardless of whether it came from a form, a phone call, an inbox, a DM or a marketplace. Until that exists, every downstream stage is guesswork because your data has holes in it.",
+      },
+      {
+        type: "p",
+        text: "The channel people forget is the phone. A missed call is a lead that never enters the system at all — it leaves no row to follow up. That is why an [AI receptionist](/solutions/ai-receptionist/) is often the highest-yield first build for local and service businesses: it converts an invisible loss into a captured record.",
+      },
+      { type: "h2", text: "Stage 2 — Enrich before a human ever looks" },
+      {
+        type: "p",
+        text: "By the time anyone opens the record it should already know the company size, industry, location, likely budget band and where the lead came from. This is pure grunt work — exactly the kind of lookup-and-append job that automation does perfectly and people do slowly and inconsistently.",
+      },
+      {
+        type: "p",
+        text: "Keep it honest: enrich with what you can actually verify. A confidently wrong company size will send a good lead down the wrong track, which is worse than no enrichment at all.",
+      },
+      { type: "h2", text: "Stage 3 — Score against your rules, not a vibe" },
+      {
+        type: "ul",
+        items: [
+          "**Fit** — do they match who you actually serve? Industry, size, geography, the things that make delivery work.",
+          "**Intent** — did they ask for pricing, or download a guide? Those are not the same lead.",
+          "**Urgency** — is there a deadline, a storm, a renewal, a broken process bleeding money right now?",
+          "**Disqualifiers** — say them out loud. A pipeline that never rejects anything is a to-do list, not a funnel.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Write the scoring rules with the person who actually closes deals, then encode them. The value is not the model; it is that the rules become explicit, consistent and reviewable rather than living in one rep's instinct.",
+      },
+      { type: "h2", text: "Stage 4 — Respond in minutes, because the maths is brutal" },
+      {
+        type: "p",
+        text: "This is the stage that decides the return on the whole build. Published lead-response research is unusually consistent, and it is the same benchmark set our [pricing meter](/pricing/) and audit run on:",
+      },
+      {
+        type: "table",
+        head: ["You respond in", "Qualified leads lost to a faster competitor"],
+        rows: [
+          ["Under 5 minutes", "~5%"],
+          ["Under 1 hour", "~35%"],
+          ["Within 4 hours", "~78%"],
+          ["Same day", "~85%"],
+          ["Next day", "~94%"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Work an example. Say you get 40 enquiries a month, a customer is worth $2,000, and about 15% of the leads you actually reach turn into business. Reply next day and roughly 94% are gone before you start — you are competing for the remainder. Reply inside five minutes and almost all of them are still winnable. The gap between those two worlds is not a better sales pitch; it is a machine that answers while you are asleep.",
+      },
+      {
+        type: "p",
+        text: "Run your own numbers in the [ROI calculator](/resources/automation-roi-calculator/) rather than trusting ours — it uses exactly these benchmarks and shows the payback against a real build price.",
+      },
+      { type: "h2", text: "Stage 5 — Follow up until there is an answer" },
+      {
+        type: "p",
+        text: "Most revenue lost after contact is lost to silence, not rejection. The follow-up sequence is the least clever and most profitable part of the pipeline: a defined cadence across email, SMS and voice, escalating to a human at the right moment, stopping instantly when they reply or ask you to.",
+      },
+      {
+        type: "p",
+        text: "Two rules keep this from becoming spam. Stop the moment they respond — nothing destroys trust faster than a nurture email arriving after a real conversation started. And cap it. \"Forever\" is not a cadence, it is harassment with a scheduler.",
+      },
+      { type: "h2", text: "Where these pipelines break" },
+      {
+        type: "ul",
+        items: [
+          "**Nobody owns the exceptions.** The automation handles 85% and the remainder silently piles up in a queue no one reads.",
+          "**Scoring never gets revisited.** Rules written in January are wrong by June, and a stale score is worse than none because people trust it.",
+          "**The CRM becomes two sources of truth.** If reps keep a private spreadsheet, the pipeline has already failed.",
+          "**Volume without qualification.** Doubling enquiries while conversion stays flat just means you now waste twice as much time. Fix stage 3 before scaling stage 1.",
+        ],
+      },
+      { type: "h2", text: "What to build first" },
+      {
+        type: "p",
+        text: "Not all five. Build stage 4 first — instant response — because it produces a measurable result within a fortnight and funds everything after it. Then stage 1 for whichever channel currently leaks most, usually the phone. Then follow-up. Enrichment and scoring come last: they make a working pipeline more efficient, but they cannot rescue one that answers a day late.",
+      },
+      {
+        type: "p",
+        text: "If you are not sure which stage is costing you most, the free [90-second audit](/audit/) will tell you, and it will say so plainly if the honest answer is that your volume does not yet justify building any of it.",
+      },
+      {
+        type: "chips",
+        label: "Keep reading",
+        links: [
+          { label: "Year-one ROI", href: "/blog/roi-of-workflow-automation-year-one/" },
+          { label: "AI receptionist", href: "/solutions/ai-receptionist/" },
+          { label: "ROI calculator", href: "/resources/automation-roi-calculator/" },
+        ],
+      },
+      { type: "cta" },
+    ],
   },
 ];
 
