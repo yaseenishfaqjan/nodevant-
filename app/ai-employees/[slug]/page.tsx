@@ -80,7 +80,7 @@ export default function AiEmployeePage({
           description: e.jobTitle,
           url,
           provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
+          areaServed: "United States",
           offers: {
             "@type": "Offer",
             price: 997,

@@ -30,17 +30,17 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
         Skip to main content
       </a>
       <Navbar />
-      {/* The sticky mobile CTA below is fixed-position, so it overlays whatever
-          ends the page. The footer renders AFTER <main>, so bottom padding has
-          to live on the footer (not main) or the last footer rows sit under the
-          bar. Footer carries `pb-28 md:pb-6` for exactly that clearance. */}
+      {/* The sticky mobile CTA is fixed, so it covers the bottom of the viewport.
+          Clearance lives on the footer (it renders after main): mobile padding
+          is the bar height plus the iOS home-indicator inset. */}
       <main id="main-content" className="min-h-screen">
         {children}
       </main>
       <Footer />
 
-      {/* Sticky mobile conversion bar */}
-      <div className="nav-blur fixed inset-x-0 bottom-0 z-40 p-3 md:hidden">
+      {/* Sticky mobile conversion bar. pb includes the safe-area inset so the
+          button sits above the home indicator instead of under it. */}
+      <div className="nav-blur fixed inset-x-0 bottom-0 z-40 border-t border-line px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom,0px))] md:hidden">
         <a href="/audit/" className="btn-primary w-full justify-center">
           Get My Free Audit →
         </a>

@@ -30,6 +30,18 @@ export interface SolutionDetail {
   faq: { q: string; a: string }[];
   metaTitle: string;
   metaDescription: string;
+  /** One sentence answer engines can quote. Shown above the longer description. */
+  definition?: string;
+  /** Compact facts table for AEO. */
+  facts?: { label: string; value: string }[];
+  /** USD fixed-scope band. Drives the price on the page and in Offer schema. */
+  offer?: { low: number; high: number };
+  caseStudySlug?: string;
+  /** Button label when the linked case study is a neighbouring deployment. */
+  caseStudyLabel?: string;
+  applicationCategory?: string;
+  /** "offer" pages are sellable product landings, not the deployed-stack grid. */
+  listing?: "stack" | "offer";
 }
 
 export const SOLUTION_DETAILS: SolutionDetail[] = [
@@ -49,7 +61,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     timeline: "3–6 weeks",
     investmentRange: "INVESTMENT RANGE: MULTI-SERVICE STACK · FULL QUOTE AFTER AUDIT",
     poweredBy: ["complex-logic-engines", "system-integration", "custom-ai-solutions"],
-    related: ["scalaro", "fabrioza"],
+    related: ["credit-repair-software", "scalaro"],
     product: "storehouse360",
     diagram: "modular",
     diagramStatus: "PLATFORM LIVE",
@@ -145,7 +157,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     timeline: "4–6 weeks",
     investmentRange: "INVESTMENT RANGE: FLAGSHIP STACK · FULL QUOTE AFTER AUDIT",
     poweredBy: ["agentic-workflows", "ai-voice-agents", "lead-gen-pipeline"],
-    related: ["bmaikr", "home-services"],
+    related: ["fairway360", "bmaikr"],
     product: "scalaro",
     diagram: "node-graph",
     diagramStatus: "AGENTS ACTIVE",
@@ -290,7 +302,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     timeline: "2–4 weeks",
     investmentRange: "INVESTMENT RANGE: MULTI-SERVICE STACK · FULL QUOTE AFTER AUDIT",
     poweredBy: ["lead-gen-pipeline", "ai-voice-agents", "system-integration"],
-    related: ["bmaikr", "academy"],
+    related: ["lawn-care-software", "bmaikr"],
     product: null,
     diagram: "voice",
     diagramStatus: "24/7 ANSWERING",
@@ -321,6 +333,207 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     metaTitle: "Home Services Stack — Missed-Call Recovery System | Nodevant",
     metaDescription:
       "A home services operating system: 24/7 call answering, missed-call recovery, job booking and review requests. Never lose a lead to a ring-out. Book a stack consultation.",
+  },
+  {
+    slug: "fairway360",
+    name: "Fairway360",
+    gradientWord: "Software",
+    heroLead: "Golf Club",
+    industry: "Hospitality · US golf courses & clubs",
+    routerGroup: "onsite",
+    definition:
+      "Fairway360 is a done-for-you software stack for US golf courses and country clubs that answers every call, books tee times, and follows up on membership and event leads.",
+    facts: [
+      { label: "Who it's for", value: "US golf courses and country clubs" },
+      { label: "What it does", value: "Answers calls, books tee times, follows up on membership and event leads" },
+      { label: "Price", value: "$10,000–$20,000 USD, fixed after a free audit" },
+      { label: "Timeline", value: "Live in 1–3 weeks" },
+      { label: "After launch", value: "Monitored and tuned" },
+      { label: "Live reference", value: "fairway360.io" },
+      { label: "Built on", value: "Scalaro voice and lead infrastructure" },
+    ],
+    description:
+      "Built for clubs whose pro shop cannot staff a night desk. Voice answering, tee-time booking and lead follow-up run on the same Scalaro infrastructure already live at fairway360.io. You get a fixed-scope build for your club, not a seat in someone else's tool.",
+    proofLabel: "Live",
+    proofValue: "fairway360.io · 24/7 answering",
+    liveUrl: "https://fairway360.io",
+    liveLabel: "Fairway360",
+    timeline: "1–3 weeks",
+    investmentRange: "USD $10,000–$20,000 · FIXED SCOPE · FINAL QUOTE AFTER AUDIT",
+    offer: { low: 10000, high: 20000 },
+    poweredBy: ["ai-voice-agents", "lead-gen-pipeline"],
+    related: ["scalaro", "home-services"],
+    product: "fairway360",
+    caseStudySlug: "fairway360",
+    applicationCategory: "BusinessApplication",
+    listing: "stack",
+    diagram: "voice",
+    diagramStatus: "24/7 ANSWERING",
+    diagramAlt: "An inbound club call answered by software that books a tee time and logs the lead.",
+    problem: {
+      pain: "A golf course loses the booking when the pro shop is with a member or the enquiry arrives after close. The call does not show up in a report. It just goes to the club down the road.",
+      tries: ["A voicemail box checked in the morning", "The pro shop answering between members", "An answering service reading a script", "Calling back the next day, if at all"],
+    },
+    modules: [
+      { icon: "phone", title: "Every call answered", text: "Inbound calls picked up in the club's voice, including after hours." },
+      { icon: "calendar-check", title: "Tee-time booking", text: "Availability checked and the time confirmed on the call." },
+      { icon: "funnel", title: "Lead follow-up", text: "Membership and event enquiries captured when the shop is busy." },
+      { icon: "layers", title: "On proven infrastructure", text: "Deployed on the Scalaro framework already running in production." },
+      { icon: "refresh", title: "Monitored after launch", text: "Booking rate and missed calls watched after go-live." },
+    ],
+    process: [
+      { icon: "target", title: "Map the desk", text: "We trace how your club actually answers, books and follows up." },
+      { icon: "gear", title: "Configure the stack", text: "Voice, tee sheet and follow-up wired to your tools." },
+      { icon: "shield-check", title: "Test real calls", text: "Live test calls before it answers a member." },
+      { icon: "refresh", title: "Launch and monitor", text: "Live in 1–3 weeks, then watched and tuned." },
+    ],
+    faq: [
+      { q: "What is Fairway360?", a: "Fairway360 is a done-for-you software stack for US golf courses and country clubs. It answers calls, books tee times, and follows up on membership and event leads. The live reference is fairway360.io." },
+      { q: "Who is it for?", a: "US golf courses and country clubs that lose bookings when the pro shop is busy or closed. It is a build for your club, not a generic consumer app." },
+      { q: "How much does Fairway360 cost?", a: "Most club stacks land between $10,000 and $20,000 USD, fixed before build. The free audit confirms scope and returns the exact number. There is no hourly billing." },
+      { q: "How fast does it go live?", a: "Typically 1–3 weeks after the audit, because the voice and lead infrastructure is already proven. A ground-up telephony project takes longer; this one does not start from zero." },
+      { q: "Is this the same product as Scalaro?", a: "No. Scalaro is the agent framework. Fairway360 is the golf-club stack deployed on that framework. You can read the Fairway360 case study for how that deployment went." },
+      { q: "Will callers know they are talking to software?", a: "It answers in the club's voice and does not impersonate a named person. Most callers get a tee time and hang up. Calls that need a person are handed over with the context." },
+      { q: "What happens after launch?", a: "The stack is monitored after go-live. We watch booking and missed-call behaviour and tune it, rather than handing you a login and leaving." },
+    ],
+    metaTitle: "Fairway360 — Golf Club Software for US Courses | Nodevant",
+    metaDescription:
+      "Fairway360 is done-for-you golf club software for US courses: every call answered, tee times booked, leads followed up. $10,000–$20,000. Live in 1–3 weeks.",
+  },
+  {
+    slug: "lawn-care-software",
+    name: "Lawn Care Software",
+    gradientWord: "Software",
+    heroLead: "Lawn Care",
+    industry: "Field service · US lawn & landscape",
+    routerGroup: "onsite",
+    definition:
+      "Lawn care software from Nodevant is a done-for-you stack for US lawn, landscape, and field crews that captures every lead, books the route, and invoices the job when the work is done.",
+    facts: [
+      { label: "Who it's for", value: "US lawn care, landscape, and similar route businesses" },
+      { label: "What it replaces", value: "Missed calls, whiteboard routing, and invoices sent days later" },
+      { label: "Price", value: "$10,000–$20,000 USD, fixed after a free audit" },
+      { label: "Timeline", value: "Live in 1–3 weeks" },
+      { label: "Includes", value: "Answering, booking, job status, invoicing, review requests" },
+      { label: "After launch", value: "Monitored for missed calls and unbilled jobs" },
+      { label: "Closest deployment", value: "GlobalShield360 field-service case study" },
+    ],
+    description:
+      "Built for owners who are on a mower when the phone rings. The stack answers, books the visit onto the right crew's day, moves the job through completion, and sends the invoice without a second system. Fixed scope, then monitored after launch.",
+    proofLabel: "Pattern",
+    proofValue: "Same field flow as GlobalShield360",
+    liveUrl: null,
+    liveLabel: null,
+    timeline: "1–3 weeks",
+    investmentRange: "USD $10,000–$20,000 · FIXED SCOPE · FINAL QUOTE AFTER AUDIT",
+    offer: { low: 10000, high: 20000 },
+    poweredBy: ["lead-gen-pipeline", "ai-voice-agents", "system-integration"],
+    related: ["home-services", "bmaikr"],
+    product: null,
+    caseStudySlug: "bmaikr",
+    caseStudyLabel: "Read the field-service case study",
+    applicationCategory: "BusinessApplication",
+    listing: "offer",
+    diagram: "hub",
+    diagramStatus: "ROUTE BOOKED",
+    diagramAlt: "A lawn-care lead moving from the missed call through booking and the crew route to the invoice.",
+    problem: {
+      pain: "Lawn and landscape companies lose the job in the gaps: a call during a route, an estimate written on paper, an invoice sent days later. The work got done. The money and the next booking did not.",
+      tries: ["A voicemail returned after the route", "The owner booking jobs from the truck", "A group text for who is on which lawn", "Invoices batched on Sunday night"],
+    },
+    modules: [
+      { icon: "phone", title: "Calls answered on the route", text: "Every inbound call picked up while the crew is on a job." },
+      { icon: "calendar-check", title: "Visits booked", text: "The job lands on the right crew's day, not a sticky note." },
+      { icon: "truck", title: "Route status", text: "Each job moves from booked to done without a whiteboard." },
+      { icon: "doc", title: "Invoice when the work is done", text: "Completed visits billed without a weekend catch-up." },
+      { icon: "star", title: "Review after the visit", text: "A review request goes out once the job is actually finished." },
+      { icon: "refresh", title: "Monitored after launch", text: "Missed calls and unbilled jobs watched after go-live." },
+    ],
+    process: [
+      { icon: "target", title: "Map one route", text: "We follow a real lead from the ring to the paid invoice." },
+      { icon: "gear", title: "Build the stack", text: "Answering, booking, status and invoicing connected." },
+      { icon: "shield-check", title: "Test the handoffs", text: "Missed-call and invoice paths rehearsed before go-live." },
+      { icon: "refresh", title: "Launch and monitor", text: "Live in 1–3 weeks, then tuned on real calls." },
+    ],
+    faq: [
+      { q: "What is Nodevant lawn care software?", a: "It is a done-for-you software stack for US lawn, landscape, and similar route businesses. It captures the lead, books the visit, tracks the job, and invoices when the work is done." },
+      { q: "Is this an off-the-shelf lawn app?", a: "No. It is built around how your crews, calendar and invoicing already work. You own the deployment. It is not a seat in a generic field-service subscription." },
+      { q: "How much does it cost?", a: "Typical builds are $10,000–$20,000 USD, fixed after a free audit. The audit is what turns that band into a number for your routes, cities and tools. No hourly billing." },
+      { q: "How long until it is live?", a: "Most lawn and field stacks go live in 1–3 weeks. A single missed-call and booking flow is the short end of that. Extra locations or a custom price book add time, and the audit says which." },
+      { q: "Will customers know a person did not pick up?", a: "The stack answers in your business's voice and books the visit. It does not pretend to be a named employee. Calls that need a person are handed over with the address and the request." },
+      { q: "Do you have a lawn-care case study?", a: "The closest published deployment is GlobalShield360, a field-service stack that runs lead, dispatch and invoice in one system. The lawn stack uses that same job lifecycle, configured for routes and recurring visits rather than storm restoration." },
+      { q: "What is included after launch?", a: "Monitoring is part of the build. We watch for missed calls and jobs that stall before the invoice, and tune the stack after it is live." },
+    ],
+    metaTitle: "Lawn Care Software for US Crews | Nodevant",
+    metaDescription:
+      "Done-for-you lawn care software for US crews: every lead captured, routes booked, jobs invoiced. $10,000–$20,000, live in 1–3 weeks, monitored after launch.",
+  },
+  {
+    slug: "credit-repair-software",
+    name: "Credit Repair Software",
+    gradientWord: "Software",
+    heroLead: "Credit Repair",
+    industry: "Financial services · US credit teams",
+    routerGroup: "program",
+    definition:
+      "Credit repair software from Nodevant is a Storehouse360-based stack for US credit and financial teams that pulls 3-bureau data, tracks the work on each client, and keeps every decision auditable.",
+    facts: [
+      { label: "Who it's for", value: "US credit and financial teams — not consumers seeking repair" },
+      { label: "What it is", value: "Software Nodevant builds. Nodevant does not operate a credit-repair service." },
+      { label: "Based on", value: "Storehouse360, the live financial hub" },
+      { label: "Includes", value: "3-bureau view, per-file tracking, audit trail" },
+      { label: "Price", value: "$10,000–$20,000 USD, fixed after a free audit" },
+      { label: "Timeline", value: "Live in 1–3 weeks for a standard scope" },
+      { label: "After launch", value: "Monitored for stalled files and failed syncs" },
+    ],
+    description:
+      "Nodevant does not operate a consumer credit-repair service. We build the software a credit business runs: bureau data in one view, the work on each file tracked, and the reason for each step stored. Storehouse360 is the live reference deployment. Your build is scoped to your letters, portals and billing.",
+    proofLabel: "Reference",
+    proofValue: "Storehouse360 financial hub",
+    liveUrl: "https://storehouse360.com",
+    liveLabel: "Storehouse360",
+    timeline: "1–3 weeks",
+    investmentRange: "USD $10,000–$20,000 · FIXED SCOPE · FINAL QUOTE AFTER AUDIT",
+    offer: { low: 10000, high: 20000 },
+    poweredBy: ["complex-logic-engines", "system-integration", "custom-ai-solutions"],
+    related: ["storehouse360", "scalaro"],
+    product: "storehouse360",
+    caseStudySlug: "storehouse360",
+    caseStudyLabel: "Read the Storehouse360 case study",
+    applicationCategory: "FinanceApplication",
+    listing: "offer",
+    diagram: "modular",
+    diagramStatus: "FILES TRACKED",
+    diagramAlt: "Client credit files, bureau data and the audit trail joined into one software stack.",
+    problem: {
+      pain: "A credit business dies in the file: bureau portals that do not match, letters tracked in a spreadsheet, and a status the client cannot see. Scaling means more people re-checking the same three sites.",
+      tries: ["A login per bureau and a notebook", "Dispute status in a spreadsheet", "Clients calling for an update you have to look up", "Billing kept in a separate tool from the file"],
+    },
+    modules: [
+      { icon: "chart", title: "3-bureau view", text: "Equifax, Experian and TransUnion pulled into one client record." },
+      { icon: "doc", title: "Work tracked per file", text: "Letters, status and next step live on the client, not in an inbox." },
+      { icon: "shield-check", title: "Auditable steps", text: "Each recommendation stores the inputs that produced it." },
+      { icon: "layers", title: "Storehouse360 base", text: "Configured from the financial hub already running in production." },
+      { icon: "refresh", title: "Monitored after launch", text: "Stalled files and failed syncs watched after go-live." },
+    ],
+    process: [
+      { icon: "target", title: "Map the file", text: "We document how a client moves from intake to the next bureau pull." },
+      { icon: "gear", title: "Configure the hub", text: "Bureau data, file status and billing connected for your workflow." },
+      { icon: "chart", title: "Check it on real files", text: "Run against historical clients before anyone relies on it." },
+      { icon: "refresh", title: "Launch and monitor", text: "Live in 1–3 weeks for a standard scope, then tuned." },
+    ],
+    faq: [
+      { q: "What is Nodevant credit repair software?", a: "It is a Storehouse360-based software stack for US credit and financial teams. It puts 3-bureau data, the work on each client file, and an audit trail in one system. Nodevant builds the software. We do not run a consumer credit-repair service." },
+      { q: "Is this Storehouse360?", a: "Storehouse360 is the live reference: a financial hub with 3-bureau credit intelligence, card insights, funding matches and property discovery. A credit-repair build starts from that hub and is configured to your letters, portals and billing. You can read the Storehouse360 case study for the deployment." },
+      { q: "How much does it cost?", a: "A standard credit-team stack is $10,000–$20,000 USD, fixed after the free audit. Extra bureaus integrations, a client portal, or multi-brand billing move the quote. The audit is where that gets decided, before any build starts." },
+      { q: "How long does a build take?", a: "A stack scoped to bureau data, file tracking and billing typically goes live in 1–3 weeks. Deeper custom logic, of the kind on the full Storehouse360 hub, runs longer and is quoted separately." },
+      { q: "Can we show a client why a step was taken?", a: "Yes. The point of the audit trail is that each stored step keeps the inputs behind it, so a client or a reviewer can see why the file moved." },
+      { q: "Do we have to replace our billing?", a: "No. System integration connects the stack to the billing and CRM you already use when those tools should stay. The audit lists what gets connected and what gets replaced." },
+      { q: "What happens after it launches?", a: "Monitoring is included. We watch for stalled files and failed data syncs and tune the stack after launch, instead of ending the project at handoff." },
+    ],
+    metaTitle: "Credit Repair Software for US Firms | Nodevant",
+    metaDescription:
+      "Storehouse360-based credit repair software for US teams: 3-bureau data, file tracking, and an audit trail. $10,000–$20,000, live in 1–3 weeks. Free audit.",
   },
 ];
 

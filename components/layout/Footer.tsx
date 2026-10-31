@@ -23,7 +23,11 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Scalaro · SaaS Sales", href: "/solutions/scalaro/" },
       { label: "BMAIKR · Field Services", href: "/solutions/bmaikr/" },
       { label: "Academy · Education", href: "/solutions/academy/" },
+      { label: "Fairway360 · Golf clubs", href: "/solutions/fairway360/" },
+      { label: "Lawn care software", href: "/solutions/lawn-care-software/" },
+      { label: "Credit repair software", href: "/solutions/credit-repair-software/" },
       { label: "Home Services", href: "/solutions/home-services/" },
+      { label: "All software stacks", href: "/products/" },
       { label: "All Solutions", href: "/solutions/" },
     ],
   },
@@ -45,6 +49,7 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Free Automation Audit", href: "/audit/" },
       { label: "ROI Calculator", href: "/resources/automation-roi-calculator/" },
+      { label: "Software stacks", href: "/products/" },
       { label: "Pricing", href: "/pricing/" },
       { label: "Book a Call", href: "/contact/" },
       { label: "All Services", href: "/services/" },
@@ -62,9 +67,9 @@ function Chip({ name }: { name: IconName }) {
 }
 
 export default function Footer() {
-  // pb-28 on mobile clears the fixed sticky CTA bar (see SiteChrome).
+  // Mobile bottom padding clears the fixed audit bar plus the home-indicator inset.
   return (
-    <footer className="border-t border-line pb-28 pt-12 md:pb-6 md:pt-[72px]">
+    <footer className="border-t border-line pt-12 max-md:pb-[calc(7.75rem+env(safe-area-inset-bottom,0px))] md:pb-10 md:pt-[72px]">
       <div className="mx-auto grid max-w-[1280px] gap-9 px-5 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1.2fr_1fr_1fr]">
         {/* Brand col */}
         <div className="min-w-0">
@@ -113,7 +118,7 @@ export default function Footer() {
                 {SITE.address.street}, {SITE.address.city}, {SITE.address.region}{" "}
                 {SITE.address.postal}, United States
                 <span className="mt-0.5 block text-[13px] text-faint">
-                  Serving clients globally
+                  US companies first · remote elsewhere
                 </span>
               </span>
             </div>

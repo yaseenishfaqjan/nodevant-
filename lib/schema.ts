@@ -18,7 +18,7 @@ export function organizationSchema() {
       worksFor: { "@type": "Organization", name: SITE.name },
       image: `${SITE.url}/images/founder.webp`,
     },
-    areaServed: "Worldwide",
+    areaServed: "United States",
     serviceType: [
       "AI Automation",
       "Workflow Automation",
@@ -31,7 +31,7 @@ export function organizationSchema() {
       "@type": "ContactPoint",
       contactType: "sales",
       email: SITE.email,
-      areaServed: "Worldwide",
+      areaServed: "United States",
       availableLanguage: "English",
     },
     sameAs: [
@@ -143,7 +143,7 @@ export function serviceListSchema() {
         description: s.short,
         url: `${SITE.url}/services/#${s.slug}`,
         provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-        areaServed: "Worldwide",
+        areaServed: "United States",
         offers: {
           "@type": "Offer",
           price: s.startingPrice.replace(/[^0-9]/g, ""),
@@ -202,7 +202,7 @@ export function socialServiceSchema() {
     name: "Social Media Marketing Automation",
     serviceType: "AI social media content creation and multi-platform publishing",
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-    areaServed: "Worldwide",
+    areaServed: "United States",
     description:
       "An AI content engine that creates avatar videos, UGC-style ads and platform-tuned posts, then publishes them automatically across up to 10 social platforms.",
   };
@@ -223,7 +223,7 @@ export function serviceDetailSchema(d: {
     url: `${SITE.url}/services/${d.slug}/`,
     serviceType: "AI automation",
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-    areaServed: "Worldwide",
+    areaServed: "United States",
     offers: {
       "@type": "Offer",
       price: d.priceNum,
@@ -249,6 +249,35 @@ export function faqPageSchema(items: { q: string; a: string }[]) {
   };
 }
 
+export function productHubSchema(
+  items: { name: string; description: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Nodevant software stacks",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: item.name,
+        description: item.description,
+        url: `${SITE.url}${item.path}`,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          url: `${SITE.url}/audit/`,
+        },
+        provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+        areaServed: { "@type": "Country", name: "United States" },
+      },
+    })),
+  };
+}
+
 export function solutionListSchema(
   solutions: { slug: string; name: string; description: string }[],
 ) {
@@ -265,9 +294,52 @@ export function solutionListSchema(
         description: s.description,
         url: `${SITE.url}/solutions/${s.slug}/`,
         provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-        areaServed: "Worldwide",
+        areaServed: "United States",
       },
     })),
+  };
+}
+
+/** SoftwareApplication + Offer for a /solutions/[slug] product page. */
+export function solutionSoftwareSchema(d: {
+  name: string;
+  slug: string;
+  description: string;
+  applicationCategory?: string;
+  offerLow?: number;
+  offerHigh?: number;
+}) {
+  const priced = d.offerLow != null && d.offerHigh != null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: d.name,
+    description: d.description,
+    url: `${SITE.url}/solutions/${d.slug}/`,
+    applicationCategory: d.applicationCategory ?? "BusinessApplication",
+    operatingSystem: "Web",
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: { "@type": "Country", name: "United States" },
+    offers: priced
+      ? {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: `${SITE.url}/audit/`,
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            minPrice: d.offerLow,
+            maxPrice: d.offerHigh,
+            priceCurrency: "USD",
+          },
+        }
+      : {
+          "@type": "Offer",
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: `${SITE.url}/audit/`,
+          description: "Fixed USD project price, quoted after a free audit.",
+        },
   };
 }
 
@@ -285,7 +357,7 @@ export function solutionDetailSchema(d: {
     url: `${SITE.url}/solutions/${d.slug}/`,
     serviceType: "AI operating system",
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-    areaServed: "Worldwide",
+    areaServed: "United States",
     isRelatedTo: d.poweredBy.map((slug) => ({
       "@type": "Service",
       url: `${SITE.url}/services/${slug}/`,
@@ -388,7 +460,7 @@ export function blogPostingSchema(post: {
 }) {
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": ["BlogPosting", "Article"],
     headline: post.title,
     description: post.metaDescription,
     datePublished: post.date,

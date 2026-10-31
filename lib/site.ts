@@ -21,9 +21,9 @@ export const SITE = {
   name: "Nodevant",
   url: "https://nodevant.com",
   domain: "nodevant.com",
-  tagline: "AI Automation Agency",
+  tagline: "Custom Business Software & AI Automation",
   description:
-    "Nodevant builds enterprise-grade AI agents, workflow automations, and intelligent integrations that eliminate busywork and scale revenue. Get your free automation audit.",
+    "Done-for-you software stacks for US lawn care, field service, financial and B2B teams. Fixed pricing, live in 1–3 weeks, monitored after launch. Get a free audit.",
   email: "info@nodevant.com",
   salesEmail: "sales@nodevant.com",
   // NOTE: no public phone number by design — every inbound goes through the
@@ -48,6 +48,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: "Services", href: "/services/" },
   { label: "Solutions", href: "/solutions/" },
+  { label: "Products", href: "/products/" },
   { label: "Case Studies", href: "/case-studies/" },
   { label: "About", href: "/about/" },
   { label: "Blog", href: "/blog/" },

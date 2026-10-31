@@ -3,7 +3,7 @@ import SectionHead from "@/components/ui/SectionHead";
 
 const FAQS = [
   { q: "How fast until my first automation is live?", a: "Most systems go live 1–3 weeks after the audit. Simple workflows ship in days." },
-  { q: "Do you work with clients outside the US?", a: "Yes — worldwide, across every timezone. Deployed systems run 24/7 regardless of geography." },
+  { q: "Do you work with clients outside the US?", a: "US companies are who we build for first. We also take remote work elsewhere, and the systems we deploy keep running after launch no matter the timezone." },
   { q: "What tools do you build on?", a: "n8n, Make, OpenAI and VAPI, wired into the CRM and stack you already run." },
   { q: "What does it cost?", a: "Fixed project pricing quoted after the free audit. No hourly billing." },
   { q: "What if it breaks?", a: "Monitoring and support are included. We catch and fix drift before you notice it." },

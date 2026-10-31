@@ -196,9 +196,9 @@ export default function LeadCapturePopup() {
           type="button"
           onClick={close}
           aria-label="Close"
-          className="tap-44 absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-lg text-faint transition-colors hover:text-ink"
+          className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-lg text-faint transition-colors hover:text-ink"
         >
-          <Icon name="x" className="h-4 w-4" strokeWidth={2} />
+          <Icon name="x" className="h-5 w-5" strokeWidth={2} />
         </button>
 
         {done ? (
@@ -226,12 +226,12 @@ export default function LeadCapturePopup() {
           </div>
         ) : (
           <>
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">
+            <p className="pr-12 font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">
               Before you go
             </p>
-            <h2
+              <h2
               id="nv-popup-title"
-              className="mt-2 font-display text-[clamp(1.3rem,4.5vw,1.55rem)] font-extrabold leading-[1.18] tracking-[-0.02em] text-ink"
+              className="mt-2 pr-12 font-display text-[clamp(1.3rem,4.5vw,1.55rem)] font-extrabold leading-[1.18] tracking-[-0.02em] text-ink"
             >
               Find out what AI could <span className="gradient-text">save you.</span>
             </h2>
@@ -271,15 +271,15 @@ export default function LeadCapturePopup() {
                 />
               </div>
               <div>
-                <label htmlFor="nv-popup-goal" className="sr-only">
-                  What do you want to automate?
+                <label htmlFor="nv-popup-goal" className="mb-1.5 block text-[13px] font-medium text-body">
+                  What do you want to automate? (optional)
                 </label>
                 <input
                   id="nv-popup-goal"
                   type="text"
                   value={goal}
                   onChange={(e) => setGoal(e.target.value)}
-                  placeholder="What do you want to automate? (optional)"
+                  placeholder="Missed calls, quotes"
                   className="min-h-[48px] w-full rounded-[10px] px-4 text-[15px] text-ink focus:outline-none"
                   style={{ background: "var(--bg)", border: "1px solid var(--border-strong)" }}
                 />

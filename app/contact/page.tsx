@@ -205,7 +205,7 @@ export default function ContactPage() {
               <Icon name="pin" className="h-4 w-4" />
             </span>
             {SITE.address.street}, {SITE.address.city}, {SITE.address.region}{" "}
-            {SITE.address.postal} — remote-first, serving clients worldwide
+            {SITE.address.postal} — remote-first, US companies first
           </a>
         </div>
       </section>

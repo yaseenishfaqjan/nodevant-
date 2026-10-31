@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
   title:
     "AI Automation Agency in Atlanta & McDonough, GA | Nodevant",
   description:
-    "Nodevant is an AI automation agency based in McDonough, GA (Henry County), serving Atlanta-metro businesses and clients worldwide. AI agents, voice AI receptionists and workflow automation — built and run by the same team. Start with a free 90-second audit.",
+    "Nodevant is a US AI automation company based in McDonough, GA (Henry County), serving Atlanta-metro businesses first and remote clients elsewhere. AI agents, voice AI receptionists and workflow automation — built and run by the same team. Start with a free 90-second audit.",
   path: "/locations/atlanta-ai-automation-agency/",
   keywords: [
     "ai automation agency atlanta",
@@ -89,8 +89,8 @@ export default function AtlantaLocationPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-[640px] text-[clamp(1rem,1.6vw,1.1875rem)] leading-relaxed text-faint">
             We build AI agents, voice AI receptionists and workflow automation for
-            Atlanta-metro businesses — from our base in Henry County — and run them
-            for clients worldwide. The person who sells you the automation is the
+            Atlanta-metro businesses — from our base in Henry County — and for other
+            US companies remotely. The person who sells you the automation is the
             same person who ships it.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">

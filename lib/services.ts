@@ -58,7 +58,7 @@ export const PRODUCTS: Record<string, ProductRef> = {
     outcome: "An AI operating system for golf courses and country clubs.",
     services: ["AI Voice Agents", "Lead Gen Pipeline"],
     chip: "POWERED BY SCALARO",
-    solutionSlug: "scalaro",
+    solutionSlug: "fairway360",
     caseSlug: "fairway360",
   },
   globalshield360: {

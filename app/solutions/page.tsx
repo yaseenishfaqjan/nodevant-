@@ -15,7 +15,7 @@ import { PRODUCTS } from "@/lib/services";
 export const metadata: Metadata = pageMetadata({
   title: "Industry AI Stacks — Complete Operating Systems | Nodevant",
   description:
-    "Six proven AI operating systems for fintech, manufacturing, SaaS, field services, education and home services. Built, deployed and running in production today.",
+    "AI operating systems for US fintech, manufacturing, SaaS, field service, golf, education and home-service teams. Built, deployed, and monitored after launch.",
   path: "/solutions/",
   keywords: [
     "ai operating system",
@@ -28,7 +28,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const TRUST: { icon: IconName; label: string }[] = [
-  { icon: "layers", label: "6 stacks live in production" },
+  { icon: "layers", label: "Stacks live in production" },
   { icon: "clock", label: "Deployed in weeks" },
   { icon: "doc", label: "Fixed project pricing" },
   { icon: "bolt", label: "Powered by our own services" },
@@ -45,6 +45,8 @@ const RANGE_CELLS = [
 
 export default function SolutionsPage() {
   const products = Object.values(PRODUCTS);
+  const stacks = SOLUTION_DETAILS.filter((s) => s.listing !== "offer");
+  const offers = SOLUTION_DETAILS.filter((s) => s.listing === "offer");
 
   return (
     <>
@@ -112,16 +114,37 @@ export default function SolutionsPage() {
       <section id="stacks" className="section-gap border-t border-line px-5">
         <div className="mx-auto max-w-[1280px]">
           <SectionHead
-            eyebrow="Six operating systems"
-            title={<>Each one is <span className="gradient-text">running a real business.</span></>}
+            eyebrow="Operating systems"
+            title={<>Each deployed stack is <span className="gradient-text">running a real business.</span></>}
           />
           <div className="mt-9 grid gap-[18px] md:grid-cols-2 lg:grid-cols-3">
-            {SOLUTION_DETAILS.map((s) => (
+            {stacks.map((s) => (
               <SolutionCard key={s.slug} solution={s} />
             ))}
           </div>
+          <p className="mt-8 text-center text-[14.5px] text-faint">
+            Selling a named stack to a US team?{" "}
+            <Link href="/products/" className="font-semibold text-cyan">See every software stack</Link>.
+          </p>
         </div>
       </section>
+
+      {offers.length > 0 && (
+        <section id="software-stacks" className="section-gap border-t border-line px-5">
+          <div className="mx-auto max-w-[1280px]">
+            <SectionHead
+              eyebrow="Software you can buy"
+              title={<>Fixed-scope stacks for <span className="gradient-text">US operators.</span></>}
+              subtitle="About $10,000–$20,000 USD. The free audit turns that band into a fixed quote. Live in 1–3 weeks, monitored after launch."
+            />
+            <div className="mt-9 grid gap-[18px] md:grid-cols-2">
+              {offers.map((s) => (
+                <SolutionCard key={s.slug} solution={s} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 4 · Solutions vs services */}
       <section className="section-gap border-t border-line px-5">
@@ -157,7 +180,7 @@ export default function SolutionsPage() {
             ))}
           </div>
           <p className="mt-6 text-center font-mono text-[10.5px] uppercase tracking-[0.14em] text-faint">
-            Six stacks live · Fairway360 runs on Scalaro — we build systems that power other systems
+            Platforms live in production · Fairway360 runs on Scalaro
           </p>
         </div>
       </section>

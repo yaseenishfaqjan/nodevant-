@@ -47,6 +47,9 @@ export default function BrandLogo({
           src={`/images/logos/${slug}.${EXTENSIONS[attempt]}`}
           alt={`${name} logo`}
           className={className}
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
           style={loaded ? undefined : { position: "absolute", width: 1, height: 1, opacity: 0 }}
           onLoad={() => setLoaded(true)}
           onError={() => setAttempt((a) => a + 1)}

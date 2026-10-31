@@ -6,10 +6,19 @@ import ProductCard from "@/components/services/ProductCard";
 import { getService, PRODUCTS } from "@/lib/services";
 import { getSolution, type SolutionDetail } from "@/lib/solutions";
 
+function usd(n: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(n);
+}
+
 export default function SolutionSubpage({ solution }: { solution: SolutionDetail }) {
   const services = solution.poweredBy.map((s) => getService(s)).filter(Boolean);
   const related = solution.related.map((s) => getSolution(s)).filter(Boolean) as SolutionDetail[];
   const product = solution.product ? PRODUCTS[solution.product] : undefined;
+  const auditHref = solution.offer ? "/audit/" : "/#audit";
 
   return (
     <>
@@ -28,7 +37,10 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
             <h1 className="font-display text-[clamp(2rem,4.6vw,3.5rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink text-balance">
               {solution.heroLead} <span className="gradient-text">{solution.gradientWord}</span>
             </h1>
-            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-faint">{solution.description}</p>
+            {solution.definition && (
+              <p className="mt-5 max-w-xl text-[17px] font-medium leading-relaxed text-ink">{solution.definition}</p>
+            )}
+            <p className={`${solution.definition ? "mt-3" : "mt-5"} max-w-xl text-[16px] leading-relaxed text-faint`}>{solution.description}</p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12.5px] text-body" style={{ background: "var(--tint)", border: "1px solid var(--chip-border)" }}>
                 <Icon name="chart" className="h-3.5 w-3.5 text-cyan" strokeWidth={1.8} /> {solution.proofValue}
@@ -38,22 +50,49 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
               </span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/#audit" className="btn-primary">
-                Book a stack consultation
+              <Link href={auditHref} className="btn-primary">
+                {solution.offer ? "Get a free audit" : "Book a stack consultation"}
                 <Icon name="chevron" className="h-4 w-4" strokeWidth={2.2} />
               </Link>
+              {solution.caseStudySlug && (
+                <Link href={`/case-studies/${solution.caseStudySlug}/`} className="btn-secondary">
+                  {solution.caseStudyLabel ?? "Read the case study"}
+                </Link>
+              )}
               {solution.liveUrl ? (
                 <a href={solution.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
                   View live system <Icon name="external" className="h-4 w-4" strokeWidth={1.9} />
                 </a>
               ) : (
-                <Link href="/solutions/" className="btn-secondary">All solutions →</Link>
+                !solution.caseStudySlug && <Link href="/solutions/" className="btn-secondary">All solutions →</Link>
               )}
             </div>
           </div>
           <ServiceDiagram type={solution.diagram} status={solution.diagramStatus} alt={solution.diagramAlt} />
         </div>
       </section>
+
+      {solution.facts && solution.facts.length > 0 && (
+        <section className="border-t border-line px-5 py-14" aria-labelledby="solution-facts">
+          <div className="mx-auto max-w-[860px]">
+            <h2 id="solution-facts" className="font-display text-[clamp(1.4rem,2.4vw,1.85rem)] font-extrabold tracking-[-0.03em] text-ink">
+              At a glance
+            </h2>
+            <table className="mt-6 w-full border-collapse text-left">
+              <tbody>
+                {solution.facts.map((fact) => (
+                  <tr key={fact.label} className="border-t border-line">
+                    <th scope="row" className="w-[38%] py-3.5 pr-4 align-top font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-faint">
+                      {fact.label}
+                    </th>
+                    <td className="py-3.5 text-[15px] leading-relaxed text-body">{fact.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
       {/* 3 · The problem */}
       <section className="section-gap border-t border-line px-5">
@@ -162,10 +201,10 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-faint">Fixed project pricing</p>
               <p className="gradient-text mt-2 font-display text-[clamp(1.75rem,3.4vw,2.5rem)] font-extrabold tracking-[-0.03em]">
-                Scoped to your operation
+                {solution.offer ? `${usd(solution.offer.low)}–${usd(solution.offer.high)}` : "Scoped to your operation"}
               </p>
               <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.08em] text-faint">
-                Multiple services, one project · No hourly billing
+                {solution.offer ? "USD · one project · exact quote after the audit" : "Multiple services, one project · No hourly billing"}
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-[11px] text-body" style={{ background: "var(--tint)", border: "1px solid var(--chip-border)" }}>
@@ -175,7 +214,7 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
               <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.06em] text-faint/80">
                 {solution.investmentRange}
               </p>
-              <Link href="/#audit" className="btn-primary mt-6">
+              <Link href={auditHref} className="btn-primary mt-6">
                 Full quote after your free audit →
               </Link>
             </div>
@@ -233,7 +272,7 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
             starting point — no obligation.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Link href="/#audit" className="btn-primary">
+            <Link href={auditHref} className="btn-primary">
               Get My Free Audit
               <Icon name="chevron" className="h-4 w-4" strokeWidth={2.2} />
             </Link>
