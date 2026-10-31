@@ -15,6 +15,9 @@ const COLUMNS: {
       { label: "Lawn care software", slug: "lawn-care-software" },
       { label: "Fairway360 · Golf", slug: "fairway360" },
       { label: "Home Services", slug: "home-services" },
+      { label: "Roofing & restoration", slug: "roofing-restoration" },
+      { label: "HVAC software", slug: "hvac-software" },
+      { label: "Pest control software", slug: "pest-control-software" },
     ],
   },
   {

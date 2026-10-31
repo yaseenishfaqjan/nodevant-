@@ -49,6 +49,15 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
                 <Icon name="clock" className="h-3.5 w-3.5 text-cyan" strokeWidth={1.8} /> {solution.timeline}
               </span>
             </div>
+            {solution.furtherReading && solution.furtherReading.length > 0 && (
+              <p className="mt-5 flex flex-col gap-2 text-[14.5px]">
+                {solution.furtherReading.map((item) => (
+                  <Link key={item.href} href={item.href} className="font-semibold text-cyan">
+                    {item.label} →
+                  </Link>
+                ))}
+              </p>
+            )}
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={auditHref} className="btn-primary">
                 {solution.offer ? "Get a free audit" : "Book a stack consultation"}

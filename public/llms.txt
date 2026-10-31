@@ -108,6 +108,19 @@ Nodevant builds three types of AI systems:
   full-time-employee equivalent an AI workforce replaces.
 - [Atlanta / McDonough GA](https://nodevant.com/locations/atlanta-ai-automation-agency/):
   US AI automation company based in the Atlanta metro (McDonough, GA), also working remotely with teams elsewhere.
+- [US locations](https://nodevant.com/locations/): One office, in McDonough, GA.
+  Dallas–Fort Worth, Miami, and Chicago are remote service areas, not storefronts.
+  No local client lists are invented for those cities.
+- [Dallas–Fort Worth](https://nodevant.com/locations/dallas-ai-automation-agency/):
+  Remote delivery for DFW lawn, roofing, HVAC, and service companies.
+- [Miami](https://nodevant.com/locations/miami-ai-automation-agency/):
+  Remote delivery for South Florida companies. English-language builds. No Miami office.
+- [Chicago](https://nodevant.com/locations/chicago-ai-automation-agency/):
+  Remote delivery for Chicago HVAC, lawn, and home-service companies. No Chicago office.
+- [Comparisons](https://nodevant.com/compare/): Lawn care software vs Jobber,
+  field service software vs ServiceTitan, credit repair CRM vs alternatives,
+  AI receptionist vs an answering service. Vendor prices cited from their pages
+  as checked in October 2026. ServiceTitan does not publish a dollar price.
 - [Software stacks](https://nodevant.com/products/): Every stack Nodevant sells,
   with who it is for and the USD range.
 - [Fairway360](https://nodevant.com/solutions/fairway360/): Golf club software
@@ -129,7 +142,28 @@ Nodevant builds three types of AI systems:
 - [FABRIOZA](https://nodevant.com/solutions/fabrioza/): Quote-to-production for
   custom manufacturing. Live: https://fabrioza.com
 - [Home services](https://nodevant.com/solutions/home-services/): Missed-call
-  recovery, booking, and review requests.
+  recovery, booking, and review requests for US home-service companies.
+  About $10,000–$20,000. No home-services client story is published; the
+  closest field deployment is GlobalShield360.
+- [Roofing and restoration software](https://nodevant.com/solutions/roofing-restoration/):
+  Lead, estimate, dispatch, claim tracking, and invoice for US roofing companies.
+  About $10,000–$20,000 for a standard scope. Live reference: https://globalshield360.io
+- [HVAC software](https://nodevant.com/solutions/hvac-software/): Service calls
+  answered, technicians booked, visits invoiced. About $10,000–$20,000.
+  Not ServiceTitan. No HVAC case study is published.
+- [Pest control software](https://nodevant.com/solutions/pest-control-software/):
+  Leads, routes, service notes, and invoices for US pest companies.
+  About $10,000–$20,000. Does not file chemical or license reports.
+  No pest-control case study is published.
+- [Lawn care software vs Jobber](https://nodevant.com/compare/lawn-care-software-vs-jobber/):
+  Jobber Core/Connect/Grow starting annual prices vs a $10,000–$20,000 build.
+- [Field service software vs ServiceTitan](https://nodevant.com/compare/field-service-software-vs-servicetitan/):
+  ServiceTitan publishes package names and per-technician pricing, not a dollar amount.
+- [Credit repair CRM vs alternatives](https://nodevant.com/compare/credit-repair-crm-vs-alternatives/):
+  Credit Repair Cloud's published plans vs a Storehouse360-based build.
+  Nodevant does not operate a consumer credit-repair service.
+- [AI receptionist vs an answering service](https://nodevant.com/compare/ai-receptionist-vs-answering-service/):
+  A person on a rate card vs software from $2,800. Many businesses should keep both.
 - [Academy](https://nodevant.com/solutions/academy/): Enrollment and delivery
   operations for education businesses.
 - [Pricing](https://nodevant.com/pricing/): AI employee plans from $997/month.
@@ -144,6 +178,9 @@ Nodevant builds three types of AI systems:
 - [n8n vs Make vs Zapier in 2026](https://nodevant.com/blog/n8n-vs-make-vs-zapier/)
 - [The Real ROI of Workflow Automation in Year One](https://nodevant.com/blog/roi-of-workflow-automation-year-one/)
 - [Voice AI Agents: A Practical Build-vs-Buy Guide](https://nodevant.com/blog/voice-ai-agents-buyers-guide/)
+- [How much does lawn care software cost?](https://nodevant.com/blog/how-much-does-lawn-care-software-cost/)
+- [Best credit repair CRM features in 2026](https://nodevant.com/blog/best-credit-repair-crm-features-2026/)
+- [AI answering service vs a human receptionist](https://nodevant.com/blog/ai-answering-service-vs-human-receptionist/)
 
 ## Frequently Asked Questions
 

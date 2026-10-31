@@ -6,6 +6,8 @@
 // components/blog/BlogPost.tsx renders them. Inline syntax inside text/items:
 //   [label](/path/)  → link        **text** → strong
 
+import { BUYER_POSTS } from "@/lib/buyer-posts";
+
 export type ArticleBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
@@ -848,6 +850,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "cta" },
     ],
   },
+  ...BUYER_POSTS,
 ];
 
 export const PUBLISHED_POSTS = BLOG_POSTS.filter((p) => p.published);

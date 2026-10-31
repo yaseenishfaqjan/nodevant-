@@ -205,6 +205,12 @@ export default function AiReceptionistPage() {
             <Link href="/blog/voice-ai-agents-buyers-guide/" className="btn-secondary" style={{ minHeight: 46 }}>
               Voice AI buyer&apos;s guide
             </Link>
+            <Link href="/compare/ai-receptionist-vs-answering-service/" className="btn-secondary" style={{ minHeight: 46 }}>
+              Vs an answering service
+            </Link>
+            <Link href="/blog/ai-answering-service-vs-human-receptionist/" className="btn-secondary" style={{ minHeight: 46 }}>
+              Vs a human receptionist
+            </Link>
           </div>
         </div>
       </section>

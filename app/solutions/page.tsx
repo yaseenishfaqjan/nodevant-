@@ -15,7 +15,7 @@ import { PRODUCTS } from "@/lib/services";
 export const metadata: Metadata = pageMetadata({
   title: "Industry AI Stacks — Complete Operating Systems | Nodevant",
   description:
-    "AI operating systems for US fintech, manufacturing, SaaS, field service, golf, education and home-service teams. Built, deployed, and monitored after launch.",
+    "AI operating systems for US lawn, roofing, HVAC, pest, credit, field service, golf, and home-service teams. Built, deployed, and monitored after launch.",
   path: "/solutions/",
   keywords: [
     "ai operating system",
@@ -142,6 +142,10 @@ export default function SolutionsPage() {
                 <SolutionCard key={s.slug} solution={s} />
               ))}
             </div>
+            <p className="mt-8 text-center text-[14.5px] text-faint">
+              Choosing between a stack and a product you can subscribe to?{" "}
+              <Link href="/compare/" className="font-semibold text-cyan">Read the comparisons</Link>.
+            </p>
           </div>
         </section>
       )}
