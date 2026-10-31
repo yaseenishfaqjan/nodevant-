@@ -12,6 +12,8 @@ const COLUMNS: {
     desc: "Crews, callouts and appointments — where the job happens at the customer's location.",
     chips: [
       { label: "BMAIKR · Field Services", slug: "bmaikr" },
+      { label: "Lawn care software", slug: "lawn-care-software" },
+      { label: "Fairway360 · Golf", slug: "fairway360" },
       { label: "Home Services", slug: "home-services" },
     ],
   },
@@ -30,6 +32,7 @@ const COLUMNS: {
     desc: "Members, applications and enrolments — where many people apply and transact.",
     chips: [
       { label: "Storehouse360 · Fintech", slug: "storehouse360" },
+      { label: "Credit repair software", slug: "credit-repair-software" },
       { label: "Academy · Education", slug: "academy" },
     ],
   },

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default:
-      "Nodevant — AI Automation Agency | Custom AI Agents & Workflow Automation",
+      "Nodevant — Custom Business Software & AI Automation for US Companies",
     template: "%s | Nodevant",
   },
   description: SITE.description,

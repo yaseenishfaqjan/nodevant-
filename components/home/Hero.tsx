@@ -11,8 +11,8 @@ const FEATURES: { icon: IconName; label: string }[] = [
 
 const STATS = [
   { value: "6+", label: "Platforms Live" },
-  { value: "Any", label: "Industry, Worldwide" },
-  { value: "24/7", label: "Global Coverage" },
+  { value: "US", label: "Companies first" },
+  { value: "24/7", label: "Monitoring included" },
   { value: "Free", label: "90-Second Audit" },
 ];
 
@@ -100,18 +100,17 @@ export default function Hero() {
         <div className="min-w-0">
           <span className="badge badge-accent">
             <span className="h-1.5 w-1.5 animate-nv-pulse rounded-full bg-cyan" aria-hidden="true" />
-            AI Automation Agency · Serving Clients Worldwide
+            Custom software stacks · Built for US companies
           </span>
 
           <h1 className="mt-[22px] font-display text-[clamp(2.1rem,5.4vw,4.25rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-ink text-balance">
-            Stop Doing Work{" "}
-            <span className="gradient-text">AI Can Do For You</span>
+            Business Software Stacks &amp; AI Automation Built for{" "}
+            <span className="gradient-text">US Companies</span>
           </h1>
 
           <p className="mt-[22px] max-w-[520px] text-[clamp(0.95rem,1.3vw,1.125rem)] leading-relaxed text-body text-pretty">
-            Your team wastes hours on work AI handles in seconds. We build fully
-            deployed automation systems for businesses worldwide — in weeks, not
-            months.
+            Done-for-you software stacks for US lawn care, field service, financial
+            and B2B teams. Fixed pricing, live in 1–3 weeks, monitored after launch.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

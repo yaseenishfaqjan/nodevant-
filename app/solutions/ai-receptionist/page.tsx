@@ -87,7 +87,7 @@ function ReceptionistJsonLd() {
             "A custom-built AI voice receptionist that answers calls 24/7, books appointments, qualifies callers and logs leads to your CRM, built and monitored by Nodevant.",
           url,
           provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
+          areaServed: "United States",
           offers: {
             "@type": "Offer",
             price: 2800,

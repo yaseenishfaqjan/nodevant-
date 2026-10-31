@@ -6,6 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 import {
   breadcrumbSchema,
   solutionDetailSchema,
+  solutionSoftwareSchema,
   faqPageSchema,
 } from "@/lib/schema";
 import { SOLUTION_DETAILS, getSolution } from "@/lib/solutions";
@@ -38,10 +39,18 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
             { name: "Solutions", path: "/solutions/" },
             { name: solution.name, path: `/solutions/${solution.slug}/` },
           ]),
+          solutionSoftwareSchema({
+            name: solution.name,
+            slug: solution.slug,
+            description: solution.definition ?? solution.description,
+            applicationCategory: solution.applicationCategory,
+            offerLow: solution.offer?.low,
+            offerHigh: solution.offer?.high,
+          }),
           solutionDetailSchema({
             name: solution.name,
             slug: solution.slug,
-            description: solution.description,
+            description: solution.definition ?? solution.description,
             poweredBy: solution.poweredBy,
           }),
           faqPageSchema(solution.faq),

@@ -65,7 +65,7 @@ function HubJsonLd() {
             "Custom-built AI employees that perform a defined job end to end: receptionist, sales follow-up, marketing content, and back-office operations.",
           url,
           provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
+          areaServed: "United States",
           offers: {
             "@type": "Offer",
             price: 997,

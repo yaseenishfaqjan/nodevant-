@@ -65,7 +65,7 @@ function serviceSchema() {
       "Custom AI agents, workflow automation, and system integration for growth-stage businesses.",
     url: `${SITE.url}/ai-automation-agency/`,
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-    areaServed: "Worldwide",
+    areaServed: "United States",
   };
 }
 

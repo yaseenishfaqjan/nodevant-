@@ -360,7 +360,7 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
   },
   {
     slug: "fairway360",
-    stackName: "Scalaro-powered",
+    stackName: "Fairway360",
     industryLabel: "Hospitality",
     liveUrl: "https://fairway360.io",
     liveLabel: "Fairway360",
@@ -368,7 +368,7 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
     outcome: "speed",
     service: "voice",
     stack: "scalaro",
-    solutionSlug: "scalaro",
+    solutionSlug: "fairway360",
     servicesUsed: ["ai-voice-agents", "lead-gen-pipeline"],
     tools: ["VAPI", "Scalaro", "Twilio", "n8n"],
     heroLead: "A hospitality operating system built on top of our own",

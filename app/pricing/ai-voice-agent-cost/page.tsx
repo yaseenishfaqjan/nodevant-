@@ -89,7 +89,7 @@ function CostJsonLd() {
             "Custom AI voice agents built by Nodevant from $2,800, plus a monthly plan and per-connected-minute voice usage.",
           url,
           provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
+          areaServed: "United States",
           offers: {
             "@type": "Offer",
             price: 2800,

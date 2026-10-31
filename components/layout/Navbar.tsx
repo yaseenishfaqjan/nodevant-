@@ -31,11 +31,16 @@ const NAV: Item[] = [
       { label: "Scalaro · SaaS Sales", href: "/solutions/scalaro/", desc: "20+ agents sourcing, calling and booking meetings." },
       { label: "BMAIKR · Field Services", href: "/solutions/bmaikr/", desc: "Leads, scans, dispatch, claims and invoicing." },
       { label: "Academy · Education", href: "/solutions/academy/", desc: "Enquiries, applications and enrolment automated." },
+      { label: "Fairway360 · Golf clubs", href: "/solutions/fairway360/", desc: "Calls answered and tee times booked for US clubs." },
+      { label: "Lawn care software", href: "/solutions/lawn-care-software/", desc: "Leads, routes and invoices for US crews." },
+      { label: "Credit repair software", href: "/solutions/credit-repair-software/", desc: "Storehouse360-based stack for US credit teams." },
       { label: "Home Services", href: "/solutions/home-services/", desc: "Missed calls returned before the lead cools." },
       { label: "AI Receptionist", href: "/solutions/ai-receptionist/", desc: "Answer every call, book and log leads 24/7." },
       { label: "All Solutions", href: "/solutions/", desc: "Every operating system we've built and deployed." },
+      { label: "All software stacks", href: "/products/", desc: "Every stack we sell, with USD ranges." },
     ],
   },
+  { label: "Products", href: "/products/" },
   { label: "AI Employees", href: "/ai-employees/" },
   { label: "Case Studies", href: "/case-studies/" },
   { label: "Pricing", href: "/pricing/" },
@@ -108,8 +113,8 @@ export default function Navbar() {
   return (
     <header
       ref={ref}
-      className={`fixed inset-x-0 top-0 z-[130] transition-all duration-300 ${
-        scrolled ? "nav-blur" : "border-b border-transparent bg-transparent"
+      className={`nav-blur fixed inset-x-0 top-0 z-[130] transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_10px_40px_rgba(0,0,0,0.28)]" : ""
       }`}
     >
       <div className="mx-auto flex h-[74px] max-w-[1280px] items-center gap-6 px-5">
