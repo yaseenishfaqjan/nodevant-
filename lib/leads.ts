@@ -32,6 +32,8 @@ export async function submitLead(
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(body),
+      // A stalled API used to leave the form spinning with no error state.
+      signal: AbortSignal.timeout(20_000),
     });
     if (!res.ok) return null;
     return await res.json().catch(() => ({}));

@@ -62,8 +62,12 @@ export default function NodevantLeads({
         fetch(`/api/leads?${params}`, { headers: headers() }),
         fetch(`/api/stats`, { headers: headers() }),
       ]);
-      if (lr.status === 401) {
+      if (lr.status === 401 || sr.status === 401) {
         onUnauthorized();
+        return;
+      }
+      if (!lr.ok || !sr.ok) {
+        setError("Could not load leads.");
         return;
       }
       setLeads((await lr.json()).leads || []);
@@ -80,8 +84,20 @@ export default function NodevantLeads({
   }, [load]);
 
   const updateLead = async (id: number, patch: Partial<Lead>) => {
-    await fetch(`/api/leads/${id}`, { method: "PATCH", headers: headers(), body: JSON.stringify(patch) });
-    setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
+    try {
+      const res = await fetch(`/api/leads/${id}`, { method: "PATCH", headers: headers(), body: JSON.stringify(patch) });
+      if (res.status === 401) {
+        onUnauthorized();
+        return;
+      }
+      if (!res.ok) {
+        setError("Could not update lead.");
+        return;
+      }
+      setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
+    } catch {
+      setError("Could not update lead.");
+    }
   };
 
   const deleteLead = async (id: number) => {
