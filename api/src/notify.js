@@ -6,6 +6,7 @@
 //   • best-effort retry so a transient SMTP hiccup doesn't silently drop a lead
 const { getTransport, FROM_NAME, FROM_ADDR } = require("./mailer");
 const { confirmationHtml, internalAlertHtml, subjectPrefix } = require("./emailTemplates");
+const { track } = require("./inflight");
 
 // info@ is ALWAYS notified; LEAD_NOTIFY_TO adds extra recipients (comma-sep).
 const INFO_ADDR = FROM_ADDR || "info@nodevant.com";
@@ -45,6 +46,10 @@ async function sendWithRetry(transport, opts, attempts = 2) {
  * @returns {Promise<{internal:boolean, confirmation:boolean}>}
  */
 async function sendLeadNotification(lead, meta = {}) {
+  return track(deliverLeadNotification(lead, meta));
+}
+
+async function deliverLeadNotification(lead, meta = {}) {
   const result = { internal: false, confirmation: false };
   const t = getTransport();
   if (!t) {

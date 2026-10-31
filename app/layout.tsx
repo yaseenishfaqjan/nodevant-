@@ -6,19 +6,12 @@ import { SITE, GSC_TOKEN, GA_ID } from "@/lib/site";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { ThemeProvider, themeInitScript } from "@/components/theme/ThemeProvider";
 
-// Inter — the precise, technical face used by Linear, Vercel & Supabase.
+// One variable Inter for body and headings. A second next/font call with
+// static 700/800/900 weights downloaded those files again on every page.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-});
-
-// Heavy Inter for display headings (the V2 / Linear-precision look).
-const interDisplay = Inter({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["700", "800", "900"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -85,7 +78,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${interDisplay.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <meta name="theme-color" content="#0C0C0F" />

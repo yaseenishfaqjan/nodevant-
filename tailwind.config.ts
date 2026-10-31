@@ -39,7 +39,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },

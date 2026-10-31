@@ -115,6 +115,9 @@ export default function ReverseAuditPage() {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ url }),
+        // Server-side fetches and the model call are each capped; don't leave
+        // the scan animation running if the request never returns.
+        signal: AbortSignal.timeout(50_000),
       });
       if (res.status === 429) {
         const d = await res.json().catch(() => ({}));

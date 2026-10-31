@@ -75,13 +75,13 @@ body {
     color 0.35s ease;
 }
 
-/* Display headings use the heavy Inter face (Linear-precision look) */
+/* Display headings use the same variable Inter as the body (bold weights). */
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: var(--font-display), "Inter", system-ui, sans-serif;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
   letter-spacing: -0.025em;
   color: var(--text-strong);
 }
