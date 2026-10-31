@@ -237,6 +237,43 @@ export function serviceDetailSchema(d: {
   };
 }
 
+/** A service offered into a US metro. The provider address stays the Georgia HQ. */
+export function metroServiceSchema(d: {
+  name: string;
+  description: string;
+  path: string;
+  city: string;
+  state: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: d.name,
+    description: d.description,
+    url: `${SITE.url}${d.path}`,
+    serviceType: "AI automation",
+    provider: {
+      "@type": "ProfessionalService",
+      name: SITE.name,
+      url: SITE.url,
+      email: SITE.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SITE.address.street,
+        addressLocality: SITE.address.city,
+        addressRegion: SITE.address.region,
+        postalCode: SITE.address.postal,
+        addressCountry: SITE.address.country,
+      },
+    },
+    areaServed: {
+      "@type": "City",
+      name: d.city,
+      containedInPlace: { "@type": "State", name: d.state },
+    },
+  };
+}
+
 export function faqPageSchema(items: { q: string; a: string }[]) {
   return {
     "@context": "https://schema.org",

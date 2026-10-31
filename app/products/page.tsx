@@ -9,7 +9,7 @@ import { getSolution } from "@/lib/solutions";
 export const metadata: Metadata = pageMetadata({
   title: "Software Stacks for US Companies | Nodevant",
   description:
-    "Done-for-you software stacks Nodevant builds for US lawn care, field service, financial, golf and B2B teams. Fixed USD pricing, live in 1–3 weeks, monitored after launch.",
+    "Done-for-you software stacks Nodevant builds for US lawn, roofing, HVAC, pest, credit, golf, and field-service teams. Fixed USD pricing, live in 1–3 weeks, monitored after launch.",
   path: "/products/",
   keywords: [
     "custom business software",
@@ -23,10 +23,13 @@ export const metadata: Metadata = pageMetadata({
 /** Sellable stacks first, then the deployed systems they sit on. */
 const STACK_ORDER = [
   "lawn-care-software",
+  "roofing-restoration",
+  "hvac-software",
+  "pest-control-software",
+  "home-services",
   "credit-repair-software",
   "fairway360",
   "bmaikr",
-  "home-services",
   "storehouse360",
   "scalaro",
   "fabrioza",
@@ -123,7 +126,7 @@ export default function ProductsPage() {
             Nodevant sells done-for-you software stacks — a named system for a US team, priced as one project, live in 1–3 weeks, and monitored after launch.
           </p>
           <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-faint">
-            Lawn care, field service, credit and financial teams, golf clubs, and B2B sales are the stacks below. The free audit turns the $10,000–$20,000 band into a fixed quote for your operation.
+            Lawn, roofing, HVAC, pest control, home services, credit teams, golf clubs, and B2B sales are the stacks below. Golf and country-club software is Fairway360. The free audit turns the $10,000–$20,000 band into a fixed quote for your operation.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/audit/" className="btn-primary">

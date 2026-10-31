@@ -64,7 +64,7 @@ function LocationJsonLd() {
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "Locations", path: "/locations/atlanta-ai-automation-agency/" },
+          { name: "Locations", path: "/locations/" },
           { name: "Atlanta & McDonough, GA", path: "/locations/atlanta-ai-automation-agency/" },
         ])}
       />
@@ -159,6 +159,14 @@ export default function AtlantaLocationPage() {
               </div>
             ))}
           </div>
+          <p className="mt-6 max-w-3xl text-[14.5px] leading-relaxed text-faint">
+            The same remote delivery, with no local office, for{" "}
+            <Link href="/locations/dallas-ai-automation-agency/" className="font-semibold text-cyan">Dallas–Fort Worth</Link>,{" "}
+            <Link href="/locations/miami-ai-automation-agency/" className="font-semibold text-cyan">Miami</Link>, and{" "}
+            <Link href="/locations/chicago-ai-automation-agency/" className="font-semibold text-cyan">Chicago</Link>.
+            Headquarters stays in McDonough.{" "}
+            <Link href="/locations/" className="font-semibold text-cyan">All locations</Link>.
+          </p>
         </div>
       </section>
 

@@ -34,7 +34,11 @@ const NAV: Item[] = [
       { label: "Fairway360 · Golf clubs", href: "/solutions/fairway360/", desc: "Calls answered and tee times booked for US clubs." },
       { label: "Lawn care software", href: "/solutions/lawn-care-software/", desc: "Leads, routes and invoices for US crews." },
       { label: "Credit repair software", href: "/solutions/credit-repair-software/", desc: "Storehouse360-based stack for US credit teams." },
+      { label: "Roofing & restoration", href: "/solutions/roofing-restoration/", desc: "Leads, estimates, crews, and invoices for US roofers." },
+      { label: "HVAC software", href: "/solutions/hvac-software/", desc: "Service calls booked and invoiced for US HVAC companies." },
+      { label: "Pest control software", href: "/solutions/pest-control-software/", desc: "Routes, recurring stops, and invoices for US pest companies." },
       { label: "Home Services", href: "/solutions/home-services/", desc: "Missed calls returned before the lead cools." },
+      { label: "Compare software", href: "/compare/", desc: "Jobber, ServiceTitan, credit CRMs, answering services." },
       { label: "AI Receptionist", href: "/solutions/ai-receptionist/", desc: "Answer every call, book and log leads 24/7." },
       { label: "All Solutions", href: "/solutions/", desc: "Every operating system we've built and deployed." },
       { label: "All software stacks", href: "/products/", desc: "Every stack we sell, with USD ranges." },
@@ -149,7 +153,7 @@ export default function Navbar() {
                 {dropdown === item.label && (
                   <div
                     role="menu"
-                    className={`absolute left-[-16px] top-11 grid gap-0.5 rounded-2xl p-2 shadow-card ${
+                    className={`absolute left-[-16px] top-11 grid max-h-[min(70vh,640px)] gap-0.5 overflow-y-auto rounded-2xl p-2 shadow-card ${
                       item.wide ? "w-[560px] grid-cols-2" : "w-[300px]"
                     }`}
                     style={{

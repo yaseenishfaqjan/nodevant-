@@ -6,6 +6,8 @@ import { SOLUTION_DETAILS } from "@/lib/solutions";
 import { CASE_STUDY_DETAILS } from "@/lib/case-studies";
 import { AI_EMPLOYEE_PAGES } from "@/lib/ai-employees";
 import { BUILD_ENTRIES } from "@/lib/build-log";
+import { COMPARISON_PAGES } from "@/lib/comparisons";
+import { METRO_LOCATIONS } from "@/lib/locations";
 
 export const dynamic = "force-static";
 
@@ -29,6 +31,8 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/reverse-audit/": "2026-07-30",
   "/resources/automation-roi-calculator/": "2026-08-02",
   "/locations/atlanta-ai-automation-agency/": "2026-10-31",
+  "/locations/": "2026-10-31",
+  "/compare/": "2026-10-31",
   "/case-studies/": "2026-07-31",
   "/about/": "2026-07-31",
   "/contact/": "2026-10-31",
@@ -41,6 +45,10 @@ const SOLUTION_LASTMOD: Record<string, string> = {
   fairway360: "2026-10-31",
   "lawn-care-software": "2026-10-31",
   "credit-repair-software": "2026-10-31",
+  "home-services": "2026-10-31",
+  "roofing-restoration": "2026-10-31",
+  "hvac-software": "2026-10-31",
+  "pest-control-software": "2026-10-31",
 };
 const CASE_STUDY_LASTMOD_DEFAULT = "2026-07-30";
 const CASE_STUDY_LASTMOD: Record<string, string> = {
@@ -81,7 +89,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/build/", priority: 0.6, changeFrequency: "weekly", lastmod: newestBuild.slice(0, 10) },
     { path: "/reverse-audit/", priority: 0.75, changeFrequency: "monthly" },
     { path: "/resources/automation-roi-calculator/", priority: 0.85, changeFrequency: "monthly" },
+    { path: "/locations/", priority: 0.65, changeFrequency: "monthly" },
     { path: "/locations/atlanta-ai-automation-agency/", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/compare/", priority: 0.75, changeFrequency: "monthly" },
     { path: "/case-studies/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
     { path: "/contact/", priority: 0.7, changeFrequency: "monthly" },
@@ -118,6 +128,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Published posts only — coming-soon placeholders are noindexed.
   // /audit/results/ is intentionally absent (noindex utility page).
+  const comparisonPages: MetadataRoute.Sitemap = COMPARISON_PAGES.map((page) => ({
+    url: `${SITE.url}/compare/${page.slug}/`,
+    lastModified: on(page.checked),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const metroPages: MetadataRoute.Sitemap = METRO_LOCATIONS.map((metro) => ({
+    url: `${SITE.url}/locations/${metro.slug}/`,
+    lastModified: on("2026-10-31"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = PUBLISHED_POSTS.map((post) => ({
     url: `${SITE.url}/blog/${post.slug}/`,
     lastModified: on(post.date),
@@ -136,6 +160,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...solutionPages,
     ...aiEmployeePages,
     ...caseStudyPages,
+    ...comparisonPages,
+    ...metroPages,
     ...blogPages,
   ];
 }
