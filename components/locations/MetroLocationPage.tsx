@@ -2,8 +2,10 @@ import Link from "next/link";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import SectionHead from "@/components/ui/SectionHead";
 import FinalCTA from "@/components/home/FinalCTA";
+import RelatedReading from "@/components/content/RelatedReading";
 import type { MetroLocation } from "@/lib/locations";
 import { METRO_LOCATIONS } from "@/lib/locations";
+import { readingForCity } from "@/lib/related-reading";
 import { SITE } from "@/lib/site";
 
 const BUILDS: { icon: IconName; title: string; text: string; href: string }[] = [
@@ -35,6 +37,8 @@ const BUILDS: { icon: IconName; title: string; text: string; href: string }[] = 
 
 export default function MetroLocationPage({ metro }: { metro: MetroLocation }) {
   const others = METRO_LOCATIONS.filter((item) => item.slug !== metro.slug);
+  const headquarters = metro.kind === "headquarters";
+  const reading = readingForCity(metro.slug);
 
   return (
     <>
@@ -56,8 +60,17 @@ export default function MetroLocationPage({ metro }: { metro: MetroLocation }) {
             {metro.definition}
           </p>
           <p className="mx-auto mt-4 max-w-[640px] text-[15px] leading-relaxed text-faint">
-            Headquarters stays at {SITE.address.street}, {SITE.address.city}, {SITE.address.region}{" "}
-            {SITE.address.postal}. US companies are the market. There is no second office in {metro.schemaCity}.
+            {headquarters ? (
+              <>
+                The only office is {SITE.address.street}, {SITE.address.city}, {SITE.address.region}{" "}
+                {SITE.address.postal}. That is inside the Atlanta metro. There is no separate office in the city of Atlanta, and no walk-in.
+              </>
+            ) : (
+              <>
+                Headquarters stays at {SITE.address.street}, {SITE.address.city}, {SITE.address.region}{" "}
+                {SITE.address.postal}. US companies are the market. There is no office in {metro.schemaCity}.
+              </>
+            )}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/audit/" className="btn-primary" style={{ minHeight: 54 }}>
@@ -85,7 +98,11 @@ export default function MetroLocationPage({ metro }: { metro: MetroLocation }) {
           <SectionHead
             eyebrow="What we build"
             title={<>The same systems, <span className="gradient-text">for {metro.label}.</span></>}
-            subtitle="Nothing on this page is a local package. These are the stacks a US company can buy, delivered remotely."
+            subtitle={
+              headquarters
+                ? "Nothing on this page is an Atlanta-only package. These are the stacks a US company can buy. The office is in McDonough. The work is still mostly remote."
+                : "Nothing on this page is a local package. These are the stacks a US company can buy, delivered remotely."
+            }
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {BUILDS.map((build) => (
@@ -108,7 +125,11 @@ export default function MetroLocationPage({ metro }: { metro: MetroLocation }) {
           <SectionHead
             eyebrow="Service area"
             title={<>Where we <span className="gradient-text">actually work.</span></>}
-            subtitle="The neighborhoods are the metro a buyer means. The delivery is remote from Georgia, for these cities and for the rest of the United States."
+            subtitle={
+              headquarters
+                ? "The places below are the metro a buyer means. The address is McDonough. There is not a second shop in Atlanta."
+                : "The neighborhoods are the metro a buyer means. The delivery is remote from Georgia, for these cities and for the rest of the United States."
+            }
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
             {metro.areas.map((area) => (
@@ -121,15 +142,20 @@ export default function MetroLocationPage({ metro }: { metro: MetroLocation }) {
             ))}
           </div>
           <p className="mt-6 text-[14.5px] leading-relaxed text-faint">
-            Also serving{" "}
-            <Link href="/locations/atlanta-ai-automation-agency/" className="font-semibold text-cyan">Atlanta</Link>
-            {others.map((item) => (
+            {headquarters ? "Also serving, remotely: " : "Also serving "}
+            {!headquarters && (
+              <>
+                <Link href="/locations/atlanta-ai-automation-agency/" className="font-semibold text-cyan">Atlanta</Link>
+                {others.length > 0 ? ", " : ""}
+              </>
+            )}
+            {others.map((item, index) => (
               <span key={item.slug}>
-                ,{" "}
+                {index > 0 && ", "}
                 <Link href={`/locations/${item.slug}/`} className="font-semibold text-cyan">{item.label}</Link>
               </span>
             ))}
-            . The Atlanta page is the headquarters metro. The others are remote service areas.
+            . The Atlanta page is the headquarters metro. Every other city page is a remote service area, with no local office.
           </p>
         </div>
       </section>
@@ -151,6 +177,7 @@ export default function MetroLocationPage({ metro }: { metro: MetroLocation }) {
         </div>
       </section>
 
+      <RelatedReading links={reading} />
       <FinalCTA />
     </>
   );

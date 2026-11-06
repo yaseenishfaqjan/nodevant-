@@ -18,6 +18,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: page.metaDescription,
     path: `/compare/${page.slug}/`,
     keywords: page.keywords,
+    ogImage: `/og/compare/${page.slug}.png`,
   });
 }
 

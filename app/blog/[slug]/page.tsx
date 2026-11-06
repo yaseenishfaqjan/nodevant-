@@ -41,16 +41,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     };
   }
 
+  const ogImage = post.cover
+    ? `/images/blog/${post.slug}-og.jpg`
+    : `/og/blog/${post.slug}.png`;
+
   return pageMetadata({
     title: post.metaTitle,
     description: post.metaDescription,
     path: `/blog/${post.slug}/`,
     keywords: post.keywords,
-    // Per-article social card (1200x630) when the post has cover art, so a
-    // shared link previews the article instead of the generic site image.
-    ogImage: post.cover
-      ? `/images/blog/${post.slug}-og.jpg`
-      : undefined,
+    ogImage,
   });
 }
 
@@ -72,7 +72,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             { name: "Blog", path: "/blog/" },
             { name: post.title, path: `/blog/${post.slug}/` },
           ]),
-          blogPostingSchema(post),
+          blogPostingSchema({
+            ...post,
+            image: post.cover
+              ? `/images/blog/${post.slug}-og.jpg`
+              : `/og/blog/${post.slug}.png`,
+          }),
         ]}
       />
       <BlogPost post={post} />

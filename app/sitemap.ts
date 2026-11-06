@@ -30,9 +30,9 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/build/": "2026-07-30",
   "/reverse-audit/": "2026-07-30",
   "/resources/automation-roi-calculator/": "2026-08-02",
-  "/locations/atlanta-ai-automation-agency/": "2026-10-31",
-  "/locations/": "2026-10-31",
-  "/compare/": "2026-10-31",
+  "/locations/atlanta-ai-automation-agency/": "2026-11-06",
+  "/locations/": "2026-11-06",
+  "/compare/": "2026-11-06",
   "/case-studies/": "2026-07-31",
   "/about/": "2026-07-31",
   "/contact/": "2026-10-31",
@@ -137,7 +137,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const metroPages: MetadataRoute.Sitemap = METRO_LOCATIONS.map((metro) => ({
     url: `${SITE.url}/locations/${metro.slug}/`,
-    lastModified: on("2026-10-31"),
+    lastModified: on(metro.updated ?? "2026-10-31"),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

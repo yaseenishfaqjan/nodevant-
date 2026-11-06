@@ -23,6 +23,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: s.metaDescription,
     path: `/solutions/${s.slug}/`,
     keywords: [s.name.toLowerCase(), `${s.industry.toLowerCase()} automation`, "ai operating system"],
+    ogImage: `/og/solutions/${s.slug}.png`,
   });
 }
 

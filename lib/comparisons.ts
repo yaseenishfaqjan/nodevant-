@@ -1,6 +1,8 @@
-// Commercial comparison pages. Prices are the vendor's published figures
-// as checked in October 2026, with a link. Anything a vendor does not
+// Commercial comparison pages. Prices are the vendor's published figures,
+// with a link and the date they were checked. Anything a vendor does not
 // publish is described as unpublished — not filled in from a roundup.
+
+import { COMPARISON_BATCH } from "@/lib/comparisons-batch";
 
 export interface ComparisonPage {
   slug: string;
@@ -9,6 +11,8 @@ export interface ComparisonPage {
   heroLead: string;
   gradientWord: string;
   definition: string;
+  /** One answer-first paragraph. Falls back to definition in the template. */
+  quickAnswer?: string;
   verdict: string;
   metaTitle: string;
   metaDescription: string;
@@ -25,7 +29,7 @@ export interface ComparisonPage {
   related: { href: string; label: string }[];
 }
 
-export const COMPARISON_PAGES: ComparisonPage[] = [
+const COMPARISON_PAGE_LIST: ComparisonPage[] = [
   {
     slug: "lawn-care-software-vs-jobber",
     name: "Lawn care software vs Jobber",
@@ -34,6 +38,8 @@ export const COMPARISON_PAGES: ComparisonPage[] = [
     gradientWord: "vs Jobber",
     definition:
       "Jobber is subscription field-service software you rent and run. Nodevant lawn care software is a done-for-you stack, usually $10,000–$20,000 USD, built around your routes and monitored after launch.",
+    quickAnswer:
+      "Keep Jobber if quotes, scheduling, and invoices are the whole job and your office can run the app. In October 2026 Jobber listed Core from $29 a month, Connect from $99, and Grow from $149, billed annually for one user. A Nodevant lawn stack is $10,000–$20,000 once, and it is the better buy when the phone during the route is what loses the work. Plenty of crews should stay on Jobber.",
     verdict:
       "Buy Jobber if you want quotes, scheduling, and invoices in a known app this week and your office can run it. Buy a Nodevant stack if the leak is the phone during the route, the handoff onto the crew's day, and invoices that wait until someone is off the mower. Plenty of US crews should stay on Jobber. The free audit will say so when a build is the wrong buy.",
     metaTitle: "Lawn Care Software vs Jobber | Nodevant",
@@ -173,6 +179,8 @@ export const COMPARISON_PAGES: ComparisonPage[] = [
     gradientWord: "vs ServiceTitan",
     definition:
       "ServiceTitan is an enterprise trades platform priced per technician, with no dollar price on its website. Nodevant field service software is a fixed-scope lead-to-invoice stack, usually $10,000–$20,000 USD, not a replacement for ServiceTitan's full suite.",
+    quickAnswer:
+      "Get a ServiceTitan quote if you want one trades system of record and can staff the rollout. ServiceTitan does not publish a dollar price. A Nodevant field stack is $10,000–$20,000 for lead, estimate, dispatch, and invoice. It is not a ServiceTitan replacement.",
     verdict:
       "Get a ServiceTitan quote if you want one system of record for dispatch, a deep pricebook, memberships, payroll, and marketing, and you can staff the rollout. Choose a Nodevant stack if the leak is the lead, the estimate, the crew, and the invoice — the lifecycle already running at GlobalShield360 — and you want a fixed project instead of a per-technician contract. We do not claim to replace ServiceTitan.",
     metaTitle: "Field Service Software vs ServiceTitan | Nodevant",
@@ -311,6 +319,8 @@ export const COMPARISON_PAGES: ComparisonPage[] = [
     gradientWord: "vs alternatives",
     definition:
       "A credit repair CRM such as Credit Repair Cloud is monthly software a US credit business rents. Nodevant credit repair software is a Storehouse360-based build, usually $10,000–$20,000 USD. Nodevant does not operate a credit-repair service.",
+    quickAnswer:
+      "Rent a CRM when you want a portal, letters, and billing this month and your file count fits the plan. Credit Repair Cloud's October 2026 page listed Personal at $49 a month up to 3 clients. Commission a Nodevant build, usually $10,000–$20,000, when you need 3-bureau data and an audit trail in software you own. Nodevant does not repair consumers' credit.",
     verdict:
       "Rent a CRM when you want a client portal, letters, and billing inside a product you can start this month, and your file count fits the plan. Commission a Nodevant build when you need 3-bureau data, the work on each file, and an audit trail in a system you own — configured to your letters, portals, and billing. If a template CRM already matches the operation, we will say so.",
     metaTitle: "Credit Repair CRM vs Alternatives | Nodevant",
@@ -450,6 +460,8 @@ export const COMPARISON_PAGES: ComparisonPage[] = [
     gradientWord: "vs answering service",
     definition:
       "An answering service puts a person on your phone line, usually billed per minute, per call, or as a monthly block. An AI receptionist is software that answers, books, and logs the call. Nodevant builds the software from $2,800.",
+    quickAnswer:
+      "Use a staffed answering service when callers need judgment or a person who can leave the script. Use an AI receptionist, built from $2,800, when the failure is missed calls and bookings that never reach the CRM. Many businesses should keep both: software for overflow and after hours, a person for the calls the software transfers.",
     verdict:
       "Use a staffed answering service when callers need judgment, comfort, or a person who can leave the script. Use an AI receptionist when the failure is missed calls, slow booking, and leads that never reach the CRM. Many US businesses should use both: software for after-hours and overflow, a person for the calls the software transfers. We do not claim callers cannot tell, and we do not claim the agent replaces a skilled receptionist on a hard call.",
     metaTitle: "AI Receptionist vs an Answering Service | Nodevant",
@@ -581,6 +593,11 @@ export const COMPARISON_PAGES: ComparisonPage[] = [
       { href: "/audit/", label: "Free audit" },
     ],
   },
+];
+
+export const COMPARISON_PAGES: ComparisonPage[] = [
+  ...COMPARISON_PAGE_LIST,
+  ...COMPARISON_BATCH,
 ];
 
 export function getComparison(slug: string): ComparisonPage | undefined {

@@ -3,8 +3,11 @@ import Icon from "@/components/ui/Icon";
 import SectionHead from "@/components/ui/SectionHead";
 import ServiceDiagram from "@/components/services/ServiceDiagram";
 import ProductCard from "@/components/services/ProductCard";
+import QuickAnswer from "@/components/content/QuickAnswer";
+import RelatedReading from "@/components/content/RelatedReading";
 import { getService, PRODUCTS } from "@/lib/services";
 import { getSolution, type SolutionDetail } from "@/lib/solutions";
+import { readingForSolution } from "@/lib/related-reading";
 
 function usd(n: number) {
   return new Intl.NumberFormat("en-US", {
@@ -19,6 +22,8 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
   const related = solution.related.map((s) => getSolution(s)).filter(Boolean) as SolutionDetail[];
   const product = solution.product ? PRODUCTS[solution.product] : undefined;
   const auditHref = solution.offer ? "/audit/" : "/#audit";
+  const reading = readingForSolution(solution.slug);
+  const quickAnswer = solution.definition ?? solution.description;
 
   return (
     <>
@@ -37,10 +42,10 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
             <h1 className="font-display text-[clamp(2rem,4.6vw,3.5rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink text-balance">
               {solution.heroLead} <span className="gradient-text">{solution.gradientWord}</span>
             </h1>
+            <QuickAnswer className="mt-5 max-w-xl">{quickAnswer}</QuickAnswer>
             {solution.definition && (
-              <p className="mt-5 max-w-xl text-[17px] font-medium leading-relaxed text-ink">{solution.definition}</p>
+              <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-faint">{solution.description}</p>
             )}
-            <p className={`${solution.definition ? "mt-3" : "mt-5"} max-w-xl text-[16px] leading-relaxed text-faint`}>{solution.description}</p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12.5px] text-body" style={{ background: "var(--tint)", border: "1px solid var(--chip-border)" }}>
                 <Icon name="chart" className="h-3.5 w-3.5 text-cyan" strokeWidth={1.8} /> {solution.proofValue}
@@ -289,6 +294,8 @@ export default function SolutionSubpage({ solution }: { solution: SolutionDetail
           </div>
         </div>
       </section>
+
+      <RelatedReading links={reading} />
 
       {/* 11 · Related solutions */}
       {related.length > 0 && (

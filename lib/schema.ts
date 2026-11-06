@@ -494,6 +494,7 @@ export function blogPostingSchema(post: {
   date: string;
   category: string;
   keywords: string[];
+  image?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -505,7 +506,7 @@ export function blogPostingSchema(post: {
     articleSection: post.category,
     keywords: post.keywords.join(", "),
     url: `${SITE.url}/blog/${post.slug}/`,
-    image: `${SITE.url}${SITE.ogImage}`,
+    image: `${SITE.url}${post.image ?? SITE.ogImage}`,
     author: { "@type": "Organization", name: SITE.name, url: SITE.url },
     publisher: {
       "@type": "Organization",

@@ -18,6 +18,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: metro.metaDescription,
     path: `/locations/${metro.slug}/`,
     keywords: metro.keywords,
+    ogImage: `/og/locations/${metro.slug}.png`,
   });
 }
 

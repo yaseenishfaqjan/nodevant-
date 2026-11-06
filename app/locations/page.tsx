@@ -10,21 +10,23 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "US Locations | Nodevant",
   description:
-    "Nodevant is based in McDonough, Georgia, and builds software for US companies in Atlanta, Dallas–Fort Worth, Miami, and Chicago — remotely. No other offices.",
+    "Nodevant's only office is in McDonough, Georgia. Atlanta is the home market. Dallas, Houston, Miami, Tampa, Chicago, Charlotte, and Phoenix are remote service areas — not offices.",
   path: "/locations/",
   keywords: [
     "ai automation agency atlanta",
-    "ai automation dallas",
-    "ai automation miami",
-    "ai automation chicago",
+    "ai automation houston",
+    "ai automation phoenix",
+    "ai automation tampa",
+    "ai automation charlotte",
   ],
+  ogImage: "/og/locations/index.png",
 });
 
 const CARDS: { href: string; label: string; note: string }[] = [
   {
     href: "/locations/atlanta-ai-automation-agency/",
     label: "Atlanta & McDonough, GA",
-    note: "Headquarters. Henry County, serving the Atlanta metro in person when a local client wants that, and remotely otherwise.",
+    note: "Headquarters in McDonough, Henry County. No separate Atlanta office. Home market, and the work is still mostly on calls.",
   },
   ...METRO_LOCATIONS.map((metro) => ({
     href: `/locations/${metro.slug}/`,

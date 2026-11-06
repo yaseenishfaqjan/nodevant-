@@ -54,6 +54,8 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     heroLead: "Financial Hub",
     industry: "Fintech · Financial Operations",
     routerGroup: "program",
+    definition:
+      "Storehouse360 is a financial hub that puts 3-bureau credit data, card insights, funding matches, and property discovery in one system. The live reference is storehouse360.com.",
     description:
       "3-bureau credit intelligence, credit- and debit-card insights, AI-matched funding up to $400K and real-estate opportunity discovery — one financial hub for a modern money business, not five disconnected tools.",
     proofLabel: "Proof",
@@ -102,6 +104,8 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     heroLead: "Quote-to-Production",
     industry: "Manufacturing · Custom Products",
     routerGroup: "product",
+    definition:
+      "FABRIOZA is a quote-to-production stack for custom manufacturing: specs are captured, quotes go out, and production is tracked. The live reference is fabrioza.com.",
     description:
       "B2B custom apparel from enquiry to shop floor: specs captured, quotes priced and issued, production status tracked — without a spreadsheet in the loop.",
     proofLabel: "Proof",
@@ -150,6 +154,8 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     heroLead: "Agentic Sales",
     industry: "B2B SaaS Sales",
     routerGroup: "product",
+    definition:
+      "Scalaro is an agentic sales framework: agents that source accounts, run outreach, place voice calls, and book meetings. Other Nodevant stacks, including Fairway360, are built on it.",
     description:
       "Twenty-plus autonomous agents that find accounts, run outreach, make voice calls and book meetings across seven channels. Other stacks are built on top of it.",
     proofLabel: "Proof",
@@ -198,6 +204,8 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     heroLead: "Field Operations",
     industry: "Construction · Field Services",
     routerGroup: "onsite",
+    definition:
+      "BMAIKR is the field-operations engine behind GlobalShield360: storm leads, estimates, crew dispatch, claim tracking, and invoices in one system.",
     description:
       "Storm leads captured, roofs scanned by AI, estimates issued instantly, crews dispatched, insurance claims tracked and invoices sent — deployed as GlobalShield360.",
     proofLabel: "Proof",
@@ -251,6 +259,8 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     heroLead: "Enrollment & Delivery",
     industry: "Education · Online Services",
     routerGroup: "program",
+    definition:
+      "The Academy stack automates enrolment operations: enquiries, applications, cohort scheduling, and learner follow-up. It does not replace instructors.",
     description:
       "Enquiries answered in any timezone, applications processed, cohorts scheduled and learners nurtured — the administrative half of an education business, automated.",
     proofLabel: "Proof",
@@ -396,6 +406,10 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     related: ["scalaro", "home-services"],
     product: "fairway360",
     caseStudySlug: "fairway360",
+    furtherReading: [
+      { href: "/compare/fairway360-vs-foreup/", label: "Fairway360 vs foreUP" },
+      { href: "/blog/golf-course-management-software-checklist/", label: "Golf course software checklist" },
+    ],
     applicationCategory: "BusinessApplication",
     listing: "stack",
     diagram: "voice",
@@ -465,7 +479,9 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     caseStudyLabel: "Read the field-service case study",
     furtherReading: [
       { href: "/compare/lawn-care-software-vs-jobber/", label: "Lawn care software vs Jobber" },
+      { href: "/compare/lawn-care-software-vs-lawnpro/", label: "Lawn care software vs LawnPro" },
       { href: "/blog/how-much-does-lawn-care-software-cost/", label: "How much lawn care software costs" },
+      { href: "/blog/how-to-automate-lawn-care-estimates/", label: "How to automate lawn care estimates" },
     ],
     applicationCategory: "BusinessApplication",
     listing: "offer",
@@ -537,7 +553,9 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     caseStudyLabel: "Read the Storehouse360 case study",
     furtherReading: [
       { href: "/compare/credit-repair-crm-vs-alternatives/", label: "Credit repair CRM vs alternatives" },
+      { href: "/compare/credit-repair-crm-vs-disputefox/", label: "Credit repair CRM vs DisputeFox" },
       { href: "/blog/best-credit-repair-crm-features-2026/", label: "Credit repair CRM features that matter in 2026" },
+      { href: "/blog/credit-repair-business-software-startup-checklist/", label: "Credit repair software startup checklist" },
     ],
     applicationCategory: "FinanceApplication",
     listing: "offer",
@@ -607,7 +625,9 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     caseStudySlug: "bmaikr",
     caseStudyLabel: "Read the GlobalShield360 case study",
     furtherReading: [
-      { href: "/compare/field-service-software-vs-servicetitan/", label: "Field service software vs ServiceTitan" },
+      { href: "/compare/roofing-crm-vs-acculynx/", label: "Roofing CRM vs AccuLynx" },
+      { href: "/compare/roofing-crm-vs-jobnimbus/", label: "Roofing CRM vs JobNimbus" },
+      { href: "/blog/how-much-does-roofing-crm-cost/", label: "How much a roofing CRM costs" },
       { href: "/solutions/bmaikr/", label: "BMAIKR field-operations engine" },
     ],
     applicationCategory: "BusinessApplication",
