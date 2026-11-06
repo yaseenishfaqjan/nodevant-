@@ -1,8 +1,17 @@
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
+import QuickAnswer from "@/components/content/QuickAnswer";
+import RelatedReading from "@/components/content/RelatedReading";
 import type { ComparisonPage } from "@/lib/comparisons";
+import { readingForComparison } from "@/lib/related-reading";
 
 export default function ComparisonArticle({ page }: { page: ComparisonPage }) {
+  const checked = new Date(`${page.checked}T12:00:00Z`).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  const reading = readingForComparison(page.slug);
   return (
     <>
       <section className="grid-overlay relative overflow-hidden px-5 pb-12 pt-32 md:pt-40">
@@ -20,9 +29,9 @@ export default function ComparisonArticle({ page }: { page: ComparisonPage }) {
           <h1 className="font-display text-[clamp(2rem,4.6vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-ink text-balance">
             {page.heroLead} <span className="gradient-text">{page.gradientWord}</span>
           </h1>
-          <p className="mt-5 text-[17px] font-medium leading-relaxed text-ink">{page.definition}</p>
+          <QuickAnswer className="mt-6">{page.quickAnswer ?? page.definition}</QuickAnswer>
           <p className="mt-4 text-[15px] leading-relaxed text-faint">
-            Vendor prices below were checked in October 2026. They move. The source links are at the bottom of this page.
+            Vendor pages below were checked in {checked}. They move. The source links are at the bottom of this page.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/audit/" className="btn-primary">
@@ -177,18 +186,22 @@ export default function ComparisonArticle({ page }: { page: ComparisonPage }) {
         </div>
       </section>
 
-      <section className="border-t border-line px-5 py-14">
-        <div className="mx-auto max-w-[1080px]">
-          <p className="eyebrow">Related</p>
-          <div className="mt-5 flex flex-wrap gap-2.5">
-            {page.related.map((item) => (
-              <Link key={item.href} href={item.href} className="btn-secondary">
-                {item.label}
-              </Link>
-            ))}
+      {reading.length > 0 ? (
+        <RelatedReading links={reading} />
+      ) : (
+        <section className="border-t border-line px-5 py-14">
+          <div className="mx-auto max-w-[1080px]">
+            <p className="eyebrow">Related</p>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              {page.related.map((item) => (
+                <Link key={item.href} href={item.href} className="btn-secondary">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

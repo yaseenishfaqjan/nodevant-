@@ -107,20 +107,31 @@ Nodevant builds three types of AI systems:
   repetitive hours to see recovered revenue, hours reclaimed and the
   full-time-employee equivalent an AI workforce replaces.
 - [Atlanta / McDonough GA](https://nodevant.com/locations/atlanta-ai-automation-agency/):
-  US AI automation company based in the Atlanta metro (McDonough, GA), also working remotely with teams elsewhere.
+  The only office is in McDonough, GA, inside the Atlanta metro. There is no separate Atlanta office.
 - [US locations](https://nodevant.com/locations/): One office, in McDonough, GA.
-  Dallas–Fort Worth, Miami, and Chicago are remote service areas, not storefronts.
-  No local client lists are invented for those cities.
+  Atlanta is the home market and does not have a second office.
+  Dallas–Fort Worth, Houston, Miami, Tampa, Chicago, Charlotte, and Phoenix
+  are remote service areas, not storefronts. No local client lists are invented.
 - [Dallas–Fort Worth](https://nodevant.com/locations/dallas-ai-automation-agency/):
   Remote delivery for DFW lawn, roofing, HVAC, and service companies.
 - [Miami](https://nodevant.com/locations/miami-ai-automation-agency/):
   Remote delivery for South Florida companies. English-language builds. No Miami office.
 - [Chicago](https://nodevant.com/locations/chicago-ai-automation-agency/):
   Remote delivery for Chicago HVAC, lawn, and home-service companies. No Chicago office.
-- [Comparisons](https://nodevant.com/compare/): Lawn care software vs Jobber,
-  field service software vs ServiceTitan, credit repair CRM vs alternatives,
-  AI receptionist vs an answering service. Vendor prices cited from their pages
-  as checked in October 2026. ServiceTitan does not publish a dollar price.
+- [Houston](https://nodevant.com/locations/houston-ai-automation-agency/):
+  Remote delivery for Houston roofing, lawn, and HVAC companies. No Houston office.
+- [Phoenix](https://nodevant.com/locations/phoenix-ai-automation-agency/):
+  Remote delivery for Phoenix lawn, HVAC, and pest companies. No Phoenix office.
+- [Tampa](https://nodevant.com/locations/tampa-ai-automation-agency/):
+  Remote delivery for Tampa Bay roofing, lawn, and club companies. No Tampa office.
+- [Charlotte](https://nodevant.com/locations/charlotte-ai-automation-agency/):
+  Remote delivery for Charlotte HVAC, lawn, and club companies. No Charlotte office.
+- [Comparisons](https://nodevant.com/compare/): Lawn, roofing, golf, and credit
+  software against named products, plus an AI receptionist vs an answering service.
+  Prices are cited only when the vendor publishes them. Checked October 2026
+  for the first set and 6 November 2026 for the later set. ServiceTitan, JobNimbus,
+  foreUP's current site, Club Prophet, and Lightspeed Golf do not publish a
+  subscription dollar price. AccuLynx publishes $250/month for Essential only.
 - [Software stacks](https://nodevant.com/products/): Every stack Nodevant sells,
   with who it is for and the USD range.
 - [Fairway360](https://nodevant.com/solutions/fairway360/): Golf club software
@@ -164,6 +175,22 @@ Nodevant builds three types of AI systems:
   Nodevant does not operate a consumer credit-repair service.
 - [AI receptionist vs an answering service](https://nodevant.com/compare/ai-receptionist-vs-answering-service/):
   A person on a rate card vs software from $2,800. Many businesses should keep both.
+- [Fairway360 vs foreUP](https://nodevant.com/compare/fairway360-vs-foreup/):
+  foreUP's current site does not publish a price. Fairway360 is the phone and the booking, not a POS.
+- [Fairway360 vs Club Prophet](https://nodevant.com/compare/fairway360-vs-club-prophet/):
+  Signature and Cloud. Club Prophet's Cloud FAQ does not give a dollar price.
+- [Fairway360 vs Lightspeed Golf](https://nodevant.com/compare/fairway360-vs-lightspeed-golf/):
+  Chronogolf is now Lightspeed. Personalized quote. No published subscription price.
+- [Credit repair CRM vs DisputeFox](https://nodevant.com/compare/credit-repair-crm-vs-disputefox/):
+  DisputeFox lists $129, $379, and $499 a month (6 November 2026). Nodevant does not operate a repair service.
+- [Lawn care software vs LawnPro](https://nodevant.com/compare/lawn-care-software-vs-lawnpro/):
+  LawnPro Solo is free. Startup $39, Grow $129, Plus $249, with annual billing 20% off on their help page.
+- [Lawn care software vs Service Autopilot](https://nodevant.com/compare/lawn-care-software-vs-service-autopilot/):
+  Annual rates: Startup $49, Pro $199, Pro Plus $499. Elite is contact-for-pricing.
+- [Roofing CRM vs AccuLynx](https://nodevant.com/compare/roofing-crm-vs-acculynx/):
+  Essential page lists $250/month. Pro and Elite are custom quotes.
+- [Roofing CRM vs JobNimbus](https://nodevant.com/compare/roofing-crm-vs-jobnimbus/):
+  Essentials, Pro, Premium, Enterprise. No dollar price. 14-day trial.
 - [Academy](https://nodevant.com/solutions/academy/): Enrollment and delivery
   operations for education businesses.
 - [Pricing](https://nodevant.com/pricing/): AI employee plans from $997/month.
@@ -181,6 +208,10 @@ Nodevant builds three types of AI systems:
 - [How much does lawn care software cost?](https://nodevant.com/blog/how-much-does-lawn-care-software-cost/)
 - [Best credit repair CRM features in 2026](https://nodevant.com/blog/best-credit-repair-crm-features-2026/)
 - [AI answering service vs a human receptionist](https://nodevant.com/blog/ai-answering-service-vs-human-receptionist/)
+- [How much does a roofing CRM cost?](https://nodevant.com/blog/how-much-does-roofing-crm-cost/)
+- [Golf course management software checklist](https://nodevant.com/blog/golf-course-management-software-checklist/)
+- [How to automate lawn care estimates](https://nodevant.com/blog/how-to-automate-lawn-care-estimates/)
+- [Credit repair business software startup checklist](https://nodevant.com/blog/credit-repair-business-software-startup-checklist/)
 
 ## Frequently Asked Questions
 

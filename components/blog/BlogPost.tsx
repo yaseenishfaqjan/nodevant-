@@ -2,6 +2,8 @@ import Link from "next/link";
 import Icon from "@/components/ui/Icon";
 import MeshThumb from "@/components/blog/MeshThumb";
 import NewsletterForm from "@/components/blog/NewsletterForm";
+import QuickAnswer from "@/components/content/QuickAnswer";
+import RelatedReading from "@/components/content/RelatedReading";
 import {
   formatPostDate,
   getBlogPost,
@@ -9,6 +11,8 @@ import {
   type ArticleBlock,
   type BlogPost as BlogPostData,
 } from "@/lib/blog-posts";
+import { BLOG_QUICK_ANSWERS } from "@/lib/quick-answers";
+import { readingForBlog } from "@/lib/related-reading";
 
 /** Renders the tiny inline syntax used in post bodies: [label](href) + **bold**. */
 function Inline({ text }: { text: string }) {
@@ -134,6 +138,8 @@ function Block({ block }: { block: ArticleBlock }) {
 
 export default function BlogPost({ post }: { post: BlogPostData }) {
   const [lead, grad] = splitTitle(post.title, post.gradientWords);
+  const quickAnswer = post.quickAnswer ?? BLOG_QUICK_ANSWERS[post.slug];
+  const reading = readingForBlog(post.slug);
   const related = post.relatedPosts
     .map((slug) => getBlogPost(slug))
     .filter((p): p is BlogPostData => Boolean(p && p.published));
@@ -161,6 +167,7 @@ export default function BlogPost({ post }: { post: BlogPostData }) {
           <h1 className="font-display text-[clamp(1.9rem,4.2vw,3.25rem)] font-extrabold leading-[1.12] tracking-[-0.035em] text-ink text-balance">
             {lead} <span className="gradient-text">{grad}</span>
           </h1>
+          {quickAnswer && <QuickAnswer className="mt-6">{quickAnswer}</QuickAnswer>}
           <div className="mt-6 flex items-center gap-3 border-y border-line py-4">
             <span
               aria-hidden="true"
@@ -194,6 +201,8 @@ export default function BlogPost({ post }: { post: BlogPostData }) {
           ))}
         </div>
       </section>
+
+      <RelatedReading links={reading} />
 
       {/* Keep reading */}
       {related.length > 0 && (

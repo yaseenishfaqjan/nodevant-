@@ -38,7 +38,7 @@ const NAV: Item[] = [
       { label: "HVAC software", href: "/solutions/hvac-software/", desc: "Service calls booked and invoiced for US HVAC companies." },
       { label: "Pest control software", href: "/solutions/pest-control-software/", desc: "Routes, recurring stops, and invoices for US pest companies." },
       { label: "Home Services", href: "/solutions/home-services/", desc: "Missed calls returned before the lead cools." },
-      { label: "Compare software", href: "/compare/", desc: "Jobber, ServiceTitan, credit CRMs, answering services." },
+      { label: "Compare software", href: "/compare/", desc: "Jobber, LawnPro, AccuLynx, golf tee sheets, credit CRMs." },
       { label: "AI Receptionist", href: "/solutions/ai-receptionist/", desc: "Answer every call, book and log leads 24/7." },
       { label: "All Solutions", href: "/solutions/", desc: "Every operating system we've built and deployed." },
       { label: "All software stacks", href: "/products/", desc: "Every stack we sell, with USD ranges." },

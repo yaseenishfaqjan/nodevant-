@@ -43,7 +43,7 @@ export function pageMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${SITE.name} — ${SITE.tagline}`,
+          alt: ogImage === SITE.ogImage ? `${SITE.name} — ${SITE.tagline}` : title,
         },
       ],
     },

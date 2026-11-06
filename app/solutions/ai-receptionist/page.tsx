@@ -3,6 +3,9 @@ import Icon, { type IconName } from "@/components/ui/Icon";
 import SectionHead from "@/components/ui/SectionHead";
 import FinalCTA from "@/components/home/FinalCTA";
 import JsonLd from "@/components/ui/JsonLd";
+import QuickAnswer from "@/components/content/QuickAnswer";
+import RelatedReading from "@/components/content/RelatedReading";
+import { readingForSolution } from "@/lib/related-reading";
 import { pageMetadata } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/schema";
@@ -21,6 +24,7 @@ export const metadata = pageMetadata({
     "virtual ai receptionist",
     "ai voice receptionist",
   ],
+  ogImage: "/og/solutions/ai-receptionist.png",
 });
 
 // ── Content ────────────────────────────────────────────────────────────
@@ -132,6 +136,9 @@ export default function AiReceptionistPage() {
             appointment and logs the lead — 24/7, in a natural voice, wired into
             the calendar and CRM you already use. Built and monitored by Nodevant.
           </p>
+          <QuickAnswer className="mx-auto mt-6 max-w-[640px]">
+            An AI receptionist is software that answers the phone, books into your calendar, and logs the lead. Nodevant builds one from $2,800. Keep a person for calls that need judgment. Use the software for overflow, after hours, and the bookings that currently go to voicemail.
+          </QuickAnswer>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/audit/" className="btn-primary" style={{ minHeight: 54 }}>
               Get my free 90-second audit
@@ -235,6 +242,7 @@ export default function AiReceptionistPage() {
         </div>
       </section>
 
+      <RelatedReading links={readingForSolution("ai-receptionist")} />
       <FinalCTA />
     </>
   );

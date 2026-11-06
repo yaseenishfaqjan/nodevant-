@@ -9,14 +9,15 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata: Metadata = pageMetadata({
   title: "Software Comparisons for US Buyers | Nodevant",
   description:
-    "Honest comparisons for US buyers: lawn care software vs Jobber, field service software vs ServiceTitan, credit repair CRMs, and an AI receptionist vs an answering service.",
+    "US software comparisons with sources: Jobber, LawnPro, Service Autopilot, AccuLynx, JobNimbus, foreUP, Club Prophet, Lightspeed Golf, DisputeFox, and an AI receptionist vs a staffed answering service.",
   path: "/compare/",
   keywords: [
     "lawn care software vs jobber",
-    "servicetitan alternative",
-    "credit repair crm",
-    "ai receptionist vs answering service",
+    "roofing crm vs acculynx",
+    "fairway360 vs foreup",
+    "credit repair crm vs disputefox",
   ],
+  ogImage: "/og/compare/index.png",
 });
 
 export default function CompareHubPage() {

@@ -1,4 +1,5 @@
 import type { BlogPost } from "@/lib/blog-posts";
+import { BUYER_BATCH } from "@/lib/buyer-batch";
 
 const PUBLISHED = "2026-10-31";
 
@@ -264,4 +265,5 @@ export const BUYER_POSTS: BlogPost[] = [
       { type: "cta" },
     ],
   },
+  ...BUYER_BATCH,
 ];

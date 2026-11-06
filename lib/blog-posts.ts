@@ -50,6 +50,8 @@ export interface BlogPost {
   metaTitle: string;
   metaDescription: string;
   keywords: string[];
+  /** Answer-first summary shown above the article. */
+  quickAnswer?: string;
   relatedServices: string[]; // /services/[slug] — drives their "Related reading"
   relatedPosts: string[]; // post slugs; only published ones are rendered
   body?: ArticleBlock[]; // present only when published

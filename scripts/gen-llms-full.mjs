@@ -5,9 +5,20 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
 // Published posts only (coming-soon placeholders carry no article content).
 const SLUGS = [
+  "how-much-does-an-ai-automation-agency-cost",
   "n8n-vs-make-vs-zapier",
   "roi-of-workflow-automation-year-one",
   "voice-ai-agents-buyers-guide",
+  "what-is-an-ai-automation-agency",
+  "ai-agents-for-business",
+  "how-to-automate-lead-generation",
+  "how-much-does-lawn-care-software-cost",
+  "best-credit-repair-crm-features-2026",
+  "ai-answering-service-vs-human-receptionist",
+  "how-much-does-roofing-crm-cost",
+  "golf-course-management-software-checklist",
+  "how-to-automate-lawn-care-estimates",
+  "credit-repair-business-software-startup-checklist",
 ];
 
 function decode(s) {
