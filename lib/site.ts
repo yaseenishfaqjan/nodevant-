@@ -14,6 +14,14 @@ export const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK || "nodevant-strategy-c
 // Google Search Console verification token (paste after verifying the domain).
 export const GSC_TOKEN = process.env.NEXT_PUBLIC_GSC_TOKEN || "";
 
+// Bing Webmaster Tools site-verification token. Hard-coded like GA_ID below
+// and NOT left to an unset env var: nodevant.com sat in Bing Webmaster
+// Tools as "Not verified" with every tool answering "User is unauthorized
+// to access the site", and a verification that depends on someone
+// remembering to set a variable at deploy time is how it stays that way.
+// The token is public by design - it ships in the HTML of every page.
+export const BING_TOKEN = process.env.NEXT_PUBLIC_BING_TOKEN || "B84578EA798497426806EE05427AAD83";
+
 // Google Analytics 4 measurement ID (public). Override via NEXT_PUBLIC_GA_ID if needed.
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-Y7JWPQF7LW";
 

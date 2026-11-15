@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SITE, GSC_TOKEN, GA_ID } from "@/lib/site";
+import { SITE, GSC_TOKEN, BING_TOKEN, GA_ID } from "@/lib/site";
 import SiteChrome from "@/components/layout/SiteChrome";
 import { ThemeProvider, themeInitScript } from "@/components/theme/ThemeProvider";
 
@@ -68,7 +68,13 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  verification: GSC_TOKEN ? { google: GSC_TOKEN } : undefined,
+  // Bing reads msvalidate.01; Next has no first-class key for it, so it goes
+  // through `other`. Each token is emitted only when it is non-empty - an
+  // empty content="" is a meta tag that proves nothing and fails verification.
+  verification: {
+    ...(GSC_TOKEN ? { google: GSC_TOKEN } : {}),
+    ...(BING_TOKEN ? { other: { "msvalidate.01": BING_TOKEN } } : {}),
+  },
   other: {
     "geo.region": "US-GA",
     "geo.placename": "McDonough",
