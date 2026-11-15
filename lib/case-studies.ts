@@ -130,9 +130,9 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       { q: "How is funding matched to $400K?", a: "Client profiles are scored against lender criteria by a decision engine that surfaces matches with the reasoning attached, so an advisor can explain any recommendation." },
     ],
     related: ["fabrioza", "scalaro"],
-    metaTitle: "Storehouse360: An All-in-One Financial Hub | Nodevant Case Study",
+    metaTitle: "Storehouse360: An All-in-One Financial Hub | Case Study",
     metaDescription:
-      "How Nodevant built Storehouse360 — a financial hub unifying 3-bureau credit intelligence, card insights, AI-matched funding to $400K and real-estate opportunity discovery in one white-label platform.",
+      "How Nodevant built Storehouse360 — a financial hub unifying 3-bureau credit intelligence, card insights.",
   },
   {
     slug: "fabrioza",
@@ -206,7 +206,7 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
     related: ["scalaro", "storehouse360"],
     metaTitle: "FABRIOZA: Quotes in the Hour, Not Days | Nodevant Case Study",
     metaDescription:
-      "How Nodevant built FABRIOZA — structured spec intake, an automated pricing engine with approval gates and 24/7 voice capture for custom manufacturing. No new hires.",
+      "How Nodevant built FABRIOZA — structured spec intake, an automated pricing engine with approval gates and 24/7 voice capture for custom manufacturing.",
   },
   {
     slug: "scalaro",
@@ -279,7 +279,7 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       { q: "Is Scalaro a product we buy or a build?", a: "A build on the Scalaro framework, configured to your ICP, channels and CRM. It is also the foundation other Nodevant stacks — like Fairway360 — run on." },
     ],
     related: ["fairway360", "fabrioza"],
-    metaTitle: "Scalaro: Six Agents Replacing an SDR Team | Nodevant Case Study",
+    metaTitle: "Scalaro: Six Agents Replacing an SDR Team | Case Study",
     metaDescription:
       "How Nodevant built the Scalaro framework — six specialised sales agents across seven channels, guarded by 196 tests, replacing an entire SDR function at v0.9.",
   },
@@ -354,9 +354,9 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       { q: "What does 'days to hours' depend on?", a: "The AI scan and instant estimate remove the measuring delay; the multi-channel capture removes the who-do-I-call-first delay. Together they compress the quote from days to the same day." },
     ],
     related: ["fairway360", "scalaro"],
-    metaTitle: "BMAIKR / GlobalShield360: Storm Lead to Invoice | Nodevant Case Study",
+    metaTitle: "BMAIKR / GlobalShield360: Storm Lead to Invoice | Case Study",
     metaDescription:
-      "How Nodevant built the BMAIKR engine behind GlobalShield360 — multi-channel capture, AI roof scanning, instant estimates, dispatch, claims and invoicing in one platform.",
+      "How Nodevant built the BMAIKR engine behind GlobalShield360 — multi-channel capture, AI roof scanning, instant estimates, dispatch.",
   },
   {
     slug: "fairway360",
@@ -427,7 +427,7 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       { q: "Does it book straight into our system?", a: "Yes. It checks live availability and confirms the booking during the call, writing into your tee-sheet rather than leaving a message for someone to action later." },
     ],
     related: ["scalaro", "bmaikr"],
-    metaTitle: "Fairway360: 24/7 Booking on the Scalaro Framework | Nodevant Case Study",
+    metaTitle: "Fairway360: 24/7 Booking on the Scalaro Framework",
     metaDescription:
       "How Nodevant deployed Fairway360 on its own Scalaro framework — 24/7 AI voice answering and continuous lead capture for golf clubs, with zero missed bookings.",
   },
@@ -500,9 +500,9 @@ export const CASE_STUDY_DETAILS: CaseStudyDetail[] = [
       { q: "Is there a Nodevant stack behind this like the others?", a: "No — PeachPicks is a fully custom build rather than a productised stack. It draws on our system integration and custom AI services, assembled specifically for this two-sided problem." },
     ],
     related: ["storehouse360", "scalaro"],
-    metaTitle: "PeachPicks: A Two-Sided Prediction Marketplace | Nodevant Case Study",
+    metaTitle: "PeachPicks: A Two-Sided Prediction Marketplace | Case Study",
     metaDescription:
-      "How Nodevant built PeachPicks — a custom free-to-play sports prediction platform with statewide leaderboards and a local sponsor marketplace, owned by the client.",
+      "How Nodevant built PeachPicks — a custom free-to-play sports prediction platform with statewide leaderboards and a local sponsor marketplace.",
   },
 ];
 

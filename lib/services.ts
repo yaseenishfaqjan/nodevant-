@@ -188,7 +188,7 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       { q: "How is this different from Zapier?", a: "Zapier chains triggers; agentic workflows add judgement — classifying, deciding and branching with an LLM, not just moving data A to B." },
       { q: "How long until it pays for itself?", a: "Most clients recover the build in the first month of hours returned. We estimate your exact number in the free audit." },
     ],
-    metaTitle: "Agentic Workflows — AI Automation That Decides & Acts | Nodevant",
+    metaTitle: "Agentic Workflows — AI Automation That Decides & Acts",
     metaDescription:
       "Custom agentic workflows that triage inboxes, update your CRM and run follow-ups automatically. Built on n8n & Make, live in 1–2 weeks. From $1,800.",
   },
@@ -335,7 +335,7 @@ export const SERVICE_DETAILS: ServiceDetail[] = [
       { q: "Will I know if a sync breaks?", a: "Yes — a failed connection alerts you immediately, so you hear about it before a customer sees stale data." },
       { q: "Why is this the lowest-priced service?", a: "It's the fastest to build and the highest-leverage — most teams get their double-entry hours back within days of go-live." },
     ],
-    metaTitle: "System Integration — Sync Your Tools Into One Truth | Nodevant",
+    metaTitle: "System Integration — Sync Your Tools Into One Truth",
     metaDescription:
       "Connect your CRM, inbox, calendar and billing into one two-way synced source of truth with dedupe and failure alerts. Live in 1–2 weeks. From $1,200.",
   },

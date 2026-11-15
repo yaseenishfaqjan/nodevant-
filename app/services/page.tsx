@@ -10,9 +10,9 @@ import { serviceListSchema, breadcrumbSchema } from "@/lib/schema";
 import { SERVICE_DETAILS, PRODUCTS, getService } from "@/lib/services";
 
 export const metadata: Metadata = pageMetadata({
-  title: "AI Automation Services | Agentic Workflows, Voice AI & Integrations — Nodevant",
+  title: "AI Automation Services | Workflows, Voice AI & Integrations",
   description:
-    "Six focused AI automation services — agentic workflows, voice agents, logic engines, system integration, lead gen and custom AI. Fixed project pricing, deployed in weeks, proven across 6 live platforms.",
+    "Six focused AI automation services — agentic workflows, voice agents, logic engines, system integration, lead gen and custom AI.",
   path: "/services/",
   keywords: [
     "ai automation services",

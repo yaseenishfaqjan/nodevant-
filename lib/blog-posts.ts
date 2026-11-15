@@ -66,7 +66,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readMinutes: 7,
     published: true,
     mesh: 2,
-    metaTitle: "How Much Does an AI Automation Agency Cost in 2026? | Nodevant",
+    metaTitle: "How Much Does an AI Automation Agency Cost in 2026?",
     metaDescription:
       "What an AI automation agency costs in 2026: one-time build, monthly plan and usage, with real price ranges by project type and how to spot a fair quote.",
     keywords: [
@@ -170,9 +170,9 @@ export const BLOG_POSTS: BlogPost[] = [
     featured: true,
     mesh: 0,
     cover: "/images/blog/n8n-vs-make-vs-zapier.webp",
-    metaTitle: "n8n vs Make vs Zapier in 2026: Which Tool Is Right for You? | Nodevant",
+    metaTitle: "n8n vs Make vs Zapier in 2026: Which Tool Is Right for You?",
     metaDescription:
-      "An operator's comparison of n8n, Make and Zapier in 2026 — pricing models, learning curve, self-hosting, error handling, and when to reach for a custom build instead.",
+      "An operator's comparison of n8n, Make and Zapier in 2026 — pricing models, learning curve, self-hosting, error handling.",
     keywords: [
       "n8n vs make vs zapier",
       "automation tool comparison 2026",
@@ -414,7 +414,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: "/images/blog/voice-ai-agents-buyers-guide.webp",
     metaTitle: "Voice AI Agents: A Practical Build-vs-Buy Guide | Nodevant",
     metaDescription:
-      "A practical buyer's guide to voice AI agents in 2026: what they can do, packaged product vs custom build, per-minute cost anatomy, and the questions to ask before going live.",
+      "A practical buyer's guide to voice AI agents in 2026: what they can do, packaged product vs custom build, per-minute cost anatomy.",
     keywords: [
       "voice ai agents",
       "ai phone agent",
@@ -629,9 +629,9 @@ export const BLOG_POSTS: BlogPost[] = [
     published: true,
     mesh: 4,
     cover: "/images/blog/ai-agents-for-business.webp",
-    metaTitle: "How AI Agents Are Replacing Entire Business Functions | Nodevant",
+    metaTitle: "How AI Agents Are Replacing Entire Business Functions",
     metaDescription:
-      "Autonomous AI agents are taking over whole workflows, from sales development to front-desk calls. What genuinely works in production today, and what is still marketing.",
+      "Autonomous AI agents are taking over whole workflows, from sales development to front-desk calls.",
     keywords: ["ai agents for business", "autonomous agents", "agentic workflows"],
     relatedServices: ["agentic-workflows", "ai-voice-agents"],
     relatedPosts: ["voice-ai-agents-buyers-guide", "n8n-vs-make-vs-zapier"],
@@ -731,7 +731,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: "/images/blog/how-to-automate-lead-generation.webp",
     metaTitle: "Automating Lead Generation End to End | Nodevant",
     metaDescription:
-      "The full blueprint for an automated lead engine: capture, enrichment, scoring, instant response and follow-up — with the speed-to-lead maths that decides whether it pays.",
+      "The full blueprint for an automated lead engine: capture, enrichment, scoring, instant response and follow-up.",
     keywords: ["automate lead generation", "ai lead generation", "lead gen pipeline"],
     relatedServices: ["lead-gen-pipeline", "ai-voice-agents"],
     relatedPosts: ["roi-of-workflow-automation-year-one", "n8n-vs-make-vs-zapier"],

@@ -7,6 +7,10 @@ interface PageMetaInput {
   path: string; // e.g. "/services/"
   keywords?: string[];
   ogImage?: string;
+  /** Keep the page out of the index. For pages whose content is built
+   *  per visitor in the browser - there is nothing for a crawler to read,
+   *  and an empty shell in the index is a thin-content signal, not a win. */
+  noindex?: boolean;
 }
 
 /**
@@ -19,6 +23,7 @@ export function pageMetadata({
   path,
   keywords,
   ogImage = SITE.ogImage,
+  noindex = false,
 }: PageMetaInput): Metadata {
   const url = `${SITE.url}${path}`;
   return {
@@ -54,7 +59,7 @@ export function pageMetadata({
       images: [ogImage],
     },
     robots: {
-      index: true,
+      index: !noindex,
       follow: true,
     },
   };

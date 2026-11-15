@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
   title:
     "AI Automation Agency in Atlanta & McDonough, GA | Nodevant",
   description:
-    "Nodevant is an AI automation agency based in McDonough, GA (Henry County), serving Atlanta-metro businesses and clients worldwide. AI agents, voice AI receptionists and workflow automation — built and run by the same team. Start with a free 90-second audit.",
+    "Nodevant is an AI automation agency based in McDonough, GA (Henry County), serving Atlanta-metro businesses and clients worldwide.",
   path: "/locations/atlanta-ai-automation-agency/",
   keywords: [
     "ai automation agency atlanta",

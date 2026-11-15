@@ -8,9 +8,9 @@ import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, organizationSchema } from "@/lib/schema";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Nodevant | Six Platforms Live · The AI Automation Agency",
+  title: "About Nodevant | Six Platforms Live · AI Automation Agency",
   description:
-    "Nodevant built and runs six live platforms — Storehouse360, Scalaro, Fabrioza, Fairway360, GlobalShield360 and PeachPicks. Fixed pricing, live in weeks, monitored after launch.",
+    "Nodevant built and runs six live platforms — Storehouse360, Scalaro, Fabrioza, Fairway360, GlobalShield360 and PeachPicks.",
   path: "/about/",
   keywords: [
     "about nodevant",

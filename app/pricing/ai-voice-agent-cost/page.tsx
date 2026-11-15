@@ -8,9 +8,9 @@ import { SITE } from "@/lib/site";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = pageMetadata({
-  title: "AI Voice Agent Cost: What You Actually Pay in 2026 | Nodevant",
+  title: "AI Voice Agent Cost: What You Actually Pay in 2026",
   description:
-    "A plain-English breakdown of what an AI voice agent costs in 2026: the one-time build, the monthly plan, and the per-connected-minute usage of the underlying voice stack. Nodevant builds from $2,800 — get an exact number from the free 90-second audit.",
+    "A plain-English breakdown of what an AI voice agent costs in 2026: the one-time build, the monthly plan.",
   path: "/pricing/ai-voice-agent-cost/",
   keywords: [
     "ai voice agent cost",

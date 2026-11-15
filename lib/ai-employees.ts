@@ -139,7 +139,7 @@ export const AI_EMPLOYEES: AiEmployee[] = [
       { label: "Lead Gen Pipeline", href: "/services/lead-gen-pipeline/" },
       { label: "The lead-gen blueprint", href: "/blog/how-to-automate-lead-generation/" },
     ],
-    metaTitle: "AI Sales Employee — Automated Lead Follow-Up That Never Forgets | Nodevant",
+    metaTitle: "AI Sales Employee — Lead Follow-Up That Never Forgets",
     metaDescription:
       "Hire an AI sales employee that responds to every lead in minutes, runs multi-channel follow-up, recovers cold leads and books appointments into your calendar.",
     keywords: [
@@ -187,9 +187,9 @@ export const AI_EMPLOYEES: AiEmployee[] = [
       { label: "Social autopilot", href: "/#social" },
       { label: "Custom AI Solutions", href: "/services/custom-ai-solutions/" },
     ],
-    metaTitle: "AI Content Employee — Branded Video & Social, Published for You | Nodevant",
+    metaTitle: "AI Content Employee — Video & Social, Published for You",
     metaDescription:
-      "Hire an AI content employee that creates avatar videos, UGC-style ads and platform-tuned posts from your brand, then publishes them across your social accounts after you approve.",
+      "Hire an AI content employee that creates avatar videos, UGC-style ads and platform-tuned posts from your brand.",
     keywords: [
       "ai content creation service",
       "ai social media automation",
@@ -237,7 +237,7 @@ export const AI_EMPLOYEES: AiEmployee[] = [
     ],
     metaTitle: "AI Operations Employee — Automate the Back Office | Nodevant",
     metaDescription:
-      "Hire an AI operations employee to run appointment confirmations, CRM updates, job status, invoice chasing, document collection and review requests automatically.",
+      "Hire an AI operations employee to run appointment confirmations, CRM updates, job status, invoice chasing.",
     keywords: [
       "back office automation",
       "ai operations automation",

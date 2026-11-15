@@ -14,9 +14,9 @@ import {
 } from "@/lib/ai-employees";
 
 export const metadata = pageMetadata({
-  title: "Hire AI Employees — Receptionist, Sales, Content & Operations | Nodevant",
+  title: "Hire AI Employees: Receptionist, Sales, Content & Ops",
   description:
-    "Hire AI employees that do a job, not software you have to run. Four roles — receptionist, sales, content and operations — built for your business, from $997/month plus implementation.",
+    "Hire AI employees that do a job, not software you have to run. Four roles — receptionist, sales, content and operations.",
   path: "/ai-employees/",
   keywords: [
     "hire ai employees",

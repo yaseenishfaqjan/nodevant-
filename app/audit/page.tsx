@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Free AI Automation Audit | Nodevant",
   description:
-    "Take our free 90-second automation audit. Answer 7 questions about your business and get a personalized report showing your biggest automation opportunity and estimated ROI.",
+    "Take our free 90-second automation audit: 7 questions about your business, then a report showing your biggest automation opportunity and its ROI.",
   path: "/audit/",
   keywords: [
     "automation audit",

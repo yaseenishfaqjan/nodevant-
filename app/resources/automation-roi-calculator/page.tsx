@@ -9,9 +9,9 @@ import { SITE } from "@/lib/site";
 import { faqPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = pageMetadata({
-  title: "AI Automation ROI Calculator — See What an AI Workforce Recovers | Nodevant",
+  title: "AI Automation ROI Calculator — What an AI Workforce Recovers",
   description:
-    "Free AI automation ROI calculator. Enter your missed calls, customer value and repetitive hours, and see the revenue you'd recover, the hours you'd reclaim, and how many full-time employees an AI workforce replaces — instantly, no email required.",
+    "Free AI automation ROI calculator. Enter your missed calls, customer value and repetitive hours, and see the revenue you'd recover, the hours you'd reclaim.",
   path: "/resources/automation-roi-calculator/",
   keywords: [
     "ai automation roi calculator",

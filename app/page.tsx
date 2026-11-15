@@ -27,9 +27,9 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title:
-    "Nodevant — AI Automation Agency | AI Agents, Workflow Automation & Voice AI",
+    "Nodevant | AI Automation Agency & Custom AI Agents",
   description:
-    "Nodevant builds fully deployed AI agents, workflow automation and voice AI for businesses worldwide — live in 1–3 weeks, fixed pricing, monitored after launch. Get your free automation audit.",
+    "Nodevant builds fully deployed AI agents, workflow automation and voice AI for businesses worldwide — live in 1–3 weeks, fixed pricing, monitored after launch.",
   path: "/",
   keywords: [
     "ai automation agency",

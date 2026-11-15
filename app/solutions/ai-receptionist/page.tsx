@@ -9,9 +9,9 @@ import { faqPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = pageMetadata({
   title:
-    "AI Receptionist for Small Business — Answer Every Call 24/7 | Nodevant",
+    "AI Receptionist for Small Business — Answer Every Call 24/7",
   description:
-    "A custom AI receptionist that answers every call, books appointments and logs leads to your CRM 24/7 — so a small team never misses a customer again. Built and monitored by Nodevant, from $2,800. Start with a free 90-second audit.",
+    "A custom AI receptionist that answers every call, books appointments and logs leads to your CRM 24/7 — so a small team never misses a customer again.",
   path: "/solutions/ai-receptionist/",
   keywords: [
     "ai receptionist",

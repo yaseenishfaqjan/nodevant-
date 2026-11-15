@@ -79,7 +79,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     ],
     metaTitle: "Storehouse360 — All-in-One Financial Hub | Nodevant",
     metaDescription:
-      "A complete financial hub: 3-bureau credit intelligence, card insights, AI-matched funding and real-estate opportunities. Deployed live. Book a stack consultation.",
+      "A complete financial hub: 3-bureau credit intelligence, card insights, AI-matched funding and real-estate opportunities. Deployed live.",
   },
   {
     slug: "fabrioza",
@@ -127,7 +127,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     ],
     metaTitle: "FABRIOZA Stack — Manufacturing Operating System | Nodevant",
     metaDescription:
-      "A quote-to-production operating system for custom manufacturing: specs captured, quotes issued in the hour, production tracked. Deployed live. Book a stack consultation.",
+      "A quote-to-production operating system for custom manufacturing: specs captured, quotes issued in the hour, production tracked. Deployed live.",
   },
   {
     slug: "scalaro",
@@ -173,9 +173,9 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
       { q: "Will automated outreach hurt our domain?", a: "No — sending is warmed up, volume-limited and deliverability-protected. Sequenced and human-sounding, never a spray." },
       { q: "What does it cost?", a: "It's our flagship stack, priced as one project. The free audit scopes your motion and returns a fixed quote." },
     ],
-    metaTitle: "Scalaro Framework — B2B SaaS Sales Operating System | Nodevant",
+    metaTitle: "Scalaro Framework — B2B SaaS Sales Operating System",
     metaDescription:
-      "An agentic sales operating system: 20+ autonomous agents sourcing, calling and booking meetings across seven channels. The framework other stacks run on. Book a consultation.",
+      "An agentic sales operating system: 20+ autonomous agents sourcing, calling and booking meetings across seven channels. The framework other stacks run on.",
   },
   {
     slug: "bmaikr",
@@ -224,7 +224,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     ],
     metaTitle: "BMAIKR Engine — Field Services Operating System | Nodevant",
     metaDescription:
-      "A field operations command center: storm leads, AI roof scans, instant estimates, crew dispatch, claims and invoicing in one system. Deployed as GlobalShield360.",
+      "A field operations command center: storm leads, AI roof scans, instant estimates, crew dispatch, claims and invoicing in one system.",
   },
   {
     slug: "academy",
@@ -272,7 +272,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     ],
     metaTitle: "Academy Stack — Education Operating System | Nodevant",
     metaDescription:
-      "An enrollment and delivery operating system for education: 24/7 enquiry answering, application processing, cohort scheduling and learner nurture. Book a stack consultation.",
+      "An enrollment and delivery operating system for education: 24/7 enquiry answering, application processing, cohort scheduling and learner nurture.",
   },
   {
     slug: "home-services",
@@ -320,7 +320,7 @@ export const SOLUTION_DETAILS: SolutionDetail[] = [
     ],
     metaTitle: "Home Services Stack — Missed-Call Recovery System | Nodevant",
     metaDescription:
-      "A home services operating system: 24/7 call answering, missed-call recovery, job booking and review requests. Never lose a lead to a ring-out. Book a stack consultation.",
+      "A home services operating system: 24/7 call answering, missed-call recovery, job booking and review requests. Never lose a lead to a ring-out.",
   },
 ];
 
