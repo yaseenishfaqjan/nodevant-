@@ -30,6 +30,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
     { path: "/contact/", priority: 0.7, changeFrequency: "monthly" },
     { path: "/blog/", priority: 0.7, changeFrequency: "weekly" },
+    // Added 16 Nov 2026. All three return 200 with `index, follow` and
+    // are linked from the footer, but this list is hand-maintained and
+    // they were never added when the routes were created. /admin/ and
+    // /audit/results/ stay out on purpose - both are noindex and
+    // Disallow'd in robots.txt.
+    { path: "/pricing/", priority: 0.85, changeFrequency: "monthly" },
+    { path: "/reverse-audit/", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/build/", priority: 0.6, changeFrequency: "weekly" },
   ];
 
   const servicePages: MetadataRoute.Sitemap = SERVICE_DETAILS.map((s) => ({

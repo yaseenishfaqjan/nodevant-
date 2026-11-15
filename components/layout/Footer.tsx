@@ -31,6 +31,9 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Company",
     links: [
       { label: "About", href: "/about/" },
+      // /ai-automation-agency/ is priority 0.95 in the sitemap and had
+      // ZERO inbound internal links - nothing on the site pointed at it.
+      { label: "AI Automation Agency", href: "/ai-automation-agency/" },
       { label: "Case Studies", href: "/case-studies/" },
       { label: "Industry Solutions", href: "/solutions/" },
       { label: "AI Employees", href: "/ai-employees/" },

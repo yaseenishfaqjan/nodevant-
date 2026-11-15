@@ -111,6 +111,104 @@ Nodevant builds three types of AI systems:
   Local AI automation agency serving the Atlanta metro and clients worldwide.
 - [Public Build Log](https://nodevant.com/build/): Every deploy, fix and ship,
   dated — what we actually released each week.
+- [Hire AI Employees: Receptionist, Sales, Content &
+Ops](https://nodevant.com/ai-employees/): Hire AI employees that do a job,
+not software you have to run. Four roles — receptionist, sales, content and
+  operations
+- [Agentic Workflows — AI Automation That Decides &
+Acts](https://nodevant.com/services/agentic-workflows/): Custom agentic
+workflows that triage inboxes, update your CRM and run follow-ups
+automatically. Built on n8n & Make, live in 1–2 weeks. From $1,800
+- [AI Voice Agents — 24/7 Answering &
+Booking](https://nodevant.com/services/ai-voice-agents/): AI phone agents
+that answer every call, qualify, book jobs and escalate emergencies to a
+human. Built on VAPI & Twilio, live in 2–3 weeks. From $2,800
+- [Complex Logic Engines — Custom Decision
+Systems](https://nodevant.com/services/complex-logic-engines/): Custom
+decision engines for pricing, eligibility and underwriting — deterministic
+where it matters, AI where it helps, with a full audit trail. From $4,500
+- [System Integration — Sync Your Tools Into One
+Truth](https://nodevant.com/services/system-integration/): Connect your CRM,
+inbox, calendar and billing into one two-way synced source of truth with
+dedupe and failure alerts. Live in 1–2 weeks. From $1,200
+- [Lead Gen Pipeline — An Automated Meeting
+Engine](https://nodevant.com/services/lead-gen-pipeline/): An automated
+pipeline that sources, enriches, scores and books qualified meetings across
+email, LinkedIn and voice. Live in 2–3 weeks. From $2,400
+- [Custom AI Solutions — Bespoke AI You
+Own](https://nodevant.com/services/custom-ai-solutions/): Bespoke AI built
+for your exact problem — RAG copilots, document pipelines and productised
+features, grounded in your data. You own the code. From $4,500
+- [Storehouse360 — All-in-One Financial
+Hub](https://nodevant.com/solutions/storehouse360/): A complete financial
+hub: 3-bureau credit intelligence, card insights, AI-matched funding and
+real-estate opportunities. Deployed live
+- [FABRIOZA Stack — Manufacturing Operating
+System](https://nodevant.com/solutions/fabrioza/): A quote-to-production
+operating system for custom manufacturing: specs captured, quotes issued in
+the hour, production tracked. Deployed live
+- [Scalaro Framework — B2B SaaS Sales Operating
+System](https://nodevant.com/solutions/scalaro/): An agentic sales operating
+system: 20+ autonomous agents sourcing, calling and booking meetings across
+seven channels. The framework other stacks run on
+- [BMAIKR Engine — Field Services Operating
+System](https://nodevant.com/solutions/bmaikr/): A field operations command
+center: storm leads, AI roof scans, instant estimates, crew dispatch, claims
+and invoicing in one system
+- [Academy Stack — Education Operating
+System](https://nodevant.com/solutions/academy/): An enrollment and delivery
+operating system for education: 24/7 enquiry answering, application
+processing, cohort scheduling and learner nurture
+- [Home Services Stack — Missed-Call Recovery
+System](https://nodevant.com/solutions/home-services/): A home services
+operating system: 24/7 call answering, missed-call recovery, job booking and
+review requests. Never lose a lead to a ring-out
+- [AI Sales Employee — Lead Follow-Up That Never
+Forgets](https://nodevant.com/ai-employees/ai-sales-employee/): Hire an AI
+sales employee that responds to every lead in minutes, runs multi-channel
+follow-up, recovers cold leads and books appointments into your calendar
+- [AI Content Employee — Video & Social, Published for
+You](https://nodevant.com/ai-employees/ai-content-employee/): Hire an AI
+content employee that creates avatar videos, UGC-style ads and
+platform-tuned posts from your brand
+- [AI Operations Employee — Automate the Back
+Office](https://nodevant.com/ai-employees/ai-operations-employee/): Hire an
+AI operations employee to run appointment confirmations, CRM updates, job
+status, invoice chasing
+- [Storehouse360: An All-in-One Financial Hub | Case
+Study](https://nodevant.com/case-studies/storehouse360/): How Nodevant built
+Storehouse360 — a financial hub unifying 3-bureau credit intelligence, card
+  insights
+- [FABRIOZA: Quotes in the Hour, Not Days | Nodevant Case
+Study](https://nodevant.com/case-studies/fabrioza/): How Nodevant built
+FABRIOZA — structured spec intake, an automated pricing engine with approval
+gates and 24/7 voice capture for custom manufacturing
+- [Scalaro: Six Agents Replacing an SDR Team | Case
+Study](https://nodevant.com/case-studies/scalaro/): How Nodevant built the
+Scalaro framework — six specialised sales agents across seven channels,
+guarded by 196 tests, replacing an entire SDR function at v0.9
+- [BMAIKR / GlobalShield360: Storm Lead to Invoice | Case
+Study](https://nodevant.com/case-studies/bmaikr/): How Nodevant built the
+BMAIKR engine behind GlobalShield360 — multi-channel capture, AI roof
+scanning, instant estimates, dispatch
+- [Fairway360: 24/7 Booking on the Scalaro
+Framework](https://nodevant.com/case-studies/fairway360/): How Nodevant
+deployed Fairway360 on its own Scalaro framework — 24/7 AI voice answering
+and continuous lead capture for golf clubs, with zero missed bookings
+- [PeachPicks: A Two-Sided Prediction Marketplace | Case
+Study](https://nodevant.com/case-studies/peachpicks/): How Nodevant built
+PeachPicks — a custom free-to-play sports prediction platform with statewide
+leaderboards and a local sponsor marketplace
+
+- [Pricing — Hire Your AI Workforce](https://nodevant.com/pricing/): Hire AI
+employees that qualify leads, answer calls and run workflows — custom-built,
+integrated, monitored and optimized by Nodevant. Plans from $997/month,
+implementation from $4,500
+- [Reverse Audit — We Scan Your Site for Automation
+Gaps](https://nodevant.com/reverse-audit/): Paste your URL and Nodevant
+scans your public website in ~20 seconds, returning up to three automation
+opportunities we can see from the outside — no signup, no email, nothing
+  stored
 
 ## Blog Articles
 
@@ -118,6 +216,9 @@ Nodevant builds three types of AI systems:
 - [n8n vs Make vs Zapier in 2026](https://nodevant.com/blog/n8n-vs-make-vs-zapier/)
 - [The Real ROI of Workflow Automation in Year One](https://nodevant.com/blog/roi-of-workflow-automation-year-one/)
 - [Voice AI Agents: A Practical Build-vs-Buy Guide](https://nodevant.com/blog/voice-ai-agents-buyers-guide/)
+- [How AI Agents Are Replacing Entire Business Functions](https://nodevant.com/blog/ai-agents-for-business/)
+- [Automating Lead Generation End to End](https://nodevant.com/blog/how-to-automate-lead-generation/)
+- [What Is an AI Automation Agency?](https://nodevant.com/blog/what-is-an-ai-automation-agency/)
 
 ## Frequently Asked Questions
 

@@ -3,12 +3,18 @@
 // Runs automatically after `next build` (see package.json).
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
-// Published posts only (coming-soon placeholders carry no article content).
-const SLUGS = [
-  "n8n-vs-make-vs-zapier",
-  "roi-of-workflow-automation-year-one",
-  "voice-ai-agents-buyers-guide",
-];
+// Published posts, DERIVED from lib/blog-posts.ts rather than listed here.
+// This was a hardcoded list of three while seven posts were published, so
+// four articles were missing from llms-full.txt and nothing reported it.
+// Reading the source file with a regex rather than importing it keeps this
+// script dependency-free (it is plain node, run after `next build`, with no
+// TypeScript loader available).
+const BLOG_SRC = readFileSync("lib/blog-posts.ts", "utf8");
+const SLUGS = [...BLOG_SRC.matchAll(/^\s{4}slug:\s*"([^"]+)"/gm)].map((m) => m[1]);
+if (SLUGS.length === 0) {
+  throw new Error("gen-llms-full: no blog slugs parsed from lib/blog-posts.ts");
+}
+console.log(`  blog slugs from lib/blog-posts.ts: ${SLUGS.length}`);
 
 function decode(s) {
   return s
