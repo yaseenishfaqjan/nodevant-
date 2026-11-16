@@ -1,13 +1,43 @@
 import { SITE } from "./site";
 import { FAQS, SERVICES } from "./content";
 
+// Stable node identities. Without these the page shipped six separate
+// assertions and nothing said the Organization and the
+// ProfessionalService were the same company. Anything that needs to name
+// Nodevant references ORG instead of inlining another copy of it.
+export const ORG = `${SITE.url}/#organization`;
+export const BIZ = `${SITE.url}/#localbusiness`;
+export const WEB = `${SITE.url}/#website`;
+export const LOGO = `${SITE.url}/#logo`;
+
+/** Nodevant, as a node that both REFERENCES and stands alone.
+ *
+ * A bare { "@id": ORG } dangles on any page that does not also emit the
+ * full Organization node - /services/ does exactly that, and a reference
+ * to a node that is not there is worse than an inline copy. Carrying
+ * @id plus name and url makes this a valid partial definition: it merges
+ * with the full node by @id where that node is present, and is
+ * self-sufficient where it is not.
+ */
+const orgRef = () => ({
+  "@type": "Organization",
+  "@id": ORG,
+  name: SITE.name,
+  url: SITE.url,
+});
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG,
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/logo.svg`,
+    logo: {
+      "@type": "ImageObject",
+      "@id": LOGO,
+      url: `${SITE.url}/logo.svg`,
+    },
     description: SITE.description,
     email: SITE.email,
     foundingDate: "2026",
@@ -15,7 +45,7 @@ export function organizationSchema() {
       "@type": "Person",
       name: "Nicholas Power",
       jobTitle: "Founder and Lead Engineer",
-      worksFor: { "@type": "Organization", name: SITE.name },
+      worksFor: orgRef(),
       image: `${SITE.url}/images/founder.webp`,
     },
     areaServed: "Worldwide",
@@ -49,6 +79,8 @@ export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": BIZ,
+    parentOrganization: orgRef(),
     name: SITE.name,
     description: SITE.description,
     url: SITE.url,
@@ -108,13 +140,18 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEB,
     name: SITE.name,
     url: SITE.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE.url}/blog/?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
+    description: SITE.description,
+    inLanguage: "en",
+    publisher: orgRef(),
+    // No potentialAction/SearchAction. One was declared here pointing at
+    // /blog/?q={search_term_string}, and that search does not exist:
+    // /blog/, /blog/?q=voice and /blog/?q=zzzzznomatch all return
+    // byte-identical pages, there is no search control in the markup, and
+    // app/blog/page.tsx reads no searchParams. Add it back only if a real
+    // blog search ships.
   };
 }
 
@@ -142,7 +179,7 @@ export function serviceListSchema() {
         name: s.title,
         description: s.short,
         url: `${SITE.url}/services/#${s.slug}`,
-        provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+        provider: orgRef(),
         areaServed: "Worldwide",
         offers: {
           "@type": "Offer",
@@ -201,7 +238,7 @@ export function socialServiceSchema() {
     "@type": "Service",
     name: "Social Media Marketing Automation",
     serviceType: "AI social media content creation and multi-platform publishing",
-    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    provider: orgRef(),
     areaServed: "Worldwide",
     description:
       "An AI content engine that creates avatar videos, UGC-style ads and platform-tuned posts, then publishes them automatically across up to 10 social platforms.",
