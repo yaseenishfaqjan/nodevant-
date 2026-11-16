@@ -56,48 +56,46 @@ function HubJsonLd() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "AI Employees",
-          serviceType: "AI business automation",
-          description:
-            "Custom-built AI employees that perform a defined job end to end: receptionist, sales follow-up, marketing content, and back-office operations.",
-          url,
-          provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
-          offers: {
-            "@type": "Offer",
-            price: 997,
-            priceCurrency: "USD",
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: 997,
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "AI Employees",
+            serviceType: "AI business automation",
+            description:
+              "Custom-built AI employees that perform a defined job end to end: receptionist, sales follow-up, marketing content, and back-office operations.",
+            url,
+            provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+            areaServed: "Worldwide",
+            offers: {
+              "@type": "Offer",
+              price: 997,
               priceCurrency: "USD",
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                minPrice: 997,
+                priceCurrency: "USD",
+              },
             },
           },
-        }}
-      />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          name: "Nodevant AI employees",
-          itemListElement: AI_EMPLOYEES.map((e, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            name: e.name,
-            description: e.jobTitle,
-            url: `${SITE.url}${e.href}`,
-          })),
-        }}
-      />
-      <JsonLd data={faqPageSchema(FAQS)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "AI Employees", path: "/ai-employees/" },
-        ])}
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Nodevant AI employees",
+            itemListElement: AI_EMPLOYEES.map((e, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: e.name,
+              description: e.jobTitle,
+              url: `${SITE.url}${e.href}`,
+            })),
+          },
+          faqPageSchema(FAQS),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "AI Employees", path: "/ai-employees/" },
+          ]),
+        ]}
       />
     </>
   );

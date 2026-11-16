@@ -72,34 +72,34 @@ export default function AiEmployeePage({
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: e.name,
-          serviceType: "AI business automation",
-          description: e.jobTitle,
-          url,
-          provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
-          offers: {
-            "@type": "Offer",
-            price: 997,
-            priceCurrency: "USD",
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: 997,
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: e.name,
+            serviceType: "AI business automation",
+            description: e.jobTitle,
+            url,
+            provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+            areaServed: "Worldwide",
+            offers: {
+              "@type": "Offer",
+              price: 997,
               priceCurrency: "USD",
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                minPrice: 997,
+                priceCurrency: "USD",
+              },
             },
           },
-        }}
-      />
-      <JsonLd data={faqPageSchema(faqs)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "AI Employees", path: "/ai-employees/" },
-          { name: e.name, path: `/ai-employees/${e.slug}/` },
-        ])}
+          faqPageSchema(faqs),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "AI Employees", path: "/ai-employees/" },
+            { name: e.name, path: `/ai-employees/${e.slug}/` },
+          ]),
+        ]}
       />
 
       {/* Hero */}

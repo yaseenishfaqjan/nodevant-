@@ -59,14 +59,16 @@ const FAQS: { q: string; a: string }[] = [
 function LocationJsonLd() {
   return (
     <>
-      <JsonLd data={localBusinessSchema()} />
-      <JsonLd data={faqPageSchema(FAQS)} />
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Locations", path: "/locations/atlanta-ai-automation-agency/" },
-          { name: "Atlanta & McDonough, GA", path: "/locations/atlanta-ai-automation-agency/" },
-        ])}
+        data={[
+          localBusinessSchema(),
+          faqPageSchema(FAQS),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Locations", path: "/locations/atlanta-ai-automation-agency/" },
+            { name: "Atlanta & McDonough, GA", path: "/locations/atlanta-ai-automation-agency/" },
+          ]),
+        ]}
       />
     </>
   );

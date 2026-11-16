@@ -47,26 +47,26 @@ function CalculatorJsonLd() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          name: "AI Automation ROI Calculator",
-          url,
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Any",
-          description:
-            "Free interactive calculator that estimates the revenue recovered, hours reclaimed and full-time-employee equivalent of replacing repetitive work with an AI workforce.",
-          offers: { "@type": "Offer", price: 0, priceCurrency: "USD" },
-          provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-        }}
-      />
-      <JsonLd data={faqPageSchema(FAQS)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Resources", path: "/resources/automation-roi-calculator/" },
-          { name: "ROI Calculator", path: "/resources/automation-roi-calculator/" },
-        ])}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "AI Automation ROI Calculator",
+            url,
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Any",
+            description:
+              "Free interactive calculator that estimates the revenue recovered, hours reclaimed and full-time-employee equivalent of replacing repetitive work with an AI workforce.",
+            offers: { "@type": "Offer", price: 0, priceCurrency: "USD" },
+            provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+          },
+          faqPageSchema(FAQS),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Resources", path: "/resources/automation-roi-calculator/" },
+            { name: "ROI Calculator", path: "/resources/automation-roi-calculator/" },
+          ]),
+        ]}
       />
     </>
   );

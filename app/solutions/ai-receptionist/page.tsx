@@ -78,35 +78,35 @@ function ReceptionistJsonLd() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "AI Receptionist for Small Business",
-          serviceType: "AI voice receptionist",
-          description:
-            "A custom-built AI voice receptionist that answers calls 24/7, books appointments, qualifies callers and logs leads to your CRM, built and monitored by Nodevant.",
-          url,
-          provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
-          offers: {
-            "@type": "Offer",
-            price: 2800,
-            priceCurrency: "USD",
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: 2800,
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "AI Receptionist for Small Business",
+            serviceType: "AI voice receptionist",
+            description:
+              "A custom-built AI voice receptionist that answers calls 24/7, books appointments, qualifies callers and logs leads to your CRM, built and monitored by Nodevant.",
+            url,
+            provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+            areaServed: "Worldwide",
+            offers: {
+              "@type": "Offer",
+              price: 2800,
               priceCurrency: "USD",
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                minPrice: 2800,
+                priceCurrency: "USD",
+              },
             },
           },
-        }}
-      />
-      <JsonLd data={faqPageSchema(FAQS)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Solutions", path: "/solutions/" },
-          { name: "AI Receptionist", path: "/solutions/ai-receptionist/" },
-        ])}
+          faqPageSchema(FAQS),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Solutions", path: "/solutions/" },
+            { name: "AI Receptionist", path: "/solutions/ai-receptionist/" },
+          ]),
+        ]}
       />
     </>
   );

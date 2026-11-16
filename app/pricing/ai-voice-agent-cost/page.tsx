@@ -80,35 +80,35 @@ function CostJsonLd() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "AI Voice Agent",
-          serviceType: "AI voice agent",
-          description:
-            "Custom AI voice agents built by Nodevant from $2,800, plus a monthly plan and per-connected-minute voice usage.",
-          url,
-          provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
-          areaServed: "Worldwide",
-          offers: {
-            "@type": "Offer",
-            price: 2800,
-            priceCurrency: "USD",
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              minPrice: 2800,
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "AI Voice Agent",
+            serviceType: "AI voice agent",
+            description:
+              "Custom AI voice agents built by Nodevant from $2,800, plus a monthly plan and per-connected-minute voice usage.",
+            url,
+            provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+            areaServed: "Worldwide",
+            offers: {
+              "@type": "Offer",
+              price: 2800,
               priceCurrency: "USD",
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                minPrice: 2800,
+                priceCurrency: "USD",
+              },
             },
           },
-        }}
-      />
-      <JsonLd data={faqPageSchema(FAQS)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Pricing", path: "/pricing/" },
-          { name: "AI Voice Agent Cost", path: "/pricing/ai-voice-agent-cost/" },
-        ])}
+          faqPageSchema(FAQS),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Pricing", path: "/pricing/" },
+            { name: "AI Voice Agent Cost", path: "/pricing/ai-voice-agent-cost/" },
+          ]),
+        ]}
       />
     </>
   );
