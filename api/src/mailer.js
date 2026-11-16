@@ -19,6 +19,14 @@ function getTransport() {
     port,
     secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : port === 465,
     auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    // A hung SMTP connection used to sit until the socket default (minutes)
+    // and the retry never started. Fail the attempt and let sendWithRetry run.
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 20_000,
+    pool: true,
+    maxConnections: 2,
+    maxMessages: 100,
   });
   return transporter;
 }

@@ -2,8 +2,18 @@ const express = require("express");
 const { buildReport } = require("./engine");
 const db = require("./db");
 const { sendLeadNotification } = require("./notify");
+const { installAsyncGuard } = require("./http");
+const { createLimiter } = require("./ratelimit");
+const {
+  screenHttpUrl,
+  assertPublicHttpUrl,
+  fetchPublicText,
+  collectPublicPages,
+  completeJson,
+  memoLookup,
+} = require("./scan");
 
-const router = express.Router();
+const router = installAsyncGuard(express.Router());
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || "";
 
 const isEmail = (e) => typeof e === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
@@ -36,29 +46,38 @@ function isSpam(body) {
 }
 
 // ── Simple in-memory rate limit (per IP) for human-facing forms ────────
-const HITS = new Map(); // ip -> number[] (timestamps)
 const WINDOW_MS = 60 * 60 * 1000;
-const MAX_PER_WINDOW = 15;
+const formLimiter = createLimiter({ windowMs: WINDOW_MS, max: 15 });
 function rateLimit(req, res, next) {
-  const ip = req.ip || "unknown";
-  const now = Date.now();
-  const hits = (HITS.get(ip) || []).filter((t) => now - t < WINDOW_MS);
-  if (hits.length >= MAX_PER_WINDOW) {
+  const result = formLimiter.check(req.ip || "unknown");
+  if (result.limited) {
     return res.status(429).json({ error: "Too many submissions. Please try again later." });
   }
-  hits.push(now);
-  HITS.set(ip, hits);
   next();
 }
-// Occasional cleanup so the map can't grow unbounded.
+
+const SCAN_WINDOW_MS = 60 * 60 * 1000;
+const scanLimiter = createLimiter({ windowMs: SCAN_WINDOW_MS, max: 3 });
+// Occasional cleanup so the maps can't grow unbounded.
 setInterval(() => {
-  const now = Date.now();
-  for (const [ip, hits] of HITS) {
-    const live = hits.filter((t) => now - t < WINDOW_MS);
-    if (live.length) HITS.set(ip, live);
-    else HITS.delete(ip);
+  formLimiter.prune();
+  scanLimiter.prune();
+}, 5 * 60 * 1000).unref?.();
+
+function positiveInt(value) {
+  const n = Number(value);
+  return Number.isInteger(n) && n > 0 ? n : null;
+}
+
+async function storeLead(lead, req, extraMeta) {
+  const saved = await db.saveLead(lead);
+  if (saved.created || saved.meetingChanged || saved.enriched) {
+    sendLeadNotification(lead, meta(req, extraMeta)).catch((e) =>
+      console.error("[notify]", lead.type, e.message)
+    );
   }
-}, WINDOW_MS).unref?.();
+  return saved;
+}
 
 // GET /api/live-metrics — aggregate stats for the homepage Live ROI Ticker.
 // Cached 30s server-side. PRODUCTION: replace the starter block with real
@@ -90,9 +109,6 @@ router.get("/live-metrics", (_req, res) => {
 // automation gaps. NEVER fabricates: if fewer than 2 high-confidence findings,
 // returns status:"no-findings". Privacy: the target URL is never persisted —
 // only anonymized category counts are logged.
-const SCAN_HITS = new Map(); // ip -> number[]
-const SCAN_WINDOW_MS = 60 * 60 * 1000;
-const SCAN_MAX = 3;
 // Only a real OpenAI key (starts with "sk-") enables the AI scan; anything else
 // (blank, whitespace, or an accidental inline comment in .env) → manual mode.
 function openaiKey() {
@@ -101,44 +117,6 @@ function openaiKey() {
 }
 const VALID_SERVICES = new Set(["agentic-workflows", "ai-voice-agents", "complex-logic-engines", "system-integration", "lead-gen-pipeline", "custom-ai-solutions"]);
 const VALID_CASES = new Set(["storehouse360", "scalaro", "fabrioza", "fairway360", "bmaikr", "peachpicks"]);
-
-function scanRateLimit(req, res, next) {
-  const ip = req.ip || "unknown";
-  const now = Date.now();
-  const hits = (SCAN_HITS.get(ip) || []).filter((t) => now - t < SCAN_WINDOW_MS);
-  if (hits.length >= SCAN_MAX) {
-    const reset = Math.ceil((hits[0] + SCAN_WINDOW_MS) / 1000);
-    res.set("X-RateLimit-Reset", String(reset));
-    return res.status(429).json({ error: "rate-limited", retryAfterSeconds: reset - Math.floor(now / 1000) });
-  }
-  hits.push(now);
-  SCAN_HITS.set(ip, hits);
-  next();
-}
-
-async function fetchHtml(u, timeoutMs = 8000) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeoutMs);
-  try {
-    const r = await fetch(u, { signal: ctrl.signal, redirect: "follow", headers: { "User-Agent": "NodevantReverseAudit/1.0 (+https://nodevant.com/reverse-audit)" } });
-    if (!r.ok) return null;
-    return await r.text();
-  } catch {
-    return null;
-  } finally {
-    clearTimeout(t);
-  }
-}
-
-function htmlToText(html) {
-  return String(html)
-    .replace(/<script[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style[\s\S]*?<\/style>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 3500);
-}
 
 const SCAN_SYS =
   "You are Nodevant's reverse-audit engine. Given the public text of a business's website pages, identify concrete AUTOMATION opportunities a visitor could infer from the outside (e.g. contact form with no autoresponder, pricing page with no instant quote, careers page hiring for repetitive manual roles, no live chat, no online booking). " +
@@ -155,19 +133,18 @@ async function openaiAnalyze(host, pages) {
     `Host: ${host}\n\n` +
     Object.entries(pages).map(([p, txt]) => `=== ${host}${p} ===\n${txt}`).join("\n\n");
   try {
-    const r = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
+    const data = await completeJson({
+      url: "https://api.openai.com/v1/chat/completions",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
+      timeoutMs: 20_000,
+      body: {
         model,
         temperature: 0.2,
         response_format: { type: "json_object" },
         messages: [{ role: "system", content: SCAN_SYS }, { role: "user", content: userMsg }],
-      }),
+      },
     });
-    if (!r.ok) return null;
-    const data = await r.json();
-    const txt = data.choices?.[0]?.message?.content;
+    const txt = data?.choices?.[0]?.message?.content;
     return txt ? JSON.parse(txt) : null;
   } catch {
     return null;
@@ -192,12 +169,27 @@ function sanitizeOpps(list) {
     }));
 }
 
-router.post("/reverse-audit/scan", scanRateLimit, async (req, res) => {
+router.post("/reverse-audit/scan", async (req, res) => {
   const raw = clean(req.body?.url, 300);
   if (!raw) return res.status(400).json({ error: "invalid-url" });
   let target;
   try {
     target = new URL(/^https?:\/\//i.test(raw) ? raw : "https://" + raw);
+  } catch {
+    return res.status(400).json({ error: "invalid-url" });
+  }
+
+  // Count only syntactically valid URLs, so a typo doesn't burn the 3/hour budget.
+  const limit = scanLimiter.check(req.ip || "unknown");
+  if (limit.limited) {
+    res.set("X-RateLimit-Reset", String(limit.reset));
+    return res.status(429).json({ error: "rate-limited", retryAfterSeconds: limit.retryAfterSeconds });
+  }
+
+  // Block loopback, link-local, and obfuscated hosts before any manual queue
+  // or fetch. Hostnames are resolved only when a scan will actually run.
+  try {
+    screenHttpUrl(target);
   } catch {
     return res.status(400).json({ error: "invalid-url" });
   }
@@ -218,9 +210,31 @@ router.post("/reverse-audit/scan", scanRateLimit, async (req, res) => {
     });
   }
 
+  const lookup = memoLookup();
+  try {
+    await assertPublicHttpUrl(target, lookup);
+  } catch (err) {
+    const code = err && err.code;
+    if (code === "blocked-url" || code === "invalid-url") return res.status(400).json({ error: "invalid-url" });
+    if (code === "unreachable") return res.status(502).json({ error: "unreachable" });
+    throw err;
+  }
+
   // Respect robots.txt at a basic level: skip paths disallowed for all agents.
   let disallow = [];
-  const robots = await fetchHtml(new URL("/robots.txt", target.origin).href, 4000);
+  let robots = null;
+  try {
+    robots = await fetchPublicText(new URL("/robots.txt", target.origin).href, {
+      timeoutMs: 4000,
+      maxBytes: 256 * 1024,
+      lookup,
+    });
+  } catch (err) {
+    if (err && (err.code === "blocked-url" || err.code === "invalid-url")) {
+      return res.status(400).json({ error: "invalid-url" });
+    }
+    throw err;
+  }
   if (robots) {
     let all = false;
     for (const line of robots.split(/\r?\n/)) {
@@ -232,10 +246,14 @@ router.post("/reverse-audit/scan", scanRateLimit, async (req, res) => {
   const allowed = (p) => !disallow.some((d) => d && p.startsWith(d));
 
   const paths = ["/", "/contact", "/pricing", "/careers"].filter(allowed);
-  const pages = {};
-  for (const p of paths) {
-    const html = await fetchHtml(new URL(p, target.origin).href);
-    if (html) pages[p] = htmlToText(html);
+  let pages;
+  try {
+    pages = await collectPublicPages(target.origin, paths, { lookup });
+  } catch (err) {
+    if (err && (err.code === "blocked-url" || err.code === "invalid-url")) {
+      return res.status(400).json({ error: "invalid-url" });
+    }
+    throw err;
   }
   if (Object.keys(pages).length === 0) return res.status(502).json({ error: "unreachable" });
 
@@ -297,11 +315,7 @@ router.post("/audit", rateLimit, async (req, res) => {
       roi_multiple: report.roi.roiMultiple,
     };
 
-    const saved = await db.insertLead(lead);
-    // Fire notifications without blocking the response.
-    sendLeadNotification(lead, meta(req, { report })).catch((e) =>
-      console.error("[notify] audit", e.message)
-    );
+    const saved = await storeLead(lead, req, { report });
 
     res.json({ success: true, id: saved.id, report });
   } catch (err) {
@@ -327,10 +341,7 @@ router.post("/contact", rateLimit, async (req, res) => {
       message: clean(b.message, 5000),
       source: clean(b.source || (serviceName ? "service" : "contact"), 100),
     };
-    const saved = await db.insertLead(lead);
-    sendLeadNotification(lead, meta(req, { serviceName: serviceName || undefined })).catch((e) =>
-      console.error("[notify] contact", e.message)
-    );
+    const saved = await storeLead(lead, req, { serviceName: serviceName || undefined });
     res.json({ success: true, id: saved.id });
   } catch (err) {
     console.error("[contact]", err);
@@ -350,10 +361,7 @@ router.post("/newsletter", rateLimit, async (req, res) => {
       email: clean(b.email, 320),
       source: clean(b.source || "newsletter", 100),
     };
-    const saved = await db.insertLead(lead);
-    sendLeadNotification(lead, meta(req)).catch((e) =>
-      console.error("[notify] newsletter", e.message)
-    );
+    const saved = await storeLead(lead, req);
     res.json({ success: true, id: saved.id });
   } catch (err) {
     console.error("[newsletter]", err);
@@ -378,19 +386,19 @@ router.post("/cal-webhook", async (req, res) => {
     const location =
       p.location || p.videoCallData?.url || p.metadata?.videoCallUrl || "";
 
+    const bookingUid = p.uid || p.bookingUid || (p.bookingId != null ? String(p.bookingId) : "");
     const lead = {
       type: "booking",
       name: clean(attendee.name, 200),
       email: clean(attendee.email, 320),
       source: clean(`cal.com${trigger === "BOOKING_RESCHEDULED" ? " (rescheduled)" : ""}`, 100),
       message: clean([p.title, location, attendee.timeZone].filter(Boolean).join(" · "), 2000),
-      meeting_at: p.startTime ? new Date(p.startTime) : null,
+      meeting_at: p.startTime || null,
       meeting_type: clean(p.type || p.eventTitle || p.title, 200),
+      // Same booking uid on retries and reschedules — one CRM row, not a pile of copies.
+      external_id: bookingUid ? `cal:${clean(bookingUid, 160)}` : null,
     };
-    const saved = await db.insertLead(lead);
-    sendLeadNotification(lead, meta(req, { sourcePage: "cal.com booking" })).catch((e) =>
-      console.error("[notify] booking", e.message)
-    );
+    const saved = await storeLead(lead, req, { sourcePage: "cal.com booking" });
     res.json({ success: true, id: saved.id });
   } catch (err) {
     console.error("[cal-webhook]", err);
@@ -481,6 +489,7 @@ router.post("/voice-lead", async (req, res) => {
       .filter(Boolean)
       .join(" | ");
 
+    const callId = (msg && (msg.call?.id || msg.callId)) || body.call?.id || body.callId || null;
     const lead = {
       type: "call",
       name: clean(f.name || f.firstName, 200),
@@ -489,14 +498,13 @@ router.post("/voice-lead", async (req, res) => {
       company: clean(f.business || f.company, 200),
       source: clean(callMeta.agentNumber ? `voice-call (${callMeta.agentNumber})` : "voice-call (Alex)", 100),
       message: detail || null,
+      // tool-calls and end-of-call-report share a call id; keep a single lead.
+      external_id: callId ? `vapi:${clean(callId, 160)}` : null,
     };
-    const saved = await db.insertLead(lead);
-    sendLeadNotification(lead, meta(req, callMeta)).catch((e) =>
-      console.error("[notify] call", e.message)
-    );
+    const saved = await storeLead(lead, req, callMeta);
 
     if (toolCallId)
-      return res.json({ results: [{ toolCallId, result: "Lead saved to the Nodevant CRM." }] });
+      return res.json({ results: [{ toolCallId, result: saved.created ? "Lead saved to the Nodevant CRM." : "Lead already saved." }] });
     return res.json({ success: true, id: saved.id });
   } catch (err) {
     console.error("[voice-lead]", err);
@@ -507,11 +515,15 @@ router.post("/voice-lead", async (req, res) => {
 });
 
 // ---- CRM (admin) ----
+function queryText(value) {
+  return typeof value === "string" ? value : undefined;
+}
+
 router.get("/leads", adminOnly, async (req, res) => {
   const leads = await db.listLeads({
-    status: req.query.status,
-    type: req.query.type,
-    limit: req.query.limit,
+    status: queryText(req.query.status),
+    type: queryText(req.query.type),
+    limit: queryText(req.query.limit),
   });
   res.json({ leads });
 });
@@ -521,22 +533,27 @@ router.get("/stats", adminOnly, async (_req, res) => {
 });
 
 router.patch("/leads/:id", adminOnly, async (req, res) => {
-  const updated = await db.updateLead(req.params.id, {
-    status: req.body.status,
-    notes: req.body.notes,
+  const id = positiveInt(req.params.id);
+  if (!id) return res.status(400).json({ error: "Invalid id" });
+  const body = req.body || {};
+  const updated = await db.updateLead(id, {
+    status: body.status,
+    notes: body.notes,
   });
   if (!updated) return res.status(404).json({ error: "Not found" });
   res.json({ lead: updated });
 });
 
 router.delete("/leads/:id", adminOnly, async (req, res) => {
-  const ok = await db.deleteLead(req.params.id);
+  const id = positiveInt(req.params.id);
+  if (!id) return res.status(400).json({ error: "Invalid id" });
+  const ok = await db.deleteLead(id);
   if (!ok) return res.status(404).json({ error: "Not found" });
   res.json({ success: true });
 });
 
 router.get("/leads/export.csv", adminOnly, async (req, res) => {
-  const leads = await db.listLeads({ limit: 5000 });
+  const leads = await db.listLeads({ limit: 5000, max: 5000 });
   const cols = [
     "id", "created_at", "type", "status", "name", "email", "phone", "company",
     "industry", "team_size", "biggest_pain", "hours_wasted", "hourly_rate",
@@ -558,3 +575,4 @@ const brands = require("./brands");
 router.use(brands.build(adminOnly));
 
 module.exports = router;
+module.exports.scanLimiter = scanLimiter;

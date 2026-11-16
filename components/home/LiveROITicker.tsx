@@ -40,7 +40,10 @@ export default function LiveROITicker() {
     let alive = true;
     const poll = async () => {
       try {
-        const res = await fetch("/api/live-metrics", { headers: { Accept: "application/json" } });
+        const res = await fetch("/api/live-metrics", {
+          headers: { Accept: "application/json" },
+          signal: AbortSignal.timeout(8_000),
+        });
         if (!res.ok) throw new Error(String(res.status));
         const d = await res.json();
         if (!alive) return;

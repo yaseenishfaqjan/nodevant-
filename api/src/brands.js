@@ -10,6 +10,7 @@
 // cross-site cookie problem. The service token never reaches the browser.
 
 const express = require("express");
+const { installAsyncGuard } = require("./http");
 
 // --- brand registry -------------------------------------------------------
 // Each product exposes the same /api/admin/* outreach surface. A brand is
@@ -71,7 +72,7 @@ const ALLOWED = [
 const pathAllowed = (p) => ALLOWED.some((re) => re.test(p));
 
 function build(adminOnly) {
-  const router = express.Router();
+  const router = installAsyncGuard(express.Router());
 
   // Sidebar contents.
   router.get("/brands", adminOnly, (_req, res) => {
